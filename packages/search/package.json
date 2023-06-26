@@ -8,9 +8,7 @@
     "url": "https://github.com/kevinfrei/search/issues"
   },
   "homepage": "https://github.com/kevinfrei/search#readme",
-  "keywords": [
-    "js-utils"
-  ],
+  "keywords": ["js-utils"],
   "repository": "github:kevinfrei/search",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
@@ -29,7 +27,7 @@
     "esmcompat": "echo '{\"type\":\"module\"}'> ./lib/esm/package.json",
     "compat": "yarn cjscompat && yarn esmcompat",
     "release": "yarn clean && tsc --project tsconfig.cjs.opt.json && tsc --project tsconfig.esm.opt.json && yarn ftool minify -i -r lib && yarn compat",
-    "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json yarn compat",
+    "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json && yarn compat",
     "cleanbuild": "yarn clean && yarn build",
     "prepublishOnly": "yarn test && yarn lint",
     "prepare": "yarn release",
@@ -59,9 +57,7 @@
     "typedoc-plugin-markdown": "^3.15.3",
     "typescript": "5.0.4"
   },
-  "files": [
-    "lib/**/*"
-  ],
+  "files": ["lib/**/*"],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   },
