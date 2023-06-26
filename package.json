@@ -11,8 +11,11 @@
   "scripts": {
     "release": "npx lerna run release",
     "build": "npx lerna run build",
-    "format": "ftool format",
+    "format": "yarn ftool format",
     "test": "npx lerna run test",
+    "prepublishOnly": "yarn pinst --disable",
+    "postpublish": "yarn pinst --enable",
+    "postinstall": "yarn husky install",
     "lerna": "npx lerna run"
   },
   "devDependencies": {
@@ -23,10 +26,10 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
-    "husky": "^8.0.3",
+    "husky": "npm:^8.0.3",
     "jest": "^29.5.0",
     "lerna": "^7.1.0",
-    "pinst": "^3.0.0",
+    "pinst": "npm:^3.0.0",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
     "typedoc": "^0.24.8",
