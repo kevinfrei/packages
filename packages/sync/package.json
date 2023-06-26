@@ -8,9 +8,7 @@
     "url": "https://github.com/kevinfrei/sync/issues"
   },
   "homepage": "https://github.com/kevinfrei/sync#readme",
-  "keywords": [
-    "js-utils"
-  ],
+  "keywords": ["js-utils"],
   "repository": "github:kevinfrei/sync",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
@@ -60,9 +58,7 @@
     "typedoc-plugin-markdown": "^3.15.3",
     "typescript": "5.0.4"
   },
-  "files": [
-    "lib/**/*"
-  ],
+  "files": ["lib/**/*"],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   },
@@ -70,6 +66,6 @@
   "dependencies": {
     "@freik/containers": "^0.2.1",
     "@freik/seqnum": "^1.1.0",
-    "@freik/typechk": "^0.2.0"
+    "@freik/typechk": "^0.5.0"
   }
 }

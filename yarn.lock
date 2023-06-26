@@ -1715,16 +1715,16 @@ __metadata:
     "@freik/build-tools": ^3.6.0
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
-    "@typescript-eslint/eslint-plugin": ^5.59.8
-    "@typescript-eslint/parser": ^5.59.8
+    "@typescript-eslint/eslint-plugin": ^5.60.0
+    "@typescript-eslint/parser": ^5.60.0
     babel-eslint: ^10.1.0
-    eslint: ^8.42.0
+    eslint: ^8.43.0
     eslint-config-prettier: ^8.8.0
     jest: ^29.5.0
     prettier: ^2.8.8
     rimraf: ^5.0.1
     ts-jest: ^29.1.0
-    typedoc: ^0.24.7
+    typedoc: ^0.24.8
     typedoc-plugin-markdown: ^3.15.3
     typescript: 5.0.4
   languageName: unknown
@@ -1759,7 +1759,7 @@ __metadata:
     "@freik/build-tools": ^3.6.0
     "@freik/containers": ^0.2.1
     "@freik/seqnum": ^1.1.0
-    "@freik/typechk": ^0.2.0
+    "@freik/typechk": ^0.5.0
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
     "@typescript-eslint/eslint-plugin": ^5.60.0
@@ -1821,13 +1821,6 @@ __metadata:
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
-
-"@freik/typechk@npm:^0.2.0":
-  version: 0.2.1
-  resolution: "@freik/typechk@npm:0.2.1"
-  checksum: b0251b31e61166be44c05ca2202c08a16256b6b542d7a6d85cfbc82c39fcfefca9e48a5d3e77aa698dc1114d5f9be35e183e3667a59b37e2f039c7768c20db8c
-  languageName: node
-  linkType: hard
 
 "@hapi/hoek@npm:^9.0.0":
   version: 9.3.0
@@ -2962,7 +2955,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.59.8, @typescript-eslint/eslint-plugin@npm:^5.60.0":
+"@typescript-eslint/eslint-plugin@npm:^5.60.0":
   version: 5.60.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.60.0"
   dependencies:
@@ -2986,7 +2979,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.59.8, @typescript-eslint/parser@npm:^5.60.0":
+"@typescript-eslint/parser@npm:^5.60.0":
   version: 5.60.0
   resolution: "@typescript-eslint/parser@npm:5.60.0"
   dependencies:
@@ -4862,7 +4855,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.42.0, eslint@npm:^8.43.0":
+"eslint@npm:^8.43.0":
   version: 8.43.0
   resolution: "eslint@npm:8.43.0"
   dependencies:
@@ -7180,7 +7173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lerna@npm:^7.0.2":
+"lerna@npm:^7.1.0":
   version: 7.1.0
   resolution: "lerna@npm:7.1.0"
   dependencies:
@@ -8525,7 +8518,7 @@ __metadata:
     eslint-config-prettier: ^8.8.0
     husky: ^8.0.3
     jest: ^29.5.0
-    lerna: ^7.0.2
+    lerna: ^7.1.0
     pinst: ^3.0.0
     prettier: ^2.8.8
     rimraf: ^5.0.1
@@ -10347,7 +10340,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc@npm:^0.24.7, typedoc@npm:^0.24.8":
+"typedoc@npm:^0.24.8":
   version: 0.24.8
   resolution: "typedoc@npm:0.24.8"
   dependencies:
