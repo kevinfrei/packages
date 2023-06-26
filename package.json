@@ -9,8 +9,10 @@
   "packageManager": "yarn@3.6.0",
   "workspaces": ["packages/*"],
   "scripts": {
+    "release": "npx lerna run release",
     "build": "npx lerna run build",
     "format": "ftool format",
+    "test": "npx lerna run test",
     "lerna": "npx lerna run"
   },
   "devDependencies": {
