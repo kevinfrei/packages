@@ -9,9 +9,7 @@
     "er": "./lib/tools.js",
     "ftool": "./lib/tools.js"
   },
-  "files": [
-    "lib/**/*"
-  ],
+  "files": ["lib/**/*"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kevinfrei/build-tools.git"
@@ -21,49 +19,47 @@
     "test": "jest --passWithNoTests --config jestconfig.json",
     "build": "rimraf lib && tsc",
     "prepare": "yarn run build",
-    "prepublishOnly": "yarn test && yarn run lint && yarn pinst --disable",
+    "prepublishOnly": "yarn test && yarn run lint",
     "format": "ftool format",
     "lint": "yarn run eslint --fix --ext .ts src",
     "preversion": "yarn run lint",
     "version": "yarn run format && git add -A src",
     "postversion": "git push && git push --tags --no-verify",
     "compile": "tsc --noEmit",
-    "chk": "yarn format && yarn lint && yarn compile && yarn test",
-    "postinstall": "husky install",
-    "postpublish": "yarn pinst --enable"
+    "chk": "yarn format && yarn lint && yarn compile && yarn test"
   },
   "dependencies": {
-    "@babel/cli": "~7.21.5",
-    "@babel/core": "~7.22.1",
-    "@babel/preset-env": "~7.22.4",
-    "@babel/preset-flow": "~7.21.4",
-    "@babel/preset-react": "~7.22.3",
+    "@babel/cli": "~7.22.5",
+    "@babel/core": "~7.22.5",
+    "@babel/preset-env": "~7.22.5",
+    "@babel/preset-flow": "~7.22.5",
+    "@babel/preset-react": "~7.22.5",
     "@rollup/plugin-babel": "~6.0.3",
     "@rollup/plugin-node-resolve": "~15.1.0",
     "@rollup/plugin-terser": "^0.4.3",
-    "@typescript-eslint/parser": "~5.59.8",
-    "eslint": "~8.42.0",
+    "@typescript-eslint/parser": "~5.60.1",
+    "eslint": "~8.44.0",
     "eslint-config-prettier": "~8.8.0",
     "eslint-plugin-import": "~2.27.5",
     "eslint-plugin-prettier": "~4.2.1",
-    "glob": "~10.2.6",
+    "glob": "~10.3.1",
     "minimist": "~1.2.8",
     "postcss": "~8.4.24",
     "prettier": "~2.8.8",
     "rimraf": "~5.0.1",
-    "rollup": "~3.23.0",
+    "rollup": "~3.26.0",
     "rollup-plugin-dts": "~5.3.0",
     "shelljs": "~0.8.5",
-    "terser": "~5.17.7",
+    "terser": "~5.18.2",
     "typescript": "5.0.4"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/minimist": "^1.2.2",
-    "@types/node": "^20.2.5",
+    "@types/node": "^20.3.3",
     "@types/shelljs": "^0.8.12",
     "@types/uglify-es": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.59.8"
+    "@typescript-eslint/eslint-plugin": "^5.60.1"
   },
   "peerDependencies": {
     "prettier": "~2",
