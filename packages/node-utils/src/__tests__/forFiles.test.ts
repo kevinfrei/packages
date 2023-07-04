@@ -153,17 +153,17 @@ it('Basic ForDirs test', async () => {
 });
 
 it('Skipping hidden file tests', async () => {
-  let ga = 0;
-  let gi = 0;
+  let ei = 0;
+  let jc = 0;
   let pack = 0;
   // Filtering
   const counter = (filename: string): boolean => {
     switch (filename) {
-      case '.gitattributes':
-        ga++;
+      case '.eslintignore':
+        ei++;
         break;
-      case '.gitignore':
-        gi++;
+      case 'jestconfig.json':
+        jc++;
         break;
       case 'package.json':
         pack++;
@@ -177,8 +177,8 @@ it('Skipping hidden file tests', async () => {
     skipHiddenFiles: false,
     dontAssumeDotsAreHidden: true,
   });
-  expect(ga).toEqual(1);
-  expect(gi).toEqual(1);
+  expect(ei).toEqual(1);
+  expect(jc).toEqual(1);
   expect(pack).toEqual(1);
   await ForFiles('.', counter, {
     recurse: false,
@@ -187,11 +187,11 @@ it('Skipping hidden file tests', async () => {
     dontAssumeDotsAreHidden: true,
   });
   if (process.platform === 'win32') {
-    expect(ga).toEqual(2);
+    expect(ei).toEqual(2);
   } else {
-    expect(ga).toEqual(1);
+    expect(ei).toEqual(1);
   }
-  expect(gi).toEqual(2);
+  expect(jc).toEqual(2);
   expect(pack).toEqual(2);
 });
 it('Stragglers', async () => {

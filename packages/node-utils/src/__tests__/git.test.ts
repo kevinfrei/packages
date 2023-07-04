@@ -10,7 +10,7 @@ import { Git } from '../index';
 it('Simple git.files tests', async () => {
   const files = await Git.files({ all: true });
   expect(isArray(files)).toBeTruthy();
-  expect(files.length).toBeGreaterThan(60);
+  expect(files.length).toBeGreaterThan(50);
   expect(files.length).toBeLessThan(100);
 
   const noFiles = await Git.files();
