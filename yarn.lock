@@ -1544,7 +1544,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@freik/build-tools@^3.6.0, @freik/build-tools@workspace:packages/build-tools":
+"@freik/build-tools@^3.6.0, @freik/build-tools@^3.6.1, @freik/build-tools@workspace:packages/build-tools":
   version: 0.0.0-use.local
   resolution: "@freik/build-tools@workspace:packages/build-tools"
   dependencies:
@@ -1586,13 +1586,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/containers@^0.2.1, @freik/containers@^0.2.2, @freik/containers@workspace:packages/containers":
+"@freik/containers@^0.2.3, @freik/containers@workspace:packages/containers":
   version: 0.0.0-use.local
   resolution: "@freik/containers@workspace:packages/containers"
   dependencies:
-    "@freik/build-tools": ^3.6.0
-    "@freik/helpers": ^0.3.0
-    "@freik/typechk": ^0.5.0
+    "@freik/build-tools": ^3.6.1
+    "@freik/helpers": ^0.3.2
+    "@freik/typechk": ^0.5.1
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
     "@typescript-eslint/eslint-plugin": ^5.60.1
@@ -1610,12 +1610,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/helpers@^0.3.0, @freik/helpers@^0.3.1, @freik/helpers@workspace:packages/helpers":
+"@freik/helpers@^0.3.2, @freik/helpers@workspace:packages/helpers":
   version: 0.0.0-use.local
   resolution: "@freik/helpers@workspace:packages/helpers"
   dependencies:
-    "@freik/build-tools": ^3.6.0
-    "@freik/typechk": ^0.5.0
+    "@freik/build-tools": ^3.6.1
+    "@freik/typechk": ^0.5.1
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
     "@typescript-eslint/eslint-plugin": ^5.60.1
@@ -1648,7 +1648,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@freik/iter@workspace:packages/iter"
   dependencies:
-    "@freik/build-tools": ^3.6.0
+    "@freik/build-tools": ^3.6.1
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
     "@typescript-eslint/eslint-plugin": ^5.60.1
@@ -1666,11 +1666,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/logger@^0.2.0, @freik/logger@workspace:packages/logger":
+"@freik/logger@^0.2.1, @freik/logger@workspace:packages/logger":
   version: 0.0.0-use.local
   resolution: "@freik/logger@workspace:packages/logger"
   dependencies:
-    "@freik/build-tools": ^3.6.0
+    "@freik/build-tools": ^3.6.1
     "@jest/types": ^29.5.0
     "@types/debug": ^4.1.8
     "@types/jest": ^29.5.2
@@ -1694,8 +1694,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@freik/media-core@workspace:packages/media-core"
   dependencies:
-    "@freik/build-tools": ^3.6.0
-    "@freik/typechk": ^0.5.0
+    "@freik/build-tools": ^3.6.1
+    "@freik/typechk": ^0.5.1
     "@types/jest": ^29.5.2
     "@typescript-eslint/eslint-plugin": ^5.60.1
     "@typescript-eslint/parser": ^5.60.1
@@ -1714,15 +1714,15 @@ __metadata:
   resolution: "@freik/node-utils@workspace:packages/node-utils"
   dependencies:
     "@eslint/eslintrc": ^2.0.3
-    "@freik/build-tools": ^3.6.0
-    "@freik/containers": ^0.2.2
-    "@freik/helpers": ^0.3.1
+    "@freik/build-tools": ^3.6.1
+    "@freik/containers": ^0.2.3
+    "@freik/helpers": ^0.3.2
     "@freik/is-hidden-file": ^1.10.12
-    "@freik/logger": ^0.2.0
-    "@freik/seqnum": ^1.1.0
-    "@freik/sync": ^0.2.1
-    "@freik/text": ^0.3.1
-    "@freik/typechk": ^0.5.0
+    "@freik/logger": ^0.2.1
+    "@freik/seqnum": ^1.1.1
+    "@freik/sync": ^0.2.2
+    "@freik/text": ^0.3.2
+    "@freik/typechk": ^0.5.1
     "@types/debug": ^4.1.8
     "@types/jest": ^29.5.2
     "@types/node": ^18.16.18
@@ -1741,7 +1741,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@freik/search@workspace:packages/search"
   dependencies:
-    "@freik/build-tools": ^3.6.0
+    "@freik/build-tools": ^3.6.1
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
     "@typescript-eslint/eslint-plugin": ^5.60.1
@@ -1759,11 +1759,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/seqnum@^1.1.0, @freik/seqnum@workspace:packages/seqnum":
+"@freik/seqnum@^1.1.1, @freik/seqnum@workspace:packages/seqnum":
   version: 0.0.0-use.local
   resolution: "@freik/seqnum@workspace:packages/seqnum"
   dependencies:
-    "@freik/build-tools": ^3.6.0
+    "@freik/build-tools": ^3.6.1
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
     "@typescript-eslint/eslint-plugin": ^5.60.1
@@ -1781,14 +1781,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/sync@^0.2.1, @freik/sync@workspace:packages/sync":
+"@freik/sync@^0.2.2, @freik/sync@workspace:packages/sync":
   version: 0.0.0-use.local
   resolution: "@freik/sync@workspace:packages/sync"
   dependencies:
-    "@freik/build-tools": ^3.6.0
-    "@freik/containers": ^0.2.1
-    "@freik/seqnum": ^1.1.0
-    "@freik/typechk": ^0.5.0
+    "@freik/build-tools": ^3.6.1
+    "@freik/containers": ^0.2.3
+    "@freik/seqnum": ^1.1.1
+    "@freik/typechk": ^0.5.1
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
     "@typescript-eslint/eslint-plugin": ^5.60.1
@@ -1806,11 +1806,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/text@^0.3.1, @freik/text@workspace:packages/text":
+"@freik/text@^0.3.2, @freik/text@workspace:packages/text":
   version: 0.0.0-use.local
   resolution: "@freik/text@workspace:packages/text"
   dependencies:
-    "@freik/build-tools": ^3.6.0
+    "@freik/build-tools": ^3.6.1
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
     "@typescript-eslint/eslint-plugin": ^5.60.1
@@ -1828,11 +1828,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/typechk@^0.5.0, @freik/typechk@workspace:packages/typechk":
+"@freik/typechk@^0.5.1, @freik/typechk@workspace:packages/typechk":
   version: 0.0.0-use.local
   resolution: "@freik/typechk@workspace:packages/typechk"
   dependencies:
-    "@freik/build-tools": ^3.6.0
+    "@freik/build-tools": ^3.6.1
     "@jest/types": ^29.5.0
     "@types/jest": ^29.5.2
     "@types/node": ^20.3.3

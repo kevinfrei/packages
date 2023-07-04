@@ -1,6 +1,6 @@
 {
   "name": "@freik/logger",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A simple (typed!) wrapper around 'debug'",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -41,7 +41,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.0",
+    "@freik/build-tools": "^3.6.1",
     "@jest/types": "^29.5.0",
     "@types/debug": "^4.1.8",
     "@types/jest": "^29.5.2",
