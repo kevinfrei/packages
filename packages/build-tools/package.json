@@ -1,6 +1,6 @@
 {
   "name": "@freik/build-tools",
-  "version": "3.6.2",
+  "version": "3.6.3",
   "description": "Tools for building stuff (cross platform!)",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -9,7 +9,9 @@
     "er": "./lib/tools.js",
     "ftool": "./lib/tools.js"
   },
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kevinfrei/build-tools.git"
