@@ -1,6 +1,6 @@
 {
   "name": "@freik/logger",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A simple (typed!) wrapper around 'debug'",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -8,7 +8,12 @@
     "url": "https://github.com/kevinfrei/logger/issues"
   },
   "homepage": "https://github.com/kevinfrei/logger#readme",
-  "keywords": ["js-utils", "logging", "logger", "typescript"],
+  "keywords": [
+    "js-utils",
+    "logging",
+    "logger",
+    "typescript"
+  ],
   "repository": "github:kevinfrei/logger",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
@@ -38,7 +43,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.1",
+    "@freik/build-tools": "^3.6.2",
     "@jest/types": "^29.6.1",
     "@types/debug": "^4.1.8",
     "@types/jest": "^29.5.3",
@@ -55,7 +60,9 @@
     "typedoc-plugin-markdown": "^3.15.4",
     "typescript": "5.1.6"
   },
-  "files": ["lib/*"],
+  "files": [
+    "lib/*"
+  ],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   },

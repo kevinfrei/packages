@@ -1,6 +1,6 @@
 {
   "name": "@freik/text",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Some simple text helper functions",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -8,7 +8,9 @@
     "url": "https://github.com/kevinfrei/text/issues"
   },
   "homepage": "https://github.com/kevinfrei/text#readme",
-  "keywords": ["js-utils"],
+  "keywords": [
+    "js-utils"
+  ],
   "repository": "github:kevinfrei/text",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
@@ -38,7 +40,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.1",
+    "@freik/build-tools": "^3.6.2",
     "@jest/types": "^29.6.1",
     "@types/jest": "^29.5.3",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
@@ -54,7 +56,9 @@
     "typedoc-plugin-markdown": "^3.15.4",
     "typescript": "5.1.6"
   },
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   }
