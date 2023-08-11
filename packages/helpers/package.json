@@ -8,9 +8,7 @@
     "url": "https://github.com/kevinfrei/helpers/issues"
   },
   "homepage": "https://github.com/kevinfrei/helpers#readme",
-  "keywords": [
-    "js-utils"
-  ],
+  "keywords": ["js-utils"],
   "repository": "github:kevinfrei/helpers",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
@@ -59,9 +57,7 @@
     "typedoc-plugin-markdown": "^3.15.4",
     "typescript": "5.1.6"
   },
-  "files": [
-    "lib/**/*"
-  ],
+  "files": ["lib/**/*"],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   }

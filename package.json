@@ -1,6 +1,6 @@
 {
   "name": "packages",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "My mono-repo for a bunch of small NPM packages",
   "main": "index.js",
   "repository": "https://github.com/kevinfrei/packages.git",

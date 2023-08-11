@@ -8,9 +8,7 @@
     "url": "https://github.com/kevinfrei/node-utils/issues"
   },
   "homepage": "https://github.com/kevinfrei/node-utils#readme",
-  "keywords": [
-    "node-utils"
-  ],
+  "keywords": ["node-utils"],
   "repository": "github:kevinfrei/node-utils",
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
@@ -64,9 +62,7 @@
     "ts-jest": "^29.1.1",
     "typescript": "5.1.6"
   },
-  "files": [
-    "lib/**/*"
-  ],
+  "files": ["lib/**/*"],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   }

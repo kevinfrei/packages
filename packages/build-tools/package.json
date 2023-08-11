@@ -9,9 +9,7 @@
     "er": "./lib/tools.js",
     "ftool": "./lib/tools.js"
   },
-  "files": [
-    "lib/**/*"
-  ],
+  "files": ["lib/**/*"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kevinfrei/build-tools.git"
