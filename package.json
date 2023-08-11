@@ -13,13 +13,15 @@
     "build": "npx lerna run build",
     "format": "yarn ftool format",
     "test": "npx lerna run test",
-    "prepublishOnly": "yarn pinst --disable",
-    "postpublish": "yarn pinst --enable",
+    "prepack": "yarn pinst --disable",
+    "postpack": "yarn pinst --enable",
     "postinstall": "yarn husky install",
-    "lerna": "npx lerna run"
+    "lerna": "npx lerna run",
+    "hook-commit": "yarn ftool format",
+    "hook-push": "npx lerna run test"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.0",
+    "@freik/build-tools": "^3.6.1",
     "@jest/types": "^29.6.1",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",

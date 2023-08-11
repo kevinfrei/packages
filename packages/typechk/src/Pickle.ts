@@ -307,11 +307,7 @@ function getUnpickler(keyName: string): FromFlat<any> | undefined {
   return getUnpickleHandler(Symbol.for(keyName));
 }
 
-function replacer(
-  this: any,
-  key: string,
-  value: unknown,
-): unknown | FlattenedCustom {
+function replacer(this: any, key: string, value: unknown): unknown {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const originalObject: unknown = this[key];
   const pickler = getPickler(originalObject);

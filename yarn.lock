@@ -1715,7 +1715,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@freik/build-tools@^3.6.0, @freik/build-tools@^3.6.1, @freik/build-tools@workspace:packages/build-tools":
+"@freik/build-tools@^3.6.1, @freik/build-tools@workspace:*, @freik/build-tools@workspace:packages/build-tools":
   version: 0.0.0-use.local
   resolution: "@freik/build-tools@workspace:packages/build-tools"
   dependencies:
@@ -1885,7 +1885,7 @@ __metadata:
   resolution: "@freik/node-utils@workspace:packages/node-utils"
   dependencies:
     "@eslint/eslintrc": ^2.1.2
-    "@freik/build-tools": ^3.6.1
+    "@freik/build-tools": "workspace:*"
     "@freik/containers": ^0.2.3
     "@freik/helpers": ^0.3.2
     "@freik/is-hidden-file": ^1.11.0
@@ -9290,7 +9290,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "packages@workspace:."
   dependencies:
-    "@freik/build-tools": ^3.6.0
+    "@freik/build-tools": ^3.6.1
     "@jest/types": ^29.6.1
     "@typescript-eslint/eslint-plugin": ^6.3.0
     "@typescript-eslint/parser": ^6.3.0

@@ -21,7 +21,7 @@ export function DebouncedDelay(
     }
     debounceTimer = setTimeout(() => {
       debounceTimer = null;
-      doWork().finally(() => '');
+      void doWork();
     }, timeout);
   }
   return ping;

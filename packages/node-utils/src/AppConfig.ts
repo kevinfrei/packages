@@ -14,7 +14,7 @@ export function GetFilePath(name: string): string {
   return path.join(os.homedir(), '.config', `${name}.json`);
 }
 
-export function Get(name: string): unknown | void {
+export function Get(name: string): unknown {
   const configFile = GetFilePath(name);
   try {
     const contents: string = fs.readFileSync(configFile, 'utf8');
@@ -24,7 +24,7 @@ export function Get(name: string): unknown | void {
   }
 }
 
-export async function GetAsync(name: string): Promise<unknown | void> {
+export async function GetAsync(name: string): Promise<unknown> {
   const configFile = GetFilePath(name);
   try {
     const contents: string = await fs.readFileAsync(configFile, 'utf8');

@@ -13,6 +13,12 @@
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
   "types": "./lib/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    }
+  },
   "scripts": {
     "justtest": "jest --config jestconfig.json",
     "watch": "jest --watch --config jestconfig.json",
@@ -43,7 +49,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^2.1.2",
-    "@freik/build-tools": "^3.6.1",
+    "@freik/build-tools": "workspace:*",
     "@types/debug": "^4.1.8",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.9",
