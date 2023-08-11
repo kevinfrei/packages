@@ -15,17 +15,15 @@
     "url": "git+https://github.com/kevinfrei/build-tools.git"
   },
   "scripts": {
+    "justtest": "jest --config jestconfig.json",
     "min": "node ./lib/tools.js minify -i lib/*.js",
     "build": "rimraf lib && tsc",
     "prepare": "yarn run build",
     "prepublishOnly": "yarn test && yarn run lint",
-    "format": "ftool format",
     "lint": "yarn run eslint --fix --ext .ts src",
     "preversion": "yarn run lint",
-    "version": "yarn run format && git add -A src",
-    "postversion": "git push && git push --tags --no-verify",
-    "compile": "tsc --noEmit",
-    "chk": "yarn format && yarn lint && yarn compile && yarn test"
+    "typechk": "tsc --noEmit",
+    "test": "yarn lint && yarn typechk"
   },
   "dependencies": {
     "@babel/cli": "~7.22.10",
@@ -55,7 +53,7 @@
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/minimist": "^1.2.2",
-    "@types/node": "^20.4.9",
+    "@types/node": "^20.4.10",
     "@types/shelljs": "^0.8.12",
     "@types/uglify-es": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^6.3.0"

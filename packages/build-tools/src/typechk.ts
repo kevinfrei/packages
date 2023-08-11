@@ -182,7 +182,9 @@ export function toString(obj: unknown, notStr = ''): string {
       if (isString(val)) {
         return val;
       }
-    } catch (e) {}
+    } catch (e) {
+      /* */
+    }
   }
   if (hasFieldType(obj, 'toString', isFunction)) {
     try {
@@ -191,7 +193,9 @@ export function toString(obj: unknown, notStr = ''): string {
       if (isString(res) && res !== '[object Object]') {
         return res;
       }
-    } catch (e) {}
+    } catch (e) {
+      /* */
+    }
   }
   return notStr;
 }
