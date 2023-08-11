@@ -20,46 +20,42 @@
     }
   },
   "scripts": {
-    "test": "jest --config jestconfig.json",
+    "justtest": "jest --config jestconfig.json",
     "watch": "jest --watch --config jestconfig.json",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",
     "esmcompat": "echo '{\"type\":\"module\"}'> ./lib/esm/package.json",
     "compat": "yarn cjscompat && yarn esmcompat",
-    "release": "tsc --project tsconfig.cjs.opt.json && tsc --project tsconfig.esm.opt.json && yarn ftool minify -i -r lib && yarn compat",
+    "release": "yarn clean && tsc --project tsconfig.cjs.opt.json && tsc --project tsconfig.esm.opt.json && yarn ftool minify -i -r lib && yarn compat",
     "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json && yarn compat",
     "cleanbuild": "yarn clean && yarn build",
-    "prepublishOnly": "yarn test && yarn lint",
+    "prepublishOnly": "yarn test",
     "prepare": "yarn release",
-    "format": "yarn run prettier -w package.json src/**/*.ts",
     "lint": "eslint --fix --ext .ts src",
     "preversion": "yarn lint",
-    "version": "yarn format && git add -A src",
-    "postversion": "git push && git push --tags --no-verify",
-    "compile": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
-    "chk": "yarn format && yarn lint && yarn compile && yarn test",
+    "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
+    "test": "yarn lint && yarn typechk && yarn justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "devDependencies": {
     "@freik/build-tools": "^3.6.1",
-    "@jest/types": "^29.5.0",
-    "@types/jest": "^29.5.2",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
+    "@jest/types": "^29.6.1",
+    "@types/jest": "^29.5.3",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "jest": "^29.5.0",
-    "prettier": "^2.8.8",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "jest": "^29.6.2",
+    "prettier": "^3.0.1",
     "rimraf": "^5.0.1",
     "ts-jest": "^29.1.1",
     "typedoc": "^0.24.8",
-    "typedoc-plugin-markdown": "^3.15.3",
-    "typescript": "5.0.4"
+    "typedoc-plugin-markdown": "^3.15.4",
+    "typescript": "5.1.6"
   },
   "files": ["lib/**/*"],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
-  },
-  "packageManager": "yarn@3.6.0"
+  }
 }
