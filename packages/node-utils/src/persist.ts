@@ -61,9 +61,14 @@ export function MakePersistence(location: string): Persist {
     }
     try {
       data = fs.readFileSync(storageLocation(id), 'utf8');
-      memoryCache.set(id, data);
-      return data;
+      if (data) {
+        memoryCache.set(id, data);
+        return data;
+      }
     } catch (e) {
+      if (e instanceof Error && e.name === 'ENOENT') {
+        return;
+      }
       err('Error occurred during readFile');
       err(e);
     }
@@ -82,6 +87,9 @@ export function MakePersistence(location: string): Persist {
       memoryCache.set(id, contents);
       return contents;
     } catch (e) {
+      if (e instanceof Error && e.name === 'ENOENT') {
+        return;
+      }
       err('Error occurred during readFileAsync');
       err(e);
     } finally {
