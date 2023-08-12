@@ -9,6 +9,7 @@ import {
   ReaderWriter,
   SyncFunc,
 } from '@freik/sync';
+import { hasStrField } from '@freik/typechk';
 
 const { log, err } = MakeLog('node-utils:persist');
 
@@ -66,7 +67,7 @@ export function MakePersistence(location: string): Persist {
         return data;
       }
     } catch (e) {
-      if (e instanceof Error && e.name === 'ENOENT') {
+      if (e instanceof Error && hasStrField(e, 'code') && e.code === 'ENOENT') {
         return;
       }
       err('Error occurred during readFile');
@@ -87,7 +88,7 @@ export function MakePersistence(location: string): Persist {
       memoryCache.set(id, contents);
       return contents;
     } catch (e) {
-      if (e instanceof Error && e.name === 'ENOENT') {
+      if (e instanceof Error && hasStrField(e, 'code') && e.code === 'ENOENT') {
         return;
       }
       err('Error occurred during readFileAsync');
