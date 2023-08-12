@@ -1715,9 +1715,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@freik/build-tools@^3.6.1, @freik/build-tools@^3.6.3, @freik/build-tools@workspace:*, @freik/build-tools@workspace:packages/build-tools":
+"@freik/build-tools@^3.6.1, @freik/build-tools@^3.6.3, @freik/build-tools@workspace:*, @freik/build-tools@workspace:modules/build-tools":
   version: 0.0.0-use.local
-  resolution: "@freik/build-tools@workspace:packages/build-tools"
+  resolution: "@freik/build-tools@workspace:modules/build-tools"
   dependencies:
     "@babel/cli": ~7.22.10
     "@babel/core": ~7.22.10
@@ -1757,9 +1757,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/containers@^0.2.5, @freik/containers@workspace:packages/containers":
+"@freik/containers@^0.2.5, @freik/containers@workspace:modules/containers":
   version: 0.0.0-use.local
-  resolution: "@freik/containers@workspace:packages/containers"
+  resolution: "@freik/containers@workspace:modules/containers"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@freik/helpers": ^0.3.4
@@ -1781,9 +1781,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/helpers@^0.3.4, @freik/helpers@workspace:packages/helpers":
+"@freik/helpers@^0.3.4, @freik/helpers@workspace:modules/helpers":
   version: 0.0.0-use.local
-  resolution: "@freik/helpers@workspace:packages/helpers"
+  resolution: "@freik/helpers@workspace:modules/helpers"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@freik/typechk": ^0.5.3
@@ -1815,9 +1815,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@freik/iter@workspace:packages/iter":
+"@freik/iter@workspace:modules/iter":
   version: 0.0.0-use.local
-  resolution: "@freik/iter@workspace:packages/iter"
+  resolution: "@freik/iter@workspace:modules/iter"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@jest/types": ^29.6.1
@@ -1837,9 +1837,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/logger@^0.2.3, @freik/logger@workspace:packages/logger":
+"@freik/logger@^0.2.3, @freik/logger@workspace:modules/logger":
   version: 0.0.0-use.local
-  resolution: "@freik/logger@workspace:packages/logger"
+  resolution: "@freik/logger@workspace:modules/logger"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@jest/types": ^29.6.1
@@ -1861,9 +1861,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/media-core@workspace:packages/media-core":
+"@freik/media-core@workspace:modules/media-core":
   version: 0.0.0-use.local
-  resolution: "@freik/media-core@workspace:packages/media-core"
+  resolution: "@freik/media-core@workspace:modules/media-core"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@freik/typechk": ^0.5.3
@@ -1880,9 +1880,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/node-utils@workspace:packages/node-utils":
+"@freik/node-utils@workspace:modules/node-utils":
   version: 0.0.0-use.local
-  resolution: "@freik/node-utils@workspace:packages/node-utils"
+  resolution: "@freik/node-utils@workspace:modules/node-utils"
   dependencies:
     "@eslint/eslintrc": ^2.1.2
     "@freik/build-tools": "workspace:*"
@@ -1908,9 +1908,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/search@workspace:packages/search":
+"@freik/search@workspace:modules/search":
   version: 0.0.0-use.local
-  resolution: "@freik/search@workspace:packages/search"
+  resolution: "@freik/search@workspace:modules/search"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@jest/types": ^29.6.1
@@ -1930,9 +1930,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/seqnum@^1.1.3, @freik/seqnum@workspace:packages/seqnum":
+"@freik/seqnum@^1.1.3, @freik/seqnum@workspace:modules/seqnum":
   version: 0.0.0-use.local
-  resolution: "@freik/seqnum@workspace:packages/seqnum"
+  resolution: "@freik/seqnum@workspace:modules/seqnum"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@jest/types": ^29.6.1
@@ -1952,9 +1952,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/sync@^0.2.4, @freik/sync@workspace:packages/sync":
+"@freik/sync@^0.2.4, @freik/sync@workspace:modules/sync":
   version: 0.0.0-use.local
-  resolution: "@freik/sync@workspace:packages/sync"
+  resolution: "@freik/sync@workspace:modules/sync"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@freik/containers": ^0.2.5
@@ -1977,9 +1977,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/text@^0.3.4, @freik/text@workspace:packages/text":
+"@freik/text@^0.3.4, @freik/text@workspace:modules/text":
   version: 0.0.0-use.local
-  resolution: "@freik/text@workspace:packages/text"
+  resolution: "@freik/text@workspace:modules/text"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@jest/types": ^29.6.1
@@ -1999,9 +1999,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/typechk@^0.5.3, @freik/typechk@workspace:packages/typechk":
+"@freik/typechk@^0.5.3, @freik/typechk@workspace:modules/typechk":
   version: 0.0.0-use.local
-  resolution: "@freik/typechk@workspace:packages/typechk"
+  resolution: "@freik/typechk@workspace:modules/typechk"
   dependencies:
     "@freik/build-tools": ^3.6.3
     "@jest/types": ^29.6.1

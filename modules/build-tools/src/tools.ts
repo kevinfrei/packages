@@ -45,8 +45,6 @@ switch (process.argv[2].toLocaleLowerCase()) {
   default:
     err('Sorry, unrecognized ftool command!');
     err('Supported commands:');
-    err(
-      'minify, format, linecount',
-    );
+    err('minify, format, linecount');
     process.exit(-1);
 }

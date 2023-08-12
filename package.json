@@ -7,7 +7,9 @@
   "author": "Kevin Frei <kevinfrei@hotmail.com>",
   "license": "Unlicense",
   "packageManager": "yarn@3.6.1",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "modules/*"
+  ],
   "scripts": {
     "release": "npx lerna run release",
     "build": "npx lerna run build",
