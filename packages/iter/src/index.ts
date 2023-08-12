@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-bitwise */
 export declare type IterExpr<T> = {
   forEach: (fn: (v: T) => void) => void;
   reduce: <U>(
@@ -132,6 +130,7 @@ export function Iter<T>(col: Iterable<T>): IterExpr<T> {
   };
 }
 
+/*
 function MakeArray(count: number): number[] {
   const data: number[] = Array(count) as number[];
   for (let i = 0; i < data.length; i++) {
@@ -178,6 +177,7 @@ const lo = 10;
 const hi = 14;
 const num = 5;
 function getSize(val: number): number {
+  // eslint-disable-next no-bitwise
   return 1 << (val * 2);
 }
 
@@ -214,10 +214,11 @@ for (let i = lo; i < hi; i++) {
   }
   console.log(`Hybrid ${i}: ${total}`);
 }
+*/
 
 // This is probably a better way to go... Nesting isn't as readable, but 'fits' better, IMO
 
-function* IMap<I, J>(
+export function* IMap<I, J>(
   container: IterableIterator<J>,
   func: (o: J, index?: number) => I,
 ): IterableIterator<I> {
@@ -228,7 +229,7 @@ function* IMap<I, J>(
   }
 }
 
-function* IFilter<I>(
+export function* IFilter<I>(
   container: IterableIterator<I>,
   func: (O: I, index?: number) => boolean,
 ): IterableIterator<I> {
@@ -241,7 +242,7 @@ function* IFilter<I>(
   }
 }
 
-function IForEach<I>(
+export function IForEach<I>(
   container: IterableIterator<I>,
   func: (o: I, index?: number) => void,
 ): void {
@@ -252,7 +253,7 @@ function IForEach<I>(
   }
 }
 
-function* ISkip<I>(
+export function* ISkip<I>(
   container: IterableIterator<I>,
   skip: number,
 ): IterableIterator<I> {
@@ -262,7 +263,7 @@ function* ISkip<I>(
   }
 }
 
-function IAny<I>(
+export function IAny<I>(
   container: IterableIterator<I>,
   func: (o: I, index?: number) => boolean,
 ): boolean {
@@ -274,7 +275,7 @@ function IAny<I>(
   return false;
 }
 
-function IAll<I>(
+export function IAll<I>(
   container: IterableIterator<I>,
   func: (o: I, index?: number) => boolean,
 ): boolean {
@@ -286,7 +287,7 @@ function IAll<I>(
   return true;
 }
 
-function IReduce<I, J>(
+export function IReduce<I, J>(
   container: IterableIterator<J>,
   func: (prevVal: I, curVal: J, index?: number) => I,
   initVal: I,
@@ -300,7 +301,7 @@ function IReduce<I, J>(
   return res;
 }
 
-function* IZip<I, J>(
+export function* IZip<I, J>(
   container1: IterableIterator<I>,
   container2: IterableIterator<J>,
 ): IterableIterator<[I, J]> {

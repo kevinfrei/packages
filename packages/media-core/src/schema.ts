@@ -11,7 +11,7 @@ import {
 export type SongKey = string;
 export type AlbumKey = string;
 export type ArtistKey = string;
-export type MediaKey = SongKey | ArtistKey | AlbumKey;
+export type MediaKey = SongKey;
 export type PlaylistName = string;
 export type Playlist = SongKey[];
 

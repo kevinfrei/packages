@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as Git from './git.js';
 import rl from 'readline';
 import fs from 'fs';
