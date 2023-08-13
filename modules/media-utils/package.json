@@ -1,13 +1,16 @@
 {
-  "name": "@freik/media-core",
-  "version": "0.14.3",
-  "description": "Web and NodeJS compatible media stuff",
-  "author": "Kevin Frei <kevinfrei@hotmail.com>",
+  "name": "@freik/media-utils",
+  "version": "0.16.0",
+  "description": "Utilities for dealing with media files in NodeJS/Electron",
+  "repository": "github:kevinfrei/packages",
+  "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
+  "files": [
+    "lib/**/*"
+  ],
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/esm/index.d.ts",
-  "repository": "github:kevinfrei/packages",
   "exports": {
     ".": {
       "import": "./lib/esm/index.js",
@@ -33,22 +36,24 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "^0.5.3"
+    "@freik/media-core": "^0.14.0",
+    "@freik/node-utils": "^1.3.3",
+    "@freik/typechk": "^0.5.0",
+    "music-metadata": "^7.13.4"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.3",
+    "@freik/build-tools": "^3.6.0",
+    "@freik/sync": "^0.2.1",
     "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.10",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "jest": "^29.6.2",
-    "prettier": "^3.0.1",
+    "jest-extended": "^4.0.1",
     "rimraf": "^5.0.1",
     "ts-jest": "^29.1.1",
-    "typescript": "5.1.6"
-  },
-  "files": [
-    "lib/**/*"
-  ]
+    "typescript": "^5.1.6"
+  }
 }
