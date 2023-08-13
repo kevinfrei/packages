@@ -7,7 +7,7 @@
     "module": "ES2020",
     "declaration": true,
     "outDir": "./lib/esm/",
-    "tsBuildInfoFile": "./.mjs.tsbuildinfo",
+    "tsBuildInfoFile": "./.esm.tsbuildinfo",
     "downlevelIteration": true,
     "strict": true,
     "moduleResolution": "node",
