@@ -4,14 +4,17 @@
   "description": "My personal set of utilities for NodeJS",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
+  "repository": "github:kevinfrei/packages",
+  "homepage": "https://github.com/kevinfrei/packages#readme",
   "bugs": {
-    "url": "https://github.com/kevinfrei/node-utils/issues"
+    "url": "https://github.com/kevinfrei/packages/issues"
   },
-  "homepage": "https://github.com/kevinfrei/node-utils#readme",
   "keywords": [
     "node-utils"
   ],
-  "repository": "github:kevinfrei/node-utils",
+  "files": [
+    "lib/**/*"
+  ],
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
   "types": "./lib/esm/index.d.ts",
@@ -64,9 +67,6 @@
     "ts-jest": "^29.1.1",
     "typescript": "5.1.6"
   },
-  "files": [
-    "lib/**/*"
-  ],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   }

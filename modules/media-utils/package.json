@@ -2,9 +2,13 @@
   "name": "@freik/media-utils",
   "version": "0.16.0",
   "description": "Utilities for dealing with media files in NodeJS/Electron",
-  "repository": "github:kevinfrei/packages",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
+  "repository": "github:kevinfrei/packages",
+  "homepage": "https://github.com/kevinfrei/packages#readme",
+  "bugs": {
+    "url": "https://github.com/kevinfrei/packages/issues"
+  },
   "files": [
     "lib/**/*"
   ],
@@ -55,5 +59,8 @@
     "rimraf": "^5.0.1",
     "ts-jest": "^29.1.1",
     "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": "^14.13.1 || >= 16.0.0"
   }
 }

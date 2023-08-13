@@ -4,14 +4,17 @@
   "description": "A simple Sequence Number generator",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
+  "repository": "github:kevinfrei/packages",
+  "homepage": "https://github.com/kevinfrei/packages#readme",
   "bugs": {
-    "url": "https://github.com/kevinfrei/seqnum/issues"
+    "url": "https://github.com/kevinfrei/packages/issues"
   },
-  "homepage": "https://github.com/kevinfrei/seqnum#readme",
   "keywords": [
     "js-utils"
   ],
-  "repository": "github:kevinfrei/seqnum",
+  "files": [
+    "lib/**/*"
+  ],
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
   "types": "./lib/esm/index.d.ts",
@@ -56,9 +59,6 @@
     "typedoc-plugin-markdown": "^3.15.4",
     "typescript": "5.1.6"
   },
-  "files": [
-    "lib/**/*"
-  ],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   }

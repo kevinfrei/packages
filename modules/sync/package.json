@@ -4,14 +4,17 @@
   "description": "A set of synchronziation tools for dealing with promises and contention",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
+  "repository": "github:kevinfrei/packages",
+  "homepage": "https://github.com/kevinfrei/packages#readme",
   "bugs": {
-    "url": "https://github.com/kevinfrei/sync/issues"
+    "url": "https://github.com/kevinfrei/packages/issues"
   },
-  "homepage": "https://github.com/kevinfrei/sync#readme",
   "keywords": [
     "js-utils"
   ],
-  "repository": "github:kevinfrei/sync",
+  "files": [
+    "lib/**/*"
+  ],
   "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
   "types": "./lib/esm/index.d.ts",
@@ -39,6 +42,11 @@
     "test": "yarn lint && yarn typechk && yarn justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
+  "dependencies": {
+    "@freik/containers": "^0.2.5",
+    "@freik/seqnum": "^1.1.3",
+    "@freik/typechk": "^0.5.3"
+  },
   "devDependencies": {
     "@freik/build-tools": "^3.6.3",
     "@jest/types": "^29.6.1",
@@ -56,15 +64,7 @@
     "typedoc-plugin-markdown": "^3.15.4",
     "typescript": "5.1.6"
   },
-  "files": [
-    "lib/**/*"
-  ],
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
-  },
-  "dependencies": {
-    "@freik/containers": "^0.2.5",
-    "@freik/seqnum": "^1.1.3",
-    "@freik/typechk": "^0.5.3"
   }
 }
