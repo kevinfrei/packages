@@ -4,17 +4,18 @@
   "description": "Tools for building stuff (cross platform!)",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
-  "type": "module",
-  "bin": {
-    "er": "./lib/tools.js",
-    "ftool": "./lib/tools.js"
+  "repository": "github:kevinfrei/packages",
+  "homepage": "https://github.com/kevinfrei/packages#readme",
+  "bugs": {
+    "url": "https://github.com/kevinfrei/packages/issues"
   },
+  "type": "module",
   "files": [
     "lib/**/*"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kevinfrei/build-tools.git"
+  "bin": {
+    "er": "./lib/tools.js",
+    "ftool": "./lib/tools.js"
   },
   "scripts": {
     "justtest": "jest --config jestconfig.json",
@@ -52,6 +53,10 @@
     "terser": "~5.19.2",
     "typescript": "5.1.6"
   },
+  "peerDependencies": {
+    "prettier": "~2 || ~3",
+    "typescript": ">=5.0.4"
+  },
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/minimist": "^1.2.2",
@@ -59,10 +64,6 @@
     "@types/shelljs": "^0.8.12",
     "@types/uglify-es": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^6.3.0"
-  },
-  "peerDependencies": {
-    "prettier": "~2 || ~3",
-    "typescript": ">=5.0.4"
   },
   "engines": {
     "node": "~14.13.1 || >= 16.0.0"

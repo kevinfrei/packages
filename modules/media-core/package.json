@@ -2,12 +2,19 @@
   "name": "@freik/media-core",
   "version": "0.14.3",
   "description": "Web and NodeJS compatible media stuff",
-  "author": "Kevin Frei <kevinfrei@hotmail.com>",
+  "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
+  "repository": "github:kevinfrei/packages",
+  "homepage": "https://github.com/kevinfrei/packages#readme",
+  "bugs": {
+    "url": "https://github.com/kevinfrei/packages/issues"
+  },
+  "files": [
+    "lib/**/*"
+  ],
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/esm/index.d.ts",
-  "repository": "github:kevinfrei/packages",
   "exports": {
     ".": {
       "import": "./lib/esm/index.js",
@@ -48,7 +55,7 @@
     "ts-jest": "^29.1.1",
     "typescript": "5.1.6"
   },
-  "files": [
-    "lib/**/*"
-  ]
+  "engines": {
+    "node": "^14.13.1 || >= 16.0.0"
+  }
 }

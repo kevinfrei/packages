@@ -2,13 +2,19 @@
   "name": "@freik/web-utils",
   "version": "0.5.2",
   "description": "Kevin Frei's Web utilities",
-  "author": "Kevin Frei <kevinfrei@hotmail.com>",
+  "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
   "repository": "github:kevinfrei/packages",
+  "homepage": "https://github.com/kevinfrei/packages#readme",
   "bugs": {
-    "url": "https://github.com/kevinfrei/web-utils/issues"
+    "url": "https://github.com/kevinfrei/packages/issues"
   },
-  "homepage": "https://github.com/kevinfrei/web-utils#readme",
+  "keywords": [
+    "js-utils"
+  ],
+  "files": [
+    "lib/**/*"
+  ],
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/esm/index.d.ts",
@@ -18,9 +24,6 @@
       "require": "./lib/cjs/index.js"
     }
   },
-  "files": [
-    "lib/**/*"
-  ],
   "scripts": {
     "justtest": "jest --config jestconfig.json",
     "watch": "jest --watch --config jestconfig.json",
@@ -38,6 +41,10 @@
     "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
     "test": "yarn lint && yarn typechk && yarn justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
+  },
+  "dependencies": {
+    "@freik/typechk": "^0.5.3",
+    "debug": "^4.3.4"
   },
   "peerDependencies": {
     "@fluentui/react": ">=8.50.0",
@@ -91,9 +98,5 @@
     "rimraf": "^5.0.1",
     "ts-jest": "^29.1.1",
     "typescript": "5.1.6"
-  },
-  "dependencies": {
-    "@freik/typechk": "^0.5.3",
-    "debug": "^4.3.4"
   }
 }
