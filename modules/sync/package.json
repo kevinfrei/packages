@@ -1,6 +1,6 @@
 {
   "name": "@freik/sync",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "A set of synchronziation tools for dealing with promises and contention",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -43,12 +43,12 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/containers": "^0.2.7",
-    "@freik/seqnum": "^1.1.5",
-    "@freik/typechk": "^0.5.5"
+    "@freik/containers": "^0.2.8",
+    "@freik/seqnum": "^1.1.6",
+    "@freik/typechk": "^0.5.6"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.5",
+    "@freik/build-tools": "^3.6.6",
     "@jest/types": "^29.6.1",
     "@types/jest": "^29.5.3",
     "@typescript-eslint/eslint-plugin": "^6.3.0",

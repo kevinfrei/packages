@@ -1,6 +1,6 @@
 {
   "name": "@freik/containers",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Core set of TS/JS containers",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -43,11 +43,11 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/helpers": "^0.3.6",
-    "@freik/typechk": "^0.5.5"
+    "@freik/helpers": "^0.3.7",
+    "@freik/typechk": "^0.5.6"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.5",
+    "@freik/build-tools": "^3.6.6",
     "@jest/types": "^29.6.1",
     "@types/jest": "^29.5.3",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
