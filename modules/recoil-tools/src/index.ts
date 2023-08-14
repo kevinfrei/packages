@@ -1,6 +1,6 @@
-import { RecoilValueReadOnly, useRecoilCallback } from 'recoil';
-import debugModule from 'debug';
 import {
+  RecoilValueReadOnly,
+  useRecoilCallback,
   atom,
   CallbackInterface,
   DefaultValue,
@@ -10,12 +10,38 @@ import {
   SetterOrUpdater,
   useRecoilState,
 } from 'recoil';
-import { BoolState, KeyEventType } from './Hooks.js';
+import { BoolState, KeyEventType } from '@freik/react-tools';
+import { MakeLog } from '@freik/logger';
 
-const log = debugModule('web-utils:recoil-helpers');
-const err = debugModule('web-utils:recoil-helpers:err');
+const { log, err } = MakeLog('recoil-tools');
 
 export type StatePair<T> = [T, SetterOrUpdater<T>];
+
+export function kbTypingHook<T extends KeyEventType>(
+  filterState: RecoilState<string>,
+  updateTypedValue: (srch: string) => void,
+) {
+  // lastHeard lives in the closure...
+  let lastHeard = performance.now();
+  return ({ set }: CallbackInterface) =>
+    (ev: T): void => {
+      if (ev.key.length > 1 || ev.key === ' ') {
+        set(filterState, '');
+        return;
+      }
+      const time = performance.now();
+      const clear: boolean = time - lastHeard > 750;
+      lastHeard = time;
+      // const newFilter = clear ? ev.key : keyFilter + ev.key;
+      set(filterState, (oldVal: string): string => {
+        const srchString = clear ? ev.key : oldVal + ev.key;
+        if (srchString.length > 0) {
+          updateTypedValue(srchString);
+        }
+        return srchString;
+      });
+    };
+}
 
 export function MakeSetSelector<T extends SerializableParam>(
   setOfObjsState: RecoilState<Set<T>>,
@@ -108,11 +134,10 @@ type KeyboardHookType<T extends KeyEventType> = (
   cbIntfc: CallbackInterface,
 ) => (ev: T) => void;
 
-let lastHeard = performance.now();
-
 export function keyboardHook<T extends KeyEventType>(
   filterState: RecoilState<string>,
 ): KeyboardHookType<T> {
+  let lastHeard = performance.now();
   return ({ set }: CallbackInterface) =>
     (ev: T) => {
       err(ev.key);

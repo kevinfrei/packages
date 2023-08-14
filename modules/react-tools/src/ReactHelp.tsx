@@ -37,7 +37,7 @@ export function TextRotater({
     [messages, messageIndex],
   );
 
-  return <div>{msg[messageIndex]}</div>;
+  return <>{msg[messageIndex]}</>;
 }
 
 function randomize(message: string, char: string): string {

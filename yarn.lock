@@ -3471,7 +3471,7 @@ __metadata:
     "@rollup/plugin-terser": ^0.4.3
     "@types/glob": ^8.1.0
     "@types/minimist": ^1.2.2
-    "@types/node": ^20.4.10
+    "@types/node": ^20.5.0
     "@types/shelljs": ^0.8.12
     "@types/uglify-es": ^3.0.0
     "@typescript-eslint/eslint-plugin": ^6.3.0
@@ -3520,6 +3520,51 @@ __metadata:
     typedoc: ^0.24.8
     typedoc-plugin-markdown: ^3.15.4
     typescript: 5.1.6
+  languageName: unknown
+  linkType: soft
+
+"@freik/fluentui-tools@workspace:modules/fluentui-tools":
+  version: 0.0.0-use.local
+  resolution: "@freik/fluentui-tools@workspace:modules/fluentui-tools"
+  dependencies:
+    "@fluentui/react": ^8.110.13
+    "@fluentui/react-components": ^9.28.1
+    "@fluentui/react-hooks": ^8.6.29
+    "@freik/build-tools": ^3.6.0
+    "@freik/logger": ^0.2.3
+    "@freik/react-tools": ^0.1.0
+    "@freik/recoil-tools": ^0.1.0
+    "@freik/typechk": ^0.5.3
+    "@types/jest": ^29.5.3
+    "@types/react": ^17.0.64
+    "@types/react-dom": ^17.0.20
+    "@types/react-test-renderer": ^17.0.2
+    "@typescript-eslint/eslint-plugin": ^6.3.0
+    "@typescript-eslint/parser": ^6.3.0
+    eslint: ^8.47.0
+    eslint-config-prettier: ^9.0.0
+    eslint-plugin-import: ^2.28.0
+    eslint-plugin-jsx-a11y: ^6.7.1
+    eslint-plugin-prettier: ^5.0.0
+    eslint-plugin-react: ^7.33.1
+    eslint-plugin-react-hooks: ^4.6.0
+    jest: ^29.6.2
+    jest-environment-jsdom: ^29.6.2
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-scripts: ^5.0.1
+    react-test-renderer: ^17.0.2
+    recoil: ^0.7.7
+    rimraf: ^5.0.1
+    ts-jest: ^29.1.1
+    typescript: 5.1.6
+  peerDependencies:
+    "@fluentui/react": ">=8.50.0"
+    "@fluentui/react-components": ">=9.21.0"
+    "@fluentui/react-hooks": ">=8.1.0"
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+    recoil: ">=0.5.0"
   languageName: unknown
   linkType: soft
 
@@ -3632,7 +3677,7 @@ __metadata:
     "@freik/sync": ^0.2.1
     "@freik/typechk": ^0.5.0
     "@types/jest": ^29.5.3
-    "@types/node": ^20.4.10
+    "@types/node": ^20.5.0
     "@typescript-eslint/eslint-plugin": ^6.3.0
     "@typescript-eslint/parser": ^6.3.0
     eslint: ^8.47.0
@@ -3662,7 +3707,7 @@ __metadata:
     "@freik/typechk": ^0.5.3
     "@types/debug": ^4.1.8
     "@types/jest": ^29.5.3
-    "@types/node": ^20.4.10
+    "@types/node": ^20.5.0
     "@typescript-eslint/eslint-plugin": ^6.3.0
     "@typescript-eslint/parser": ^6.3.0
     eslint: ^8.47.0
@@ -3671,6 +3716,84 @@ __metadata:
     rimraf: ^5.0.1
     ts-jest: ^29.1.1
     typescript: 5.1.6
+  languageName: unknown
+  linkType: soft
+
+"@freik/react-tools@^0.1.0, @freik/react-tools@workspace:modules/react-tools":
+  version: 0.0.0-use.local
+  resolution: "@freik/react-tools@workspace:modules/react-tools"
+  dependencies:
+    "@freik/build-tools": ^3.6.0
+    "@freik/logger": ^0.2.3
+    "@freik/typechk": ^0.5.3
+    "@types/jest": ^29.5.3
+    "@types/react": ^17.0.64
+    "@types/react-dom": ^17.0.20
+    "@types/react-test-renderer": ^17.0.2
+    "@typescript-eslint/eslint-plugin": ^6.3.0
+    "@typescript-eslint/parser": ^6.3.0
+    eslint: ^8.47.0
+    eslint-config-prettier: ^9.0.0
+    eslint-plugin-import: ^2.28.0
+    eslint-plugin-jsx-a11y: ^6.7.1
+    eslint-plugin-prettier: ^5.0.0
+    eslint-plugin-react: ^7.33.1
+    eslint-plugin-react-hooks: ^4.6.0
+    jest: ^29.6.2
+    jest-environment-jsdom: ^29.6.2
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-scripts: ^5.0.1
+    react-test-renderer: ^17.0.2
+    rimraf: ^5.0.1
+    ts-jest: ^29.1.1
+    typescript: ^5.1.6
+  peerDependencies:
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+  languageName: unknown
+  linkType: soft
+
+"@freik/recoil-tools@^0.1.0, @freik/recoil-tools@workspace:modules/recoil-tools":
+  version: 0.0.0-use.local
+  resolution: "@freik/recoil-tools@workspace:modules/recoil-tools"
+  dependencies:
+    "@fluentui/react": ^8.110.13
+    "@fluentui/react-components": ^9.28.1
+    "@fluentui/react-hooks": ^8.6.29
+    "@freik/build-tools": ^3.6.0
+    "@freik/logger": ^0.2.3
+    "@freik/react-tools": ^0.1.0
+    "@freik/typechk": ^0.5.3
+    "@types/debug": ^4.1.8
+    "@types/jest": ^29.5.3
+    "@types/react": ^17.0.64
+    "@types/react-dom": ^17.0.20
+    "@types/react-test-renderer": ^17.0.2
+    "@typescript-eslint/eslint-plugin": ^6.3.0
+    "@typescript-eslint/parser": ^6.3.0
+    eslint: ^8.47.0
+    eslint-config-prettier: ^9.0.0
+    eslint-plugin-import: ^2.28.0
+    eslint-plugin-jsx-a11y: ^6.7.1
+    eslint-plugin-prettier: ^5.0.0
+    eslint-plugin-react: ^7.33.1
+    eslint-plugin-react-hooks: ^4.6.0
+    husky: ^8.0.3
+    jest: ^29.6.2
+    jest-environment-jsdom: ^29.6.2
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-scripts: ^5.0.1
+    react-test-renderer: ^17.0.2
+    recoil: ^0.7.7
+    rimraf: ^5.0.1
+    ts-jest: ^29.1.1
+    typescript: 5.1.6
+  peerDependencies:
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+    recoil: ">=0.5.0"
   languageName: unknown
   linkType: soft
 
@@ -3772,7 +3895,7 @@ __metadata:
     "@freik/build-tools": ^3.6.3
     "@jest/types": ^29.6.1
     "@types/jest": ^29.5.3
-    "@types/node": ^20.4.10
+    "@types/node": ^20.5.0
     "@typescript-eslint/eslint-plugin": ^6.3.0
     "@typescript-eslint/parser": ^6.3.0
     babel-eslint: ^10.1.0
@@ -3785,60 +3908,6 @@ __metadata:
     typedoc: ^0.24.8
     typedoc-plugin-markdown: ^3.15.4
     typescript: 5.1.6
-  languageName: unknown
-  linkType: soft
-
-"@freik/web-utils@workspace:modules/web-utils":
-  version: 0.0.0-use.local
-  resolution: "@freik/web-utils@workspace:modules/web-utils"
-  dependencies:
-    "@fluentui/react": ^8.110.13
-    "@fluentui/react-components": ^9.28.1
-    "@fluentui/react-hooks": ^8.6.29
-    "@freik/build-tools": ^3.6.0
-    "@freik/typechk": ^0.5.3
-    "@types/debug": ^4.1.8
-    "@types/jest": ^29.5.3
-    "@types/react": ^17.0.64
-    "@types/react-dom": ^17.0.20
-    "@types/react-test-renderer": ^17.0.2
-    "@typescript-eslint/eslint-plugin": ^6.3.0
-    "@typescript-eslint/parser": ^6.3.0
-    debug: ^4.3.4
-    eslint: ^8.47.0
-    eslint-config-prettier: ^9.0.0
-    eslint-plugin-import: ^2.28.0
-    eslint-plugin-jsx-a11y: ^6.7.1
-    eslint-plugin-prettier: ^5.0.0
-    eslint-plugin-react: ^7.33.1
-    eslint-plugin-react-hooks: ^4.6.0
-    husky: ^8.0.3
-    jest: ^29.6.2
-    jest-environment-jsdom: ^29.6.2
-    react: ^17.0.2
-    react-dom: ^17.0.2
-    react-scripts: ^5.0.1
-    react-test-renderer: ^17.0.2
-    recoil: ^0.7.7
-    rimraf: ^5.0.1
-    ts-jest: ^29.1.1
-    typescript: 5.1.6
-  peerDependencies:
-    "@fluentui/react": ">=8.50.0"
-    "@fluentui/react-components": ">=9.21.0"
-    "@fluentui/react-hooks": ">=8.1.0"
-    react: ">=17.0.0"
-    react-dom: ">=17.0.0"
-    recoil: ">=0.4.1"
-  peerDependenciesMeta:
-    "@fluentui/react":
-      optional: true
-    "@fluentui/react-components":
-      optional: true
-    "@fluentui/react-hooks":
-      optional: true
-    recoil:
-      optional: true
   languageName: unknown
   linkType: soft
 
@@ -5781,10 +5850,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.4.10":
-  version: 20.4.10
-  resolution: "@types/node@npm:20.4.10"
-  checksum: 02a1ca415d9cc91144c4250383aa0ef1e48241bd36067ed7d1b239d8bacc2a11139dd90e223e11ac289345eeae624cc5dcf73359e684bd2e5a6c31bdfbab4811
+"@types/node@npm:^20.5.0":
+  version: 20.5.0
+  resolution: "@types/node@npm:20.5.0"
+  checksum: 659bc5fc93b5c02bd88ca4bfae4f6b9dc307d45884d1dd9d69df85819a9943cdc00cd3c87eec3048866df6a67f52297f74d170e47a44f61edb3e8f770d94e85e
   languageName: node
   linkType: hard
 

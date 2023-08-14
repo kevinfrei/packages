@@ -7,7 +7,7 @@ import {
   TextField,
 } from '@fluentui/react';
 import { useState } from 'react';
-import { DialogData } from './Hooks.js';
+import { DialogData } from '@freik/react-tools';
 
 export type TextInputProps = {
   data: DialogData;
