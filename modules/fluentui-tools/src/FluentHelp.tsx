@@ -14,11 +14,10 @@ import {
   Toggle,
 } from '@fluentui/react';
 import { Suspense, useState } from 'react';
-import { CallbackInterface, RecoilState } from 'recoil';
-import { BoolState, KeyEventType } from './Hooks.js';
+import { RecoilState } from 'recoil';
+import { BoolState, KeyEventType } from '@freik/react-tools';
 import { isString } from '@freik/typechk';
-
-let lastHeard = performance.now();
+import { kbTypingHook } from '@freik/recoil-tools';
 
 export function kbListHook<T extends KeyEventType>(
   filterState: RecoilState<string>,
@@ -26,25 +25,13 @@ export function kbListHook<T extends KeyEventType>(
   shouldFocus: () => boolean,
   getIndex: (srch: string) => number,
 ) {
-  return ({ set }: CallbackInterface) =>
-    (ev: T): void => {
-      if (ev.key.length > 1 || ev.key === ' ') {
-        set(filterState, '');
-        return;
-      }
-      const time = performance.now();
-      const clear: boolean = time - lastHeard > 750;
-      lastHeard = time;
-      // const newFilter = clear ? ev.key : keyFilter + ev.key;
-      set(filterState, (oldVal: string): string => {
-        const srchString = clear ? ev.key : oldVal + ev.key;
-        if (shouldFocus() && listRef !== null && srchString.length > 0) {
-          const index = getIndex(srchString);
-          listRef.focusIndex(index);
-        }
-        return srchString;
-      });
-    };
+  const updateStr = (srchString: string) => {
+    if (shouldFocus() && listRef !== null && srchString.length > 0) {
+      const index = getIndex(srchString);
+      listRef.focusIndex(index);
+    }
+  };
+  return kbTypingHook<T>(filterState, updateStr);
 }
 
 export type SpinnerProps = {

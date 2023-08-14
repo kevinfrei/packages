@@ -1,7 +1,7 @@
 import { hasFieldType, isFunction, isString } from '@freik/typechk';
-import debugModule from 'debug';
+import { MakeLog } from '@freik/logger';
 
-const err = debugModule('web-utils:Helpers');
+const { err } = MakeLog('react-tools:Helpers');
 
 export function Fail(name?: string, message?: string): never {
   const e = new Error();
