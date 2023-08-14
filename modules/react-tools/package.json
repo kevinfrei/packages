@@ -1,6 +1,6 @@
 {
   "name": "@freik/react-tools",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Kevin Frei's React utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -44,15 +44,15 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/logger": "^0.2.3",
-    "@freik/typechk": "^0.5.3"
+    "@freik/logger": "^0.2.4",
+    "@freik/typechk": "^0.5.4"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.0",
+    "@freik/build-tools": "^3.6.4",
     "@types/jest": "^29.5.3",
     "@types/react": "^17.0.64",
     "@types/react-dom": "^17.0.20",

@@ -1,6 +1,6 @@
 {
   "name": "@freik/typechk",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Core set of TS/JS type checking helpers",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -46,7 +46,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.3",
+    "@freik/build-tools": "^3.6.4",
     "@jest/types": "^29.6.1",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.5.0",
