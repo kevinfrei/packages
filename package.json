@@ -17,10 +17,11 @@
     "test": "npx lerna run test",
     "prepack": "yarn pinst --disable",
     "postpack": "yarn pinst --enable",
-    "postinstall": "yarn husky install",
+    "_postinstall": "yarn husky install",
     "lerna": "npx lerna run",
     "hook-commit": "yarn ftool format",
-    "hook-push": "npx lerna run test"
+    "hook-push": "npx lerna run test",
+    "pub2npm": "npx lerna publish --no-private"
   },
   "devDependencies": {
     "@freik/build-tools": "^3.6.1",

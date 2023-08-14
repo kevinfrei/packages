@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^2.1.2",
-    "@freik/build-tools": "workspace:*",
+    "@freik/build-tools": "3.6.4",
     "@types/debug": "^4.1.8",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.5.0",
@@ -69,5 +69,6 @@
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
-  }
+  },
+  "gitHead": "0d8a46cc59d044ac5992627763d90fcc9c0147d9"
 }
