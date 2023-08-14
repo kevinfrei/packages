@@ -17,7 +17,7 @@
     "test": "npx lerna run test",
     "prepack": "yarn pinst --disable",
     "postpack": "yarn pinst --enable",
-    "_postinstall": "yarn husky install",
+    "postinstall": "yarn husky install",
     "lerna": "npx lerna run",
     "hook-commit": "yarn ftool format",
     "hook-push": "npx lerna run test",

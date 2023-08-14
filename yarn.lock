@@ -3550,6 +3550,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     jest: ^29.6.2
     jest-environment-jsdom: ^29.6.2
+    prettier: ^3.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
     react-scripts: ^5.0.1
@@ -3741,6 +3742,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     jest: ^29.6.2
     jest-environment-jsdom: ^29.6.2
+    prettier: ^3.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
     react-scripts: ^5.0.1
@@ -3758,9 +3760,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@freik/recoil-tools@workspace:modules/recoil-tools"
   dependencies:
-    "@fluentui/react": ^8.110.13
-    "@fluentui/react-components": ^9.28.1
-    "@fluentui/react-hooks": ^8.6.29
     "@freik/build-tools": ^3.6.5
     "@freik/logger": ^0.2.5
     "@freik/react-tools": ^0.1.2
@@ -3782,6 +3781,7 @@ __metadata:
     husky: ^8.0.3
     jest: ^29.6.2
     jest-environment-jsdom: ^29.6.2
+    prettier: ^3.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
     react-scripts: ^5.0.1
