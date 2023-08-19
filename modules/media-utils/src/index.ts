@@ -2,6 +2,8 @@
 export * as Covers from './cover.js';
 export * as Decode from './decode.js';
 export * as Encode from './encode.js';
+export * from './cue.js';
+
 import {
   Attributes,
   Metadata as oldMetadata,
@@ -49,3 +51,19 @@ type MetadataType = {
 };
 
 export const Metadata: MetadataType = { ...newMetadata, ...oldMetadata };
+
+export type CueTrack = {
+  track: string;
+  title: string;
+  artist: string;
+  start: string;
+};
+
+export type CueFile = {
+  artist: string;
+  album: string;
+  file: string;
+  year?: string;
+  tracks: CueTrack[];
+  log: string[];
+};
