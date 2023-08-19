@@ -1,6 +1,7 @@
 import type { CueFile, CueTrack } from './index.js';
 import type { SimpleMetadata } from '@freik/media-core';
-import { FileUtil } from '@freik/node-utils';
+import { FileUtil, PathUtil } from '@freik/node-utils';
+import * as path from 'node:path';
 import { isString } from '@freik/typechk';
 import { FlacAsync } from './encode.js';
 
@@ -122,6 +123,7 @@ export async function CueToFlac(filename: string): Promise<CueToFlacRes> {
   if (cue.year !== '') {
     metadata.year = cue.year;
   }
+  const dirname = path.dirname(filename);
   for (const track of cue.tracks.reverse()) {
     try {
       const args: Record<string, string | null> = {};
@@ -131,12 +133,15 @@ export async function CueToFlac(filename: string): Promise<CueToFlacRes> {
       if (end.length) {
         args[`-until=${end}`] = null;
       }
-      const newFile: string = `${track.track} - ${track.title}.flac`;
+      const newFile: string = path.join(
+        dirname,
+        PathUtil.fileClean(`${track.track} - ${track.title}.flac`),
+      );
       metadata.track = track.track;
       metadata.title = track.title;
       if (
         await FlacAsync(
-          cue.file,
+          path.join(dirname, cue.file),
           newFile,
           args as Record<string, string>,
           metadata,
