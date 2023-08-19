@@ -72,7 +72,7 @@ export type MediaInfo = {
 };
 
 // This is a helper type used in a few places
-export type Attributes = { [key: string]: string };
+export type Attributes = Record<string, string>;
 
 // This is the most simplistic strongly typed metadata you'll find
 export type SimpleMetadata = {

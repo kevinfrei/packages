@@ -1,0 +1,27 @@
+REM GENRE Silence
+REM DATE 2023
+REM COMMENT "Audacity"
+PERFORMER "Kevin Frei"
+TITLE "Test Album"
+FILE "test.wav" WAVE
+  TRACK 01 AUDIO
+    TITLE "Silence 1"
+    PERFORMER "Kevin Frei"
+    INDEX 01 00:00:00
+  TRACK 02 AUDIO
+    TITLE "Silence 2"
+    PERFORMER "Kevin Frei"
+    INDEX 01 00:01:57
+  TRACK 03 AUDIO
+    TITLE "Silence 3"
+    PERFORMER "Kevin Frei"
+    INDEX 00 00:03:57
+    INDEX 01 00:04:57
+  TRACK 04 AUDIO
+    TITLE "Silence 4"
+    PERFORMER "Kevin Frei"
+    INDEX 01 00:08:03
+  TRACK 05 AUDIO
+    TITLE "Silence 5"
+    PERFORMER "Kevin Frei"
+    INDEX 01 00:15:15
