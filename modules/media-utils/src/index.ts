@@ -2,7 +2,7 @@
 export * as Covers from './cover.js';
 export * as Decode from './decode.js';
 export * as Encode from './encode.js';
-export * as Cue from './cue.ts';
+export * as Cue from './cue.js';
 export * from './cue.js';
 
 import {
