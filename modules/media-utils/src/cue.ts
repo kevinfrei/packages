@@ -1,11 +1,29 @@
-import type { CueFile, CueTrack } from './index.js';
 import type { SimpleMetadata } from '@freik/media-core';
 import { FileUtil, PathUtil } from '@freik/node-utils';
 import * as path from 'node:path';
 import { isString } from '@freik/typechk';
 import { FlacAsync } from './encode.js';
 
-export function ParseCueFile(cue: string[]): CueFile | string {
+
+export type ToFlacRes = { success: number; failure: number; log: string[] };
+
+export type Track = {
+  track: string;
+  title: string;
+  artist: string;
+  start: string;
+};
+
+export type File = {
+  artist: string;
+  album: string;
+  file: string;
+  year?: string;
+  tracks: Track[];
+  log: string[];
+};
+
+export function ParseFile(cue: string[]): File | string {
   const log: string[] = [];
   let year = '';
   let artist = '';
@@ -15,7 +33,7 @@ export function ParseCueFile(cue: string[]): CueFile | string {
   let lastTrack = '';
   let lastTitle = '';
   let lastArtist = '';
-  const tracks: CueTrack[] = [];
+  const tracks: Track[] = [];
   let firstUnindent = true;
   let lineNo = 0;
   for (const line of cue) {
@@ -83,7 +101,7 @@ export function ParseCueFile(cue: string[]): CueFile | string {
     artist: lastArtist,
     start: lastStart,
   });
-  const res: CueFile = {
+  const res: File = {
     artist,
     album,
     file,
@@ -99,11 +117,10 @@ export function ParseCueFile(cue: string[]): CueFile | string {
   return res;
 }
 
-type CueToFlacRes = { success: number; failure: number; log: string[] };
-export async function CueToFlac(filename: string): Promise<CueToFlacRes> {
+export async function ToFlac(filename: string): Promise<ToFlacRes> {
   const cueText = await FileUtil.textFileToArrayAsync(filename);
   // Parse the cue file:
-  const cue = ParseCueFile(cueText);
+  const cue = ParseFile(cueText);
   if (isString(cue)) {
     return {
       success: -1,
@@ -112,7 +129,7 @@ export async function CueToFlac(filename: string): Promise<CueToFlacRes> {
     };
   }
   // Okay, got the list of tracks. Let's make files from them!
-  const res: CueToFlacRes = { success: 0, failure: 0, log: [] };
+  const res: ToFlacRes = { success: 0, failure: 0, log: [] };
   let end = '';
   const metadata: SimpleMetadata = {
     artist: cue.artist,
