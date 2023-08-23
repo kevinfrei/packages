@@ -1,4 +1,4 @@
-import { CueToFlac } from '../index.js';
+import { Cue } from '../index.js';
 import { promises as fsp } from 'node:fs';
 
 async function cleanup() {
@@ -16,7 +16,7 @@ afterAll(cleanup);
 
 it('Parse a CUE file', async () => {
   const filename = 'src/__tests__/test.cue';
-  const cueFile = await CueToFlac(filename);
+  const cueFile = await Cue.ToFlac(filename);
   expect(cueFile.success).toBe(5);
   expect(cueFile.failure).toBe(0);
 });
