@@ -58,6 +58,7 @@ test('isString', () => {
   expect(isString('')).toBe(true);
   expect(isString('s')).toBe(true);
   expect(isString(0)).toBe(false);
+  expect(isString(undefined)).toBe(false);
 });
 test('isRegex', () => {
   expect(isRegex({ source: 'abc', flags: 'i' })).toBeFalsy();
