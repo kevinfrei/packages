@@ -14,9 +14,8 @@ type FilterFn = (name: string) => boolean;
 export type GroupEntry = RegExp | FilterFn;
 export type Groups = { [keys: string | symbol]: GroupEntry };
 export interface NormalOptions {
-  staged?: boolean;
+  filter?: 'staged' | 'all';
   cwd?: string;
-  all?: boolean;
 }
 export interface GroupedOptions extends NormalOptions {
   groups: Groups;
@@ -38,11 +37,12 @@ export async function files(
   ops?: GroupedOptions | NormalOptions,
 ): Promise<GroupedResult | string[]> {
   const options: GroupedOptions | NormalOptions = ops || {};
-  const cmd = options.staged
-    ? 'git diff --diff-filter=ACMR --cached --name-only'
-    : options.all
-    ? 'git ls-files'
-    : 'git diff HEAD --diff-filter=d --name-only';
+  const cmd =
+    options.filter === 'all'
+      ? 'git ls-files'
+      : options.filter === 'staged'
+      ? 'git diff --diff-filter=ACMR --cached --name-only'
+      : 'git diff HEAD --diff-filter=d --name-only';
   const opts = options.cwd
     ? { encoding: 'utf8', cwd: options.cwd }
     : { encoding: 'utf8' };

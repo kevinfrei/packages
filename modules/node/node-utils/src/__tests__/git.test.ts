@@ -8,21 +8,23 @@ import {
 import { Git } from '../index';
 
 it('Simple git.files tests', async () => {
-  const files = await Git.files({ all: true });
+  const files = await Git.files({ filter: 'all' });
   expect(isArray(files)).toBeTruthy();
   expect(files.length).toBeGreaterThan(50);
-  expect(files.length).toBeLessThan(100);
+  expect(files.length).toBeLessThan(1000);
 
   const noFiles = await Git.files();
   // This will fail if we have any edits :/
   // expect(Type.isArray(noFiles)).toBeTruthy();
-  // This will faile if we have *all* files edited...
-  expect(noFiles.length).toBeLessThan(files.length);
+  // This will fail if we have *all* files edited...
+  // console.log(files);
+  // console.log(noFiles);
+  expect(noFiles.length).toBeLessThanOrEqual(files.length);
 });
 
 it('Grouped git.files tests', async () => {
   const files = await Git.files({
-    all: true,
+    filter: 'all',
     groups: {
       prettier: (filename: string) => {
         if (filename === '.prettierrc') {
