@@ -8,7 +8,10 @@
   "license": "Unlicense",
   "packageManager": "yarn@3.6.3",
   "workspaces": [
-    "modules/*"
+    "modules/build-tools",
+    "modules/agnostic/*",
+    "modules/node/*",
+    "modules/www/*"
   ],
   "scripts": {
     "release": "npx lerna run release",

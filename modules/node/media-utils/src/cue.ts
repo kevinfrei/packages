@@ -4,7 +4,6 @@ import * as path from 'node:path';
 import { isString } from '@freik/typechk';
 import { FlacAsync } from './encode.js';
 
-
 export type ToFlacRes = { success: number; failure: number; log: string[] };
 
 export type Track = {
