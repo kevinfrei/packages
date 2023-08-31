@@ -1,4 +1,4 @@
-import { isFunction, isPromise, isString, typecheck } from '@freik/typechk';
+import { isPromise, isString, isDefined, typecheck } from '@freik/typechk';
 import { NormalizedStringCompare } from '@freik/text';
 import { SortedArrayDiff } from '@freik/helpers';
 import { arrayToTextFileAsync, textFileToArrayAsync } from './FileUtil.js';
@@ -32,11 +32,36 @@ export type FileIndex = {
 type FolderLocation = string;
 const isFolderLocation: typecheck<FolderLocation> = isString;
 export type Watcher = (obj: string) => boolean;
-const isWatcher: typecheck<Watcher> = isFunction as typecheck<Watcher>;
 
 function fileWatcher(watcher: Watcher | undefined): Watcher {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return isWatcher(watcher) ? watcher : (o: string) => true;
+  return isDefined(watcher) ? watcher : (o: string) => true;
+}
+
+export function AndWatch(...watchers: (Watcher | undefined)[]): Watcher {
+  return (obj: string) => {
+    for (const w of watchers) {
+      if (isDefined(w) && !w(obj)) {
+        return false;
+      }
+    }
+    return true;
+  };
+}
+
+export function OrWatch(...watchers: (Watcher | undefined)[]): Watcher {
+  return (obj: string) => {
+    for (const w of watchers) {
+      if (isDefined(w) && w(obj)) {
+        return true;
+      }
+    }
+    return false;
+  };
+}
+
+export function NotWatch(w: Watcher | undefined): Watcher {
+  return isDefined(w) ? (obj: string) => !w(obj) : () => false;
 }
 
 // This is used to deal with the weird overloads below
