@@ -1,6 +1,6 @@
 {
   "name": "@freik/media-utils",
-  "version": "0.19.0",
+  "version": "0.19.1",
   "description": "Utilities for dealing with media files in NodeJS/Electron",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@freik/media-core": "^0.14.9",
-    "@freik/node-utils": "^1.5.0",
+    "@freik/node-utils": "^1.6.0",
     "@freik/typechk": "^0.5.8",
     "music-metadata": "^7.13.4"
   },
