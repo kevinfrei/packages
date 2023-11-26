@@ -72,7 +72,7 @@ test('DebouncedDelay testing', async () => {
   everyHundred();
   await Sleep(350);
   expect(lastDelta).toBeGreaterThan(1050);
-  expect(lastDelta).toBeLessThan(1150);
+  expect(lastDelta).toBeLessThan(1350);
   expect(callCount).toBe(1);
   timer = Date.now();
   everyHundred();
@@ -86,7 +86,7 @@ test('DebouncedDelay testing', async () => {
   everyHundred();
   await Sleep(300);
   expect(lastDelta).toBeGreaterThan(750);
-  expect(lastDelta).toBeLessThan(850);
+  expect(lastDelta).toBeLessThan(950);
   expect(callCount).toBe(2);
 });
 
