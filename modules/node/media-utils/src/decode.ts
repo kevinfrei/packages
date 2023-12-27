@@ -1,4 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
 // Module:
 // media/decode
 // Provides compressed audio to wav file tools
@@ -11,7 +16,7 @@ import * as path from 'path';
 const Mp3: Decoder = (inputFile, outputFile) =>
   ProcUtil.spawnRes('lame', ['--quiet', '--decode', inputFile, outputFile]);
 
-const Mp3Async: DecoderAsync = async (inputFile, outputFile) =>
+const Mp3Async: DecoderAsync = (inputFile, outputFile) =>
   ProcUtil.spawnResAsync('lame', [
     '--quiet',
     '--decode',
@@ -22,19 +27,19 @@ const Mp3Async: DecoderAsync = async (inputFile, outputFile) =>
 const Flac: Decoder = (inputFile, outputFile) =>
   ProcUtil.spawnRes('flac', ['-d', inputFile, '-o', outputFile]);
 
-const FlacAsync: DecoderAsync = async (inputFile, outputFile) =>
+const FlacAsync: DecoderAsync = (inputFile, outputFile) =>
   ProcUtil.spawnResAsync('flac', ['-d', inputFile, '-o', outputFile]);
 
 const Aac: Decoder = (inputFile, outputFile) =>
   ProcUtil.spawnRes('faad', ['-o', outputFile, inputFile]);
 
-const AacAsync: DecoderAsync = async (inputFile, outputFile) =>
+const AacAsync: DecoderAsync = (inputFile, outputFile) =>
   ProcUtil.spawnResAsync('faad', ['-o', outputFile, inputFile]);
 
 const Ffmpeg: Decoder = (inputFile, outputFile) =>
   ProcUtil.spawnRes('ffmpeg', ['-i', inputFile, outputFile]);
 
-const FfmpegAsync: DecoderAsync = async (inputFile, outputFile) =>
+const FfmpegAsync: DecoderAsync = (inputFile, outputFile) =>
   ProcUtil.spawnResAsync('ffmpeg', ['-i', inputFile, outputFile]);
 
 // K: we know we need to convert it.

@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 import type { SimpleMetadata } from '@freik/media-core';
 import { FileUtil, PathUtil } from '@freik/node-utils';
 import * as path from 'node:path';
