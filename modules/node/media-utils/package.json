@@ -22,8 +22,8 @@
     }
   },
   "scripts": {
-    "justtest": "jest --config jestconfig.json",
-    "watch": "jest --watch --config jestconfig.json",
+    "justtest": "NODE_OPTIONS=--experimental-vm-modules yarn jest --config jestconfig.json",
+    "watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch --config jestconfig.json",
     "clean": "rimraf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",
     "esmcompat": "echo '{\"type\":\"module\"}'> ./lib/esm/package.json",

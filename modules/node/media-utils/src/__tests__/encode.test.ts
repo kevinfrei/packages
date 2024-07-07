@@ -1,5 +1,6 @@
 import * as ofs from 'fs';
 import { Encode } from '../index.js';
+import { jest } from '@jest/globals';
 
 const fs = {
   statAsync: ofs.promises.stat,

@@ -1,6 +1,6 @@
 {
   "transform": {
-    "^.+\\.(t|j)sx?$": [
+    "^.+\\.m?(t|j)sx?$": [
       "ts-jest",
       { "useESM": true, "tsconfig": "tsconfig.esm.json" }
     ]

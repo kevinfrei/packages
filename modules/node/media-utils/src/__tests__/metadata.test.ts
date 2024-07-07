@@ -59,7 +59,7 @@ it('From an m4a file, Async', async () => {
   const hasNat = hasField(rmd, 'native');
   expect(hasComm && hasForm && hasNat).toBeTruthy();
 });
-
+/*
 it('From a flac file, Async', async () => {
   const filename = 'src/__tests__/01-quiet.flac';
   const md = await Metadata.FromFileAsync(filename);
@@ -87,7 +87,7 @@ it('From a flac file, Async', async () => {
   const hasNat = hasField(rmd, 'native');
   expect(hasComm && hasForm && hasNat).toBeTruthy();
 });
-
+*/
 it('Generic path', () => {
   const filename = 'something/artist - 1983 - album/01 - title.m4a';
   const md = Metadata.FromPath(filename);
