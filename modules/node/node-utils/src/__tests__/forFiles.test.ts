@@ -159,7 +159,7 @@ it('Skipping hidden file tests', async () => {
   // Filtering
   const counter = (filename: string): boolean => {
     switch (filename) {
-      case '.eslintignore':
+      case '.hidden-for-tests.txt':
         ei++;
         break;
       case 'jestconfig.json':
@@ -186,11 +186,7 @@ it('Skipping hidden file tests', async () => {
     skipHiddenFiles: true,
     dontAssumeDotsAreHidden: true,
   });
-  if (process.platform === 'win32') {
-    expect(ei).toEqual(2);
-  } else {
-    expect(ei).toEqual(1);
-  }
+  expect(ei).toEqual(1);
   expect(jc).toEqual(2);
   expect(pack).toEqual(2);
 });
@@ -204,7 +200,7 @@ it('Stragglers', async () => {
     },
     { fileTypes: 'json', recurse: false },
   );
-  expect(jsonCount).toEqual(7);
+  expect(jsonCount).toEqual(6);
   jsonCount = 0;
   ForFilesSync(
     '.',
@@ -214,7 +210,7 @@ it('Stragglers', async () => {
     },
     { fileTypes: 'json', recurse: false },
   );
-  expect(jsonCount).toEqual(7);
+  expect(jsonCount).toEqual(6);
   jsonCount = 0;
   await ForFiles(
     '.',
