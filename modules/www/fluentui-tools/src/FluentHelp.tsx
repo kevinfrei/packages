@@ -1,6 +1,5 @@
 import {
   IconButton,
-  IDetailsList,
   IFontStyles,
   ISeparatorStyles,
   IStyle,
@@ -14,25 +13,8 @@ import {
   Toggle,
 } from '@fluentui/react';
 import { Suspense, useState } from 'react';
-import { RecoilState } from 'recoil';
-import { BoolState, KeyEventType } from '@freik/react-tools';
+import { BoolState } from '@freik/react-tools';
 import { isString } from '@freik/typechk';
-import { kbTypingHook } from '@freik/recoil-tools';
-
-export function kbListHook<T extends KeyEventType>(
-  filterState: RecoilState<string>,
-  listRef: IDetailsList | null,
-  shouldFocus: () => boolean,
-  getIndex: (srch: string) => number,
-) {
-  const updateStr = (srchString: string) => {
-    if (shouldFocus() && listRef !== null && srchString.length > 0) {
-      const index = getIndex(srchString);
-      listRef.focusIndex(index);
-    }
-  };
-  return kbTypingHook<T>(filterState, updateStr);
-}
 
 export type SpinnerProps = {
   children: JSX.Element | JSX.Element[];

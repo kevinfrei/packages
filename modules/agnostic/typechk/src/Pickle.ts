@@ -14,6 +14,7 @@ import {
   isFunction,
   isIterable,
   isMap,
+  isObjectNonNull,
   isRegex,
   isSet,
   isSimpleObject,
@@ -21,6 +22,7 @@ import {
   isSymbol,
 } from './TypeChk.js';
 import { FreikTypeTag, SimpleObject, typecheck } from './Types.js';
+import { isBrowser, isNode } from './which.js';
 
 type FlattenedCustom = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -163,17 +165,19 @@ export enum RegistrationResult {
   NodeSuccess,
   NodeAlready,
   NodeFail,
+  DetectionFailure,
 }
 const pickleKey = FreikTypeTag;
 export function registerPickling(): RegistrationResult {
-  if (hasField(process, 'browser')) {
+  if (isBrowser()) {
     if (!hasField(window, pickleKey)) {
       (window as any as { [key: symbol]: unknown })[pickleKey] = {
         to: thePicklers,
         from: theUnpicklers,
       };
       return RegistrationResult.DomSuccess;
-    } else if (
+    }
+    if (
       !hasFieldType(
         window,
         pickleKey,
@@ -184,17 +188,18 @@ export function registerPickling(): RegistrationResult {
       )
     ) {
       return RegistrationResult.DomFail;
-    } else {
-      return RegistrationResult.DomAlready;
     }
-  } else {
+    return RegistrationResult.DomAlready;
+  }
+  if (isNode()) {
     if (!hasField(global, pickleKey)) {
       (global as any as { [key: symbol]: unknown })[pickleKey] = {
         to: thePicklers,
         from: theUnpicklers,
       };
       return RegistrationResult.NodeSuccess;
-    } else if (
+    }
+    if (
       !hasFieldType(
         global,
         pickleKey,
@@ -205,10 +210,10 @@ export function registerPickling(): RegistrationResult {
       )
     ) {
       return RegistrationResult.NodeFail;
-    } else {
-      return RegistrationResult.NodeAlready;
     }
+    return RegistrationResult.NodeAlready;
   }
+  return RegistrationResult.DetectionFailure;
 }
 
 switch (registerPickling()) {
@@ -220,19 +225,23 @@ switch (registerPickling()) {
     throw Error(
       `Invalid global[${String(pickleKey)}] object in NodeJS environment`,
     );
+  case RegistrationResult.DetectionFailure:
+    throw Error('Unable to determine environment for pickling');
   default:
     break;
 }
 
 function picklers(): Map<symbol, ToFlat<unknown>> {
   if (
-    !hasField(process, 'browser') &&
+    isNode() &&
+    isObjectNonNull(global) &&
     hasField(global, pickleKey) &&
     hasField(global[pickleKey], 'to')
   ) {
     return global[pickleKey].to as Map<symbol, ToFlat<unknown>>;
   } else if (
-    hasField(process, 'browser') &&
+    isBrowser() &&
+    isObjectNonNull(window) &&
     hasField(window, pickleKey) &&
     hasField(window[pickleKey], 'to')
   ) {
@@ -251,13 +260,15 @@ function setPickleHandler(pickleTag: symbol, toString: ToFlat<unknown>) {
 
 function unpicklers(): Map<symbol, FromFlat<unknown>> {
   if (
+    isObjectNonNull(process) &&
     !hasField(process, 'browser') &&
     hasField(global, pickleKey) &&
     hasField(global[pickleKey], 'from')
   ) {
     return global[pickleKey].from as Map<symbol, FromFlat<unknown>>;
   } else if (
-    hasField(process, 'browser') &&
+    !isObjectNonNull(process) &&
+    !hasField(process, 'browser') &&
     hasField(window, pickleKey) &&
     hasField(window[pickleKey], 'from')
   ) {
