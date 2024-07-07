@@ -1,6 +1,6 @@
 {
   "name": "@freik/recoil-tools",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Kevin Frei's Web utilities for Recoil",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -46,9 +46,9 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/logger": "^0.2.10",
-    "@freik/react-tools": "^0.1.8",
-    "@freik/typechk": "^0.5.11"
+    "@freik/logger": "^0.2.11",
+    "@freik/react-tools": "^0.1.9",
+    "@freik/typechk": "^0.5.12"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
@@ -56,7 +56,7 @@
     "recoil": ">=0.5.0"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.10",
+    "@freik/build-tools": "^3.6.11",
     "@types/debug": "^4.1.12",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.3.3",

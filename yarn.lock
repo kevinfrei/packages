@@ -5203,7 +5203,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@freik/build-tools@npm:^3.6.1, @freik/build-tools@npm:^3.6.10, @freik/build-tools@workspace:modules/build-tools":
+"@freik/build-tools@npm:^3.6.1, @freik/build-tools@npm:^3.6.11, @freik/build-tools@workspace:modules/build-tools":
   version: 0.0.0-use.local
   resolution: "@freik/build-tools@workspace:modules/build-tools"
   dependencies:
@@ -5245,13 +5245,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/containers@npm:^0.2.13, @freik/containers@workspace:modules/agnostic/containers":
+"@freik/containers@npm:^0.2.14, @freik/containers@workspace:modules/agnostic/containers":
   version: 0.0.0-use.local
   resolution: "@freik/containers@workspace:modules/agnostic/containers"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
-    "@freik/helpers": "npm:^0.3.12"
-    "@freik/typechk": "npm:^0.5.11"
+    "@freik/build-tools": "npm:^3.6.11"
+    "@freik/helpers": "npm:^0.3.13"
+    "@freik/typechk": "npm:^0.5.12"
     "@jest/types": "npm:^29.6.3"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.15.0"
@@ -5277,10 +5277,10 @@ __metadata:
     "@fluentui/react": "npm:^8.119.0"
     "@fluentui/react-components": "npm:^9.54.4"
     "@fluentui/react-hooks": "npm:^8.8.9"
-    "@freik/build-tools": "npm:^3.6.10"
-    "@freik/logger": "npm:^0.2.10"
-    "@freik/react-tools": "npm:^0.1.8"
-    "@freik/typechk": "npm:^0.5.11"
+    "@freik/build-tools": "npm:^3.6.11"
+    "@freik/logger": "npm:^0.2.11"
+    "@freik/react-tools": "npm:^0.1.9"
+    "@freik/typechk": "npm:^0.5.12"
     "@types/jest": "npm:^29.5.12"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
@@ -5313,12 +5313,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/helpers@npm:^0.3.12, @freik/helpers@workspace:modules/agnostic/helpers":
+"@freik/helpers@npm:^0.3.13, @freik/helpers@workspace:modules/agnostic/helpers":
   version: 0.0.0-use.local
   resolution: "@freik/helpers@workspace:modules/agnostic/helpers"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
-    "@freik/typechk": "npm:^0.5.11"
+    "@freik/build-tools": "npm:^3.6.11"
+    "@freik/typechk": "npm:^0.5.12"
     "@jest/types": "npm:^29.6.3"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.15.0"
@@ -5351,7 +5351,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@freik/iter@workspace:modules/agnostic/iter"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
+    "@freik/build-tools": "npm:^3.6.11"
     "@jest/types": "npm:^29.6.3"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.15.0"
@@ -5369,11 +5369,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/logger@npm:^0.2.10, @freik/logger@workspace:modules/agnostic/logger":
+"@freik/logger@npm:^0.2.11, @freik/logger@workspace:modules/agnostic/logger":
   version: 0.0.0-use.local
   resolution: "@freik/logger@workspace:modules/agnostic/logger"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
+    "@freik/build-tools": "npm:^3.6.11"
     "@jest/types": "npm:^29.6.3"
     "@types/debug": "npm:^4.1.12"
     "@types/jest": "npm:^29.5.12"
@@ -5393,12 +5393,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/media-core@npm:^0.14.12, @freik/media-core@workspace:modules/agnostic/media-core":
+"@freik/media-core@npm:^0.14.13, @freik/media-core@workspace:modules/agnostic/media-core":
   version: 0.0.0-use.local
   resolution: "@freik/media-core@workspace:modules/agnostic/media-core"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
-    "@freik/typechk": "npm:^0.5.11"
+    "@freik/build-tools": "npm:^3.6.11"
+    "@freik/typechk": "npm:^0.5.12"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.15.0"
     "@typescript-eslint/parser": "npm:^7.15.0"
@@ -5416,11 +5416,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@freik/media-utils@workspace:modules/node/media-utils"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
-    "@freik/media-core": "npm:^0.14.12"
-    "@freik/node-utils": "npm:^1.6.3"
-    "@freik/sync": "npm:^0.2.12"
-    "@freik/typechk": "npm:^0.5.11"
+    "@freik/build-tools": "npm:^3.6.11"
+    "@freik/media-core": "npm:^0.14.13"
+    "@freik/node-utils": "npm:^1.6.4"
+    "@freik/sync": "npm:^0.2.13"
+    "@freik/typechk": "npm:^0.5.12"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.14.10"
     "@typescript-eslint/eslint-plugin": "npm:^7.15.0"
@@ -5437,20 +5437,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/node-utils@npm:^1.6.3, @freik/node-utils@workspace:modules/node/node-utils":
+"@freik/node-utils@npm:^1.6.4, @freik/node-utils@workspace:modules/node/node-utils":
   version: 0.0.0-use.local
   resolution: "@freik/node-utils@workspace:modules/node/node-utils"
   dependencies:
     "@eslint/eslintrc": "npm:^3.1.0"
-    "@freik/build-tools": "npm:^3.6.10"
-    "@freik/containers": "npm:^0.2.13"
-    "@freik/helpers": "npm:^0.3.12"
+    "@freik/build-tools": "npm:^3.6.11"
+    "@freik/containers": "npm:^0.2.14"
+    "@freik/helpers": "npm:^0.3.13"
     "@freik/is-hidden-file": "npm:^1.13.1"
-    "@freik/logger": "npm:^0.2.10"
-    "@freik/seqnum": "npm:^1.1.10"
-    "@freik/sync": "npm:^0.2.12"
-    "@freik/text": "npm:^0.3.11"
-    "@freik/typechk": "npm:^0.5.11"
+    "@freik/logger": "npm:^0.2.11"
+    "@freik/seqnum": "npm:^1.1.11"
+    "@freik/sync": "npm:^0.2.13"
+    "@freik/text": "npm:^0.3.12"
+    "@freik/typechk": "npm:^0.5.12"
     "@types/debug": "npm:^4.1.12"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.14.10"
@@ -5465,13 +5465,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/react-tools@npm:^0.1.8, @freik/react-tools@workspace:modules/www/react-tools":
+"@freik/react-tools@npm:^0.1.9, @freik/react-tools@workspace:modules/www/react-tools":
   version: 0.0.0-use.local
   resolution: "@freik/react-tools@workspace:modules/www/react-tools"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
-    "@freik/logger": "npm:^0.2.10"
-    "@freik/typechk": "npm:^0.5.11"
+    "@freik/build-tools": "npm:^3.6.11"
+    "@freik/logger": "npm:^0.2.11"
+    "@freik/typechk": "npm:^0.5.12"
     "@types/jest": "npm:^29.5.12"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
@@ -5505,10 +5505,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@freik/recoil-tools@workspace:modules/www/recoil-tools"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
-    "@freik/logger": "npm:^0.2.10"
-    "@freik/react-tools": "npm:^0.1.8"
-    "@freik/typechk": "npm:^0.5.11"
+    "@freik/build-tools": "npm:^3.6.11"
+    "@freik/logger": "npm:^0.2.11"
+    "@freik/react-tools": "npm:^0.1.9"
+    "@freik/typechk": "npm:^0.5.12"
     "@types/debug": "npm:^4.1.12"
     "@types/jest": "npm:^29.5.12"
     "@types/react": "npm:^18.3.3"
@@ -5546,7 +5546,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@freik/search@workspace:modules/agnostic/search"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
+    "@freik/build-tools": "npm:^3.6.11"
     "@jest/types": "npm:^29.6.3"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.15.0"
@@ -5564,11 +5564,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/seqnum@npm:^1.1.10, @freik/seqnum@workspace:modules/agnostic/seqnum":
+"@freik/seqnum@npm:^1.1.11, @freik/seqnum@workspace:modules/agnostic/seqnum":
   version: 0.0.0-use.local
   resolution: "@freik/seqnum@workspace:modules/agnostic/seqnum"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
+    "@freik/build-tools": "npm:^3.6.11"
     "@jest/types": "npm:^29.6.3"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.15.0"
@@ -5586,14 +5586,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/sync@npm:^0.2.12, @freik/sync@workspace:modules/agnostic/sync":
+"@freik/sync@npm:^0.2.13, @freik/sync@workspace:modules/agnostic/sync":
   version: 0.0.0-use.local
   resolution: "@freik/sync@workspace:modules/agnostic/sync"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
-    "@freik/containers": "npm:^0.2.13"
-    "@freik/seqnum": "npm:^1.1.10"
-    "@freik/typechk": "npm:^0.5.11"
+    "@freik/build-tools": "npm:^3.6.11"
+    "@freik/containers": "npm:^0.2.14"
+    "@freik/seqnum": "npm:^1.1.11"
+    "@freik/typechk": "npm:^0.5.12"
     "@jest/types": "npm:^29.6.3"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.15.0"
@@ -5611,11 +5611,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/text@npm:^0.3.11, @freik/text@workspace:modules/agnostic/text":
+"@freik/text@npm:^0.3.12, @freik/text@workspace:modules/agnostic/text":
   version: 0.0.0-use.local
   resolution: "@freik/text@workspace:modules/agnostic/text"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
+    "@freik/build-tools": "npm:^3.6.11"
     "@jest/types": "npm:^29.6.3"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.15.0"
@@ -5633,11 +5633,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@freik/typechk@npm:^0.5.11, @freik/typechk@workspace:modules/agnostic/typechk":
+"@freik/typechk@npm:^0.5.12, @freik/typechk@workspace:modules/agnostic/typechk":
   version: 0.0.0-use.local
   resolution: "@freik/typechk@workspace:modules/agnostic/typechk"
   dependencies:
-    "@freik/build-tools": "npm:^3.6.10"
+    "@freik/build-tools": "npm:^3.6.11"
     "@jest/types": "npm:^29.6.3"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.14.10"

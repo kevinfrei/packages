@@ -1,6 +1,6 @@
 {
   "name": "@freik/fluentui-tools",
-  "version": "0.1.8",
+  "version": "1.0.0",
   "description": "Kevin Frei's FluentUI Web utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -43,9 +43,9 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/logger": "^0.2.10",
-    "@freik/react-tools": "^0.1.8",
-    "@freik/typechk": "^0.5.11"
+    "@freik/logger": "^0.2.11",
+    "@freik/react-tools": "^0.1.9",
+    "@freik/typechk": "^0.5.12"
   },
   "peerDependencies": {
     "@fluentui/react": ">=8.50.0",
@@ -58,7 +58,7 @@
     "@fluentui/react": "^8.119.0",
     "@fluentui/react-components": "^9.54.4",
     "@fluentui/react-hooks": "^8.8.9",
-    "@freik/build-tools": "^3.6.10",
+    "@freik/build-tools": "^3.6.11",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

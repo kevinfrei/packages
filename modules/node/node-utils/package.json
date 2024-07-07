@@ -1,6 +1,6 @@
 {
   "name": "@freik/node-utils",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "My personal set of utilities for NodeJS",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -43,18 +43,18 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/containers": "^0.2.13",
-    "@freik/helpers": "^0.3.12",
+    "@freik/containers": "^0.2.14",
+    "@freik/helpers": "^0.3.13",
     "@freik/is-hidden-file": "^1.13.1",
-    "@freik/logger": "^0.2.10",
-    "@freik/seqnum": "^1.1.10",
-    "@freik/sync": "^0.2.12",
-    "@freik/text": "^0.3.11",
-    "@freik/typechk": "^0.5.11"
+    "@freik/logger": "^0.2.11",
+    "@freik/seqnum": "^1.1.11",
+    "@freik/sync": "^0.2.13",
+    "@freik/text": "^0.3.12",
+    "@freik/typechk": "^0.5.12"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
-    "@freik/build-tools": "^3.6.10",
+    "@freik/build-tools": "^3.6.11",
     "@types/debug": "^4.1.12",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.10",

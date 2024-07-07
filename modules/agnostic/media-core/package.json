@@ -1,6 +1,6 @@
 {
   "name": "@freik/media-core",
-  "version": "0.14.12",
+  "version": "0.14.13",
   "description": "Web and NodeJS compatible media stuff",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -40,10 +40,10 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "^0.5.11"
+    "@freik/typechk": "^0.5.12"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.10",
+    "@freik/build-tools": "^3.6.11",
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",

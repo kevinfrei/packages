@@ -1,6 +1,6 @@
 {
   "name": "@freik/logger",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "A simple (typed!) wrapper around 'debug'",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -49,7 +49,7 @@
     "debug": "^4.3.5"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.10",
+    "@freik/build-tools": "^3.6.11",
     "@jest/types": "^29.6.3",
     "@types/debug": "^4.1.12",
     "@types/jest": "^29.5.12",
