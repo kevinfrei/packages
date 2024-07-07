@@ -1,4 +1,3 @@
-/* eslint-disable no-empty */
 import {
   chkMapOf,
   chkObjectOfType,
@@ -25,9 +24,8 @@ import { FreikTypeTag, SimpleObject, typecheck } from './Types.js';
 import { isBrowser, isNode } from './which.js';
 
 type FlattenedCustom = {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   '@dataType': string;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+
   '@dataValue': SimpleObject;
 };
 
@@ -39,7 +37,6 @@ function isFlattened(obj: unknown): obj is FlattenedCustom {
 }
 
 function MakeFlat(name: string, data: SimpleObject): FlattenedCustom {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   return { '@dataType': name, '@dataValue': data };
 }
 
@@ -157,7 +154,6 @@ const theUnpicklers = new Map<symbol, FromFlat<unknown>>([
 declare let global: { [key: string | number | symbol]: unknown };
 declare let window: { [key: string | number | symbol]: unknown };
 
-// eslint-disable-next-line no-shadow
 export enum RegistrationResult {
   DomSuccess,
   DomAlready,
@@ -319,7 +315,6 @@ function getUnpickler(keyName: string): FromFlat<any> | undefined {
 }
 
 function replacer(this: any, key: string, value: unknown): unknown {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const originalObject: unknown = this[key];
   const pickler = getPickler(originalObject);
   if (pickler) {

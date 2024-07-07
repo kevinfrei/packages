@@ -58,7 +58,7 @@ export function dirname(pathname: string): string {
 
 export async function getRoots(): Promise<string[]> {
   switch (os.platform()) {
-    case 'win32':
+    case 'win32': {
       const { stdout, stderr } = await exec('wmic logicaldisk get name');
       if (stderr.length > 0) {
         return [];
@@ -67,9 +67,11 @@ export async function getRoots(): Promise<string[]> {
         .split('\r\r\n')
         .filter((value) => /[A-Za-z]:/.test(value))
         .map((value) => value.trim());
-    case 'darwin':
+    }
+    case 'darwin': {
       const subdirs = await fsp.readdir('/Volumes');
       return subdirs.map((v) => path.join('/Volumes', v));
+    }
     default:
       // TODO: Linux support
       return ['linux NYI'];
@@ -131,7 +133,6 @@ export function fileClean(file: string, ignoreLastPeriod?: boolean): string {
   return res.trim();
 }
 
-// eslint-disable-next-line @typescript-eslint/unbound-method
 export const basename = path.basename;
-// eslint-disable-next-line @typescript-eslint/unbound-method
+
 export const extname = path.extname;

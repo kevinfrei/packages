@@ -23,7 +23,7 @@
     "build": "rimraf lib && tsc",
     "prepare": "yarn run build",
     "prepublishOnly": "yarn test && yarn run lint",
-    "lint": "yarn run eslint --fix --ext .ts src",
+    "lint": "yarn run eslint --fix src",
     "preversion": "yarn run lint",
     "typechk": "tsc --noEmit",
     "test": "yarn lint && yarn typechk"

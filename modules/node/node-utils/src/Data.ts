@@ -14,7 +14,6 @@ export function MakeKey(text: string): Key {
     .digest();
   const vals = new Array(16).fill(0);
   for (let i = 0; i < data.length; i++) {
-    // eslint-disable-next-line no-bitwise
     vals[i % 16] = vals[i % 16] ^ data[i];
   }
   return { iv: Buffer.from(vals), key };

@@ -10,7 +10,6 @@ import { countLines } from './line-count.js';
 // import { makeDualModeModule } from './make-module.js';
 import { minify } from './minify.js';
 
-// eslint-disable-next-line no-console
 const err = console.error;
 
 function isNumber(obj: unknown): obj is number {

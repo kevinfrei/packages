@@ -210,7 +210,9 @@ export function toString(obj: unknown, notStr = ''): string {
       if (isString(val)) {
         return val;
       }
-    } catch (e) {}
+    } catch (e) {
+      /* */
+    }
   }
   if (hasFieldType(obj, 'toString', isFunction)) {
     try {
@@ -219,7 +221,9 @@ export function toString(obj: unknown, notStr = ''): string {
       if (isString(res) && res !== '[object Object]') {
         return res;
       }
-    } catch (e) {}
+    } catch (e) {
+      /* */
+    }
   }
   return notStr;
 }
@@ -634,16 +638,13 @@ export function isSymbol(obj: unknown): obj is symbol {
 export function hasField<K extends string | number | symbol>(
   obj: unknown,
   key: K,
-  // eslint-disable-next-line no-shadow
 ): obj is NonNullable<{ [key in K]: unknown }> {
   return isObjectNonNull(obj) && key in obj;
 }
 
 export function chkField<K extends string | number | symbol>(
   key: K,
-  // eslint-disable-next-line no-shadow
 ): typecheck<NonNullable<{ [key in K]: unknown }>> {
-  // eslint-disable-next-line no-shadow
   return (obj: unknown): obj is { [key in K]: unknown } => hasField(obj, key);
 }
 
@@ -660,16 +661,13 @@ export function hasFieldType<T, K extends string | number | symbol>(
   obj: unknown,
   key: K,
   checker: typecheck<T>,
-  // eslint-disable-next-line no-shadow
 ): obj is NonNullable<{ [key in K]: T }> {
   return hasField(obj, key) && checker(obj[key]);
 }
 export function chkFieldType<T, K extends string | number | symbol>(
   key: K,
   checker: typecheck<T>,
-  // eslint-disable-next-line no-shadow
 ): typecheck<NonNullable<{ [key in K]: T }>> {
-  // eslint-disable-next-line no-shadow
   return (obj: unknown): obj is { [key in K]: T } =>
     hasFieldType(obj, key, checker);
 }
@@ -683,13 +681,11 @@ export function chkFieldType<T, K extends string | number | symbol>(
 export function hasStrField<K extends string | number | symbol>(
   obj: unknown,
   key: K,
-  // eslint-disable-next-line no-shadow
 ): obj is NonNullable<{ [key in K]: string }> {
   return hasFieldType(obj, key, isString);
 }
 export function chkStrField<K extends string>(
   key: K,
-  // eslint-disable-next-line no-shadow
 ): typecheck<NonNullable<{ [key in K]: string }>> {
   return chkFieldType(key, isString);
 }

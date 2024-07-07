@@ -16,7 +16,6 @@ export function DebouncedDelay(
   const doWork = OnlyOneActiveQueue(func);
   function ping() {
     if (debounceTimer !== null) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       clearTimeout(debounceTimer);
     }
     debounceTimer = setTimeout(() => {

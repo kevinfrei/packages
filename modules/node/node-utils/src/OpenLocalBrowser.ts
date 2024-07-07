@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as child_proc from 'child_process';
 import { MakeLog } from '@freik/logger';
 

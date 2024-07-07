@@ -14,7 +14,6 @@ export function Fail(name?: string, message?: string): never {
   throw e;
 }
 
-// eslint-disable-next-line
 export function Catch(e: any, msg?: string): void {
   if (msg) {
     err(msg);
@@ -26,7 +25,6 @@ export function Catch(e: any, msg?: string): void {
   }
 }
 
-// eslint-disable-next-line
 export function onRejected(msg?: string): (reason: any) => void {
   return (reason: unknown) => {
     if (isString(msg)) {

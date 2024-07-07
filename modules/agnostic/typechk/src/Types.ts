@@ -24,8 +24,7 @@ export type SimpleObject =
  * Shorthand for a function that will validate the type of an unknown object
  * for the Typescript type-checker.
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
+
 export type typecheck<T> = (val: unknown) => val is T;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export type boolcheck = (val: unknown) => boolean;

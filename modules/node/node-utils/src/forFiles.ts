@@ -1,9 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 import { Container, MakeQueue, MakeStack } from '@freik/containers';
 import { isHiddenFile } from '@freik/is-hidden-file';
 import { isBoolean, isString, isUndefined } from '@freik/typechk';

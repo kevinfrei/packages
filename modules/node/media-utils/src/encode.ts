@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-
 // Module:
 // media/encode
 // Provides wav file to compressed audio file tools
@@ -78,7 +73,7 @@ const makeFfmpegArgs = (
   if (attrs) {
     for (const elem in attrs) {
       if (hasStrField(attrs, elem)) {
-        const data: string = (attrs as any)[elem]; // eslint-disable-line
+        const data: string = (attrs as any)[elem];
         args.push('-metadata');
         args.push(elem + '=' + data);
       }

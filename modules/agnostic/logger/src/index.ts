@@ -35,8 +35,8 @@ export type LoggerType = {
 export function MakeLog(name: string): LoggerType {
   const log = debug(name + ':log');
   const wrn: debug.Debugger = debug(name + ':warn');
-  const err = console.error; // eslint-disable-line no-console
-  const con = console.log; // eslint-disable-line no-console
+  const err = console.error;
+  const con = console.log;
   wrn.enabled = true;
   return { log, wrn, err, con, error: err, console: con, warn: wrn };
 }

@@ -37,7 +37,7 @@
     "cleanbuild": "yarn clean && yarn build",
     "prepublishOnly": "yarn test",
     "prepare": "yarn release",
-    "lint": "eslint --fix --ext .ts src",
+    "lint": "eslint --fix src",
     "preversion": "yarn lint",
     "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
     "test": "yarn lint && yarn typechk && yarn justtest",

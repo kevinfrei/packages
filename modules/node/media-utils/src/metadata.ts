@@ -15,7 +15,6 @@ import path from 'path';
 export * from '@freik/media-core';
 
 export declare type MetadataResult = {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   media: { '@ref': string; track: { [key: string]: string }[] };
 };
 

@@ -22,6 +22,7 @@
     "postpack": "yarn pinst --enable",
     "postinstall": "yarn husky install",
     "lerna": "yarn dlx lerna run",
+    "lint": "yarn dlx lerna run lint",
     "hook-commit": "yarn ftool format",
     "hook-push": "yarn dlx lerna run test",
     "pub2npm": "yarn dlx lerna publish --no-private"

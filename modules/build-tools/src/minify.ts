@@ -5,7 +5,6 @@ import { globSync } from 'glob';
 import fs, { promises as fsp } from 'node:fs';
 import path from 'node:path';
 
-// eslint-disable-next-line no-console
 const err = console.error;
 
 function isObjectNonNull(obj: unknown): obj is { [key: string]: unknown } {
@@ -21,16 +20,13 @@ function isBoolean(obj: unknown): obj is boolean {
 function has<K extends string>(
   x: unknown,
   key: K,
-  // eslint-disable-next-line no-shadow
 ): x is { [key in K]: unknown } {
   return isObjectNonNull(x) && key in x;
 }
 
-// eslint-disable-next-line no-shadow
 function hasStr<K extends string>(
   x: unknown,
   key: K,
-  // eslint-disable-next-line no-shadow
 ): x is { [key in K]: string } {
   return has(x, key) && isString(x[key]);
 }
@@ -89,7 +85,7 @@ export async function minify(unparsed: string[]): Promise<number> {
   // -s min : 'suffix', defaults to min (i.e. foo.min.js)
   // -o dir : 'out-dir', defaults to '', prepended to path
   // everything else is either files or dirs to minify individually
-  // eslint-disable-next-line
+
   const mo: MinimistOpts = { boolean: ['e', 'i', 'r', 'm'] };
   const m: ParsedArgs = minimist(unparsed, mo);
 

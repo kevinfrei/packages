@@ -40,12 +40,10 @@ export async function formatFiles(unparsed: string[]): Promise<number> {
     ) {
       pkgmgr = unparsed[0];
     } else {
-      // eslint-disable-next-line no-console
       console.error('Unknown package manager: ' + unparsed[0]);
       return -1;
     }
   } else if (unparsed.length !== 0) {
-    // eslint-disable-next-line no-console
     console.error('Unknown arguments to format');
     return -1;
   }
@@ -78,17 +76,15 @@ async function formatGroup(grp: string[] | undefined, fmtCommand: string) {
       try {
         grpRes = await execp(`${fmtCommand}${file}`);
       } catch (e) {
-        // eslint-disable-next-line no-console
         console.error(e);
-        // eslint-disable-next-line no-console
+
         console.error(file);
-        // eslint-disable-next-line no-console
+
         console.error(fileLists);
       }
       if (grpRes !== undefined) {
-        // eslint-disable-next-line no-console
         console.log(grpRes.stdout);
-        // eslint-disable-next-line no-console
+
         console.error(grpRes.stderr);
       }
     }

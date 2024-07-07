@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export * as Covers from './cover.js';
 export * as Decode from './decode.js';
 export * as Encode from './encode.js';
