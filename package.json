@@ -12,14 +12,14 @@
     "modules/node/*",
     "modules/www/*"
   ],
-  "scripts"  : {
+  "scripts": {
     "release": "bun run --filter modules release",
     "build": "bun run --filter modules build",
     "format": "bun run ftool format bun",
     "test": "bun run --filter modules test",
     "prepare": "bun .husky/install.mjs",
     "lint": "bun run --filter modules lint",
-    "pre-commit": "bun run ftool format",
+    "pre-commit": "bun run format",
     "pre-push": "bun run --filter modules test",
     "pub2npm": "TODO: bun publish --no-private"
   },
@@ -38,5 +38,6 @@
     "typedoc": "^0.26.4",
     "typedoc-plugin-markdown": "^4.2.1",
     "typescript": "^5.5.3"
-  }
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
