@@ -31,28 +31,28 @@
     "clean": "rimraf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",
     "esmcompat": "echo '{\"type\":\"module\"}'> ./lib/esm/package.json",
-    "compat": "yarn cjscompat && yarn esmcompat",
-    "release": "yarn clean && tsc --project tsconfig.cjs.opt.json && tsc --project tsconfig.esm.opt.json && yarn ftool minify -i -r lib && yarn compat",
-    "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json && yarn compat",
-    "cleanbuild": "yarn clean && yarn build",
-    "prepublishOnly": "yarn test",
-    "prepare": "yarn release",
+    "compat": "bun run cjscompat && bun run esmcompat",
+    "release": "bun run clean && tsc --project tsconfig.cjs.opt.json && tsc --project tsconfig.esm.opt.json && bun run ftool minify -i -r lib && bun run compat",
+    "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json && bun run compat",
+    "cleanbuild": "bun run clean && bun run build",
+    "prepublishOnly": "bun run test",
+    "prepare": "bun run release",
     "lint": "eslint --fix src",
-    "preversion": "yarn lint",
+    "preversion": "bun run lint",
     "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
-    "test": "yarn lint && yarn typechk && yarn justtest",
+    "test": "bun run lint && bun run typechk && bun run justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/logger": "^0.2.11",
-    "@freik/typechk": "^0.5.12"
+    "@freik/logger": "workspace:*",
+    "@freik/typechk": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.11",
+    "@freik/build-tools": "workspace:*",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -76,6 +76,5 @@
     "rimraf": "^5.0.8",
     "ts-jest": "^29.1.5",
     "typescript": "^5.5.3"
-  },
-  "gitHead": "0ee0130febfb999a66d80374aaa95e136cf8ff13"
+  }
 }

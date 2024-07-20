@@ -50,7 +50,7 @@ it('spawnRes test 12', () => {
   expect(res2).toBeFalsy();
 });
 it('spawnRes test 3', () => {
-  const badRes = spawnRes('yarn', ['shit']);
+  const badRes = spawnRes('bun', ['shit']);
   //  console.log(badRes);
   expect(badRes).toBeFalsy();
 });

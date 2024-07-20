@@ -1,3 +1,2 @@
-.yarn/**/*  -diff
-yarn.lock   -diff
+bunb.lock   -diff
 .pnp.*      -diff

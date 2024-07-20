@@ -30,24 +30,24 @@
     "clean": "rimraf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",
     "esmcompat": "echo '{\"type\":\"module\"}'> ./lib/esm/package.json",
-    "compat": "yarn cjscompat && yarn esmcompat",
-    "release": "yarn clean && tsc --project tsconfig.cjs.opt.json && tsc --project tsconfig.esm.opt.json && yarn ftool minify -i -r lib && yarn compat",
-    "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json && yarn compat",
-    "cleanbuild": "yarn clean && yarn build",
-    "prepublishOnly": "yarn test",
-    "prepare": "yarn release",
+    "compat": "bun cjscompat && bun esmcompat",
+    "release": "bun run clean && tsc --project tsconfig.cjs.opt.json && tsc --project tsconfig.esm.opt.json && bun run ftool minify -i -r lib && bun run compat",
+    "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json && bun run compat",
+    "cleanbuild": "bun run clean && bun run build",
+    "prepublishOnly": "bun run test",
+    "prepare": "bun run release",
     "lint": "eslint --fix src",
-    "preversion": "yarn lint",
+    "preversion": "bun run lint",
     "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
-    "test": "yarn lint && yarn typechk && yarn justtest",
+    "test": "bun run lint && bun run typechk && bun run justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/helpers": "^0.3.13",
-    "@freik/typechk": "^0.5.12"
+    "@freik/helpers": "workspace:*",
+    "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
-    "@freik/build-tools": "^3.6.11",
+    "@freik/build-tools": "workspace:*",
     "@jest/types": "^29.6.3",
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
@@ -66,6 +66,5 @@
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
-  },
-  "gitHead": "0ee0130febfb999a66d80374aaa95e136cf8ff13"
+  }
 }

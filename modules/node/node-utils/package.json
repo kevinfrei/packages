@@ -30,31 +30,31 @@
     "clean": "rimraf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",
     "esmcompat": "echo '{\"type\":\"module\"}'> ./lib/esm/package.json",
-    "compat": "yarn cjscompat && yarn esmcompat",
-    "release": "yarn clean && tsc --project tsconfig.cjs.opt.json && tsc --project tsconfig.esm.opt.json && yarn ftool minify -i -r lib && yarn compat",
-    "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json && yarn compat",
-    "cleanbuild": "yarn clean && yarn build",
-    "prepublishOnly": "yarn test",
-    "prepare": "yarn release",
+    "compat": "bun run cjscompat && bun run esmcompat",
+    "release": "bun run clean && tsc --project tsconfig.cjs.opt.json && tsc --project tsconfig.esm.opt.json && bun run ftool minify -i -r lib && bun run compat",
+    "build": "tsc --project tsconfig.cjs.json && tsc --project tsconfig.esm.json && bun run compat",
+    "cleanbuild": "bun run clean && bun run build",
+    "prepublishOnly": "bun run test",
+    "prepare": "bun run release",
     "lint": "eslint --fix src",
-    "preversion": "yarn lint",
+    "preversion": "bun run lint",
     "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
-    "test": "yarn lint && yarn typechk && yarn justtest",
+    "test": "bun run lint && bun run typechk && bun run justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/containers": "^0.2.14",
-    "@freik/helpers": "^0.3.13",
+    "@freik/containers": "workspace:*",
+    "@freik/helpers": "workspace:*",
     "@freik/is-hidden-file": "^1.13.1",
-    "@freik/logger": "^0.2.11",
-    "@freik/seqnum": "^1.1.11",
-    "@freik/sync": "^0.2.13",
-    "@freik/text": "^0.3.12",
-    "@freik/typechk": "^0.5.12"
+    "@freik/logger": "workspace:*",
+    "@freik/seqnum": "workspace:*",
+    "@freik/sync": "workspace:*",
+    "@freik/text": "workspace:*",
+    "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
-    "@freik/build-tools": "^3.6.11",
+    "@freik/build-tools": "workspace:*",
     "@types/debug": "^4.1.12",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.10",
@@ -69,6 +69,5 @@
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
-  },
-  "gitHead": "0ee0130febfb999a66d80374aaa95e136cf8ff13"
+  }
 }

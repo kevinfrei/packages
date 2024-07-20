@@ -19,14 +19,14 @@
   },
   "scripts": {
     "justtest": "jest --config jestconfig.json",
-    "min": "node ./lib/tools.js minify -i lib/*.js",
+    "min": "bun ./lib/tools.js minify -i lib/*.js",
     "build": "rimraf lib && tsc",
-    "prepare": "yarn run build",
-    "prepublishOnly": "yarn test && yarn run lint",
-    "lint": "yarn run eslint --fix src",
-    "preversion": "yarn run lint",
+    "prepare": "bun run build",
+    "prepublishOnly": "bun run test && bun run lint",
+    "lint": "bun run eslint --fix src",
+    "preversion": "bun run lint",
     "typechk": "tsc --noEmit",
-    "test": "yarn lint && yarn typechk"
+    "test": "bun run lint && bun run typechk"
   },
   "dependencies": {
     "@babel/cli": "^7.24.7",
@@ -66,7 +66,7 @@
     "@typescript-eslint/eslint-plugin": "^7.15.0"
   },
   "engines": {
-    "node": "^14.13.1 || >= 16.0.0"
-  },
-  "gitHead": "0ee0130febfb999a66d80374aaa95e136cf8ff13"
+    "node": "^14.13.1 || >= 16.0.0",
+    "bun": "^1.1.20"
+  }
 }

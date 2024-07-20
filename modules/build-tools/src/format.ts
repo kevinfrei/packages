@@ -36,7 +36,8 @@ export async function formatFiles(unparsed: string[]): Promise<number> {
     if (
       unparsed[0] === 'npm' ||
       unparsed[0] === 'yarn' ||
-      unparsed[0] === 'pnpm'
+      unparsed[0] === 'pnpm' ||
+      unparsed[0] === 'bun'
     ) {
       pkgmgr = unparsed[0];
     } else {
@@ -61,7 +62,10 @@ export async function formatFiles(unparsed: string[]): Promise<number> {
     },
   });
   await Promise.all([
-    formatGroup(files.groups.get('prettier'), `${pkgmgr} prettier --write `),
+    formatGroup(
+      files.groups.get('prettier'),
+      `${pkgmgr} run prettier --write `,
+    ),
     formatGroup(files.groups.get('clang'), 'clang-format -i '),
   ]);
   return 0;
