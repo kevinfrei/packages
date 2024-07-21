@@ -20,7 +20,7 @@
     "prepare": "bun .husky/install.mjs",
     "lint": "bun run --filter '*' lint",
     "pre-commit": "bun run format",
-    "pre-push": "bun run --filter '*' test",
+    "pre-push": "bun run build && bun run test",
     "pub2npm": "TODO: bun publish --no-private"
   },
   "devDependencies": {

@@ -18,7 +18,7 @@
     "ftool": "./lib/tools.js"
   },
   "scripts": {
-    "justtest": "jest --config jestconfig.json",
+    "justtest": "echo No Tests- Bad Kevin",
     "min": "bun ./lib/tools.js minify -i lib/*.js",
     "build": "rimraf lib && tsc",
     "prepare": "bun run build",

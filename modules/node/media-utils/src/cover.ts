@@ -20,6 +20,19 @@ const header2mime = new Map<string, string>([
 ]);
 */
 
+function bufferToBase64(buffer: Uint8Array): string {
+  const output: string[] = [];
+
+  for (let i = 0, length = buffer.byteLength; i < length; i++) {
+    const chr = buffer.at(i);
+    if (chr !== undefined) {
+      output.push(String.fromCharCode(chr));
+    }
+  }
+
+  return btoa(output.join(''));
+}
+
 export async function ReadFromFile(
   audioFile: string,
 ): Promise<MimeData | void> {
@@ -27,7 +40,7 @@ export async function ReadFromFile(
   const cover = selectCover(common.picture);
   if (!cover) return;
   return {
-    data: cover.data.toString('base64'),
+    data: await bufferToBase64(cover.data),
     type: cover?.format,
   };
 }

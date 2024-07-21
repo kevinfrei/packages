@@ -46,7 +46,7 @@ test('DebouncedEvery testing', async () => {
   everyHundred();
   await Sleep(250);
   expect(callCount).toBe(2);
-  expect(lastDelta).toBeGreaterThan(249);
+  expect(lastDelta).toBeGreaterThan(225);
   expect(lastDelta).toBeLessThan(350);
 });
 

@@ -18,9 +18,7 @@
   "files": [
     "lib/*"
   ],
-  "module": "./lib/esm/index.js",
   "main": "./lib/cjs/index.js",
-  "types": "./lib/esm/index.d.ts",
   "exports": {
     ".": {
       "import": "./lib/esm/index.js",
