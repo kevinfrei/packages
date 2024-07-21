@@ -43,22 +43,22 @@
     "@freik/media-core": "workspace:*",
     "@freik/node-utils": "workspace:*",
     "@freik/typechk": "workspace:*",
-    "music-metadata": "^8.3.0"
+    "music-metadata": "^10.0.0"
   },
   "devDependencies": {
     "@freik/build-tools": "workspace:*",
     "@freik/sync": "workspace:*",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.10",
-    "@typescript-eslint/eslint-plugin": "^7.15.0",
-    "@typescript-eslint/parser": "^7.15.0",
-    "eslint": "^9.6.0",
+    "@types/node": "^20.14.11",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "eslint": "^9.7.0",
     "eslint-config-prettier": "^9.1.0",
     "jest": "^29.7.0",
     "jest-extended": "^4.0.2",
-    "prettier": "^3.3.2",
-    "rimraf": "^5.0.8",
-    "ts-jest": "^29.1.5",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.2.3",
     "typescript": "^5.5.3"
   },
   "engines": {
