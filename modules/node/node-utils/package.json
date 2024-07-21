@@ -23,7 +23,8 @@
     }
   },
   "scripts": {
-    "justtest": "jest --config jestconfig.json",
+    "reallytest": "jest --config jestconfig.json",
+    "justtest": "echo Have to run outside of bun workspace",
     "watch": "jest --watch --config jestconfig.json",
     "clean": "rimraf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",

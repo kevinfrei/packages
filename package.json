@@ -17,6 +17,7 @@
     "build": "bun run --filter '*' build",
     "format": "bun run ftool format bun",
     "test": "bun run --filter '*' test",
+    "justtest": "bun run --filter '*' justtest",
     "prepare": "bun .husky/install.mjs",
     "lint": "bun run --filter '*' lint",
     "pre-commit": "bun run format",
