@@ -28,7 +28,7 @@
   "scripts": {
     "justtest": "jest --config jestconfig.json",
     "watch": "jest --watch --config jestconfig.json",
-    "clean": "rimraf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
+    "clean": "rm -rf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",
     "esmcompat": "echo '{\"type\":\"module\"}'> ./lib/esm/package.json",
     "compat": "bun run cjscompat && bun run esmcompat",
@@ -77,7 +77,6 @@
     "react-scripts": "^5.0.1",
     "react-test-renderer": "^18.3.1",
     "recoil": "^0.7.7",
-    "rimraf": "^6.0.1",
     "ts-jest": "^29.2.3",
     "typescript": "^5.5.3"
   }

@@ -20,7 +20,7 @@
   "scripts": {
     "justtest": "echo No Tests- Bad Kevin",
     "min": "bun ./lib/tools.js minify -i lib/*.js",
-    "build": "rimraf lib && tsc",
+    "build": "rm -rf lib && tsc",
     "prepare": "bun run build",
     "prepublishOnly": "bun run test && bun run lint",
     "lint": "bun run eslint --fix src",
@@ -46,7 +46,6 @@
     "minimist": "^1.2.8",
     "postcss": "^8.4.39",
     "prettier": "^3.3.3",
-    "rimraf": "^6.0.1",
     "rollup": "^4.19.0",
     "rollup-plugin-dts": "^6.1.1",
     "shelljs": "^0.8.5",

@@ -13,13 +13,13 @@
     "modules/www/*"
   ],
   "scripts": {
-    "release": "bun run --filter '*' release",
-    "build": "bun run --filter '*' build",
+    "release": "bun run forall release",
+    "build": "bun run forall build",
     "format": "bun run ftool format bun",
-    "test": "bun run --filter '*' test",
-    "justtest": "bun run --filter '*' justtest",
+    "test": "bun run forall test",
     "prepare": "bun .husky/install.mjs",
-    "lint": "bun run --filter '*' lint",
+    "lint": "bun run forall lint",
+    "forall": "bun run --filter '*'",
     "pre-commit": "bun run format",
     "pre-push": "bun run build && bun run test",
     "pub2npm": "TODO: bun publish --no-private"
@@ -35,7 +35,6 @@
     "husky": "^9.1.1",
     "jest": "^29.7.0",
     "prettier": "^3.3.3",
-    "rimraf": "^6.0.1",
     "typedoc": "^0.26.4",
     "typedoc-plugin-markdown": "^4.2.1",
     "typescript": "^5.5.3"
