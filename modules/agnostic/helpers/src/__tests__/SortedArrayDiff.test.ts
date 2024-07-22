@@ -1,3 +1,4 @@
+import { expect, test } from 'bun:test';
 import { SortedArrayDiff, SortedArrayDiffSync } from '../Diff';
 import { SetDifference } from '../Operations';
 
@@ -9,7 +10,7 @@ function striCmp(a: string, b: string): number {
   return a.toLocaleUpperCase().localeCompare(b.toLocaleUpperCase());
 }
 
-it('SortedArrayDiffSync', () => {
+test('SortedArrayDiffSync', () => {
   const array1 = ['a', 'b', 'd', 'f'];
   const array2 = ['b', 'e', 'f'];
   const subs: string[] = [];
@@ -39,7 +40,7 @@ function RunDiffSync(
     (str: string) => subs.push(str),
   );
 }
-it('SortedArrayDiffSync - case insensitive validation', () => {
+test('SortedArrayDiffSync - case insensitive validation', () => {
   const array1 = ['B', 'e', 'f', 'G'];
   const array2 = ['a', 'b', 'd', 'F'];
   let subs: string[] = [];
@@ -95,7 +96,7 @@ function AddAndRemoveSomeStuff(arr: string[]): {
   return { val, subCount, addCount };
 }
 
-it('Random SortedArrayDiffSync testing', () => {
+test('Random SortedArrayDiffSync testing', () => {
   const tmp1 = GenerateRandomArray();
   const { addCount, subCount, val: tmp2 } = AddAndRemoveSomeStuff(tmp1);
   const array1 = tmp1.sort(strCmp);
@@ -142,7 +143,7 @@ async function RunDiff(
   );
 }
 
-it('SortedArrayDiff (async)', async () => {
+test('SortedArrayDiff (async)', async () => {
   const array1 = [1, 1, 2, 3, 5];
   const array2 = [1, 2, 5, 13];
   let subs: number[] = [];
@@ -157,7 +158,7 @@ it('SortedArrayDiff (async)', async () => {
   expect(adds).toEqual([1, 3]);
 });
 
-it('Random SortedArrayDiffAsync testing', async () => {
+test('Random SortedArrayDiffAsync testing', async () => {
   const tmp1 = GenerateRandomArray();
   const { addCount, subCount, val: tmp2 } = AddAndRemoveSomeStuff(tmp1);
   const array1 = tmp1.sort(strCmp);

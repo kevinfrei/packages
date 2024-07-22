@@ -1,3 +1,4 @@
+import { test, expect } from 'bun:test';
 import { MakeLog } from '../index';
 
 test("Doesn't Crash", () => {

@@ -142,7 +142,6 @@ export function FromB64(val: string): number {
     } else if (code === 43) {
       res += 62;
     } else if (code === 47) {
-      // There *is* clearly code coverage for this branch, but jest seems confused
       res += 63;
     } else {
       /* istanbul ignore next */

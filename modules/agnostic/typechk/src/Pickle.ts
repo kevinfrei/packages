@@ -21,11 +21,10 @@ import {
   isSymbol,
 } from './TypeChk.js';
 import { FreikTypeTag, SimpleObject, typecheck } from './Types.js';
-import { isBrowser, isNode } from './which.js';
+import { hasGlobalThis, isBrowser, isNode } from './which.js';
 
 type FlattenedCustom = {
   '@dataType': string;
-
   '@dataValue': SimpleObject;
 };
 
@@ -153,6 +152,7 @@ const theUnpicklers = new Map<symbol, FromFlat<unknown>>([
 
 declare let global: { [key: string | number | symbol]: unknown };
 declare let window: { [key: string | number | symbol]: unknown };
+declare let globalThis: { [key: string | number | symbol]: unknown };
 
 export enum RegistrationResult {
   DomSuccess,
@@ -162,9 +162,34 @@ export enum RegistrationResult {
   NodeAlready,
   NodeFail,
   DetectionFailure,
+  GlobalThisSuccess,
+  GlobalThisAlready,
+  GlobalThisFail,
 }
 const pickleKey = FreikTypeTag;
 export function registerPickling(): RegistrationResult {
+  if (hasGlobalThis()) {
+    if (!hasField(globalThis, pickleKey)) {
+      (globalThis as any as { [key: symbol]: unknown })[pickleKey] = {
+        to: thePicklers,
+        from: theUnpicklers,
+      };
+      return RegistrationResult.GlobalThisSuccess;
+    }
+    if (
+      !hasFieldType(
+        globalThis,
+        pickleKey,
+        chkObjectOfType({
+          to: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
+          from: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
+        }),
+      )
+    ) {
+      return RegistrationResult.GlobalThisFail;
+    }
+    return RegistrationResult.GlobalThisAlready;
+  }
   if (isBrowser()) {
     if (!hasField(window, pickleKey)) {
       (window as any as { [key: symbol]: unknown })[pickleKey] = {
@@ -213,6 +238,8 @@ export function registerPickling(): RegistrationResult {
 }
 
 switch (registerPickling()) {
+  case RegistrationResult.GlobalThisFail:
+    throw Error(`Invalid globalThis[${String(pickleKey)}] object`);
   case RegistrationResult.DomFail:
     throw Error(
       `Invalid window[${String(pickleKey)}] object in DOM environment`,
@@ -229,6 +256,13 @@ switch (registerPickling()) {
 
 function picklers(): Map<symbol, ToFlat<unknown>> {
   if (
+    hasGlobalThis() &&
+    isObjectNonNull(globalThis) &&
+    hasField(globalThis, pickleKey) &&
+    hasField(globalThis[pickleKey], 'to')
+  ) {
+    return globalThis[pickleKey].to as Map<symbol, ToFlat<unknown>>;
+  } else if (
     isNode() &&
     isObjectNonNull(global) &&
     hasField(global, pickleKey) &&
@@ -256,6 +290,13 @@ function setPickleHandler(pickleTag: symbol, toString: ToFlat<unknown>) {
 
 function unpicklers(): Map<symbol, FromFlat<unknown>> {
   if (
+    hasGlobalThis() &&
+    isObjectNonNull(globalThis) &&
+    hasField(globalThis, pickleKey) &&
+    hasField(globalThis[pickleKey], 'from')
+  ) {
+    return globalThis[pickleKey].from as Map<symbol, FromFlat<unknown>>;
+  } else if (
     isObjectNonNull(process) &&
     !hasField(process, 'browser') &&
     hasField(global, pickleKey) &&

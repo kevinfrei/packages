@@ -1,4 +1,11 @@
-import { Pickle, SafelyUnpickle, isNumber, isString } from '@freik/typechk';
+import { expect, test, beforeAll } from 'bun:test';
+import {
+  Pickle,
+  SafelyUnpickle,
+  isNumber,
+  isString,
+  registerPickling,
+} from '@freik/typechk';
 import {
   MakeMultiMap,
   MakePriorityQueue,
@@ -17,7 +24,10 @@ import {
   isStackOf,
 } from '../index';
 
+beforeAll(() => console.log(registerPickling()));
+
 test('Basic MultiMap tests', async () => {
+  console.log(registerPickling());
   const mmap = MakeMultiMap<number, string>();
   expect(mmap).toBeDefined();
   expect(mmap.size()).toEqual(0);
@@ -100,6 +110,7 @@ test('Basic MultiMap tests', async () => {
 });
 
 test('MultiMap type tests', () => {
+  console.log(registerPickling());
   const mmns = MakeMultiMap([
     [1, 'a'],
     [2, 'b'],
@@ -112,6 +123,7 @@ test('MultiMap type tests', () => {
 });
 
 test('Queue tests', () => {
+  console.log(registerPickling());
   const q = MakeQueue([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   expect(q.size()).toEqual(10);
   expect(q.peek()).toEqual(1);
@@ -119,7 +131,7 @@ test('Queue tests', () => {
   expect(q.size()).toEqual(9);
   q.push(11);
   while (!q.empty()) {
-    expect(q.peek()).toEqual(q.pop());
+    expect(q.peek()).toEqual(q.pop() as number);
   }
   for (let i = 0; i < 10; i++) {
     q.push(i);

@@ -1,10 +1,11 @@
+import {test, expect} from 'bun:test';
 import SeqNum from '../index';
 
 test('SeqNum Features', () => {
   const sn = SeqNum('1@#$');
   const myNum = sn();
   expect(myNum).toHaveLength(5);
-  expect(myNum.substr(0, 4)).toEqual('1@#$');
+  expect(myNum.substring(0, 4)).toEqual('1@#$');
   const nutherNum = sn();
   expect(sn.cmp(myNum, nutherNum)).toBeLessThan(0);
   expect(sn.cmp(nutherNum, myNum)).toBeGreaterThan(0);
