@@ -18,7 +18,7 @@
     "ftool": "./lib/tools.js"
   },
   "scripts": {
-    "justtest": "echo No Tests- Bad Kevin",
+    "justtest": "echo No Tests for Build Tools- Bad Kevin",
     "min": "bun ./lib/tools.js minify -i lib/*.js",
     "build": "rm -rf lib && tsc",
     "prepare": "bun run build",

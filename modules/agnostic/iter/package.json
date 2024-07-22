@@ -26,7 +26,7 @@
   "scripts": {
     "justtest": "bun test",
     "watch": "bun test --watch",
-    "clean": "rm -rf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
+    "clean": "rm -rf lib",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",
     "esmcompat": "echo '{\"type\":\"module\"}'> ./lib/esm/package.json",
     "compat": "bun run cjscompat && bun run esmcompat",
@@ -49,7 +49,6 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^9.7.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.3.3",
     "typedoc": "^0.26.4",
     "typedoc-plugin-markdown": "^4.2.1",
     "typescript": "^5.5.3"
