@@ -1,6 +1,5 @@
-import { exec as execAsync } from 'child_process';
+// import { exec } from 'node:child_process';
 import fs from 'fs';
-import { promisify } from 'util';
 import {
   arrayToTextFile,
   arrayToTextFileAsync,
@@ -11,18 +10,18 @@ import {
   textFileToArrayAsync,
 } from '../FileUtil';
 const { promises: fsp } = fs;
-
-const exec = promisify(execAsync);
+import { test, expect } from 'bun:test';
+import { $ } from 'bun';
 
 // const { promisify } = require('util');
 
-module.exports.getGitUser = async function getGitUser() {
-  const name = await exec('git config --global user.name');
-  const email = await exec('git config --global user.email');
-  return { name, email };
-};
+// module.exports.getGitUser = async function getGitUser() {
+//   const name = 'Kevin Frei';
+//   const email = 'kevinfrei@hotmail.com';
+//   return { name, email };
+// };
 
-it('async array to text file and back again', async () => {
+test('async array to text file and back again', async () => {
   const data = 'a b c d e f g';
   const fileName = 'textFile.txt';
   try {
@@ -37,7 +36,7 @@ it('async array to text file and back again', async () => {
   expect(data).toEqual(result);
 });
 
-it('array to text file and back again', () => {
+test('array to text file and back again', () => {
   const data = 'a b c d e f g';
   const fileName = 'textFile.txt';
   try {
@@ -52,20 +51,20 @@ it('array to text file and back again', () => {
   expect(data).toEqual(result);
 });
 
-it('hiding a file on MacOS/Windows', async () => {
+test('hiding a file on MacOS/Windows', async () => {
   const pathName = 'testFile.empty';
   if (process.platform === 'darwin') {
     try {
       await fsp.unlink(pathName);
     } catch (e) {}
     await arrayToTextFileAsync(['this', 'is', 'a', 'test'], pathName);
-    const lsBefore = await exec('/bin/ls -lO');
+    const lsBefore = await $`/bin/ls -lO`;
     expect(lsBefore.stdout.indexOf(pathName)).toBeGreaterThanOrEqual(0);
     const newPath = await hideFile(pathName);
     expect(newPath).toEqual('.' + pathName);
-    const lsAfter = await exec('/bin/ls -lO');
+    const lsAfter = await $`/bin/ls -lO`;
     expect(lsAfter.stdout.indexOf(pathName)).toBeLessThan(0);
-    const lsHidden = await exec('/bin/ls -laO');
+    const lsHidden = await $`/bin/ls -laO`;
     const hidden = lsHidden.stdout.indexOf('hidden');
     const fileLoc = lsHidden.stdout.indexOf(pathName);
     expect(hidden).toBeLessThan(fileLoc);
@@ -79,14 +78,14 @@ it('hiding a file on MacOS/Windows', async () => {
       await fsp.unlink(pathName);
     } catch (e) {}
     await arrayToTextFileAsync(['this', 'is', 'a', 'test'], pathName);
-    const lsBefore = await exec('dir');
-    expect(lsBefore.stdout.indexOf(pathName)).toBeGreaterThanOrEqual(0);
+    const lsBefore = await $`ls`.text();
+    expect(lsBefore.indexOf(pathName)).toBeGreaterThanOrEqual(0);
     const newPath = await hideFile(pathName);
     expect(newPath).toEqual('.' + pathName);
-    const lsAfter = await exec('dir');
-    expect(lsAfter.stdout.indexOf(pathName)).toBeLessThan(0);
-    const lsHidden = await exec('dir /a');
-    const fileLoc = lsHidden.stdout.indexOf(pathName);
+    const lsAfter = await $`ls`.text();
+    expect(lsAfter.indexOf(pathName)).toBeLessThan(0);
+    const lsHidden = await $`ls -A`.text();
+    const fileLoc = lsHidden.indexOf(pathName);
     expect(fileLoc).toBeGreaterThan(-1);
     try {
       await fsp.unlink('.' + pathName);
@@ -97,7 +96,7 @@ it('hiding a file on MacOS/Windows', async () => {
   }
 });
 
-it('Some more minor things', async () => {
+test('Some more minor things', async () => {
   expect(size('src/__tests__/FileIndexTest/file1.txt')).toBe(1);
   expect(await sizeAsync('src/__tests__/FileIndexTest/file2.txt')).toBe(1);
   expect(size('src/__tests__/FileIndexTest/file1.nope')).toBe(-1);

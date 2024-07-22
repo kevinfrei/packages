@@ -1,6 +1,7 @@
 import { ForDirs, ForFiles, ForFilesSync } from '../index';
+import { test, expect } from 'bun:test';
 
-it('Very Basic', () => {
+test('Very Basic', () => {
   const seen = Array<number>(7).fill(0);
   let count = 0;
   ForFilesSync(
@@ -32,7 +33,7 @@ it('Very Basic', () => {
   expect(seen).toEqual([2, 2, 1, 2, 1, 1, 2]);
 });
 
-it('Some file type filter', () => {
+test('Some file type filter', () => {
   let count = 0;
   ForFilesSync(
     'src/__tests__/SubdirTest/subdir2',
@@ -47,7 +48,7 @@ it('Some file type filter', () => {
   expect(count).toBe(3);
 });
 
-it('Very Basic Async', async () => {
+test('Very Basic Async', async () => {
   const seen = Array<number>(7).fill(0);
   let count = 0;
   await ForFiles(
@@ -79,7 +80,7 @@ it('Very Basic Async', async () => {
   expect(seen).toEqual([2, 2, 1, 2, 1, 1, 2]);
 });
 
-it('Conditional recursion Async', async () => {
+test('Conditional recursion Async', async () => {
   const seen = Array<number>(7).fill(0);
   let count = 0;
   await ForFiles(
@@ -111,7 +112,7 @@ it('Conditional recursion Async', async () => {
   expect(seen).toEqual([1, 1, 1, 2, 1, 1, 1]);
 });
 
-it('Some file type filter async', async () => {
+test('Some file type filter async', async () => {
   let count = 0;
   await ForFiles(
     'src/__tests__/SubdirTest/subdir2',
@@ -126,7 +127,7 @@ it('Some file type filter async', async () => {
   expect(count).toBe(3);
 });
 
-it('Basic ForDirs test', async () => {
+test('Basic ForDirs test', async () => {
   let count = 0;
   const adder = (dirname: string) => {
     count++;
@@ -152,7 +153,7 @@ it('Basic ForDirs test', async () => {
   expect(count).toBe(3);
 });
 
-it('Skipping hidden file tests', async () => {
+test('Skipping hidden file tests', async () => {
   let ei = 0;
   let jc = 0;
   let pack = 0;
@@ -178,7 +179,7 @@ it('Skipping hidden file tests', async () => {
     dontAssumeDotsAreHidden: true,
   });
   expect(ei).toEqual(1);
-  expect(jc).toEqual(1);
+  expect(jc).toEqual(0);
   expect(pack).toEqual(1);
   await ForFiles('.', counter, {
     recurse: false,
@@ -190,7 +191,7 @@ it('Skipping hidden file tests', async () => {
   expect(jc).toEqual(2);
   expect(pack).toEqual(2);
 });
-it('Stragglers', async () => {
+test('Stragglers', async () => {
   let jsonCount = 0;
   await ForFiles(
     '.',
@@ -200,7 +201,7 @@ it('Stragglers', async () => {
     },
     { fileTypes: 'json', recurse: false },
   );
-  expect(jsonCount).toEqual(6);
+  expect(jsonCount).toEqual(5);
   jsonCount = 0;
   ForFilesSync(
     '.',

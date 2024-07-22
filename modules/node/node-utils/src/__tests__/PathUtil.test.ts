@@ -10,8 +10,9 @@ import {
   trailingSlash,
   xplat,
 } from '../PathUtil';
+import { test, expect } from 'bun:test';
 
-it('temp file names', () => {
+test('temp file names', () => {
   const tmp = getTemp('MyTempFile');
   const tmpSfx = getTemp('ATempFile', 'sfx');
   expect(tmp.indexOf('MyTempFile')).toBeGreaterThan(2);
@@ -19,7 +20,7 @@ it('temp file names', () => {
   expect(tmpSfx.lastIndexOf('.sfx')).toBe(tmpSfx.length - 4);
 });
 
-it('File extension stuff', () => {
+test('File extension stuff', () => {
   const justExt = getExtNoDot('A/File/name.txt');
   expect(justExt).toBe('txt');
   const another = getExtNoDot('//a/file.nam/is.in.here');
@@ -36,7 +37,7 @@ it('File extension stuff', () => {
   expect(lastExt).toBe('abc.ghi');
 });
 
-it('A few other operations', () => {
+test('A few other operations', () => {
   expect(xplat('/a/b')).toBe('/a/b');
   expect(xplat('\\a\\b')).toBe('/a/b');
   expect(trailingSlash('/a/b/c')).toBe('/a/b/c/');
@@ -50,7 +51,7 @@ it('A few other operations', () => {
   expect(dirname('a/b')).toBe('a');
 });
 
-it('Roots', async () => {
+test('Roots', async () => {
   const roots = await getRoots();
   switch (os.platform()) {
     case 'darwin':

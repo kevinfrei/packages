@@ -1,4 +1,5 @@
 import { Data } from '../index';
+import { test, expect } from 'bun:test';
 
 test('Encryption/Decryption', () => {
   const key = Data.MakeKey('This is a sample cypher key, I guess');
