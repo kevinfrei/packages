@@ -1,12 +1,20 @@
+import { $, Glob } from 'bun';
+import { exec } from 'child_process';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { $, Glob } from 'bun';
+import { promisify } from 'util';
 // Gotta import stuff directly from source, because this is used in a script.
 import * as TC from './modules/agnostic/typechk/src/TypeChk.ts';
 
+const execP = promisify(exec);
+
 // This is used to do workspace-wide things, because Bun (and yarn+lerna+nx) don't bother to consider dev/peer deps as actual dependencies :(
 
-type Dependency = { name: string; location: string; deps: string[] };
+type Module = { name: string; location: string; requires: string[] };
+type ModuleNode = Module & { dependedOnBy: string[] };
+type ModuleResolutionNode = ModuleNode & {
+  unresolvedRequirements: Set<string>;
+};
 
 // Just read a JSON text file, and return the JSON object.
 async function readJson(filename: string): Promise<JSON> {
@@ -45,9 +53,9 @@ function workspaceDeps(deps: { [key: string]: string }): string[] {
 const depKeys = ['dependencies', 'devDependencies', 'peerDependencies'];
 
 // Given a package.json file, return the name, location, and list of workspace dependencies.
-async function readDeps(pkgFile: string): Promise<Dependency> {
+async function readModule(pkgFile: string): Promise<Module> {
   const pkg = await readJson(pkgFile);
-  const deps = new Set<string>();
+  const requires = new Set<string>();
   if (!TC.hasFieldType(pkg, 'name', TC.isString)) {
     throw new Error('name field must be a string');
   }
@@ -58,19 +66,19 @@ async function readDeps(pkgFile: string): Promise<Dependency> {
     if (!TC.hasFieldType(pkg, key, TC.isObjectOfString)) {
       throw new Error(`${key} field must be an object of strings`);
     }
-    workspaceDeps(pkg[key]).forEach((k) => deps.add(k));
+    workspaceDeps(pkg[key]).forEach((k) => requires.add(k));
   }
   return {
     name: pkg.name,
     location: path.dirname(pkgFile),
-    deps: [...deps],
+    requires: [...requires],
   };
 }
 
-async function getDependencies(): Promise<Dependency[]> {
+async function getModules(): Promise<Module[]> {
   // First, load the package.json's from the workspaces
   const pkgFiles = await getProjects();
-  return await Promise.all(pkgFiles.map(readDeps));
+  return await Promise.all(pkgFiles.map(readModule));
 }
 
 // The rest of this code is really dumb right now.
@@ -81,15 +89,15 @@ async function getDependencies(): Promise<Dependency[]> {
 // own deps. The ordering logic is also pretty terrible. In general,
 // this ought to be a scheduler rather than a sorter and processor.
 
-function orderDeps(deps: Dependency[]): Dependency[][] {
+function orderDeps(deps: Module[]): Module[][] {
   // Sort the dependencies such that each 'row' of the result can be run in parallel.
-  const res: Dependency[][] = [];
+  const res: Module[][] = [];
   const visited = new Set<string>();
-  const lookup = new Map<string, Dependency>(deps.map((d) => [d.name, d]));
+  const lookup = new Map<string, Module>(deps.map((d) => [d.name, d]));
   while (lookup.size > 0) {
-    const curRow: Dependency[] = [];
+    const curRow: Module[] = [];
     for (const dep of lookup.values()) {
-      if (dep.deps.find((d) => !visited.has(d)) === undefined) {
+      if (dep.requires.find((d) => !visited.has(d)) === undefined) {
         curRow.push(dep);
       }
     }
@@ -107,17 +115,103 @@ function orderDeps(deps: Dependency[]): Dependency[][] {
   return res;
 }
 
-async function doit(filepath: string, cmds: string[]): Promise<void> {
-  await $`cd "${filepath}" && ${{ raw: cmds.map((v) => $.escape(v)).join(' ') }}`;
+type DependencyGraph = {
+  ready: string[];
+  provides: Map<string, Set<string>>;
+  unresolved: Map<string, Set<string>>;
+};
+
+function calcDependencyGraph(deps: Module[]): DependencyGraph {
+  const provides = new Map<string, Set<string>>(
+    deps.map((d) => [d.name, new Set<string>()]),
+  );
+  const ready = new Set<string>(deps.map((d) => d.name));
+  const unresolved = new Map<string, Set<string>>();
+  for (const dep of deps) {
+    for (const d of dep.requires) {
+      if (!provides.has(d)) {
+        throw new Error(`Dependency ${d} not found`);
+      }
+      provides.get(d)!.add(dep.name);
+      ready.delete(dep.name);
+      if (!unresolved.has(dep.name)) {
+        unresolved.set(dep.name, new Set<string>());
+      }
+      unresolved.get(dep.name)!.add(d);
+    }
+  }
+  // Assert that none of the ready tasks should be in unresolved, right?
+  if (ready.size + unresolved.size !== deps.length) {
+    throw new Error('Dependency graph calculation failed');
+    // Could go into something more detailed here, but I'm lazy.
+  }
+  return { ready: [...ready], provides, unresolved };
 }
 
-async function main(args: string[]) {
-  const deps = await getDependencies();
-  const ordered = orderDeps(deps);
+async function main(args: string[]): Promise<void> {
+  const modules = await getModules();
+  const ordered = orderDeps(modules);
   for (const order of ordered) {
     console.log(`[${order.map((d) => d.name).join(', ')}]`);
-    await Promise.all(order.map((d) => doit(d.location, args)));
+    await Promise.all(order.map((d) => doit(d.name, d.location, args)));
   }
 }
 
-main(process.argv.slice(2)).catch(console.error);
+async function scheduler(args: string[]): Promise<void> {
+  const modules = await getModules();
+  const moduleMap = new Map<string, Module>(modules.map((m) => [m.name, m]));
+  const { ready, provides, unresolved } = calcDependencyGraph(modules);
+
+  function runTask(name: string): Promise<void> {
+    const mod = moduleMap.get(name);
+    if (!mod) {
+      throw new Error(`Module ${name} not found!`);
+    }
+    return resolveTask(doit(mod.name, mod.location, args));
+  }
+
+  // When a task (promise) completes, it needs to update the ready set, and if
+  // there are newly ready tasks, it should then wait on their tasks to complete,
+  // otherwise, it should just return.
+
+  // So, a task-resolver:
+  async function resolveTask(waitOn: Promise<string>): Promise<void> {
+    // The task is done, so check to see if any tasks that depend on it are now ready.
+    const name = await waitOn;
+    const maybeReadyDeps = provides.get(name);
+    if (maybeReadyDeps) {
+      const ready: string[] = [];
+      for (const depToResolve of maybeReadyDeps) {
+        // For each task that depends on this one, remove this task from its dependencies.
+        // If the pending set is empty, add it to the ready set
+        const unresolvedDeps = unresolved.get(depToResolve);
+
+        // TODO: CONTINUE HERE
+      }
+      // Now wait on all of the remaining resolve tasks (recursion is fun!)
+      await Promise.all(ready.map((dep) => runTask(dep)));
+    }
+  }
+  // Seed the recursion with the initially ready tasks.
+  await Promise.all(ready.map((dep) => runTask(dep)));
+}
+
+async function doit(
+  name: string,
+  filepath: string,
+  cmds: string[],
+): Promise<string> {
+  // This doesn't work on windows, so I have to use Node-compatible stuff :(
+  // const output = await $`${{ raw: cmds.map((v) => $.escape(v)).join(' ') }}`.cwd(filepath);
+  const command = cmds.map((v) => $.escape(v)).join(' ');
+  const res = await execP(command, { cwd: filepath });
+  if (res.stderr) {
+    console.error(res.stderr.trimEnd());
+  }
+  console.log(res.stdout.trimEnd());
+  return name;
+}
+
+main(process.argv.slice(2))
+  .catch((e) => console.error('Error', e))
+  .finally(() => console.log('Done'));
