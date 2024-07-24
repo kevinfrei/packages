@@ -155,7 +155,7 @@ test('Basic ForDirs test', async () => {
 
 test('Skipping hidden file tests', async () => {
   let ei = 0;
-  let jc = 0;
+  let bt = 0;
   let pack = 0;
   // Filtering
   const counter = (filename: string): boolean => {
@@ -163,8 +163,8 @@ test('Skipping hidden file tests', async () => {
       case '.hidden-for-tests.txt':
         ei++;
         break;
-      case 'jestconfig.json':
-        jc++;
+      case 'bunfig.toml':
+        bt++;
         break;
       case 'package.json':
         pack++;
@@ -179,7 +179,7 @@ test('Skipping hidden file tests', async () => {
     dontAssumeDotsAreHidden: true,
   });
   expect(ei).toEqual(1);
-  expect(jc).toEqual(0);
+  expect(bt).toEqual(1);
   expect(pack).toEqual(1);
   await ForFiles('.', counter, {
     recurse: false,
@@ -188,7 +188,7 @@ test('Skipping hidden file tests', async () => {
     dontAssumeDotsAreHidden: true,
   });
   expect(ei).toEqual(1);
-  expect(jc).toEqual(0);
+  expect(bt).toEqual(2);
   expect(pack).toEqual(2);
 });
 test('Stragglers', async () => {
