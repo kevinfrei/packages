@@ -23,8 +23,7 @@
     }
   },
   "scripts": {
-    "reallytest": "bun test",
-    "justtest": "echo Have to run outside of bun workspace",
+    "justtest": "bun test",
     "watch": "bun test --watch",
     "clean": "rm -rf lib",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",

@@ -58,15 +58,15 @@ test('hiding a file on MacOS/Windows', async () => {
       await fsp.unlink(pathName);
     } catch (e) {}
     await arrayToTextFileAsync(['this', 'is', 'a', 'test'], pathName);
-    const lsBefore = await $`/bin/ls -lO`;
-    expect(lsBefore.stdout.indexOf(pathName)).toBeGreaterThanOrEqual(0);
+    const lsBefore = await $`/bin/ls -lO`.text();
+    expect(lsBefore.indexOf(pathName)).toBeGreaterThanOrEqual(0);
     const newPath = await hideFile(pathName);
     expect(newPath).toEqual('.' + pathName);
-    const lsAfter = await $`/bin/ls -lO`;
-    expect(lsAfter.stdout.indexOf(pathName)).toBeLessThan(0);
-    const lsHidden = await $`/bin/ls -laO`;
-    const hidden = lsHidden.stdout.indexOf('hidden');
-    const fileLoc = lsHidden.stdout.indexOf(pathName);
+    const lsAfter = await $`/bin/ls -lO`.text();
+    expect(lsAfter.indexOf(pathName)).toBeLessThan(0);
+    const lsHidden = await $`/bin/ls -laO`.text();
+    const hidden = lsHidden.indexOf('hidden');
+    const fileLoc = lsHidden.indexOf(pathName);
     expect(hidden).toBeLessThan(fileLoc);
     expect(hidden).toBeGreaterThan(-1);
     try {

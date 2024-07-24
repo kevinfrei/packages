@@ -1021,7 +1021,7 @@ test('AlbumArtist vs moreArtists', () => {
   const filename =
     'something/artist 1 - 1983 - album/101 - title [w- artist 2].m4a';
   const md = Metadata.FromPath(filename);
-  console.log(md);
+  log(md);
   (md as unknown as Attributes).moreArtists = 'artist 3';
   (md as unknown as Attributes).albumArtist = 'artist 2';
   const fmd = Metadata.FullFromObj(filename, md as unknown as Attributes);
