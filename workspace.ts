@@ -140,6 +140,9 @@ function calcDependencyGraph(modules: Module[]): DependencyGraph {
   return { ready: [...ready], providesTo, unresolved: moduleMap };
 }
 
+// This has an issue with peer dependencies.
+// It should probably schedule them at the same time, but if there's a circular
+// dependency, it get's stuck.
 async function scheduler(args: string[]): Promise<void> {
   const modules = await getModules();
   const moduleMap = new Map<string, Module>(modules.map((m) => [m.name, m]));
@@ -211,6 +214,22 @@ async function doit(
   return name;
 }
 
-scheduler(process.argv.slice(2))
+// TODO: Handle filtering
+async function main(args: string[]): Promise<void> {
+  if (
+    args.length > 0 &&
+    (args[0] === '--no-deps' || args[0] === '--parallel')
+  ) {
+    const modules = await getModules();
+    const fewerArgs = args.slice(1);
+    await Promise.all(
+      modules.map((mod) => doit(mod.name, mod.location, fewerArgs)),
+    );
+  } else {
+    await scheduler(args);
+  }
+}
+
+main(process.argv.slice(2))
   .catch((e) => console.error('Error', e))
   .finally(() => console.log('Done'));
