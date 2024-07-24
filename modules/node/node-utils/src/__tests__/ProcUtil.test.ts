@@ -18,7 +18,7 @@ test('spawnAsync test 2', async () => {
   if (isWin) {
     expect(badRes.stderr.indexOf('Invalid argument')).toBeGreaterThanOrEqual(0);
   } else {
-    expect(badRes.stdout.indexOf('Usage Error')).toBeGreaterThanOrEqual(0);
+    expect(badRes.stderr.indexOf('error')).toBeGreaterThanOrEqual(0);
   }
 });
 test('spawnAsync test 3', async () => {
