@@ -1,8 +1,11 @@
+/// <reference lib="dom" />
+
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Dock } from '../Dock';
 import { Fill } from '../Fill';
 import { FullPage } from '../FullPage';
+import { test } from 'bun:test';
 
 function App() {
   return (
@@ -40,7 +43,12 @@ function App() {
   );
 }
 
-it('renders without crashing', () => {
+test('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+  const root = createRoot(div);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  );
 });
