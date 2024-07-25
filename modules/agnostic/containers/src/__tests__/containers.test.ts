@@ -1,4 +1,11 @@
-import { Pickle, SafelyUnpickle, isNumber, isString } from '@freik/typechk';
+import { expect, test, beforeAll } from 'bun:test';
+import {
+  Pickle,
+  SafelyUnpickle,
+  isNumber,
+  isString,
+  registerPickling,
+} from '@freik/typechk';
 import {
   MakeMultiMap,
   MakePriorityQueue,
@@ -16,6 +23,8 @@ import {
   isStack,
   isStackOf,
 } from '../index';
+
+beforeAll(() => registerPickling());
 
 test('Basic MultiMap tests', async () => {
   const mmap = MakeMultiMap<number, string>();
@@ -119,7 +128,7 @@ test('Queue tests', () => {
   expect(q.size()).toEqual(9);
   q.push(11);
   while (!q.empty()) {
-    expect(q.peek()).toEqual(q.pop());
+    expect(q.peek()).toEqual(q.pop() as number);
   }
   for (let i = 0; i < 10; i++) {
     q.push(i);

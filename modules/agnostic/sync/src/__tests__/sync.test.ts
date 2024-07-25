@@ -7,8 +7,9 @@ import {
   MaybeWait,
   Sleep,
 } from '../index';
+import { test, expect, setDefaultTimeout } from 'bun:test';
 
-jest.setTimeout(15000);
+setDefaultTimeout(15000);
 
 test('DebouncedEvery testing', async () => {
   let timer = Date.now();

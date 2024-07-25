@@ -11,7 +11,14 @@ const execP = promisify(exec);
 
 // This is used to do workspace-wide things, because Bun (and yarn+lerna+nx) don't bother to consider dev/peer deps as actual dependencies :(
 
-type Module = { name: string; location: string; requires: string[] };
+type Module = {
+  name: string;
+  location: string;
+  requires: string[];
+  dev?: Set<string>;
+  peer?: Set<string>;
+  direct?: Set<string>;
+};
 type ModuleResolutionNode = Module & {
   dependedOnBy: Set<string>;
   unresolvedRequirements: Set<string>;
@@ -57,7 +64,11 @@ function workspaceDeps(deps: { [key: string]: string }): string[] {
   return Object.keys(deps).filter((dep) => deps[dep].startsWith('workspace:'));
 }
 
-const depKeys = ['dependencies', 'devDependencies', 'peerDependencies'];
+const depKeys = [
+  { name: 'dependencies', key: 'direct' },
+  { name: 'devDependencies', key: 'dev' },
+  { name: 'peerDependencies', key: 'peer' },
+];
 
 // Given a package.json file, return the name, location, and list of workspace dependencies.
 async function readModule(pkgFile: string): Promise<Module> {
@@ -66,20 +77,33 @@ async function readModule(pkgFile: string): Promise<Module> {
   if (!TypeCheck.hasFieldType(pkg, 'name', TypeCheck.isString)) {
     throw new Error('name field must be a string');
   }
-  for (const key of depKeys) {
-    if (!TypeCheck.hasField(pkg, key)) {
-      continue;
-    }
-    if (!TypeCheck.hasFieldType(pkg, key, TypeCheck.isObjectOfString)) {
-      throw new Error(`${key} field must be an object of strings`);
-    }
-    workspaceDeps(pkg[key]).forEach((k) => requires.add(k));
-  }
-  return {
+  const module: Module = {
     name: pkg.name,
     location: path.dirname(pkgFile),
-    requires: [...requires],
+    requires: [],
   };
+  const deps = {
+    direct: new Set<string>(),
+    dev: new Set<string>(),
+    peer: new Set<string>(),
+  };
+
+  for (const depId of depKeys) {
+    if (!TypeCheck.hasField(pkg, depId.name)) {
+      continue;
+    }
+    if (!TypeCheck.hasFieldType(pkg, depId.name, TypeCheck.isObjectOfString)) {
+      throw new Error(`${depId.name} field must be an object of strings`);
+    }
+    workspaceDeps(pkg[depId.name]).forEach((k) => {
+      requires.add(k);
+      (deps[depId.key] as Set<string>).add(k);
+    });
+  }
+  const direct = deps.direct.size ? deps.direct : undefined;
+  const dev = deps.dev.size ? deps.dev : undefined;
+  const peer = deps.peer.size ? deps.peer : undefined;
+  return { ...module, requires: [...requires], direct, dev, peer };
 }
 
 async function getModules(): Promise<Module[]> {

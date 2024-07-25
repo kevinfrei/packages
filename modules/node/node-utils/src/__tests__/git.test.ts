@@ -6,8 +6,9 @@ import {
   isUndefined,
 } from '@freik/typechk';
 import { Git } from '../index';
+import { test, expect } from 'bun:test';
 
-it('Simple git.files tests', async () => {
+test('Simple git.files tests', async () => {
   const files = await Git.files({ filter: 'all' });
   expect(isArray(files)).toBeTruthy();
   expect(files.length).toBeGreaterThan(50);
@@ -22,7 +23,7 @@ it('Simple git.files tests', async () => {
   expect(noFiles.length).toBeLessThanOrEqual(files.length);
 });
 
-it('Grouped git.files tests', async () => {
+test('Grouped git.files tests', async () => {
   const files = await Git.files({
     filter: 'all',
     groups: {

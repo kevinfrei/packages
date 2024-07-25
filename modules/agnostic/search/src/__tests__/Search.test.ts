@@ -1,3 +1,4 @@
+import {test, expect} from 'bun:test';
 import { MakeSearchable } from '../index';
 
 test('Make a simple search thing', () => {

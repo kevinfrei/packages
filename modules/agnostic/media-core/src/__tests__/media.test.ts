@@ -1,9 +1,11 @@
 import { Attributes, Metadata } from '../index';
 import { AddPattern } from '../media';
 import { isAlbumKey, isArtistKey, isSongKey } from '../schema';
+import { expect, test } from 'bun:test';
+
 const log = false ? console.log : (a: unknown) => {};
 
-it('Generic path', () => {
+test('Generic path', () => {
   const filename = 'something/artist - 1983 - album/01 - title.m4a';
   const md = Metadata.FromPath(filename);
   expect(md).toEqual({
@@ -25,7 +27,7 @@ it('Generic path', () => {
   });
 });
 
-it('Generic path with a disk number', () => {
+test('Generic path with a disk number', () => {
   const filename = 'something/player - 1983 - record/1234 - name.m4a';
   const md = Metadata.FromPath(filename);
   expect(md).toEqual({
@@ -49,7 +51,7 @@ it('Generic path with a disk number', () => {
   });
 });
 
-it('Generic path, Two Primary artists', () => {
+test('Generic path, Two Primary artists', () => {
   const filename =
     'something/artist 1 & artist 2 - 1983 - album/101 - title.m4a';
   const md = Metadata.FromPath(filename);
@@ -76,7 +78,7 @@ it('Generic path, Two Primary artists', () => {
   });
 });
 
-it('Generic path, Multiple Primary artists', () => {
+test('Generic path, Multiple Primary artists', () => {
   const filename =
     'something/artist 1, artist 2, artist 3 & artist 4 - 1983 - album/01 - title.m4a';
   const md = Metadata.FromPath(filename);
@@ -99,7 +101,7 @@ it('Generic path, Multiple Primary artists', () => {
   });
 });
 
-it('Generic path, no year', () => {
+test('Generic path, no year', () => {
   const filename = 'something/artist - album/01 - title.mp3';
   const md = Metadata.FromPath(filename);
   expect(md).toEqual({
@@ -119,7 +121,7 @@ it('Generic path, no year', () => {
   });
 });
 
-it('Generic path, other artist', () => {
+test('Generic path, other artist', () => {
   const filename =
     'something/artist - 1983 - album/02 - title [feat- Other Artist].aac';
   const md = Metadata.FromPath(filename);
@@ -143,7 +145,7 @@ it('Generic path, other artist', () => {
   });
 });
 
-it('Generic path, 2 other artists', () => {
+test('Generic path, 2 other artists', () => {
   const filename =
     'something/artist - 1983 - album/02 - title [feat- Other Artist 1 & Other Artist 2].aac';
   const md = Metadata.FromPath(filename);
@@ -167,7 +169,7 @@ it('Generic path, 2 other artists', () => {
   });
 });
 
-it('Generic path, multiple other artists', () => {
+test('Generic path, multiple other artists', () => {
   const filename =
     'something/artist - 1983 - album/02 - title [feat- Other Artist 1, Other Artist 2 & Other Artist 3].aac';
   const md = Metadata.FromPath(filename);
@@ -191,7 +193,7 @@ it('Generic path, multiple other artists', () => {
   });
 });
 
-it('VA, other artist', () => {
+test('VA, other artist', () => {
   const filename =
     'something/VA - 1983 - album/02 - artist - title [with Other Artist].flac';
   const md = Metadata.FromPath(filename);
@@ -217,7 +219,7 @@ it('VA, other artist', () => {
   });
 });
 
-it('Soundtrack, other artist', () => {
+test('Soundtrack, other artist', () => {
   const filename =
     'something/Soundtrack - 2001 - album/02 - artist - title [featuring Other Artist].m4a';
   const md = Metadata.FromPath(filename);
@@ -243,7 +245,7 @@ it('Soundtrack, other artist', () => {
   });
 });
 
-it('variation', () => {
+test('variation', () => {
   const filename =
     'something/artist - 2001 - album/02 - title [live][goofy remix].m4a';
   const md = Metadata.FromPath(filename);
@@ -267,7 +269,7 @@ it('variation', () => {
   });
 });
 
-it('variation with additional artist', () => {
+test('variation with additional artist', () => {
   const filename =
     'something/artist - 2001 - album/02 - title [live][goofy remix] [feat- foobar].m4a';
   const md = Metadata.FromPath(filename);
@@ -292,7 +294,7 @@ it('variation with additional artist', () => {
   });
 });
 
-it('variation with additional artist and spaces', () => {
+test('variation with additional artist and spaces', () => {
   const filename =
     'something/artist - 2001 - album/02 - title  [live]  [feat- foobar]  [goofy remix] .flac';
   const md = Metadata.FromPath(filename);
@@ -319,7 +321,7 @@ it('variation with additional artist and spaces', () => {
 
 // Artist-based directories
 
-it('Nested path', () => {
+test('Nested path', () => {
   const filename = 'something/artist/1983 - album/01 - title.m4a';
   const md = Metadata.FromPath(filename);
   expect(md).toEqual({
@@ -341,7 +343,7 @@ it('Nested path', () => {
   });
 });
 
-it('Nested path with a disk number', () => {
+test('Nested path with a disk number', () => {
   const filename = 'something/player/1983 - record/1234 - name.m4a';
   const md = Metadata.FromPath(filename);
   expect(md).toEqual({
@@ -365,7 +367,7 @@ it('Nested path with a disk number', () => {
   });
 });
 
-it('Nested path, Two Primary artists', () => {
+test('Nested path, Two Primary artists', () => {
   const filename = 'something/artist 1 & artist 2/1983 - album/01 - title.m4a';
   const md = Metadata.FromPath(filename);
   expect(md).toEqual({
@@ -387,7 +389,7 @@ it('Nested path, Two Primary artists', () => {
   });
 });
 
-it('Nested path, Multiple Primary artists', () => {
+test('Nested path, Multiple Primary artists', () => {
   const filename =
     'something/artist 1, artist 2, artist 3 & artist 4/1983 - album/01 - title.m4a';
   const md = Metadata.FromPath(filename);
@@ -410,7 +412,7 @@ it('Nested path, Multiple Primary artists', () => {
   });
 });
 
-it('Nested path, no year', () => {
+test('Nested path, no year', () => {
   const filename = 'something/artist/album/01 - title.mp3';
   const md = Metadata.FromPath(filename);
   expect(md).toEqual({
@@ -430,7 +432,7 @@ it('Nested path, no year', () => {
   });
 });
 
-it('Nested path, other artist', () => {
+test('Nested path, other artist', () => {
   const filename =
     'something/artist/1983 - album/02 - title [feat- Other Artist].aac';
   const md = Metadata.FromPath(filename);
@@ -454,7 +456,7 @@ it('Nested path, other artist', () => {
   });
 });
 
-it('Nested path, 2 other artists', () => {
+test('Nested path, 2 other artists', () => {
   const filename =
     'something/artist/1983 - album/02 - title [feat- Other Artist 1 & Other Artist 2].aac';
   const md = Metadata.FromPath(filename);
@@ -478,7 +480,7 @@ it('Nested path, 2 other artists', () => {
   });
 });
 
-it('Nested path, multiple other artists', () => {
+test('Nested path, multiple other artists', () => {
   const filename =
     'something/artist/1983 - album/02 - title [feat- Other Artist 1, Other Artist 2 & Other Artist 3].aac';
   const md = Metadata.FromPath(filename);
@@ -502,7 +504,7 @@ it('Nested path, multiple other artists', () => {
   });
 });
 
-it('Nested VA, other artist', () => {
+test('Nested VA, other artist', () => {
   const filename =
     'something/VA/1983 - album/02 - artist - title [with Other Artist].flac';
   const md = Metadata.FromPath(filename);
@@ -528,7 +530,7 @@ it('Nested VA, other artist', () => {
   });
 });
 
-it('Nested Soundtrack, other artist', () => {
+test('Nested Soundtrack, other artist', () => {
   const filename =
     'something/Soundtrack/2001 - album/02 - artist - title [featuring Other Artist].m4a';
   const md = Metadata.FromPath(filename);
@@ -554,7 +556,7 @@ it('Nested Soundtrack, other artist', () => {
   });
 });
 
-it('Nested variation', () => {
+test('Nested variation', () => {
   const filename =
     'something/artist/2001 - album/02 - title [live][goofy remix].m4a';
   const md = Metadata.FromPath(filename);
@@ -578,7 +580,7 @@ it('Nested variation', () => {
   });
 });
 
-it('Nested variation with additional artist', () => {
+test('Nested variation with additional artist', () => {
   const filename =
     'something/artist/2001 - album/02 - title [live][goofy remix] [feat- foobar].m4a';
   const md = Metadata.FromPath(filename);
@@ -603,7 +605,7 @@ it('Nested variation with additional artist', () => {
   });
 });
 
-it('Nested variation with additional artist and spaces', () => {
+test('Nested variation with additional artist and spaces', () => {
   const filename =
     'something/artist/2001 - album/02 - title  [live]  [feat- foobar]  [goofy remix] .flac';
   const md = Metadata.FromPath(filename);
@@ -630,7 +632,7 @@ it('Nested variation with additional artist and spaces', () => {
 
 // Disc names & numbers
 
-it('Disc Number path', () => {
+test('Disc Number path', () => {
   const filename =
     'something/artist/1983 - album/cd 3- silliness/01 - title.m4a';
   const md = Metadata.FromPath(filename);
@@ -657,7 +659,7 @@ it('Disc Number path', () => {
   });
 });
 
-it('Nested path with a disk number', () => {
+test('Nested path with a disk number', () => {
   const filename =
     'something/player/1983 - record/disc 2 stuff/1234 - name.m4a';
   const md = Metadata.FromPath(filename);
@@ -684,7 +686,7 @@ it('Nested path with a disk number', () => {
   });
 });
 
-it('Generic path, Two Primary artists, disc number', () => {
+test('Generic path, Two Primary artists, disc number', () => {
   const filename =
     'something/artist 1 & artist 2 - 1983 - album/CD 3/01 - title.m4a';
   const md = Metadata.FromPath(filename);
@@ -709,7 +711,7 @@ it('Generic path, Two Primary artists, disc number', () => {
   });
 });
 
-it('Generic path, Multiple Primary artists, disc name', () => {
+test('Generic path, Multiple Primary artists, disc name', () => {
   const filename =
     'something/artist 1, artist 2, artist 3 & artist 4 - 1983 - album/Disc 2- disk Name/01 - title.m4a';
   const md = Metadata.FromPath(filename);
@@ -736,7 +738,7 @@ it('Generic path, Multiple Primary artists, disc name', () => {
   });
 });
 
-it('Nested path, no year, disc id', () => {
+test('Nested path, no year, disc id', () => {
   const filename = 'something/artist/album/cd 14- this one/01 - title.mp3';
   const md = Metadata.FromPath(filename);
   expect(md).toEqual({
@@ -760,7 +762,7 @@ it('Nested path, no year, disc id', () => {
   });
 });
 
-it('Nested path, other artist, disc number', () => {
+test('Nested path, other artist, disc number', () => {
   const filename =
     'something/artist/1983 - album/disk 12/02 - title [feat- Other Artist].aac';
   const md = Metadata.FromPath(filename);
@@ -786,7 +788,7 @@ it('Nested path, other artist, disc number', () => {
   });
 });
 
-it('Generic path, 2 other artists, disc name', () => {
+test('Generic path, 2 other artists, disc name', () => {
   const filename =
     'something/artist - 1983 - album/cd 3- The Disk Name/02 - title [feat- Other Artist 1 & Other Artist 2].aac';
   const md = Metadata.FromPath(filename);
@@ -814,7 +816,7 @@ it('Generic path, 2 other artists, disc name', () => {
   });
 });
 
-it('Nested path, multiple other artists, disk number', () => {
+test('Nested path, multiple other artists, disk number', () => {
   const filename =
     'something/artist/1983 - album/Cd 1234/02 - title [feat- Other Artist 1, Other Artist 2 & Other Artist 3].aac';
   const md = Metadata.FromPath(filename);
@@ -840,7 +842,7 @@ it('Nested path, multiple other artists, disk number', () => {
   });
 });
 
-it('Nested VA, other artist, disk name', () => {
+test('Nested VA, other artist, disk name', () => {
   const filename =
     'something/VA/1983 - album/CD 15 moar stuff/02 - artist - title [with Other Artist].flac';
   const md = Metadata.FromPath(filename);
@@ -870,7 +872,7 @@ it('Nested VA, other artist, disk name', () => {
   });
 });
 
-it('Nested Soundtrack, other artist, disk num', () => {
+test('Nested Soundtrack, other artist, disk num', () => {
   const filename =
     'something/Soundtrack/2001 - album/disc 12/02 - artist - title [featuring Other Artist].m4a';
   const md = Metadata.FromPath(filename);
@@ -898,7 +900,7 @@ it('Nested Soundtrack, other artist, disk num', () => {
   });
 });
 
-it('Nested variation, disc name', () => {
+test('Nested variation, disc name', () => {
   const filename =
     'something/artist/2001 - album/cd 1- disk name/02 - title [live][goofy remix].m4a';
   const md = Metadata.FromPath(filename);
@@ -926,7 +928,7 @@ it('Nested variation, disc name', () => {
   });
 });
 
-it('Nested variation with additional artist, disk num', () => {
+test('Nested variation with additional artist, disk num', () => {
   const filename =
     'something/artist/2001 - album/cd 3/02 - title [live][goofy remix] [feat- foobar].m4a';
   const md = Metadata.FromPath(filename);
@@ -953,7 +955,7 @@ it('Nested variation with additional artist, disk num', () => {
   });
 });
 
-it('Nested variation with additional artist and spaces, disk name', () => {
+test('Nested variation with additional artist and spaces, disk name', () => {
   const filename =
     'something/artist/2001 - album/disc 3- discName/02 - title  [live]  [feat- foobar]  [goofy remix] .flac';
   const md = Metadata.FromPath(filename);
@@ -982,7 +984,7 @@ it('Nested variation with additional artist and spaces, disk name', () => {
   });
 });
 
-it('Artist Splitting', () => {
+test('Artist Splitting', () => {
   const art1 = 'Artist #1 & Artist #2';
   const spl1 = Metadata.SplitArtistString(art1);
   expect(spl1).toEqual(['Artist #1', 'Artist #2']);
@@ -994,7 +996,7 @@ it('Artist Splitting', () => {
   expect(spl3).toEqual([art3]);
 });
 
-it('Simple schema tests', () => {
+test('Simple schema tests', () => {
   expect(isArtistKey('R123')).toBeTruthy();
   expect(isArtistKey('L123')).toBeFalsy();
   expect(isArtistKey('S123')).toBeFalsy();
@@ -1006,7 +1008,7 @@ it('Simple schema tests', () => {
   expect(isSongKey('R123')).toBeFalsy();
 });
 
-it('FullFromObj failure', () => {
+test('FullFromObj failure', () => {
   const filename =
     'something/artist 1 & artist 2 - 1983 - album/101 - title.m4a';
   const md = Metadata.FromPath(filename);
@@ -1015,11 +1017,11 @@ it('FullFromObj failure', () => {
   expect(fmd).toBeUndefined();
 });
 
-it('AlbumArtist vs moreArtists', () => {
+test('AlbumArtist vs moreArtists', () => {
   const filename =
     'something/artist 1 - 1983 - album/101 - title [w- artist 2].m4a';
   const md = Metadata.FromPath(filename);
-  console.log(md);
+  log(md);
   (md as unknown as Attributes).moreArtists = 'artist 3';
   (md as unknown as Attributes).albumArtist = 'artist 2';
   const fmd = Metadata.FullFromObj(filename, md as unknown as Attributes);
@@ -1035,7 +1037,7 @@ it('AlbumArtist vs moreArtists', () => {
   });
 });
 
-it('AddPattern test', () => {
+test('AddPattern test', () => {
   const filepath = '/artist-2022-album-23-title.flac';
   const mdFail = Metadata.FromPath(filepath);
   expect(mdFail).toBeUndefined();

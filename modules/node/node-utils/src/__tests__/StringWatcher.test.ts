@@ -1,6 +1,7 @@
 import { MakeStringWatcher } from '../index';
+import { test, expect } from 'bun:test';
 
-it('File Type Watcher Ignore, then Watch testing', () => {
+test('File Type Watcher Ignore, then Watch testing', () => {
   const ftw = MakeStringWatcher();
   expect(ftw).toBeDefined();
   expect(ftw.watching('.txt')).toBe(true);
@@ -16,7 +17,7 @@ it('File Type Watcher Ignore, then Watch testing', () => {
   expect(ftw.watching('.mp3')).toBe(true);
 });
 
-it('File Type Watcher Watch, then Ignore testing', () => {
+test('File Type Watcher Watch, then Ignore testing', () => {
   const ftw = MakeStringWatcher();
   ftw.addToWatchList('.mp3');
   expect(ftw.watching('.txt')).toBe(false);
@@ -28,7 +29,7 @@ it('File Type Watcher Watch, then Ignore testing', () => {
   expect(ftw.watching('.mp3')).toBe(true);
 });
 
-it('File Type Watcher multiples testing', () => {
+test('File Type Watcher multiples testing', () => {
   const ftw = MakeStringWatcher();
   ftw.addToIgnoreList('.txt', '.jpg');
   expect(ftw.watching('.txt')).toBe(false);
@@ -43,7 +44,7 @@ it('File Type Watcher multiples testing', () => {
   expect(ftw.watching('.flac')).toBe(true);
 });
 
-it('File Type Watcher Chaining Ignore then Watch', () => {
+test('File Type Watcher Chaining Ignore then Watch', () => {
   const ftw = MakeStringWatcher()
     .addToIgnoreList(['.txt', '.jpg'])
     .addToWatchList(new Set(['.mp3', '.flac']));
@@ -54,7 +55,7 @@ it('File Type Watcher Chaining Ignore then Watch', () => {
   expect(ftw.watching('.flac')).toBe(true);
 });
 
-it('File Type Watcher Chaining Watch then Ignore', () => {
+test('File Type Watcher Chaining Watch then Ignore', () => {
   const ftw = MakeStringWatcher()
     .addToWatchList('.mp3', ['.flac'])
     .addToIgnoreList(['.txt'], '.jpg');
@@ -65,7 +66,7 @@ it('File Type Watcher Chaining Watch then Ignore', () => {
   expect(ftw.watching('.flac')).toBe(true);
 });
 
-it('File Type Watcher Chaining Watch then Ignore, with direct function call', () => {
+test('File Type Watcher Chaining Watch then Ignore, with direct function call', () => {
   const ftw = MakeStringWatcher()
     .addToWatchList('.mp3', ['.flac'])
     .addToIgnoreList(['.txt'], '.jpg');

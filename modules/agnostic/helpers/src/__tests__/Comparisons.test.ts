@@ -1,3 +1,4 @@
+import { expect, test } from 'bun:test';
 import {
   ArrayEqual,
   ArraySetEqual,
@@ -7,13 +8,13 @@ import {
   SetValEqual,
   StringCaseInsensitiveEqual,
   ValEqual,
-} from '../Comparisons.js';
+} from '../Comparisons';
 import {
   ArrayIntersection,
   ObjToMap,
   SetDifference,
   SetIntersection,
-} from '../Operations.js';
+} from '../Operations';
 
 test('Comparisons String Case Insensitive Equality', () => {
   expect(StringCaseInsensitiveEqual('a', 'A')).toBeTruthy();

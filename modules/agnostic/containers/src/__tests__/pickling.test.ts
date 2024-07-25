@@ -1,6 +1,9 @@
-import { Pickle, UnsafelyUnpickle } from '@freik/typechk';
+import { beforeAll, expect, test } from 'bun:test';
+import { Pickle, registerPickling, UnsafelyUnpickle } from '@freik/typechk';
 import { MakeMultiMap } from '../MultiMap';
 import { MultiMap } from '../Types';
+
+beforeAll(() => registerPickling());
 
 test('MultiMap Pickling roundtrip', () => {
   const input = MakeMultiMap<string, string>([

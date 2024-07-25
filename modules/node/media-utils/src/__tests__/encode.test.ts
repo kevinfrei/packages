@@ -1,6 +1,6 @@
 import * as ofs from 'fs';
 import { Encode } from '../index.js';
-import { jest } from '@jest/globals';
+import { beforeEach, afterEach, setDefaultTimeout , test, expect } from 'bun:test';
 
 const fs = {
   statAsync: ofs.promises.stat,
@@ -24,7 +24,7 @@ const cleanup = () => {
 
 beforeEach(cleanup);
 afterEach(cleanup);
-jest.setTimeout(30000);
+setDefaultTimeout(30000);
 
 test('Simple wav to m4a (using faac)', () => {
   const enc = Encode.M4a('src/__tests__/01-quiet.wav', 'output.m4a');

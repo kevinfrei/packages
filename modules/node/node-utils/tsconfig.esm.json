@@ -2,13 +2,11 @@
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     "allowJs": true,
-    "incremental": true,
     "target": "ES2020",
-    "lib": ["ES2021"],
+    "lib": ["ESNext"],
     "module": "ES2020",
     "declaration": true,
     "outDir": "./lib/esm/",
-    "tsBuildInfoFile": "./.esm.tsbuildinfo",
     "downlevelIteration": true,
     "strict": true,
     "moduleResolution": "node",

@@ -26,9 +26,9 @@
     }
   },
   "scripts": {
-    "justtest": "jest --config jestconfig.json",
-    "watch": "jest --watch --config jestconfig.json",
-    "clean": "rm -rf lib .cjs.tsbuildinfo .esm.tsbuildinfo",
+    "justtest": "bun test",
+    "watch": "bun test --watch",
+    "clean": "rm -rf lib",
     "cjscompat": "echo '{\"type\":\"commonjs\"}'> ./lib/cjs/package.json",
     "esmcompat": "echo '{\"type\":\"module\"}'> ./lib/esm/package.json",
     "compat": "bun run cjscompat && bun run esmcompat",
@@ -45,17 +45,13 @@
   },
   "devDependencies": {
     "@freik/build-tools": "workspace:*",
-    "@jest/types": "^29.6.3",
-    "@types/jest": "^29.5.12",
+    "@types/bun": "^1.1.6",
     "@types/node": "^20.14.11",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
     "@typescript-eslint/parser": "^7.16.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^9.7.0",
     "eslint-config-prettier": "^9.1.0",
-    "jest": "^29.7.0",
-    "prettier": "^3.3.3",
-    "ts-jest": "^29.2.3",
     "typedoc": "^0.26.4",
     "typedoc-plugin-markdown": "^4.2.1",
     "typescript": "^5.5.3"

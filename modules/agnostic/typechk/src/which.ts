@@ -4,3 +4,6 @@ export const isNode = new Function(
 export const isBrowser = new Function(
   'try {return this===window;}catch(e){ return false;}',
 );
+export function hasGlobalThis() {
+  return typeof globalThis !== 'undefined';
+}
