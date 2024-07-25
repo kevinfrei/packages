@@ -1,7 +1,7 @@
 import { Sleep } from '@freik/sync';
 import * as ofs from 'fs';
 import { Decode } from '../index.js';
-import { jest } from '@jest/globals';
+import { beforeEach, afterEach, setDefaultTimeout , test, expect } from 'bun:test';
 
 const fs = {
   statAsync: ofs.promises.stat,
@@ -50,7 +50,7 @@ const cleanup = () => {
 
 beforeEach(cleanup);
 afterEach(cleanup);
-jest.setTimeout(30000);
+setDefaultTimeout(30000);
 
 test('Async m4a to wav (using faad)', async () => {
   const dec = await Decode.M4aAsync(

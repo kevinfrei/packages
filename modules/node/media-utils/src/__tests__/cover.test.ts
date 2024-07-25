@@ -1,7 +1,9 @@
 import { Covers } from '../index.js';
+import { test, expect } from 'bun:test';
+
 const log = false ? console.log : (a: unknown) => {};
 
-it('Read a jpeg from an mp3 file', async () => {
+test('Read a jpeg from an mp3 file', async () => {
   const filename = 'src/__tests__/jpg.mp3';
   const mimeData = await Covers.ReadFromFile(filename);
   expect(mimeData).toBeDefined();
@@ -11,7 +13,7 @@ it('Read a jpeg from an mp3 file', async () => {
   }
 });
 /*
-it('Read a jpeg from a flac file', async () => {
+test('Read a jpeg from a flac file', async () => {
   const filename = 'src/__tests__/jpg.flac';
   const mimeData = await Covers.ReadFromFile(filename);
   expect(mimeData).toBeDefined();
@@ -21,7 +23,7 @@ it('Read a jpeg from a flac file', async () => {
   }
 });
 */
-it('Read a jpeg from an m4a file', async () => {
+test('Read a jpeg from an m4a file', async () => {
   const filename = 'src/__tests__/jpg.m4a';
   const mimeData = await Covers.ReadFromFile(filename);
   expect(mimeData).toBeDefined();
@@ -30,7 +32,7 @@ it('Read a jpeg from an m4a file', async () => {
     expect(mimeData.data.length).toBe(21032);
   }
 });
-it('Read a png from an mp3 file', async () => {
+test('Read a png from an mp3 file', async () => {
   const filename = 'src/__tests__/png.mp3';
   const mimeData = await Covers.ReadFromFile(filename);
   expect(mimeData).toBeDefined();
@@ -40,7 +42,7 @@ it('Read a png from an mp3 file', async () => {
   }
 });
 /*
-it('Read a png from a flac file', async () => {
+test('Read a png from a flac file', async () => {
   const filename = 'src/__tests__/png.flac';
   const mimeData = await Covers.ReadFromFile(filename);
   expect(mimeData).toBeDefined();
@@ -50,7 +52,7 @@ it('Read a png from a flac file', async () => {
   }
 });
 */
-it('Read a png from an m4a file', async () => {
+test('Read a png from an m4a file', async () => {
   const filename = 'src/__tests__/png.m4a';
   const mimeData = await Covers.ReadFromFile(filename);
   expect(mimeData).toBeDefined();
