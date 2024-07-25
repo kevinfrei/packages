@@ -1,11 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+/// <reference lib="dom" />
 
-function App() {
-  return <div>NYI: Need to make a real test...</div>;
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { test } from 'bun:test';
+
+function DoNothing() {
+  return <div></div>;
 }
 
-it('renders without crashing', () => {
+test('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+  const root = createRoot(div);
+  root.render(<DoNothing />);
 });
