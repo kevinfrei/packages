@@ -1,11 +1,13 @@
 /// <reference lib="dom" />
 
 import React from 'react';
-import { createRoot } from 'react-dom/client';
 import { Dock } from '../Dock';
 import { Fill } from '../Fill';
 import { FullPage } from '../FullPage';
-import { test } from 'bun:test';
+import { afterEach, expect, test } from 'bun:test';
+import { cleanup, render, screen } from '@testing-library/react';
+
+afterEach(cleanup);
 
 function App() {
   return (
@@ -44,11 +46,13 @@ function App() {
 }
 
 test('renders without crashing', () => {
-  const div = document.createElement('div');
-  const root = createRoot(div);
-  root.render(
+  render(
     <React.StrictMode>
       <App />
     </React.StrictMode>,
   );
+  const topLeft = screen.getByText('Howdy!');
+  const nextLeft = screen.getByText('This should be the second line');
+  expect(topLeft).toBeTruthy();
+  expect(nextLeft).toBeTruthy();
 });
