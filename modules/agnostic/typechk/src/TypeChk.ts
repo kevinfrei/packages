@@ -141,6 +141,16 @@ export function isArray(obj: unknown): obj is unknown[] {
 }
 
 /**
+ * Type check for 1 element tuple.
+ *
+ * @param {unknown} obj - the value being checked
+ * @returns Tru fiobj is a 1 element tuple (of any type!)
+ */
+export function is1Tuple(obj: unknown): obj is [unknown] {
+  return Array.isArray(obj) && obj.length === 1;
+}
+
+/**
  * Type check for 2 element tuples
  *
  * @param {unknown} obj - The value being checked
@@ -358,6 +368,25 @@ export function isArrayOf<T>(obj: unknown, chk: typecheck<T>): obj is T[] {
  */
 export function chkArrayOf<T>(chk: typecheck<T>): typecheck<T[]> {
   return (obj: unknown): obj is T[] => isArrayOf(obj, chk);
+}
+
+/**
+ * Type check for Tuple of [T]
+ * @param {unknown} obj
+ * @param {typecheck<T>} t  - Typecheck function for Type T
+ * @returns {boolean} true iff obj is a Tuple of type [T]
+ */
+export function is1TupleOf<T>(obj: unknown, t: typecheck<T>): obj is [T] {
+  return is1Tuple(obj) && t(obj[0]);
+}
+
+/**
+ * Generate a type check function for Tuple of [T]
+ * @param t - TypeCheck function for Type T
+ * @returns {boolean} true iff obj is a Tuple of type [T]
+ */
+export function chk1TupleOf<T>(t: typecheck<T>): typecheck<[T]> {
+  return (obj: unknown): obj is [T] => is1TupleOf(obj, t);
 }
 
 /**

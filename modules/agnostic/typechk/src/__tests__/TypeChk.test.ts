@@ -4,6 +4,7 @@ import {
   asNumberOrString,
   asSimpleObject,
   asString,
+  chk1TupleOf,
   chk2TupleOf,
   chk3TupleOf,
   chkArrayOf,
@@ -18,6 +19,7 @@ import {
   chkPartialOf,
   chkSetOf,
   chkStrField,
+  is1TupleOf,
   is2TupleOf,
   is3TupleOf,
   isArray,
@@ -53,6 +55,7 @@ import {
   toString,
 } from '../TypeChk';
 import { FreikTypeTag } from '../Types';
+import { test, expect } from 'bun:test';
 
 test('isString', () => {
   expect(isString('')).toBe(true);
@@ -212,6 +215,8 @@ test('Miscellaneous type checks', async () => {
   expect(chkMapOf(isString, isNumberOrString)(mapOfStrNum)).toBeTruthy();
   expect(chkMapOf(isString, isNumberOrString)(mapOfNumStr)).toBeFalsy();
   expect(isMapOf(1, isString, isNull)).toBeFalsy();
+  expect(is1TupleOf([1], isNumber)).toBeTruthy();
+  expect(chk1TupleOf(isNumber)(['a'])).toBeFalsy();
   expect(is2TupleOf([1, 'a'], isNumber, isString)).toBeTruthy();
   expect(chk2TupleOf(isNumber, isString)([1, 'a'])).toBeTruthy();
   expect(is2TupleOf([1, 2], isNumber, isString)).toBeFalsy();
