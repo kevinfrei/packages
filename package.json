@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@freik/build-tools": "workspace:*",
-    "husky": "^9.1.2",
+    "husky": "^9.1.3",
     "madge": "^7.0.0",
     "prettier": "^3.3.3",
     "typedoc": "^0.26.5",
