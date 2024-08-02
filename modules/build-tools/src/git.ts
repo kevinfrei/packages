@@ -73,7 +73,6 @@ function hasFieldType<T, K extends string | number | symbol>(
   return hasField(obj, key) && checker(obj[key]);
 }
 
-
 function chkFieldType<T, K extends string | number | symbol>(
   key: K,
   checker: typecheck<T>,
@@ -81,7 +80,6 @@ function chkFieldType<T, K extends string | number | symbol>(
   return (obj: unknown): obj is { [key in K]: T } =>
     hasFieldType(obj, key, checker);
 }
-
 
 const exec = promisify(execOld);
 type FilterFn = (name: string) => boolean;
@@ -115,8 +113,8 @@ export async function files(
   const cmd = options.staged
     ? 'git diff --diff-filter=ACMR --cached --name-only'
     : options.all
-    ? 'git ls-files'
-    : 'git diff HEAD --diff-filter=d --name-only';
+      ? 'git ls-files'
+      : 'git diff HEAD --diff-filter=d --name-only';
   const opts = options.cwd
     ? { encoding: 'utf8', cwd: options.cwd }
     : { encoding: 'utf8' };
