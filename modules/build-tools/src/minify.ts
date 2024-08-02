@@ -4,6 +4,7 @@ import * as Terser from 'terser';
 import { globSync } from 'glob';
 import fs, { promises as fsp } from 'node:fs';
 import path from 'node:path';
+import * as esbuild from 'esbuild';
 
 const err = console.error;
 
@@ -75,6 +76,17 @@ export function minifyArgs(m: ParsedArgs): MinifyParams {
     outDir: hasStr(m, 'o') ? m.o : undefined,
     args: m._,
   };
+}
+
+
+async function esBuild(opts: MinifyParams): Promise<void> {
+  await esbuild.build({
+    entryPoints: opts.args,
+    bundle: false,
+    minify: true,
+    packages: 'external',
+    sourcemap: opts.map
+  });
 }
 
 export async function minify(unparsed: string[]): Promise<number> {
