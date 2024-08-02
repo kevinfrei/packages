@@ -9,7 +9,7 @@ import { formatFiles } from './format.js';
 import { countLines } from './line-count.js';
 // import { makeDualModeModule } from './make-module.js';
 import { minify } from './minify.js';
-import { makeDualModeModule } from './make-module.js';
+import { makeModule } from './make-module.js';
 
 const err = console.error;
 
@@ -44,7 +44,7 @@ switch (process.argv[2].toLocaleLowerCase()) {
     break;
   case 'make-module':
   case 'makemodule':
-    invoke(makeDualModeModule);
+    invoke(makeModule);
     break;
   default:
     err('Sorry, unrecognized ftool command!');
