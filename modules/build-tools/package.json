@@ -62,7 +62,8 @@
     "@types/node": "^20.14.11",
     "@types/shelljs": "^0.8.15",
     "@types/uglify-es": "^3.0.3",
-    "@typescript-eslint/eslint-plugin": "^7.16.1"
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "esbuild": "^0.23.0"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0",
