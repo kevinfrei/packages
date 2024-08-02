@@ -7,8 +7,6 @@
 import * as process from 'node:process';
 import { formatFiles } from './format.js';
 import { countLines } from './line-count.js';
-// import { makeDualModeModule } from './make-module.js';
-import { minify } from './minify.js';
 import { makeModule } from './make-module.js';
 
 const err = console.error;
@@ -32,9 +30,6 @@ function invoke(command: (args: string[]) => Promise<number> | number): void {
 }
 
 switch (process.argv[2].toLocaleLowerCase()) {
-  case 'minify':
-    invoke(minify);
-    break;
   case 'format':
     invoke(formatFiles);
     break;
@@ -49,6 +44,6 @@ switch (process.argv[2].toLocaleLowerCase()) {
   default:
     err('Sorry, unrecognized ftool command!');
     err('Supported commands:');
-    err('minify, format, linecount, makemodule');
+    err('format, linecount, makemodule');
     process.exit(-1);
 }
