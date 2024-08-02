@@ -20,6 +20,7 @@
   "scripts": {
     "justtest": "echo No Tests for Build Tools- Bad Kevin",
     "min": "bun ./lib/tools.js minify -i lib/*.js",
+    "trymm": "bun ./src/tools.ts make-module src/linecount.ts",
     "build": "rm -rf lib && tsc",
     "prepare": "bun run build",
     "prepublishOnly": "bun run test && bun run lint",
