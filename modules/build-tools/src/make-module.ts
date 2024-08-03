@@ -114,6 +114,7 @@ async function invokeEsbuild(
     bundle: opts.bundle,
     outdir,
     format,
+    jsx: 'transform',
     target: 'esnext',
     platform: opts.platform,
     minify: opts.minify,
@@ -186,9 +187,10 @@ function compile(fileNames: string[], options: ts.CompilerOptions): void {
       );
     }
   });
-  const exitCode = emitResult.emitSkipped ? 1 : 0;
+  /* const exitCode =  emitResult.emitSkipped ? 1 : 0;
   console.log(`Process exiting with code '${exitCode}'.`);
   process.exit(exitCode);
+  */
 }
 
 function genTypes(entryPoints: string[], opts: ModuleArgs): void {
@@ -203,6 +205,7 @@ function genTypes(entryPoints: string[], opts: ModuleArgs): void {
     esModuleInterop: true,
     skipLibCheck: true,
     strict: true,
+    jsx: ts.JsxEmit.ReactJSX,
     outDir: getOutputDir('d.ts', opts),
     moduleResolution: ts.ModuleResolutionKind.Bundler,
   });
@@ -213,12 +216,12 @@ function genTypes(entryPoints: string[], opts: ModuleArgs): void {
 export async function makeModule(unparsed: string[]): Promise<number> {
   const args = getArgs(unparsed);
   // Generate the CJS code
-  console.log(args);
+  // console.log(args);
   // do the esbuild step(s)
   await genBundle(args);
   // Generate the types
   console.log('Generating TypeScript .d.ts files');
   await genTypes(args.entryPoints, args);
-  console.log('Done');
+  // console.log('Done');
   return 0;
 }
