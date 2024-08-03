@@ -1,6 +1,7 @@
 import { MimeData } from '@freik/media-core';
 import { promises as fs } from 'fs';
-import { IAudioMetadata, parseFile, selectCover } from 'music-metadata';
+import { IAudioMetadata, selectCover } from 'music-metadata';
+import { parseFile } from 'music-metadata';
 
 async function AcquireMetadata(pathname: string): Promise<IAudioMetadata> {
   return await parseFile(pathname);

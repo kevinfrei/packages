@@ -19,9 +19,8 @@
   },
   "scripts": {
     "justtest": "echo No Tests for Build Tools- Bad Kevin",
-    "min": "bun ./lib/tools.js minify -i lib/*.js",
-    "trymm": "bun ./src/tools.ts make-module src/line-count.ts",
-    "build": "rm -rf lib && tsc",
+    "build": "rm -rf lib && bun ./src/tools.ts make-module --minify --esm src/*.ts",
+    "release": "bun run build",
     "prepare": "bun run build",
     "prepublishOnly": "bun run test && bun run lint",
     "lint": "bun run eslint --fix src",
