@@ -21,8 +21,8 @@
     "lint": "bun runflat lint",
     "runall": "bun forall bun run",
     "runflat": "bun forflat bun run",
-    "forall": "bun workspace.ts",
-    "forflat": "bun workspace.ts --no-deps",
+    "forall": "workspace",
+    "forflat": "workspace --no-deps",
     "format": "bun ftool format bun",
     "pre-commit": "bun format",
     "pre-push": "bun run build && bun run test",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@freik/build-tools": "workspace:*",
+    "@freik/workspace": "^0.0.1",
     "husky": "^9.1.3",
     "madge": "^7.0.0",
     "prettier": "^3.3.3",
