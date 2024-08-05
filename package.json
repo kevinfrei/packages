@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "@freik/build-tools": "workspace:*",
-    "@freik/workspace": "^0.0.1",
+    "@freik/workspace": "^0.0.2",
     "husky": "^9.1.4",
-    "madge": "^7.0.0",
+    "madge": "^8.0.0",
     "prettier": "^3.3.3",
     "typedoc": "^0.26.5",
     "typedoc-plugin-markdown": "^4.2.3",
