@@ -1,6 +1,6 @@
 {
   "name": "@freik/iter",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "A library to make iterators and iterables more usable",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
