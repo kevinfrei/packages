@@ -51,6 +51,16 @@ test('array to text file and back again', () => {
   expect(data).toEqual(result);
 });
 
+async function getNormalFiles(dir: string): Promise<string[]> {
+  const files = await $`ls ${dir}`.text();
+  return files.split('\n');
+}
+
+async function getAllFiles(dir: string): Promise<string[]> {
+  const files = await fs.promises.readdir(dir);
+  return files;
+}
+
 test('hiding a file on MacOS/Windows', async () => {
   const pathName = 'testFile.empty';
   if (process.platform === 'darwin') {
@@ -82,11 +92,11 @@ test('hiding a file on MacOS/Windows', async () => {
     expect(lsBefore.indexOf(pathName)).toBeGreaterThanOrEqual(0);
     const newPath = await hideFile(pathName);
     expect(newPath).toEqual('.' + pathName);
-    const lsAfter = await $`ls`.text();
-    expect(lsAfter.indexOf(pathName)).toBeLessThan(0);
-    const lsHidden = await $`ls -A`.text();
-    const fileLoc = lsHidden.indexOf(pathName);
-    expect(fileLoc).toBeGreaterThan(-1);
+    const lsAfter = await getNormalFiles('.');
+    expect(lsAfter.includes(newPath)).toBeFalse();
+    const lsHidden = await getAllFiles('.');
+    const fileLoc = lsHidden.includes(newPath);
+    expect(fileLoc).toBeTrue();
     try {
       await fsp.unlink('.' + pathName);
       await fsp.unlink(pathName);

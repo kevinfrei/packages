@@ -73,13 +73,7 @@ export async function hideFile(pathName: string): Promise<string> {
   if (process.platform === 'darwin') {
     await spawnResAsync('chflags', ['hidden', targetPath]);
   } else if (process.platform === 'win32') {
-    await spawnResAsync('cmd', [
-      '/D',
-      '/C',
-      'attrib',
-      '+H',
-      targetPath.replaceAll('/', '\\'),
-    ]);
+    await spawnResAsync('attrib', ['+H', targetPath.replaceAll('/', '\\')]);
   } else if (process.platform === 'linux') {
     // NYI: https://superuser.com/questions/321109
   }
