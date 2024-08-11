@@ -24,8 +24,8 @@
     "watch": "bun test --watch",
     "clean": "rm -rf lib",
     "release": "bun run build",
-    "build": "bun run clean && bun run ftool make-module --platform node --minify src/*.ts",
-    "dbgbuild": "bun run clean && bun run ftool make-module --platform node --map src/*.ts",
+    "build": "bun run clean && tools make-module --platform node --minify src/*.ts",
+    "dbgbuild": "bun run clean && tools make-module --platform node --map src/*.ts",
     "cleanbuild": "bun run clean && bun run build",
     "prepublishOnly": "bun run test",
     "prepare": "bun run release",
@@ -42,7 +42,6 @@
     "music-metadata": "^10.0.0"
   },
   "devDependencies": {
-    "@freik/build-tools": "workspace:*",
     "@freik/sync": "workspace:*",
     "@types/bun": "^1.1.6",
     "@types/node": "^20.14.11",

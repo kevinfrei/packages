@@ -27,8 +27,8 @@
     "watch": "bun test --watch",
     "clean": "rm -rf lib",
     "release": "bun run build",
-    "build": "bun run clean && bun run ftool make-module --minify src/*.ts",
-    "dbgbuild": "bun run clean && bun run ftool make-module --map src/*.ts",
+    "build": "bun run clean && tools make-module --minify src/*.ts",
+    "dbgbuild": "bun run clean && tools make-module --map src/*.ts",
     "cleanbuild": "bun run clean && bun run build",
     "prepublishOnly": "bun run test",
     "prepare": "bun run release",
@@ -42,7 +42,6 @@
     "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
-    "@freik/build-tools": "workspace:*",
     "@types/bun": "^1.1.6",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
     "@typescript-eslint/parser": "^7.16.1",

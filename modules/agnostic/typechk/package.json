@@ -30,8 +30,8 @@
     "watch": "bun test --watch",
     "clean": "rm -rf lib",
     "release": "bun run build",
-    "build": "bun run clean && bun run ftool make-module --minify src/*.ts",
-    "dbgbuild": "bun run clean && bun run ftool make-module --map src/*.ts",
+    "build": "bun run clean && tools make-module --minify src/*.ts",
+    "dbgbuild": "bun run clean && tools make-module --map src/*.ts",
     "prepublishOnly": "bun run test",
     "prepare": "bun run release",
     "lint": "eslint --fix src",
@@ -41,7 +41,6 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "devDependencies": {
-    "@freik/build-tools": "workspace:*",
     "@types/bun": "^1.1.6",
     "@types/node": "^20.14.11",
     "@typescript-eslint/eslint-plugin": "^7.16.1",

@@ -7,7 +7,6 @@
   "author": "Kevin Frei <kevinfrei@hotmail.com>",
   "license": "Unlicense",
   "workspaces": [
-    "modules/build-tools",
     "modules/agnostic/*",
     "modules/node/*",
     "modules/www/*"
@@ -21,17 +20,18 @@
     "lint": "bun runflat lint",
     "runall": "bun forall bun run",
     "runflat": "bun forflat bun run",
-    "forall": "workspace",
-    "forflat": "workspace --no-deps",
-    "format": "bun ftool format bun",
-    "pre-commit": "bun format",
+    "forall": "tools workspace",
+    "forflat": "tools workspace --no-deps",
+    "format": "tools format",
+    "pre-commit": "tools format",
     "pre-push": "bun run build && bun run test",
-    "pub2npm": "TODO: bun publish --no-private",
-    "prepare": "husky"
+    "pub2npm": "bun publish --no-private",
+    "prepare": "husky",
+    "prep4npm": "tools workspace -f",
+    "done4npm": "tools workspace -c"
   },
   "devDependencies": {
-    "@freik/build-tools": "workspace:*",
-    "@freik/workspace": "^0.2.0",
+    "@freik/workspace": "^0.3.1",
     "husky": "^9.1.4",
     "madge": "^8.0.0",
     "prettier": "^3.3.3",

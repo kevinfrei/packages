@@ -28,8 +28,8 @@
     "watch": "bun test --watch",
     "clean": "rm -rf lib",
     "release": "bun run build",
-    "build": "bun run clean && bun run ftool make-module --minify --tsconfig tsconfig.json --esm src/*.ts src/*.tsx",
-    "dbgbuild": "bun run clean && bun run ftool make-module --map --tsconfig tsconfig.json --esm src/*.ts src/*.tsx",
+    "build": "bun run clean && tools make-module --minify --tsconfig tsconfig.json --esm src/*.ts src/*.tsx",
+    "dbgbuild": "bun run clean && tools make-module --map --tsconfig tsconfig.json --esm src/*.ts src/*.tsx",
     "cleanbuild": "bun run clean && bun run build",
     "prepublishOnly": "bun run test",
     "prepare": "bun run release",
@@ -48,7 +48,6 @@
     "react-dom": ">=17.0.0"
   },
   "devDependencies": {
-    "@freik/build-tools": "workspace:*",
     "@happy-dom/global-registrator": "^14.12.3",
     "@testing-library/react": "^16.0.0",
     "@types/react": "^18.3.3",
