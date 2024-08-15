@@ -25,7 +25,7 @@
     "format": "tools format",
     "pre-commit": "tools format",
     "pre-push": "bun run build && bun run test",
-    "pub2npm": "bun publish --no-private",
+    "pub2npm": "bun forflat npm publish --access=private",
     "prepare": "husky",
     "prep4npm": "tools workspace -f",
     "done4npm": "tools workspace -c"
