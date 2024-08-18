@@ -22,21 +22,25 @@
     "runflat": "bun forflat bun run",
     "forall": "tools workspace",
     "forflat": "tools workspace --no-deps",
-    "format": "tools format",
-    "pre-commit": "tools format",
+    "format": "tools format bun",
+    "pre-commit": "bun run format",
     "pre-push": "bun run build && bun run test",
     "pub2npm": "bun forflat npm publish --access=private",
     "prepare": "husky",
     "prep4npm": "tools workspace -f",
-    "done4npm": "tools workspace -c"
+    "done4npm": "tools workspace -c",
+    "bumpver": "tools workspace -v",
+    "verpatch": "bun run bumpver patch",
+    "verminor": "bun run bumpver minor"
   },
   "devDependencies": {
-    "@freik/workspace": "^0.3.1",
+    "@freik/workspace": "^0.6.0",
+    "esbuild": "^0.23.1",
     "husky": "^9.1.4",
     "madge": "^8.0.0",
     "prettier": "^3.3.3",
     "typedoc": "^0.26.5",
-    "typedoc-plugin-markdown": "^4.2.3",
+    "typedoc-plugin-markdown": "^4.2.5",
     "typescript": "^5.5.4"
   }
 }
