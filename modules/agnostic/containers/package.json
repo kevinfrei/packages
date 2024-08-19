@@ -1,6 +1,6 @@
 {
   "name": "@freik/containers",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "description": "Core set of TS/JS containers",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
