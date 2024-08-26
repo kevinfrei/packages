@@ -99,7 +99,7 @@ export async function MakeFileIndex(
     try {
       fileList = await textFileToArrayAsync(indexFile);
       return true;
-    } catch (e) {
+    } catch {
       /* */
     }
     return false;
@@ -108,7 +108,7 @@ export async function MakeFileIndex(
     try {
       await arrayToTextFileAsync(fileList, indexFile);
       return true;
-    } catch (e) {
+    } catch {
       /* */
     }
     /* istanbul ignore next */

@@ -103,7 +103,7 @@ export function MakePersistence(location: string): Persist {
 
     try {
       fs.mkdirSync(getLocation(), { recursive: true });
-    } catch (e) {
+    } catch {
       /* */
     }
     fs.writeFileSync(storageLocation(id), val, 'utf8');
@@ -114,7 +114,7 @@ export function MakePersistence(location: string): Persist {
   async function writeFileAsync(id: string, val: string): Promise<void> {
     try {
       await fsp.mkdir(getLocation(), { recursive: true });
-    } catch (e) {
+    } catch {
       /* */
     }
     const lock = getLock(id);

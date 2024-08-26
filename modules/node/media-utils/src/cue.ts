@@ -168,7 +168,7 @@ export async function ToFlac(filename: string): Promise<ToFlacRes> {
         res.log.push(`File ${track.track} - ${track.title} failed to encode`);
         res.failure++;
       }
-    } catch (error) {
+    } catch {
       res.log.push(`File ${track.track} - ${track.title} failed`);
       res.failure++;
     }

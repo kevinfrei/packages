@@ -103,7 +103,7 @@ function DateUnpickle(val: unknown): Date | undefined {
   try {
     /* istanbul ignore next */
     return isString(val) ? new Date(val) : undefined;
-  } catch (e) {
+  } catch {
     /* istanbul ignore next */
     return undefined;
   }
@@ -117,7 +117,7 @@ function BigIntUnpickle(val: unknown): bigint | undefined {
   try {
     /* istanbul ignore next */
     return isString(val) ? BigInt(val) : undefined;
-  } catch (e) {
+  } catch {
     /* istanbul ignore next */
     return undefined;
   }

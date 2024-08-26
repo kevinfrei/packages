@@ -220,7 +220,7 @@ export function toString(obj: unknown, notStr = ''): string {
       if (isString(val)) {
         return val;
       }
-    } catch (e) {
+    } catch {
       /* */
     }
   }
@@ -231,7 +231,7 @@ export function toString(obj: unknown, notStr = ''): string {
       if (isString(res) && res !== '[object Object]') {
         return res;
       }
-    } catch (e) {
+    } catch {
       /* */
     }
   }
@@ -315,7 +315,7 @@ export function isBigInt(obj: unknown): obj is bigint {
  * @param  {unknown} obj
  * @returns {boolean} true iff obj is a function
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line
 export function isFunction(obj: unknown): obj is Function {
   return typeof obj === 'function';
 }

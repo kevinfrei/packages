@@ -15,7 +15,7 @@ const fs = {
 export function size(file: string): number {
   try {
     return fs.statSync(file).size;
-  } catch (e) {
+  } catch {
     return -1;
   }
 }
@@ -23,7 +23,7 @@ export function size(file: string): number {
 export async function sizeAsync(file: string): Promise<number> {
   try {
     return (await fs.statAsync(file)).size;
-  } catch (e) {
+  } catch {
     return -1;
   }
 }

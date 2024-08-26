@@ -151,7 +151,7 @@ export async function ForFiles(
       let dirents: fs.Dirent[] | null = null;
       try {
         dirents = await fsp.readdir(i, { withFileTypes: true });
-      } catch (e) /* istanbul ignore next */ {
+      } catch /* istanbul ignore next */ {
         err(`Unable to read ${i || '<unknown>'}`);
         continue;
       }
@@ -181,7 +181,7 @@ export async function ForFiles(
               }
             }
           }
-        } catch (e) /* istanbul ignore next */ {
+        } catch /* istanbul ignore next */ {
           err('Unable to process dirent:');
           err(dirent);
           continue;
@@ -260,7 +260,7 @@ export function ForFilesSync(
       let dirents: fs.Dirent[] | null = null;
       try {
         dirents = fs.readdirSync(i, { withFileTypes: true });
-      } catch (e) /* istanbul ignore next */ {
+      } catch /* istanbul ignore next */ {
         err(`Unable to read ${i || '<unknown>'}`);
         continue;
       }
@@ -282,7 +282,7 @@ export function ForFilesSync(
               worklist.push(fullPath);
             }
           }
-        } catch (e) /* istanbul ignore next */ {
+        } catch /* istanbul ignore next */ {
           err('Unable to process dirent:');
           err(dirent);
           continue;
@@ -322,7 +322,7 @@ export async function ForDirs(
       let dirents: fs.Dirent[] | null = null;
       try {
         dirents = await fsp.readdir(i, { withFileTypes: true });
-      } catch (e) /* istanbul ignore next */ {
+      } catch /* istanbul ignore next */ {
         err(`Unable to read ${i || '<unknown>'}`);
         continue;
       }
@@ -359,7 +359,7 @@ export async function ForDirs(
               }
             }
           }
-        } catch (e) /* istanbul ignore next */ {
+        } catch /* istanbul ignore next */ {
           err('Unable to process dirent:');
           err(dirent);
           continue;
