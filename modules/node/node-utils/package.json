@@ -1,6 +1,6 @@
 {
   "name": "@freik/node-utils",
-  "version": "1.6.6",
+  "version": "1.6.7",
   "description": "My personal set of utilities for NodeJS",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -50,14 +50,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
-    "@types/bun": "^1.1.6",
+    "@types/bun": "^1.1.8",
     "@types/debug": "^4.1.12",
-    "@types/node": "^20.14.11",
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
-    "eslint": "^9.7.0",
+    "@types/node": "^22.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"

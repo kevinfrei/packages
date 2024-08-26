@@ -155,99 +155,52 @@ declare let window: { [key: string | number | symbol]: unknown };
 declare let globalThis: { [key: string | number | symbol]: unknown };
 
 export enum RegistrationResult {
-  DomSuccess,
-  DomAlready,
-  DomFail,
-  NodeSuccess,
-  NodeAlready,
-  NodeFail,
+  Success,
+  Already,
+  Fail,
   DetectionFailure,
-  GlobalThisSuccess,
-  GlobalThisAlready,
-  GlobalThisFail,
 }
+
 const pickleKey = FreikTypeTag;
+function registerObject(obj: unknown): RegistrationResult {
+  if (!hasField(obj, pickleKey)) {
+    (obj as any as { [key: symbol]: unknown })[pickleKey] = {
+      to: thePicklers,
+      from: theUnpicklers,
+    };
+    return RegistrationResult.Success;
+  }
+  if (
+    !hasFieldType(
+      obj,
+      pickleKey,
+      chkObjectOfType({
+        to: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
+        from: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
+      }),
+    )
+  ) {
+    return RegistrationResult.Fail;
+  }
+  return RegistrationResult.Already;
+}
+
 export function registerPickling(): RegistrationResult {
   if (hasGlobalThis()) {
-    if (!hasField(globalThis, pickleKey)) {
-      (globalThis as any as { [key: symbol]: unknown })[pickleKey] = {
-        to: thePicklers,
-        from: theUnpicklers,
-      };
-      return RegistrationResult.GlobalThisSuccess;
-    }
-    if (
-      !hasFieldType(
-        globalThis,
-        pickleKey,
-        chkObjectOfType({
-          to: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
-          from: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
-        }),
-      )
-    ) {
-      return RegistrationResult.GlobalThisFail;
-    }
-    return RegistrationResult.GlobalThisAlready;
+    return registerObject(globalThis);
   }
   if (isBrowser()) {
-    if (!hasField(window, pickleKey)) {
-      (window as any as { [key: symbol]: unknown })[pickleKey] = {
-        to: thePicklers,
-        from: theUnpicklers,
-      };
-      return RegistrationResult.DomSuccess;
-    }
-    if (
-      !hasFieldType(
-        window,
-        pickleKey,
-        chkObjectOfType({
-          to: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
-          from: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
-        }),
-      )
-    ) {
-      return RegistrationResult.DomFail;
-    }
-    return RegistrationResult.DomAlready;
+    return registerObject(window);
   }
   if (isNode()) {
-    if (!hasField(global, pickleKey)) {
-      (global as any as { [key: symbol]: unknown })[pickleKey] = {
-        to: thePicklers,
-        from: theUnpicklers,
-      };
-      return RegistrationResult.NodeSuccess;
-    }
-    if (
-      !hasFieldType(
-        global,
-        pickleKey,
-        chkObjectOfType({
-          to: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
-          from: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
-        }),
-      )
-    ) {
-      return RegistrationResult.NodeFail;
-    }
-    return RegistrationResult.NodeAlready;
+    return registerObject(global);
   }
   return RegistrationResult.DetectionFailure;
 }
 
 switch (registerPickling()) {
-  case RegistrationResult.GlobalThisFail:
-    throw Error(`Invalid globalThis[${String(pickleKey)}] object`);
-  case RegistrationResult.DomFail:
-    throw Error(
-      `Invalid window[${String(pickleKey)}] object in DOM environment`,
-    );
-  case RegistrationResult.NodeFail:
-    throw Error(
-      `Invalid global[${String(pickleKey)}] object in NodeJS environment`,
-    );
+  case RegistrationResult.Fail:
+    throw Error(`Invalid <global>[${String(pickleKey)}] object`);
   case RegistrationResult.DetectionFailure:
     throw Error('Unable to determine environment for pickling');
   default:
@@ -277,7 +230,7 @@ function picklers(): Map<symbol, ToFlat<unknown>> {
   ) {
     return window[pickleKey].to as Map<symbol, ToFlat<unknown>>;
   }
-  throw Error('Well, unpickling crap...');
+  throw Error('Pickling not registered!');
 }
 
 function getPickleHandler(sym: symbol): ToFlat<unknown> | undefined {
@@ -311,7 +264,7 @@ function unpicklers(): Map<symbol, FromFlat<unknown>> {
   ) {
     return window[pickleKey].from as Map<symbol, FromFlat<unknown>>;
   }
-  throw Error('Well, unpickling crap...');
+  throw Error('Unpickling not registered!');
 }
 
 function getUnpickleHandler(sym: symbol): FromFlat<unknown> | undefined {

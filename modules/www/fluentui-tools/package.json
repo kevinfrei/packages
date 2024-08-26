@@ -1,6 +1,6 @@
 {
   "name": "@freik/fluentui-tools",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Kevin Frei's FluentUI Web utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -51,26 +51,26 @@
     "react-dom": ">=17.0.0"
   },
   "devDependencies": {
-    "@fluentui/react": "^8.119.2",
-    "@fluentui/react-components": "^9.54.5",
-    "@fluentui/react-hooks": "^8.8.10",
-    "@happy-dom/global-registrator": "^14.12.3",
+    "@fluentui/react": "^8.120.6",
+    "@fluentui/react-components": "^9.54.13",
+    "@fluentui/react-hooks": "^8.8.12",
+    "@happy-dom/global-registrator": "^15.0.0",
     "@testing-library/react": "^16.0.0",
-    "@types/react": "^18.3.3",
+    "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
-    "eslint": "^9.7.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "happy-dom": "^14.12.3",
+    "happy-dom": "^15.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   }
 }

@@ -22,6 +22,7 @@
     "runflat": "bun forflat bun run",
     "forall": "tools workspace",
     "forflat": "tools workspace --no-deps",
+    "serial": "tools workspace -s",
     "format": "tools format bun",
     "pre-commit": "bun run format",
     "pre-push": "bun run build && bun run test",
@@ -34,13 +35,13 @@
     "verminor": "bun run bumpver minor"
   },
   "devDependencies": {
-    "@freik/workspace": "^0.6.2",
+    "@freik/workspace": "^0.6.3",
     "esbuild": "^0.23.1",
-    "husky": "^9.1.4",
+    "husky": "^9.1.5",
     "madge": "^8.0.0",
     "prettier": "^3.3.3",
     "typedoc": "^0.26.6",
-    "typedoc-plugin-markdown": "^4.2.5",
+    "typedoc-plugin-markdown": "^4.2.6",
     "typescript": "^5.5.4"
   }
 }
