@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@freik/sync": "workspace:*",
-    "@types/bun": "^1.1.8",
+    "@types/bun": "^1.1.14",
     "@types/node": "^22.5.0",
     "@typescript-eslint/eslint-plugin": "^8.2.0",
     "@typescript-eslint/parser": "^8.2.0",
