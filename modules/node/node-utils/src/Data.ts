@@ -19,14 +19,26 @@ export function MakeKey(text: string): Key {
   return { iv: vals, key };
 }
 
-export function Encrypt(key: Key, data: string | Uint8Array<ArrayBufferLike>): Uint8Array<ArrayBufferLike> {
+export function Encrypt(
+  key: Key,
+  data: string | Uint8Array<ArrayBufferLike>,
+): Uint8Array<ArrayBufferLike> {
   const cipher = crypto.createCipheriv(algorithm, key.key, key.iv);
   const encrypted = cipher.update(data) as Uint8Array<ArrayBufferLike>;
-  return Buffer.concat([encrypted, cipher.final() as Uint8Array<ArrayBufferLike>]) as Uint8Array<ArrayBufferLike>;
+  return Buffer.concat([
+    encrypted,
+    cipher.final() as Uint8Array<ArrayBufferLike>,
+  ]) as Uint8Array<ArrayBufferLike>;
 }
 
-export function Decrypt(key: Key, data: Uint8Array<ArrayBufferLike>): Uint8Array<ArrayBufferLike> {
+export function Decrypt(
+  key: Key,
+  data: Uint8Array<ArrayBufferLike>,
+): Uint8Array<ArrayBufferLike> {
   const decipher = crypto.createDecipheriv(algorithm, key.key, key.iv);
-  const decrypted = decipher.update(data)as Uint8Array<ArrayBufferLike>;
-  return Buffer.concat([decrypted, decipher.final() as Uint8Array<ArrayBufferLike>]) as Uint8Array<ArrayBufferLike>;
+  const decrypted = decipher.update(data) as Uint8Array<ArrayBufferLike>;
+  return Buffer.concat([
+    decrypted,
+    decipher.final() as Uint8Array<ArrayBufferLike>,
+  ]) as Uint8Array<ArrayBufferLike>;
 }
