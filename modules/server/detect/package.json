@@ -1,0 +1,60 @@
+{
+  "name": "@freik/detect",
+  "version": "0.1.0",
+  "description": "Detect which Javascript environment you're in",
+  "author": "Kevin Frei (kevinfrei@hotmail.com)",
+  "license": "Unlicense",
+  "repository": "github:kevinfrei/packages",
+  "homepage": "https://github.com/kevinfrei/packages#readme",
+  "bugs": {
+    "url": "https://github.com/kevinfrei/packages/issues"
+  },
+  "keywords": [
+    "nodejs",
+    "bun",
+    "js-utils",
+    "deno"
+  ],
+  "files": [
+    "lib/**/*"
+  ],
+  "types": "./lib/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "justtest": "bun test",
+    "watch": "bun test --watch",
+    "clean": "rm -rf lib",
+    "release": "bun run build",
+    "build": "bun run clean && tools make-module --minify src/*.ts",
+    "dbgbuild": "bun run clean && tools make-module --map src/*.ts",
+    "cleanbuild": "bun run clean && bun run build",
+    "prepublishOnly": "bun run test",
+    "prepare": "bun run release",
+    "lint": "eslint --fix src",
+    "preversion": "bun run lint",
+    "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
+    "test": "bun run lint && bun run typechk && bun run justtest",
+    "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
+  },
+  "dependencies": {
+    "@freik/typechk": "workspace:*"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": "^14.13.1 || >= 16.0.0",
+    "bun": "^1.0.0",
+    "deno": "^1.0.0"
+  }
+}

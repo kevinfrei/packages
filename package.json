@@ -9,6 +9,7 @@
   "workspaces": [
     "modules/agnostic/*",
     "modules/node/*",
+    "modules/server/*",
     "modules/www/*"
   ],
   "scripts": {
