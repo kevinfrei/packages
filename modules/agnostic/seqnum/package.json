@@ -4,7 +4,10 @@
   "description": "A simple Sequence Number generator",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
-  "repository": "github:kevinfrei/packages",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinfrei/packages.git"
+  },
   "homepage": "https://github.com/kevinfrei/packages#readme",
   "bugs": {
     "url": "https://github.com/kevinfrei/packages/issues"
