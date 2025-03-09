@@ -1,6 +1,6 @@
 {
   "name": "@freik/spawn",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Process spawning helpers",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -45,12 +45,12 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
-    "@typescript-eslint/eslint-plugin": "^8.2.0",
-    "@typescript-eslint/parser": "^8.2.0",
-    "eslint": "^9.9.1",
+    "@eslint/eslintrc": "^3.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "eslint": "^9.22.0",
     "eslint-config-prettier": "^9.1.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.8.2"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0",

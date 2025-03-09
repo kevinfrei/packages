@@ -1,6 +1,6 @@
 {
   "name": "@freik/containers",
-  "version": "0.2.18",
+  "version": "0.2.19",
   "description": "Core set of TS/JS containers",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -46,16 +46,16 @@
     "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
-    "@types/bun": "^1.1.8",
-    "@typescript-eslint/eslint-plugin": "^8.2.0",
-    "@typescript-eslint/parser": "^8.2.0",
+    "@types/bun": "^1.2.4",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^9.9.1",
+    "eslint": "^9.22.0",
     "eslint-config-prettier": "^9.1.0",
-    "typedoc": "^0.26.6",
-    "typedoc-plugin-markdown": "^4.2.6",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.2.0"
+    "typedoc": "^0.26.11",
+    "typedoc-plugin-markdown": "^4.4.2",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.0"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
