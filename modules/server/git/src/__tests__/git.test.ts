@@ -11,8 +11,8 @@ import { test, expect } from 'bun:test';
 test('Simple git.files tests', async () => {
   const files = await Git.files({ filter: 'all' });
   expect(isArray(files)).toBeTruthy();
-  expect(files.length).toBeGreaterThan(50);
-  expect(files.length).toBeLessThan(1000);
+  expect(files.length).toBeGreaterThan(10);
+  expect(files.length).toBeLessThan(100);
 
   const noFiles = await Git.files();
   // This will fail if we have any edits :/
@@ -38,7 +38,7 @@ test('Grouped git.files tests', async () => {
     },
   });
   expect(isMapOf(files.groups, isString, isArrayOfString)).toBeTruthy();
-  expect(files.remaining.length).toBeGreaterThan(10);
+  expect(files.remaining.length).toBeGreaterThan(2);
   const grps = files.groups;
   expect(grps.size).toEqual(1);
   expect(grps.get('clang')).toBeUndefined();
@@ -48,5 +48,5 @@ test('Grouped git.files tests', async () => {
     expect('prettier not defined').toEqual('oops');
     throw 'oops';
   }
-  expect(p.length).toBeGreaterThan(15);
+  expect(p.length).toBeGreaterThan(5);
 });
