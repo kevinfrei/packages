@@ -1,6 +1,12 @@
 import * as ofs from 'fs';
 import { Encode } from '../index.js';
-import { beforeEach, afterEach, setDefaultTimeout , test, expect } from 'bun:test';
+import {
+  beforeEach,
+  afterEach,
+  setDefaultTimeout,
+  test,
+  expect,
+} from 'bun:test';
 
 const fs = {
   statAsync: ofs.promises.stat,

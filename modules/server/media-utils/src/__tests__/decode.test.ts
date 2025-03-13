@@ -1,7 +1,13 @@
 import { Sleep } from '@freik/sync';
 import * as ofs from 'fs';
 import { Decode } from '../index.js';
-import { beforeEach, afterEach, setDefaultTimeout , test, expect } from 'bun:test';
+import {
+  beforeEach,
+  afterEach,
+  setDefaultTimeout,
+  test,
+  expect,
+} from 'bun:test';
 
 const fs = {
   statAsync: ofs.promises.stat,

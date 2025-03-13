@@ -1,7 +1,7 @@
 import { Cue } from '../index.js';
 import { promises as fsp } from 'node:fs';
 import { FileUtil } from '@freik/node-utils';
-import { test, beforeAll, afterAll ,expect } from 'bun:test';
+import { test, beforeAll, afterAll, expect } from 'bun:test';
 
 async function cleanup() {
   {
