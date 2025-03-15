@@ -47,8 +47,8 @@
     "@typescript-eslint/parser": "^8.26.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^9.22.0",
-    "eslint-config-prettier": "^9.1.0",
-    "typedoc": "^0.26.11",
+    "eslint-config-prettier": "^10.1.1",
+    "typedoc": "^0.28.0",
     "typedoc-plugin-markdown": "^4.4.2",
     "typescript": "^5.8.2"
   },

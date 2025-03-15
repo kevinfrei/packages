@@ -42,7 +42,7 @@
     "@freik/media-core": "workspace:*",
     "@freik/node-utils": "workspace:*",
     "@freik/typechk": "workspace:*",
-    "music-metadata": "^10.9.1"
+    "music-metadata": "^11.0.2"
   },
   "devDependencies": {
     "@freik/sync": "workspace:*",
@@ -51,7 +51,7 @@
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
     "eslint": "^9.22.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.1.1",
     "typescript": "^5.8.2"
   },
   "engines": {
