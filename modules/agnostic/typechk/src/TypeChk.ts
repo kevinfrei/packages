@@ -433,6 +433,7 @@ export function is3TupleOf<T, U, V>(
 ): obj is [T, U, V] {
   return is3Tuple(obj) && t(obj[0]) && u(obj[1]) && v(obj[2]);
 }
+
 /**
  * Generate a type check function for Tuple of [T, U, V]
  * @param  {typecheck<T>} t - TypeCheck function for Type T
@@ -447,6 +448,58 @@ export function chk3TupleOf<T, U, V>(
 ): typecheck<[T, U, V]> {
   return (obj: unknown): obj is [T, U, V] => is3TupleOf(obj, t, u, v);
 }
+
+export function isTupleOf<T>(obj: unknown, t: typecheck<T>): obj is [T];
+export function isTupleOf<T, U>(
+  obj: unknown,
+  t: typecheck<T>,
+  u: typecheck<U>,
+): obj is [T, U];
+export function isTupleOf<T, U, V>(
+  obj: unknown,
+  t: typecheck<T>,
+  u: typecheck<U>,
+  v: typecheck<V>,
+): obj is [T, U, V];
+export function isTupleOf<T, U, V>(
+  obj: unknown,
+  t: typecheck<T>,
+  u?: typecheck<U>,
+  v?: typecheck<V>,
+): obj is [T, U, V] | [T, U] | [T] {
+  if (isDefined(v)) {
+    return is3TupleOf(obj, t, u!, v);
+  }
+  if (isDefined(u)) {
+    return is2TupleOf(obj, t, u);
+  }
+  return is1TupleOf(obj, t);
+}
+
+export function chkTupleOf<T>(t: typecheck<T>): typecheck<[T]>;
+export function chkTupleOf<T, U>(
+  t: typecheck<T>,
+  u: typecheck<U>,
+): typecheck<[T, U]>;
+export function chkTupleOf<T, U, V>(
+  t: typecheck<T>,
+  u: typecheck<U>,
+  v: typecheck<V>,
+): typecheck<[T, U, V]>;
+export function chkTupleOf<T, U, V>(
+  t: typecheck<T>,
+  u?: typecheck<U>,
+  v?: typecheck<V>,
+): typecheck<[T, U, V] | [T, U] | [T]> {
+  if (isDefined(v)) {
+    return (obj: unknown) => is3TupleOf(obj, t, u!, v);
+  }
+  if (isDefined(u)) {
+    return (obj: unknown) => is2TupleOf(obj, t, u);
+  }
+  return (obj: unknown) => is1TupleOf(obj, t);
+}
+
 /**
  * Type check for string[]
  * @param  {unknown} obj

@@ -1,11 +1,14 @@
 import {
   DefaultButton,
   Dialog,
+  DialogFooter,
+  DialogType,
   PrimaryButton,
   Stack,
   Text,
   TextField,
 } from '@fluentui/react';
+import React from 'react';
 import { useState } from 'react';
 import { DialogData } from '@freik/react-tools';
 
@@ -39,13 +42,19 @@ export function TextInput({
   };
   const yes = yesText ?? 'Yes';
   const no = noText ?? 'No';
+  const dlgContentProps = {
+    type: DialogType.normal,
+    title,
+    closeButtonAriaLabel: 'Close',
+    subText: text,
+  };
   return (
     <Dialog
-      title={title}
       hidden={hidden}
       onDismiss={hide}
       minWidth={minWidth}
       maxWidth={maxWidth}
+      dialogContentProps={dlgContentProps}
     >
       <Stack>
         <Text>{text}</Text>
@@ -54,15 +63,15 @@ export function TextInput({
           onChange={(ev, newValue) => setInput(newValue ?? initialValue)}
         />
         <br />
-        <div>
-          <PrimaryButton style={{ float: 'left' }} onClick={hide}>
-            {no}
-          </PrimaryButton>
-          <DefaultButton style={{ float: 'right' }} onClick={confirmAndClose}>
-            {yes}
-          </DefaultButton>
-        </div>
       </Stack>
+      <DialogFooter>
+        <PrimaryButton style={{ float: 'left' }} onClick={hide}>
+          {no}
+        </PrimaryButton>
+        <DefaultButton style={{ float: 'right' }} onClick={confirmAndClose}>
+          {yes}
+        </DefaultButton>
+      </DialogFooter>
     </Dialog>
   );
 }
