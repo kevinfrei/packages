@@ -1,14 +1,14 @@
-import * as ofs from 'fs';
-import { promises as fsp } from 'fs';
-import * as path from 'path';
+import * as ofs from 'node:fs';
+import { promises as fsp } from 'node:fs';
+import path from 'node:path';
 import { SpawnRes } from '@freik/spawn';
 
 const fs = {
-  readFileAsync: ofs.promises.readFile,
+  readFileAsync: fsp.readFile,
   readFileSync: ofs.readFileSync,
-  writeFileAsync: ofs.promises.writeFile,
+  writeFileAsync: fsp.writeFile,
   writeFileSync: ofs.writeFileSync,
-  statAsync: ofs.promises.stat,
+  statAsync: fsp.stat,
   statSync: ofs.statSync,
 };
 

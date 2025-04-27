@@ -1,9 +1,9 @@
 import { Container, MakeQueue, MakeStack } from '@freik/containers';
 import { isHiddenFile } from '@freik/is-hidden-file';
 import { isBoolean, isString, isUndefined } from '@freik/typechk';
-import * as fs from 'fs';
-import { promises as fsp } from 'fs';
-import * as path from 'path';
+import * as fs from 'node:fs';
+import { promises as fsp } from 'node:fs';
+import path from 'node:path';
 import * as PathUtil from './PathUtil.js';
 import { MakeLog } from '@freik/logger';
 

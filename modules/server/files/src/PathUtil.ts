@@ -1,8 +1,8 @@
-import * as os from 'os';
-import * as child from 'child_process';
-import * as path from 'path';
-import { promises as fsp } from 'fs';
-import { promisify } from 'util';
+import os from 'node:os';
+import * as child from 'node:child_process';
+import path from 'node:path';
+import { promises as fsp } from 'node:fs';
+import { promisify } from 'node:util';
 
 const exec = promisify(child.exec);
 
