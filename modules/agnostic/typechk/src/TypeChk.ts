@@ -739,20 +739,22 @@ export function chkField<K extends string | number | symbol>(
  * @param  {typecheck<T>} checker - A Type checking function for T
  * @returns {obj_is<{key: T}>}
  */
-export function hasFieldType<T, K extends string | number | symbol>(
+export function hasFieldOf<T, K extends string | number | symbol>(
   obj: unknown,
   key: K,
   checker: typecheck<T>,
 ): obj is NonNullable<{ [key in K]: T }> {
   return hasField(obj, key) && checker(obj[key]);
 }
-export function chkFieldType<T, K extends string | number | symbol>(
+export function chkFieldOf<T, K extends string | number | symbol>(
   key: K,
   checker: typecheck<T>,
 ): typecheck<NonNullable<{ [key in K]: T }>> {
   return (obj: unknown): obj is { [key in K]: T } =>
     hasFieldType(obj, key, checker);
 }
+export const hasFieldType = hasFieldOf;
+export const chkFieldType = chkFieldOf;
 /**
  * Type check for a string typed key in obj.
  * After a conditional, you can use obj[key] or obj.key as a string safely.
@@ -969,4 +971,32 @@ export function chkPartialOf<T extends object>(
   fields: Record<keyof T, boolcheck>,
 ): typecheck<Partial<T>> {
   return (obj): obj is Partial<T> => isPartialOf<T>(obj, fields);
+}
+
+export function isRecordOf<K extends string | number | symbol, V>(
+  obj: unknown,
+  keyChk: typecheck<K>,
+  valChk: typecheck<V>,
+): obj is Record<K, V> {
+  if (!isObjectNonNull(obj)) {
+    return false;
+  }
+  const keys = Object.keys(obj);
+  let len = keys.length;
+  for (const fieldName of keys) {
+    if (!hasField(obj, fieldName)) continue;
+    const theVal = obj[fieldName];
+    if (!keyChk(fieldName) || !valChk(theVal)) {
+      return false;
+    }
+    len--;
+  }
+  return len === 0;
+}
+
+export function chkRecordOf<K extends string | number | symbol, V>(
+  keyChk: typecheck<K>,
+  valChk: typecheck<V>,
+): typecheck<Record<K, V>> {
+  return (obj): obj is Record<K, V> => isRecordOf(obj, keyChk, valChk);
 }

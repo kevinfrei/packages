@@ -16,7 +16,9 @@ import {
   chkObjectOf,
   chkObjectOfExactType,
   chkObjectOfType,
+  chkOneOf,
   chkPartialOf,
+  chkRecordOf,
   chkSetOf,
   chkStrField,
   is1TupleOf,
@@ -43,9 +45,11 @@ import {
   isObjectOfExactType,
   isObjectOfString,
   isObjectOfType,
+  isOneOf,
   isPartialOf,
   isPromise,
   isPromiseOf,
+  isRecordOf,
   isRegex,
   isSetOf,
   isSetOfString,
@@ -294,5 +298,16 @@ test('is/asSimpleObject, chk/isBothOf tests', () => {
       ],
       chkBothOf(isArrayOfString, chk2TupleOf(isString, isString)),
     ),
+  ).toBeTruthy();
+});
+
+test('isRecordOf', () => {
+  const record = { a: '1', b: '2', c: '3' };
+  const record2 = { a: '1', b: '2', c: 3 };
+  expect(isRecordOf(record, isString, isString)).toBeTruthy();
+  expect(isRecordOf(record2, isString, isString)).toBeFalsy();
+  expect(chkRecordOf(isString, isString)(record)).toBeTruthy();
+  expect(
+    chkRecordOf(isString, chkOneOf(isString, isNumber))(record2),
   ).toBeTruthy();
 });
