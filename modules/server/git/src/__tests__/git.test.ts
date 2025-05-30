@@ -11,8 +11,8 @@ import { test, expect } from 'bun:test';
 test('Simple git.files tests', async () => {
   const files = await Git.files({ filter: 'all' });
   expect(isArray(files)).toBeTruthy();
-  expect(files.length).toBeGreaterThan(10);
-  expect(files.length).toBeLessThan(100);
+  expect(files.length).toBeGreaterThan(300);
+  expect(files.length).toBeLessThan(1000);
 
   const noFiles = await Git.files();
   // This will fail if we have any edits :/

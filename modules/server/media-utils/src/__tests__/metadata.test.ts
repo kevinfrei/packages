@@ -1,6 +1,24 @@
 import { Attributes } from '@freik/media-core';
 import { Metadata } from '../index.js';
 import { hasField } from '@freik/typechk';
+import { beforeAll, afterAll, it, expect } from 'bun:test';
+import path from 'path';
+
+let prevCwd: string | null = null;
+
+beforeAll(() => {
+  prevCwd = process.cwd();
+  if (!prevCwd.endsWith('media-utils')) {
+    // If we are not in the media-utils module, we need to cd to it
+    process.chdir(path.join('modules', 'server', 'media-utils'));
+  }
+});
+afterAll(() => {
+  if (prevCwd !== null) {
+    process.chdir(prevCwd);
+    prevCwd = null;
+  }
+});
 
 const log = false ? console.log : (a: unknown) => {};
 

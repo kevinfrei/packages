@@ -6,6 +6,8 @@ import {
   setDefaultTimeout,
   test,
   expect,
+  beforeAll,
+  afterAll,
 } from 'bun:test';
 
 const fs = {
@@ -13,6 +15,23 @@ const fs = {
   statSync: ofs.statSync,
   unlinkSync: ofs.unlinkSync,
 };
+import path from 'path';
+
+let prevCwd: string | null = null;
+
+beforeAll(() => {
+  prevCwd = process.cwd();
+  if (!prevCwd.endsWith('media-utils')) {
+    // If we are not in the media-utils module, we need to cd to it
+    process.chdir(path.join('modules', 'server', 'media-utils'));
+  }
+});
+afterAll(() => {
+  if (prevCwd !== null) {
+    process.chdir(prevCwd);
+    prevCwd = null;
+  }
+});
 
 const log = false ? console.log : (a: unknown) => {};
 

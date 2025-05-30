@@ -2,8 +2,13 @@
 
 import React from 'react';
 import { FullPage } from '../FullPage';
-import { afterEach, describe, test } from 'bun:test';
+import { afterEach, beforeAll, describe, test } from 'bun:test';
 import { cleanup, render } from '@testing-library/react';
+import { GlobalRegistrator } from '@happy-dom/global-registrator';
+
+beforeAll(() => {
+  if (!GlobalRegistrator.isRegistered) GlobalRegistrator.register();
+});
 
 afterEach(cleanup);
 

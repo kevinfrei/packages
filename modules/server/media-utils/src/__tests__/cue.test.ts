@@ -6,20 +6,6 @@ import { TextFileToArray } from '@freik/files';
 
 let prevCwd: string | null = null;
 
-beforeAll(() => {
-  prevCwd = process.cwd();
-  if (!prevCwd.endsWith('media-utils')) {
-    // If we are not in the media-utils module, we need to cd to it
-    process.chdir(path.join('modules', 'server', 'media-utils'));
-  }
-});
-afterAll(() => {
-  if (prevCwd !== null) {
-    process.chdir(prevCwd);
-    prevCwd = null;
-  }
-});
-
 async function cleanup() {
   {
     for (let i = 1; i < 6; i++) {
@@ -30,8 +16,21 @@ async function cleanup() {
   }
 }
 
-beforeAll(cleanup);
-afterAll(cleanup);
+beforeAll(async () => {
+  prevCwd = process.cwd();
+  if (!prevCwd.endsWith('media-utils')) {
+    // If we are not in the media-utils module, we need to cd to it
+    process.chdir(path.join('modules', 'server', 'media-utils'));
+  }
+  await cleanup();
+});
+afterAll(async () => {
+  await cleanup();
+  if (prevCwd !== null) {
+    process.chdir(prevCwd);
+    prevCwd = null;
+  }
+});
 
 test('Parse a CUE file', async () => {
   const filename = 'src/__tests__/test.cue';

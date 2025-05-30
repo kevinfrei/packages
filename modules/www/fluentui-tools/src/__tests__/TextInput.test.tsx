@@ -1,9 +1,9 @@
 /// <reference lib="dom" />
 
 import React from 'react';
-import { afterEach, describe, test, expect } from 'bun:test';
+import { afterEach, describe, test, expect, beforeAll } from 'bun:test';
 import { TextInput } from '../Dialogs';
-import { DialogData } from '@freik/react-tools';
+import type { DialogData } from '@freik/react-tools';
 import {
   fireEvent,
   cleanup,
@@ -11,6 +11,11 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
+import { GlobalRegistrator } from '@happy-dom/global-registrator';
+
+beforeAll(() => {
+  if (!GlobalRegistrator.isRegistered) GlobalRegistrator.register();
+});
 
 // Unmounts after each test:
 afterEach(cleanup);
