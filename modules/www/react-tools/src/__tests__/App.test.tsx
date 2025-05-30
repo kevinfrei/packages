@@ -6,10 +6,13 @@ import { Fill } from '../Fill';
 import { FullPage } from '../FullPage';
 import { afterEach, beforeAll, expect, test } from 'bun:test';
 import { cleanup, render, screen } from '@testing-library/react';
-import { GlobalRegistrator } from '@happy-dom/global-registrator';
+import * as TestingLib from '@testing-library/react';
+import * as matchers from '@testing-library/jest-dom/matchers';
+
+expect.extend(matchers);
 
 beforeAll(() => {
-  if (!GlobalRegistrator.isRegistered) GlobalRegistrator.register();
+  TestingLib.configure({ reactStrictMode: true, asyncUtilTimeout: 1000 });
 });
 
 afterEach(cleanup);

@@ -2,13 +2,12 @@
 
 import React from 'react';
 import { FullPage } from '../FullPage';
-import { afterEach, beforeAll, describe, test } from 'bun:test';
-import { cleanup, render } from '@testing-library/react';
-import { GlobalRegistrator } from '@happy-dom/global-registrator';
+import { afterEach, beforeAll, describe, expect, test } from 'bun:test';
+import { cleanup, render, screen } from '@testing-library/react';
+import * as TestingLib from '@testing-library/react';
+import * as matchers from '@testing-library/jest-dom/matchers';
 
-beforeAll(() => {
-  if (!GlobalRegistrator.isRegistered) GlobalRegistrator.register();
-});
+expect.extend(matchers);
 
 afterEach(cleanup);
 
