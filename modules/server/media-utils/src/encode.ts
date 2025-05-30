@@ -4,7 +4,6 @@
 // Everything is synchronous currently
 
 import { Attributes, SimpleMetadata } from '@freik/media-core';
-import { ProcUtil } from '@freik/node-utils';
 import {
   hasField,
   hasStrField,
@@ -12,6 +11,7 @@ import {
   isObject,
 } from '@freik/typechk';
 import type { Encoder, EncoderAsync } from './index.js';
+import { SpawnRes, SpawnResSync } from '@freik/spawn';
 
 function prefixObj(str: string, obj: { [key: string]: string }): string[] {
   const res: string[] = [];
@@ -43,7 +43,7 @@ function makeM4aArgs(
 
 const M4a: Encoder = (wavFile, outputFilename, options, attrs) => {
   const args = makeM4aArgs(wavFile, outputFilename, options, attrs);
-  return ProcUtil.spawnRes('faac', args);
+  return SpawnResSync('faac', args);
 };
 
 const M4aAsync: EncoderAsync = async (
@@ -53,7 +53,7 @@ const M4aAsync: EncoderAsync = async (
   attrs,
 ) => {
   const args = makeM4aArgs(wavFile, outputFilename, options, attrs);
-  return await ProcUtil.spawnResAsync('faac', args);
+  return await SpawnRes('faac', args);
 };
 
 // How to add cover images to the .m4a file:
@@ -97,7 +97,7 @@ const Ffmpeg: Encoder = (
     attrs,
     coverImage,
   );
-  return ProcUtil.spawnRes('ffmpeg', args);
+  return SpawnResSync('ffmpeg', args);
 };
 
 const FfmpegAsync: EncoderAsync = async (
@@ -114,7 +114,7 @@ const FfmpegAsync: EncoderAsync = async (
     attrs,
     coverImage,
   );
-  return await ProcUtil.spawnResAsync('ffmpeg', args);
+  return await SpawnRes('ffmpeg', args);
 };
 
 const makeFlacArgs = (
@@ -162,7 +162,7 @@ const makeFlacArgs = (
 
 const Flac: Encoder = (wavFile, outputFilename, options, attrs) => {
   const args = makeFlacArgs(wavFile, outputFilename, options, attrs);
-  return ProcUtil.spawnRes('flac', args);
+  return SpawnResSync('flac', args);
 };
 
 const FlacAsync: EncoderAsync = async (
@@ -172,7 +172,7 @@ const FlacAsync: EncoderAsync = async (
   attrs,
 ) => {
   const args = makeFlacArgs(wavFile, outputFilename, options, attrs);
-  return await ProcUtil.spawnResAsync('flac', args);
+  return await SpawnRes('flac', args);
 };
 
 export {

@@ -2,7 +2,31 @@ import { promises as fsp } from 'fs';
 import { MakeFileIndex } from '../FileIndex';
 import { MakeSuffixWatcher } from '@freik/watchers';
 import { NormalizedStringCompare } from '@freik/text';
-import { test, expect, beforeEach, afterEach } from 'bun:test';
+import {
+  test,
+  expect,
+  beforeEach,
+  afterEach,
+  beforeAll,
+  afterAll,
+} from 'bun:test';
+import path from 'path';
+
+let prevCwd: string | null = null;
+
+beforeAll(() => {
+  prevCwd = process.cwd();
+  if (!prevCwd.endsWith('data-store')) {
+    // If we are not in the data-store module, we need to cd to it
+    process.chdir(path.join('modules', 'server', 'data-store'));
+  }
+});
+afterAll(() => {
+  if (prevCwd !== null) {
+    process.chdir(prevCwd);
+    prevCwd = null;
+  }
+});
 
 async function cleanup() {
   for (const i of ['FileIndexTest', 'FileIndexTest2', 'FileIndexTest3']) {

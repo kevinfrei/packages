@@ -39,8 +39,9 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
+    "@freik/files": "workspace:*",
+    "@freik/spawn": "workspace:*",
     "@freik/media-core": "workspace:*",
-    "@freik/node-utils": "workspace:*",
     "@freik/typechk": "workspace:*",
     "music-metadata": "^11.0.2"
   },

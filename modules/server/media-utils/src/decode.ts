@@ -3,38 +3,36 @@
 // Provides compressed audio to wav file tools
 // Everything is synchronous currently
 
-import { PathUtil, ProcUtil } from '@freik/node-utils';
+// import { PathUtil, ProcUtil } from '@freik/node-utils';
+
+import { SpawnRes, SpawnResSync } from '@freik/spawn';
 import type { Decoder, DecoderAsync } from './index.js';
 import * as path from 'path';
+import { Path } from '@freik/files';
 
 const Mp3: Decoder = (inputFile, outputFile) =>
-  ProcUtil.spawnRes('lame', ['--quiet', '--decode', inputFile, outputFile]);
+  SpawnResSync('lame', ['--quiet', '--decode', inputFile, outputFile]);
 
 const Mp3Async: DecoderAsync = (inputFile, outputFile) =>
-  ProcUtil.spawnResAsync('lame', [
-    '--quiet',
-    '--decode',
-    inputFile,
-    outputFile,
-  ]);
+  SpawnRes('lame', ['--quiet', '--decode', inputFile, outputFile]);
 
 const Flac: Decoder = (inputFile, outputFile) =>
-  ProcUtil.spawnRes('flac', ['-d', inputFile, '-o', outputFile]);
+  SpawnResSync('flac', ['-d', inputFile, '-o', outputFile]);
 
 const FlacAsync: DecoderAsync = (inputFile, outputFile) =>
-  ProcUtil.spawnResAsync('flac', ['-d', inputFile, '-o', outputFile]);
+  SpawnRes('flac', ['-d', inputFile, '-o', outputFile]);
 
 const Aac: Decoder = (inputFile, outputFile) =>
-  ProcUtil.spawnRes('faad', ['-o', outputFile, inputFile]);
+  SpawnResSync('faad', ['-o', outputFile, inputFile]);
 
 const AacAsync: DecoderAsync = (inputFile, outputFile) =>
-  ProcUtil.spawnResAsync('faad', ['-o', outputFile, inputFile]);
+  SpawnRes('faad', ['-o', outputFile, inputFile]);
 
 const Ffmpeg: Decoder = (inputFile, outputFile) =>
-  ProcUtil.spawnRes('ffmpeg', ['-i', inputFile, outputFile]);
+  SpawnResSync('ffmpeg', ['-i', inputFile, outputFile]);
 
 const FfmpegAsync: DecoderAsync = (inputFile, outputFile) =>
-  ProcUtil.spawnResAsync('ffmpeg', ['-i', inputFile, outputFile]);
+  SpawnRes('ffmpeg', ['-i', inputFile, outputFile]);
 
 // K: we know we need to convert it.
 // First convert it to a .wav file
@@ -53,7 +51,7 @@ const MakeWave = (inputFile: string, fileTypeMB?: string): string | void => {
 
   let fileType: string = fileTypeMB || path.extname(inputFile);
   if (fileType.length > 0 && fileType[0] === '.') {
-    fileType = fileType.substr(1);
+    fileType = fileType.substring(1);
   }
   if (fileType.length < 1) {
     return;
@@ -61,7 +59,7 @@ const MakeWave = (inputFile: string, fileTypeMB?: string): string | void => {
   if (fileType === 'wav') {
     return inputFile;
   }
-  const tmpFile: string = PathUtil.getTemp('decode', 'wav');
+  const tmpFile: string = Path.GetTemp('decode', 'wav');
   if (wavConvert[fileType] === undefined) {
     throw new Error('Unknown file type:' + fileType);
   }
@@ -89,7 +87,7 @@ const MakeWaveAsync = async (
   };
   let fileType: string = fileTypeMB || path.extname(inputFile);
   if (fileType.length > 0 && fileType[0] === '.') {
-    fileType = fileType.substr(1);
+    fileType = fileType.substring(1);
   }
   if (fileType.length < 1) {
     return;
@@ -97,7 +95,7 @@ const MakeWaveAsync = async (
   if (fileType === 'wav') {
     return inputFile;
   }
-  const tmpFile: string = PathUtil.getTemp('decode', 'wav');
+  const tmpFile: string = Path.GetTemp('decode', 'wav');
   if (wavConvert[fileType] === undefined) {
     throw new Error('Unknown file type:' + fileType);
   }

@@ -1,7 +1,8 @@
 import type { SimpleMetadata } from '@freik/media-core';
-import { FileUtil, PathUtil } from '@freik/node-utils';
 import * as path from 'node:path';
 import { isString } from '@freik/typechk';
+import { Path, TextFileToArray } from '@freik/files';
+
 import { FlacAsync } from './encode.js';
 
 export type ToFlacRes = { success: number; failure: number; log: string[] };
@@ -117,7 +118,7 @@ export function ParseFile(cue: string[]): File | string {
 }
 
 export async function ToFlac(filename: string): Promise<ToFlacRes> {
-  const cueText = await FileUtil.textFileToArrayAsync(filename);
+  const cueText = await TextFileToArray(filename);
   // Parse the cue file:
   const cue = ParseFile(cueText);
   if (isString(cue)) {
@@ -151,7 +152,7 @@ export async function ToFlac(filename: string): Promise<ToFlacRes> {
       }
       const newFile: string = path.join(
         dirname,
-        PathUtil.fileClean(`${track.track} - ${track.title}.flac`),
+        Path.CleanFileName(`${track.track} - ${track.title}.flac`),
       );
       metadata.track = track.track;
       metadata.title = track.title;

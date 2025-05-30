@@ -1,5 +1,22 @@
 import { ForDirs, ForFiles, ForFilesSync } from '../forFiles';
-import { test, expect } from 'bun:test';
+import { test, expect, beforeAll, afterAll } from 'bun:test';
+import path from 'path';
+
+let prevCwd: string | null = null;
+
+beforeAll(() => {
+  prevCwd = process.cwd();
+  if (!prevCwd.endsWith('files')) {
+    // If we are not in the files module, we need to cd to it
+    process.chdir(path.join('modules', 'server', 'files'));
+  }
+});
+afterAll(() => {
+  if (prevCwd !== null) {
+    process.chdir(prevCwd);
+    prevCwd = null;
+  }
+});
 
 test('Very Basic', () => {
   const seen = Array<number>(7).fill(0);
