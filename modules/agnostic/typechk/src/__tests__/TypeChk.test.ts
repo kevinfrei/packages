@@ -18,6 +18,7 @@ import {
   chkObjectOfType,
   chkOneOf,
   chkPartialOf,
+  chkRecord,
   chkRecordOf,
   chkSetOf,
   chkStrField,
@@ -49,6 +50,7 @@ import {
   isPartialOf,
   isPromise,
   isPromiseOf,
+  isRecord,
   isRecordOf,
   isRegex,
   isSetOf,
@@ -301,9 +303,12 @@ test('is/asSimpleObject, chk/isBothOf tests', () => {
   ).toBeTruthy();
 });
 
-test('isRecordOf', () => {
+test('isRecord', () => {
   const record = { a: '1', b: '2', c: '3' };
   const record2 = { a: '1', b: '2', c: 3 };
+  expect(isRecord(record, isString)).toBeTruthy();
+  expect(chkRecord(isString)(record2)).toBeTruthy();
+  expect(isRecord(isRecord, isString)).toBeFalsy();
   expect(isRecordOf(record, isString, isString)).toBeTruthy();
   expect(isRecordOf(record2, isString, isString)).toBeFalsy();
   expect(chkRecordOf(isString, isString)(record)).toBeTruthy();

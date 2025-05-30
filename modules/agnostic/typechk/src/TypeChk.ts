@@ -973,6 +973,31 @@ export function chkPartialOf<T extends object>(
   return (obj): obj is Partial<T> => isPartialOf<T>(obj, fields);
 }
 
+export function isRecord<K extends string | number | symbol>(
+  obj: unknown,
+  keyChk: typecheck<K>,
+): obj is Record<K, unknown> {
+  if (!isObjectNonNull(obj)) {
+    return false;
+  }
+  const keys = Object.keys(obj);
+  let len = keys.length;
+  for (const fieldName of keys) {
+    if (!hasField(obj, fieldName)) continue;
+    if (!keyChk(fieldName)) {
+      return false;
+    }
+    len--;
+  }
+  return len === 0;
+}
+
+export function chkRecord<K extends string | number | symbol>(
+  keyChk: typecheck<K>,
+): typecheck<Record<K, unknown>> {
+  return (obj): obj is Record<K, unknown> => isRecord(obj, keyChk);
+}
+
 export function isRecordOf<K extends string | number | symbol, V>(
   obj: unknown,
   keyChk: typecheck<K>,
