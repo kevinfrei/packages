@@ -24,7 +24,7 @@ describe('TextInput', () => {
   // My first actual, honest-to-god UI test right here...
   test('Initial value return (disabled)', async () => {
     expect(TextInput).toBeDefined();
-    return;/*
+    return; /*
     let response = 'nope';
     let hidden = false;
     function TextInputTest() {

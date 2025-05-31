@@ -54,10 +54,10 @@ function App() {
 }
 
 test('renders without crashing (disabled)', () => {
-    // <React.StrictMode>
-    // </React.StrictMode>
-    expect(App).toBeDefined();
-    /*
+  // <React.StrictMode>
+  // </React.StrictMode>
+  expect(App).toBeDefined();
+  /*
   render(      <App />  );
   const topLeft = screen.getByText('Howdy!');
   const nextLeft = screen.getByText('This should be the second line');
