@@ -11,7 +11,7 @@ export type FillProps = {
     | 'column'
     | 'c';
   style?: React.CSSProperties;
-  children?: JSX.Element | string | (JSX.Element | string)[];
+  children?: React.JSX.Element | string | (React.JSX.Element | string)[];
 };
 
 const baseStyle: React.CSSProperties = {
@@ -24,7 +24,7 @@ export function Fill({
   direction: which,
   style,
   children,
-}: FillProps): JSX.Element {
+}: FillProps): React.JSX.Element {
   const divStyle = { ...baseStyle, ...style };
   if (which && (which[0] === 'v' || which[0] === 'c')) {
     divStyle.flexDirection = 'row';

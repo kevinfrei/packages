@@ -12,12 +12,12 @@ import {
   Text,
   Toggle,
 } from '@fluentui/react';
-import { Suspense, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { BoolState } from '@freik/react-tools';
 import { isString } from '@freik/typechk';
 
 export type SpinnerProps = {
-  children: JSX.Element | JSX.Element[];
+  children: React.JSX.Element | React.JSX.Element[];
   label?: string;
   position?: SpinnerLabelPosition;
   size?: SpinnerSize;
@@ -28,7 +28,7 @@ export function Spinner({
   label,
   position,
   size,
-}: SpinnerProps): JSX.Element {
+}: SpinnerProps): React.JSX.Element {
   const theLabel = label || 'Please wait...';
   const pos = position || 'bottom';
   const sz = size || SpinnerSize.medium;
@@ -52,7 +52,7 @@ export function StateToggle({
   state,
   disabled,
   style,
-}: StateToggleProps): JSX.Element {
+}: StateToggleProps): React.JSX.Element {
   const customStyle: Partial<IToggleStyles> = {};
   if (style) {
     customStyle.root = style;
@@ -79,13 +79,13 @@ export function Expandable({
   variant,
   indent,
 }: {
-  children: JSX.Element | JSX.Element[];
-  label: string | JSX.Element;
+  children: React.JSX.Element | React.JSX.Element[];
+  label: string | React.JSX.Element;
   defaultShow?: boolean;
   separator?: boolean;
   variant?: keyof IFontStyles;
   indent?: number;
-}): JSX.Element {
+}): React.JSX.Element {
   const indentSize = indent || 0;
   const [hidden, setHidden] = useState(!defaultShow);
   const button = (
@@ -96,7 +96,7 @@ export function Expandable({
       onClick={() => setHidden(!hidden)}
     />
   );
-  let theHeader: JSX.Element;
+  let theHeader: React.JSX.Element;
   if (separator) {
     const customStyle: Partial<ISeparatorStyles> = {
       root: { marginLeft: '-10px' },

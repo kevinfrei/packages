@@ -27,7 +27,7 @@ export type CenterDirectionBoth =
 
 export type CenterPropsBasics = {
   style?: React.CSSProperties;
-  children?: JSX.Element | string | (JSX.Element | string)[];
+  children?: React.JSX.Element | string | (React.JSX.Element | string)[];
 };
 
 export type CenterProps = (
@@ -42,7 +42,7 @@ const baseStyle: React.CSSProperties = {
   display: 'flex',
 };
 
-export function Center(props: CenterProps): JSX.Element {
+export function Center(props: CenterProps): React.JSX.Element {
   const divStyle = { ...baseStyle, ...props.style };
   const h =
     hasField(props, 'horizontal') ||

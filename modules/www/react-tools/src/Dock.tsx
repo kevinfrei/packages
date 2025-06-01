@@ -14,7 +14,7 @@ const dockStyle = new Map<
 export type DockProps = {
   location: 'top' | 'bottom' | 'left' | 'right';
   style?: React.CSSProperties;
-  children?: JSX.Element | string | (JSX.Element | string)[];
+  children?: React.JSX.Element | string | (React.JSX.Element | string)[];
 };
 
 const theStyle: React.CSSProperties = {
@@ -24,7 +24,11 @@ const theStyle: React.CSSProperties = {
   flexBasis: 'auto', // '100%',
 };
 
-export function Dock({ location, style, children }: DockProps): JSX.Element {
+export function Dock({
+  location,
+  style,
+  children,
+}: DockProps): React.JSX.Element {
   const mostChildren = isArray(children)
     ? children.slice(0, children.length - 1)
     : [];

@@ -14,14 +14,14 @@ const fullPageSize: React.CSSProperties = {
 export type FullPageProps = {
   style?: React.CSSProperties;
   className?: string;
-  children?: JSX.Element | string | (JSX.Element | string)[];
+  children?: React.JSX.Element | string | (React.JSX.Element | string)[];
 };
 
 export function FullPage({
   style,
   className,
   children,
-}: FullPageProps): JSX.Element {
+}: FullPageProps): React.JSX.Element {
   const newStyle = { ...fullPageSize, ...style };
   return (
     <div className={className || ''} style={newStyle}>

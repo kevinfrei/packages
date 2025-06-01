@@ -22,7 +22,7 @@ export type TextRotaterProps = {
 export function TextRotater({
   every,
   messages,
-}: TextRotaterProps): JSX.Element {
+}: TextRotaterProps): React.JSX.Element {
   // Default to the first message passed
   const msg = messages || msgsToUse;
   const tm = isNumber(every) && every > 0 ? every : 1000;
@@ -46,7 +46,7 @@ export function Snark({
 }: {
   kind: string;
   children: string;
-}): JSX.Element {
+}): React.JSX.Element {
   let char = '🙄';
   switch (kind.toLocaleLowerCase()) {
     case 'grumpy old man':

@@ -46,7 +46,7 @@ export function TextInput({
   noText,
   minWidth,
   maxWidth,
-}: TextInputProps): JSX.Element {
+}: TextInputProps): React.JSX.Element {
   const [input, setInput] = useState(initialValue);
   const confirmAndClose = () => {
     hide();
@@ -108,7 +108,7 @@ export function ConfirmationDialog({
   noText,
   minWidth,
   maxWidth,
-}: ConfirmationDialogProps): JSX.Element {
+}: ConfirmationDialogProps): React.JSX.Element {
   const yes = yesText ?? 'Yes';
   const no = noText ?? 'No';
   return (

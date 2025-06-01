@@ -4,7 +4,7 @@ import React from 'react';
 import { Suspense } from 'react';
 
 export type SpinnerUIProps = SpinnerProps & {
-  children: JSX.Element | JSX.Element[];
+  children: React.JSX.Element | React.JSX.Element[];
 };
 
 export function SpinSuspense(
