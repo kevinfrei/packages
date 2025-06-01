@@ -1,6 +1,6 @@
 {
   "name": "@freik/media-utils",
-  "version": "0.19.15",
+  "version": "0.19.17",
   "description": "Utilities for dealing with media files in NodeJS/Electron",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",

@@ -1,6 +1,6 @@
 {
   "name": "@freik/open-browser",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "Try to open a browser with the given URL",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",

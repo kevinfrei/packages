@@ -1,6 +1,6 @@
 {
   "name": "@freik/logger",
-  "version": "0.2.20",
+  "version": "0.2.22",
   "description": "A simple (typed!) wrapper around 'debug'",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
