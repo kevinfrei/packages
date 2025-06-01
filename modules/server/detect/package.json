@@ -1,6 +1,6 @@
 {
   "name": "@freik/detect",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Detect which Javascript environment you're in",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",

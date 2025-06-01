@@ -1,6 +1,6 @@
 {
   "name": "@freik/data-store",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Data storage utilities for desktop JS environments",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
