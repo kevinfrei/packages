@@ -45,8 +45,8 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/logger": "workspace:*",
-    "@freik/typechk": "workspace:*"
+    "@freik/logger": "0.4.1",
+    "@freik/typechk": "0.8.1"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
