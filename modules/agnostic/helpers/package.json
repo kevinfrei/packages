@@ -1,6 +1,6 @@
 {
   "name": "@freik/helpers",
-  "version": "0.3.24",
+  "version": "0.3.25",
   "description": "Core set of TS/JS function helpers",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
