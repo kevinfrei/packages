@@ -1,6 +1,6 @@
 {
   "name": "@freik/watchers",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Text filtering and watching utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",

@@ -59,14 +59,17 @@ export function DirName(pathname: string): string {
 export async function GetRoots(): Promise<string[]> {
   switch (os.platform()) {
     case 'win32': {
-      const { stdout, stderr } = await exec('wmic logicaldisk get name');
+      const { stdout, stderr } = await exec(
+        'powershell -Command "Get-PSDrive -PSProvider FileSystem' +
+          ' | Select-Object -ExpandProperty Root"',
+      );
       if (stderr.length > 0) {
         return [];
       }
       return stdout
         .split('\r\r\n')
-        .filter((value) => /[A-Za-z]:/.test(value))
-        .map((value) => value.trim());
+        .filter((value) => /^[A-Za-z]$/.test(value))
+        .map((value) => value.trim() + ':');
     }
     case 'darwin': {
       const subdirs = await fsp.readdir('/Volumes');
