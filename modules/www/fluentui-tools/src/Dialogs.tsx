@@ -11,18 +11,6 @@ import {
 import React from 'react';
 import { useState } from 'react';
 import { DialogData } from '@freik/react-tools';
-import { afterEach, beforeAll, expect, test } from 'bun:test';
-import { cleanup, render, screen } from '@testing-library/react';
-import * as TestingLib from '@testing-library/react';
-import * as matchers from '@testing-library/jest-dom/matchers';
-
-expect.extend(matchers);
-
-beforeAll(() => {
-  TestingLib.configure({ reactStrictMode: true, asyncUtilTimeout: 1000 });
-});
-
-afterEach(cleanup);
 
 export type TextInputProps = {
   data: DialogData;
