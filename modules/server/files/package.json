@@ -49,11 +49,11 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "0.8.3",
-    "@freik/containers": "0.4.3",
+    "@freik/typechk": "workspace:*",
+    "@freik/containers": "workspace:*",
     "@freik/is-hidden-file": "^1.13.1",
-    "@freik/logger": "0.4.3",
-    "@freik/spawn": "0.3.3"
+    "@freik/logger": "workspace:*",
+    "@freik/spawn": "workspace:*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",

@@ -42,14 +42,14 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/files": "0.3.3",
-    "@freik/spawn": "0.3.3",
-    "@freik/media-core": "0.16.3",
-    "@freik/typechk": "0.8.3",
+    "@freik/files": "workspace:*",
+    "@freik/spawn": "workspace:*",
+    "@freik/media-core": "workspace:*",
+    "@freik/typechk": "workspace:*",
     "music-metadata": "^11.0.2"
   },
   "devDependencies": {
-    "@freik/sync": "0.4.3",
+    "@freik/sync": "workspace:*",
     "@types/bun": "^1.2.5",
     "@types/node": "^22.13.10",
     "@typescript-eslint/eslint-plugin": "^8.26.1",

@@ -42,7 +42,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "0.8.3"
+    "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "^1.2.5",

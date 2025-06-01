@@ -45,9 +45,9 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/containers": "0.4.3",
-    "@freik/seqnum": "1.3.3",
-    "@freik/typechk": "0.8.3"
+    "@freik/containers": "workspace:*",
+    "@freik/seqnum": "workspace:*",
+    "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "^1.2.5",

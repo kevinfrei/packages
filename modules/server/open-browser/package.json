@@ -48,7 +48,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/logger": "0.4.3"
+    "@freik/logger": "workspace:*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
