@@ -1,6 +1,6 @@
 {
   "name": "@freik/fluentui-tools",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Kevin Frei's FluentUI Web utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -31,7 +31,8 @@
     "clean": "rm -rf lib",
     "release": "bun run build",
     "buildesm": "bun build --entrypoints src/index.ts --minify --outdir ./lib --target browser --format esm",
-    "build": "bun run clean && bun run buildesm",
+    "buildtypes": "tsc --project tsconfig.esm.json --emitDeclarationOnly --outdir ./lib",
+    "build": "bun run clean && bun run buildesm && bun run buildtypes",
     "dbgbuild": "bun run clean && tools make-module --map --esm src/*.ts src/*.tsx",
     "cleanbuild": "bun run clean && bun run build",
     "prepublishOnly": "bun run test",

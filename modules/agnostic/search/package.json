@@ -1,6 +1,6 @@
 {
   "name": "@freik/search",
-  "version": "1.1.21",
+  "version": "1.1.22",
   "description": "A small trie-based search index builder",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -32,7 +32,8 @@
     "release": "bun run build",
     "buildesm": "bun build --entrypoints src/index.ts --minify --outdir ./lib/esm --format esm",
     "buildcjs": "bun build --entrypoints src/index.ts --minify --outdir ./lib/cjs --format cjs",
-    "build": "bun run clean && bun run buildesm && bun run buildcjs",
+    "buildtypes": "tsc --project tsconfig.esm.json --emitDeclarationOnly --outdir ./lib/esm",
+    "build": "bun run clean && bun run buildesm && bun run buildcjs && bun run buildtypes",
     "dbgbuild": "bun run clean && tools make-module --map src/*.ts",
     "cleanbuild": "bun run clean && bun run build",
     "prepublishOnly": "bun run test",

@@ -1,6 +1,6 @@
 {
   "name": "@freik/detect",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Detect which Javascript environment you're in",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -35,7 +35,8 @@
     "release": "bun run build",
     "buildesm": "bun build --entrypoints src/index.ts --minify --target node --outdir ./lib/esm --format esm",
     "buildcjs": "bun build --entrypoints src/index.ts --minify --target node --outdir ./lib/cjs --format cjs",
-    "build": "bun run clean && bun run buildesm && bun run buildcjs",
+    "buildtypes": "tsc --project tsconfig.esm.json --emitDeclarationOnly --outdir ./lib/esm",
+    "build": "bun run clean && bun run buildesm && bun run buildcjs && bun run buildtypes",
     "dbgbuild": "bun run clean && tools make-module --map src/*.ts",
     "cleanbuild": "bun run clean && bun run build",
     "prepublishOnly": "bun run test",
