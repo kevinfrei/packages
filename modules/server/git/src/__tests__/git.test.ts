@@ -6,13 +6,30 @@ import {
   isUndefined,
 } from '@freik/typechk';
 import { Git } from '../index';
-import { test, expect } from 'bun:test';
+import { test, expect, beforeAll, afterAll } from 'bun:test';
+import path from 'path';
+
+let prevCwd: string | null = null;
+
+beforeAll(() => {
+  prevCwd = process.cwd();
+  if (!prevCwd.endsWith('git')) {
+    // If we are not in the data-store module, we need to cd to it
+    process.chdir(path.join('modules', 'server', 'git'));
+  }
+});
+afterAll(() => {
+  if (prevCwd !== null) {
+    process.chdir(prevCwd);
+    prevCwd = null;
+  }
+});
 
 test('Simple git.files tests', async () => {
   const files = await Git.files({ filter: 'all' });
   expect(isArray(files)).toBeTruthy();
-  expect(files.length).toBeGreaterThan(300);
-  expect(files.length).toBeLessThan(1000);
+  expect(files.length).toBeGreaterThan(5);
+  expect(files.length).toBeLessThan(50);
 
   const noFiles = await Git.files();
   // This will fail if we have any edits :/
