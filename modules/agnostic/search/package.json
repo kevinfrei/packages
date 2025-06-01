@@ -1,6 +1,6 @@
 {
   "name": "@freik/search",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "A small trie-based search index builder",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
