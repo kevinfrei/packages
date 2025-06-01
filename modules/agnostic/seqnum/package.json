@@ -1,6 +1,6 @@
 {
   "name": "@freik/seqnum",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple Sequence Number generator",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",

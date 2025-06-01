@@ -1,6 +1,6 @@
 {
   "name": "@freik/recoil-tools",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Kevin Frei's Web utilities for Recoil",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -33,7 +33,7 @@
     "watch": "bun test --watch",
     "clean": "rm -rf lib",
     "release": "bun run build",
-    "buildesm": "bun build --entrypoints src/index.ts --minify --outdir ./lib --target browser --format esm",
+    "buildesm": "bun build --entrypoints src/index.ts --minify --external '@freik/*' --external 'react*' --external recoil --outdir ./lib --target browser --format esm",
     "buildtypes": "tsc --project tsconfig.esm.json --emitDeclarationOnly --outdir ./lib",
     "build": "bun run clean && bun run buildesm && bun run buildtypes",
     "dbgbuild": "bun run clean && tools make-module --map --esm src/*.ts",
