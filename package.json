@@ -28,7 +28,7 @@
     "pre-commit": "bun run format",
     "pre-push": "bun run build && bun run test",
     "pub2npm": "bun serial npm publish --access=public",
-    "bun2npm": "bun forflat bun publish --access=public",
+    "bun2npm": "bun forall bun publish --access=public",
     "prepare": "bun run husky",
     "prep4npm": "tools workspace -f",
     "done4npm": "tools workspace -c",

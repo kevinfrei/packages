@@ -1,6 +1,6 @@
 {
   "name": "@freik/sync",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A set of synchronziation tools for dealing with promises and contention",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",

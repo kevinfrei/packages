@@ -1,6 +1,6 @@
 {
   "name": "@freik/git",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Git files with filtering helper",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
