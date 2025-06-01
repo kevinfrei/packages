@@ -1,6 +1,6 @@
 {
   "name": "@freik/media-core",
-  "version": "0.16.2",
+  "version": "0.16.3",
   "description": "Web and NodeJS compatible media stuff",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -42,7 +42,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "workspace:*"
+    "@freik/typechk": "0.8.3"
   },
   "devDependencies": {
     "@types/bun": "^1.2.5",

@@ -1,6 +1,6 @@
 {
   "name": "@freik/watchers",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Text filtering and watching utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -48,7 +48,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "workspace:*"
+    "@freik/typechk": "0.8.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",

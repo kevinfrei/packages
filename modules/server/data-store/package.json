@@ -1,6 +1,6 @@
 {
   "name": "@freik/data-store",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Data storage utilities for desktop JS environments",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -48,16 +48,16 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "workspace:*",
-    "@freik/files": "workspace:*",
-    "@freik/logger": "workspace:*",
-    "@freik/seqnum": "workspace:*",
-    "@freik/sync": "workspace:*",
-    "@freik/helpers": "workspace:*"
+    "@freik/typechk": "0.8.3",
+    "@freik/files": "0.3.3",
+    "@freik/logger": "0.4.3",
+    "@freik/seqnum": "1.3.3",
+    "@freik/sync": "0.4.3",
+    "@freik/helpers": "0.5.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
-    "@freik/watchers": "workspace:*",
+    "@freik/watchers": "0.3.3",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
     "eslint": "^9.22.0",

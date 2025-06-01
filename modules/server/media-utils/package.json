@@ -1,6 +1,6 @@
 {
   "name": "@freik/media-utils",
-  "version": "0.21.2",
+  "version": "0.21.3",
   "description": "Utilities for dealing with media files in NodeJS/Electron",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -42,14 +42,14 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/files": "workspace:*",
-    "@freik/spawn": "workspace:*",
-    "@freik/media-core": "workspace:*",
-    "@freik/typechk": "workspace:*",
+    "@freik/files": "0.3.3",
+    "@freik/spawn": "0.3.3",
+    "@freik/media-core": "0.16.3",
+    "@freik/typechk": "0.8.3",
     "music-metadata": "^11.0.2"
   },
   "devDependencies": {
-    "@freik/sync": "workspace:*",
+    "@freik/sync": "0.4.3",
     "@types/bun": "^1.2.5",
     "@types/node": "^22.13.10",
     "@typescript-eslint/eslint-plugin": "^8.26.1",

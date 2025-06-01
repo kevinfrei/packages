@@ -1,6 +1,6 @@
 {
   "name": "@freik/open-browser",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Try to open a browser with the given URL",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -48,7 +48,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/logger": "workspace:*"
+    "@freik/logger": "0.4.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
