@@ -4,9 +4,7 @@ import {
   asNumberOrString,
   asSimpleObject,
   asString,
-  chk1TupleOf,
-  chk2TupleOf,
-  chk3TupleOf,
+  chkAnyOf,
   chkArrayOf,
   chkBothOf,
   chkCustomType,
@@ -22,9 +20,7 @@ import {
   chkRecordOf,
   chkSetOf,
   chkStrField,
-  is1TupleOf,
-  is2TupleOf,
-  is3TupleOf,
+  chkTupleOf,
   isArray,
   isArrayOf,
   isArrayOfString,
@@ -57,10 +53,11 @@ import {
   isSetOfString,
   isSimpleObject,
   isString,
+  isTupleOf,
   toArrayOfString,
   toString,
 } from '../TypeChk';
-import { FreikTypeTag } from '../Types';
+import { FreikTypeTag, SimpleObject } from '../Types';
 import { test, expect } from 'bun:test';
 
 test('isString', () => {
@@ -221,16 +218,16 @@ test('Miscellaneous type checks', async () => {
   expect(chkMapOf(isString, isNumberOrString)(mapOfStrNum)).toBeTruthy();
   expect(chkMapOf(isString, isNumberOrString)(mapOfNumStr)).toBeFalsy();
   expect(isMapOf(1, isString, isNull)).toBeFalsy();
-  expect(is1TupleOf([1], isNumber)).toBeTruthy();
-  expect(chk1TupleOf(isNumber)(['a'])).toBeFalsy();
-  expect(is2TupleOf([1, 'a'], isNumber, isString)).toBeTruthy();
-  expect(chk2TupleOf(isNumber, isString)([1, 'a'])).toBeTruthy();
-  expect(is2TupleOf([1, 2], isNumber, isString)).toBeFalsy();
-  expect(is3TupleOf([1, 2, 'a'], isNumber, isNumber, isString)).toBeTruthy();
-  expect(is3TupleOf([1, 2, 'a'], isNumber, isString, isString)).toBeFalsy();
-  expect(chk3TupleOf(isNumber, isString, isString)([1, 2, 'a'])).toBeFalsy();
+  expect(isTupleOf([1], isNumber)).toBeTruthy();
+  expect(chkTupleOf(isNumber)(['a'])).toBeFalsy();
+  expect(isTupleOf([1, 'a'], isNumber, isString)).toBeTruthy();
+  expect(chkTupleOf(isNumber, isString)([1, 'a'])).toBeTruthy();
+  expect(isTupleOf([1, 2], isNumber, isString)).toBeFalsy();
+  expect(isTupleOf([1, 2, 'a'], isNumber, isNumber, isString)).toBeTruthy();
+  expect(isTupleOf([1, 2, 'a'], isNumber, isString, isString)).toBeFalsy();
+  expect(chkTupleOf(isNumber, isString, isString)([1, 2, 'a'])).toBeFalsy();
   expect(
-    is3TupleOf(
+    isTupleOf(
       [1, new Set([2, 3, '4']), 5],
       isNumber,
       chkSetOf(isNumberOrString),
@@ -272,10 +269,10 @@ test('Miscellaneous type checks', async () => {
 });
 
 test('is/asSimpleObject, chk/isBothOf tests', () => {
-  const arr = [null, 'a', 12, true];
+  const arr: SimpleObject = [null, 'a', 12, true];
   const arrr = [...arr, () => {}];
   const sarr = asSimpleObject(arr);
-  if (!isArray(sarr)) throw 'oops';
+  if (!isArrayOf(sarr, isSimpleObject)) throw 'oops';
   expect(arr).toEqual(sarr);
   const sarrr = asSimpleObject(arrr);
   if (!isArray(sarrr)) throw 'oops';
@@ -290,7 +287,7 @@ test('is/asSimpleObject, chk/isBothOf tests', () => {
   expect(asSimpleObject(() => {})).toBeNull();
   expect(isSimpleObject(() => {})).toBeFalsy();
   expect(
-    isBothOf(['a', 'b'], isArrayOfString, chk2TupleOf(isString, isString)),
+    isBothOf(['a', 'b'], isArrayOfString, chkTupleOf(isString, isString)),
   ).toBeTruthy();
   expect(
     isArrayOf(
@@ -298,7 +295,7 @@ test('is/asSimpleObject, chk/isBothOf tests', () => {
         ['a', 'b'],
         ['c', 'd'],
       ],
-      chkBothOf(isArrayOfString, chk2TupleOf(isString, isString)),
+      chkBothOf(isArrayOfString, chkTupleOf(isString, isString)),
     ),
   ).toBeTruthy();
 });
