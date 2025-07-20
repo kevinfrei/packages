@@ -48,12 +48,13 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "workspace:*",
     "@freik/files": "workspace:*",
+    "@freik/helpers": "workspace:*",
     "@freik/logger": "workspace:*",
     "@freik/seqnum": "workspace:*",
     "@freik/sync": "workspace:*",
-    "@freik/helpers": "workspace:*"
+    "@freik/text": "workspace:*",
+    "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",

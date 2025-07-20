@@ -1,11 +1,10 @@
 import {
   chkMapOf,
   chkObjectOfType,
-  chkOneOf,
+  chkTupleOf,
   hasField,
   hasFieldType,
   hasStrField,
-  is2Tuple,
   isArray,
   isArrayOf,
   isBigInt,
@@ -19,6 +18,8 @@ import {
   isSimpleObject,
   isString,
   isSymbol,
+  isDefined,
+  chkAnyOf,
 } from './TypeChk.js';
 import { FreikTypeTag, SimpleObject, typecheck } from './Types.js';
 import { hasGlobalThis, isBrowser, isNode } from './which.js';
@@ -58,7 +59,7 @@ function MapPickle(val: Map<unknown, unknown>): [unknown, unknown][] {
 }
 
 function MapUnpickle(val: SimpleObject): Map<unknown, unknown> | undefined {
-  return isArrayOf(val, is2Tuple)
+  return isArrayOf(val, chkTupleOf(isDefined, isDefined))
     ? new Map(val)
     : /* istanbul ignore next */
       undefined;
@@ -175,8 +176,8 @@ function registerObject(obj: unknown): RegistrationResult {
       obj,
       pickleKey,
       chkObjectOfType({
-        to: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
-        from: chkMapOf(chkOneOf(isSymbol, isString), isFunction),
+        to: chkMapOf(chkAnyOf(isSymbol, isString), isFunction),
+        from: chkMapOf(chkAnyOf(isSymbol, isString), isFunction),
       }),
     )
   ) {

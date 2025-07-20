@@ -57,6 +57,8 @@ export function isNonNullable(obj: unknown): obj is NonNullable<unknown> {
  * @param chk1 - Type Checker #1
  * @param chk2 - Type Checker #2
  * @returns true if the object is either type T or type U
+ *
+ * @deprecated Use {@link isAnyOf} instead.
  */
 export function isOneOf<T, U>(
   obj: unknown,
@@ -72,6 +74,8 @@ export function isOneOf<T, U>(
  * @param chk1 - Type Checker #1
  * @param chk2 - Type Checker #2
  * @returns A type check function for {@link isOneOf}
+ *
+ * @deprecated Use {@link chkAnyOf} instead.
  */
 export function chkOneOf<T, U>(
   chk1: typecheck<T>,
@@ -87,6 +91,8 @@ export function chkOneOf<T, U>(
  * @param chk1 - Type Checker #1
  * @param chk2 - Type Checker #2
  * @returns true if the object is both type T and type U
+ *
+ * @deprecated Use {@link isAllOf} instead.
  */
 export function isBothOf<T, U>(
   obj: unknown,
@@ -102,12 +108,55 @@ export function isBothOf<T, U>(
  * @param chk1 - Type Checker #1
  * @param chk2 - Type Checker #2
  * @returns A type check function for {@link isOneOf}
+ *
+ * @deprecated Use {@link chkAllOf} instead.
  */
 export function chkBothOf<T, U>(
   chk1: typecheck<T>,
   chk2: typecheck<U>,
 ): typecheck<T & U> {
   return (obj: unknown): obj is T & U => isBothOf(obj, chk1, chk2);
+}
+
+type InferType<C> = C extends typecheck<infer T> ? T : never;
+
+export function isAnyOf<
+  Checkers extends readonly [typecheck<any>, ...typecheck<any>[]],
+>(obj: unknown, ...checks: Checkers): obj is InferType<Checkers[number]> {
+  return checks.some((check) => check(obj));
+}
+
+export function chkAnyOf<
+  Checkers extends readonly [typecheck<any>, ...typecheck<any>[]],
+>(...checks: Checkers): typecheck<InferType<Checkers[number]>> {
+  return (obj: unknown): obj is InferType<Checkers[number]> =>
+    isAnyOf(obj, ...checks);
+}
+
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+  k: infer I,
+) => void
+  ? I
+  : never;
+
+export function isAllOf<
+  Checkers extends readonly [typecheck<any>, ...typecheck<any>[]],
+>(
+  obj: unknown,
+  ...checks: Checkers
+): obj is UnionToIntersection<InferType<Checkers[number]>> {
+  return checks.every((check) => check(obj));
+}
+
+export function chkAllOf<
+  Checkers extends readonly [typecheck<any>, ...typecheck<any>[]],
+>(
+  ...checks: Checkers
+): typecheck<UnionToIntersection<InferType<Checkers[number]>>> {
+  return (
+    obj: unknown,
+  ): obj is UnionToIntersection<InferType<Checkers[number]>> =>
+    isAllOf(obj, ...checks);
 }
 
 /**
@@ -144,7 +193,9 @@ export function isArray(obj: unknown): obj is unknown[] {
  * Type check for 1 element tuple.
  *
  * @param {unknown} obj - the value being checked
- * @returns Tru fiobj is a 1 element tuple (of any type!)
+ * @returns True if obj is a 1 element tuple (of any type!)
+ *
+ * @deprecated use {@link isTupleOf} instead.
  */
 export function is1Tuple(obj: unknown): obj is [unknown] {
   return Array.isArray(obj) && obj.length === 1;
@@ -155,6 +206,8 @@ export function is1Tuple(obj: unknown): obj is [unknown] {
  *
  * @param {unknown} obj - The value being checked
  * @returns True of obj is a 2 element tuple (of any type!)
+ *
+ * @deprecated use {@link isTupleOf} instead.
  */
 export function is2Tuple(obj: unknown): obj is [unknown, unknown] {
   return Array.isArray(obj) && obj.length === 2;
@@ -165,6 +218,8 @@ export function is2Tuple(obj: unknown): obj is [unknown, unknown] {
  *
  * @param {unknown} obj - The value being checked
  * @returns True of obj is a 3 element tuple (of any type!)
+ *
+ * @deprecated use {@link isTupleOf} instead.
  */
 export function is3Tuple(obj: unknown): obj is [unknown, unknown, unknown] {
   return Array.isArray(obj) && obj.length === 3;
@@ -375,6 +430,8 @@ export function chkArrayOf<T>(chk: typecheck<T>): typecheck<T[]> {
  * @param {unknown} obj
  * @param {typecheck<T>} t  - Typecheck function for Type T
  * @returns {boolean} true iff obj is a Tuple of type [T]
+ *
+ * @deprecated Use {@link isTupleOf} instead.
  */
 export function is1TupleOf<T>(obj: unknown, t: typecheck<T>): obj is [T] {
   return is1Tuple(obj) && t(obj[0]);
@@ -384,6 +441,8 @@ export function is1TupleOf<T>(obj: unknown, t: typecheck<T>): obj is [T] {
  * Generate a type check function for Tuple of [T]
  * @param t - TypeCheck function for Type T
  * @returns {boolean} true iff obj is a Tuple of type [T]
+ *
+ * @deprecated Use {@link chkTupleOf} instead.
  */
 export function chk1TupleOf<T>(t: typecheck<T>): typecheck<[T]> {
   return (obj: unknown): obj is [T] => is1TupleOf(obj, t);
@@ -395,6 +454,8 @@ export function chk1TupleOf<T>(t: typecheck<T>): typecheck<[T]> {
  * @param  {typecheck<T>} t - TypeCheck function for Type T
  * @param  {typecheck<U>} u - TypeCheck function for Type U
  * @returns {boolean} true iff obj is a Tuple of type [T, U]
+ *
+ * @deprecated Use {@link isTupleOf} instead.
  */
 export function is2TupleOf<T, U>(
   obj: unknown,
@@ -409,6 +470,8 @@ export function is2TupleOf<T, U>(
  * @param  {typecheck<T>} t - TypeCheck function for Type T
  * @param  {typecheck<U>} u - TypeCheck function for Type U
  * @returns {typecheck<[T, U]>}
+ *
+ * @deprecated Use {@link chkTupleOf} instead.
  */
 export function chk2TupleOf<T, U>(
   t: typecheck<T>,
@@ -424,6 +487,8 @@ export function chk2TupleOf<T, U>(
  * @param  {typecheck<U>} u - TypeCheck function for Type U
  * @param  {typecheck<V>} v - TypeCheck function for Type V
  * @returns {obj_is<Tuple<T, U, V>>}
+ *
+ * @deprecated Use {@link isTupleOf} instead.
  */
 export function is3TupleOf<T, U, V>(
   obj: unknown,
@@ -440,6 +505,8 @@ export function is3TupleOf<T, U, V>(
  * @param  {typecheck<U>} u - TypeCheck function for Type U
  * @param  {typecheck<V>} v - TypeCheck function for Type V
  * @returns {typecheck<[T, U, V]>}
+ *
+ * @deprecated Use {@link chkTupleOf} instead.
  */
 export function chk3TupleOf<T, U, V>(
   t: typecheck<T>,
@@ -449,55 +516,39 @@ export function chk3TupleOf<T, U, V>(
   return (obj: unknown): obj is [T, U, V] => is3TupleOf(obj, t, u, v);
 }
 
-export function isTupleOf<T>(obj: unknown, t: typecheck<T>): obj is [T];
-export function isTupleOf<T, U>(
+/**
+ * Type check for [tuples, of, different, types]
+ * @param value {unknown} obj
+ * @param checkers {...typecheck<T[...K]>} TypeCheck functions for each item of the tuples
+ * @returns {typecheck<T[...K]>} true iff obj is a tuple of [...K] type
+ */
+export function isTupleOf<T extends unknown[]>(
   obj: unknown,
-  t: typecheck<T>,
-  u: typecheck<U>,
-): obj is [T, U];
-export function isTupleOf<T, U, V>(
-  obj: unknown,
-  t: typecheck<T>,
-  u: typecheck<U>,
-  v: typecheck<V>,
-): obj is [T, U, V];
-export function isTupleOf<T, U, V>(
-  obj: unknown,
-  t: typecheck<T>,
-  u?: typecheck<U>,
-  v?: typecheck<V>,
-): obj is [T, U, V] | [T, U] | [T] {
-  if (isDefined(v)) {
-    return is3TupleOf(obj, t, u!, v);
-  }
-  if (isDefined(u)) {
-    return is2TupleOf(obj, t, u);
-  }
-  return is1TupleOf(obj, t);
+  ...checkers: { [K in keyof T]: typecheck<T[K]> }
+): obj is T {
+  return (
+    isArray(obj) &&
+    obj.length === checkers.length &&
+    checkers.every((check, i) => check(obj[i]))
+  );
 }
 
-export function chkTupleOf<T>(t: typecheck<T>): typecheck<[T]>;
-export function chkTupleOf<T, U>(
-  t: typecheck<T>,
-  u: typecheck<U>,
-): typecheck<[T, U]>;
-export function chkTupleOf<T, U, V>(
-  t: typecheck<T>,
-  u: typecheck<U>,
-  v: typecheck<V>,
-): typecheck<[T, U, V]>;
-export function chkTupleOf<T, U, V>(
-  t: typecheck<T>,
-  u?: typecheck<U>,
-  v?: typecheck<V>,
-): typecheck<[T, U, V] | [T, U] | [T]> {
-  if (isDefined(v)) {
-    return (obj: unknown) => is3TupleOf(obj, t, u!, v);
-  }
-  if (isDefined(u)) {
-    return (obj: unknown) => is2TupleOf(obj, t, u);
-  }
-  return (obj: unknown) => is1TupleOf(obj, t);
+/**
+ * Generate a typechecking function for tuples
+ * @param checkers {...typecheck<T[...K]>} TypeCheck functions for each item of the tuples
+ * @returns {typecheck<T>} A typechecking function for tuples
+ */
+export function chkTupleOf<T extends unknown[]>(
+  ...checkers: { [K in keyof T]: typecheck<T[K]> }
+): typecheck<T> {
+  return (value: unknown): value is T => isTupleOf(value, ...checkers);
+  /*{
+    return (
+      Array.isArray(value) &&
+      value.length === checkers.length &&
+      checkers.every((check, i) => check((value as unknown[])[i]))
+    );
+  };*/
 }
 
 /**
