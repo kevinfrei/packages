@@ -1,5 +1,5 @@
 // import { exec } from 'node:child_process';
-import fs from 'fs';
+import fs, { promises as fsp } from 'fs';
 import {
   ArrayToTextFile,
   ArrayToTextFileSync,
@@ -9,7 +9,6 @@ import {
   TextFileToArray,
   TextFileToArraySync,
 } from '../FileUtil';
-const { promises: fsp } = fs;
 import { test, expect, beforeAll, afterAll } from 'bun:test';
 import { $ } from 'bun';
 import path from 'path';
