@@ -1,6 +1,6 @@
 {
   "name": "@freik/data-store",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Data storage utilities for desktop JS environments",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -57,11 +57,11 @@
     "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/eslintrc": "^3.3.3",
     "@freik/watchers": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
-    "eslint": "^9.22.0",
+    "eslint": "^10.0.1",
     "eslint-config-prettier": "^10.1.1",
     "typescript": "^5.8.2"
   },

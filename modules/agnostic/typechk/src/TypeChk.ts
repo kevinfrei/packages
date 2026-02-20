@@ -81,7 +81,7 @@ export function chkOneOf<T, U>(
   chk1: typecheck<T>,
   chk2: typecheck<U>,
 ): typecheck<T | U> {
-  return (obj: unknown): obj is T | U => isOneOf(obj, chk1, chk2);
+  return (obj: unknown): obj is T | U => isAnyOf(obj, chk1, chk2);
 }
 
 /**
@@ -115,7 +115,7 @@ export function chkBothOf<T, U>(
   chk1: typecheck<T>,
   chk2: typecheck<U>,
 ): typecheck<T & U> {
-  return (obj: unknown): obj is T & U => isBothOf(obj, chk1, chk2);
+  return (obj: unknown): obj is T & U => isAllOf(obj, chk1, chk2);
 }
 
 type InferType<C> = C extends typecheck<infer T> ? T : never;
@@ -166,7 +166,7 @@ export function chkAllOf<
  * @returns true if the value is an object, and is not null
  */
 export function isObjectNonNull(obj: unknown): obj is NonNullable<object> {
-  return isBothOf(obj, isObject, isNonNullable);
+  return isAllOf(obj, isObject, isNonNullable);
 }
 
 /**
@@ -320,7 +320,7 @@ export function asNumber(obj: unknown, notNum: number): number {
  * @param {unknown} obj - The value being checked
  * @returns True if obj is a number and NOT a NaN, or a string
  */
-export const isNumberOrString: typecheck<number | string> = chkOneOf(
+export const isNumberOrString: typecheck<number | string> = chkAnyOf(
   isString,
   isNumber,
 );
@@ -434,7 +434,7 @@ export function chkArrayOf<T>(chk: typecheck<T>): typecheck<T[]> {
  * @deprecated Use {@link isTupleOf} instead.
  */
 export function is1TupleOf<T>(obj: unknown, t: typecheck<T>): obj is [T] {
-  return is1Tuple(obj) && t(obj[0]);
+  return isTupleOf(obj, t);
 }
 
 /**
@@ -445,7 +445,7 @@ export function is1TupleOf<T>(obj: unknown, t: typecheck<T>): obj is [T] {
  * @deprecated Use {@link chkTupleOf} instead.
  */
 export function chk1TupleOf<T>(t: typecheck<T>): typecheck<[T]> {
-  return (obj: unknown): obj is [T] => is1TupleOf(obj, t);
+  return (obj: unknown): obj is [T] => isTupleOf(obj, t);
 }
 
 /**
@@ -462,7 +462,7 @@ export function is2TupleOf<T, U>(
   t: typecheck<T>,
   u: typecheck<U>,
 ): obj is [T, U] {
-  return is2Tuple(obj) && t(obj[0]) && u(obj[1]);
+  return isTupleOf(obj, t, u);
 }
 
 /**
@@ -477,7 +477,7 @@ export function chk2TupleOf<T, U>(
   t: typecheck<T>,
   u: typecheck<U>,
 ): typecheck<[T, U]> {
-  return (obj: unknown): obj is [T, U] => is2TupleOf(obj, t, u);
+  return (obj: unknown): obj is [T, U] => isTupleOf(obj, t, u);
 }
 
 /**
@@ -496,7 +496,7 @@ export function is3TupleOf<T, U, V>(
   u: typecheck<U>,
   v: typecheck<V>,
 ): obj is [T, U, V] {
-  return is3Tuple(obj) && t(obj[0]) && u(obj[1]) && v(obj[2]);
+  return isTupleOf(obj, t, u, v);
 }
 
 /**
@@ -513,7 +513,7 @@ export function chk3TupleOf<T, U, V>(
   u: typecheck<U>,
   v: typecheck<V>,
 ): typecheck<[T, U, V]> {
-  return (obj: unknown): obj is [T, U, V] => is3TupleOf(obj, t, u, v);
+  return (obj: unknown): obj is [T, U, V] => isTupleOf(obj, t, u, v);
 }
 
 /**
@@ -768,17 +768,33 @@ export function isSymbol(obj: unknown): obj is symbol {
  * @param  {K} key
  * @returns {obj_is<{key: unknown}>}
  */
-export function hasField<K extends string | number | symbol>(
+export function hasField<Obj extends object, K extends PropertyKey>(
+  obj: Obj,
+  key: K,
+): obj is Obj & Record<K, unknown>;
+export function hasField<K extends PropertyKey>(
   obj: unknown,
   key: K,
-): obj is NonNullable<{ [key in K]: unknown }> {
+): obj is Record<K, unknown>;
+export function hasField(
+  obj: unknown,
+  key: PropertyKey,
+): obj is Record<PropertyKey, unknown> {
   return isObjectNonNull(obj) && key in obj;
 }
 
-export function chkField<K extends string | number | symbol>(
+export function chkField<Obj extends object, K extends PropertyKey>(
   key: K,
-): typecheck<NonNullable<{ [key in K]: unknown }>> {
-  return (obj: unknown): obj is { [key in K]: unknown } => hasField(obj, key);
+): typecheck<Obj & Record<K, unknown>>;
+export function chkField<K extends PropertyKey>(
+  key: K,
+): typecheck<Record<K, unknown>>;
+// Implementation
+export function chkField(
+  key: PropertyKey,
+): typecheck<Record<PropertyKey, unknown>> {
+  return (obj: unknown): obj is Record<PropertyKey, unknown> =>
+    hasField(obj, key);
 }
 
 /**
@@ -790,20 +806,41 @@ export function chkField<K extends string | number | symbol>(
  * @param  {typecheck<T>} checker - A Type checking function for T
  * @returns {obj_is<{key: T}>}
  */
-export function hasFieldOf<T, K extends string | number | symbol>(
+export function hasFieldOf<T, Obj extends object, K extends PropertyKey>(
+  obj: Obj,
+  key: K,
+  checker: typecheck<T>,
+): obj is Obj & Record<K, T>;
+export function hasFieldOf<T, K extends PropertyKey>(
   obj: unknown,
   key: K,
   checker: typecheck<T>,
-): obj is NonNullable<{ [key in K]: T }> {
+): obj is Record<K, T>;
+// Implementation
+export function hasFieldOf<T>(
+  obj: unknown,
+  key: PropertyKey,
+  checker: typecheck<T>,
+): obj is Record<PropertyKey, T> {
   return hasField(obj, key) && checker(obj[key]);
 }
-export function chkFieldOf<T, K extends string | number | symbol>(
+export function chkFieldOf<T, Obj extends object, K extends PropertyKey>(
   key: K,
   checker: typecheck<T>,
-): typecheck<NonNullable<{ [key in K]: T }>> {
-  return (obj: unknown): obj is { [key in K]: T } =>
+): typecheck<Obj & Record<K, T>>;
+export function chkFieldOf<T, K extends PropertyKey>(
+  key: K,
+  checker: typecheck<T>,
+): typecheck<Record<K, T>>;
+// Implementation
+export function chkFieldOf<T>(
+  key: PropertyKey,
+  checker: typecheck<T>,
+): typecheck<Record<PropertyKey, T>> {
+  return (obj: unknown): obj is { [key in PropertyKey]: T } =>
     hasFieldType(obj, key, checker);
 }
+
 export const hasFieldType = hasFieldOf;
 export const chkFieldType = chkFieldOf;
 /**
@@ -813,15 +850,15 @@ export const chkFieldType = chkFieldOf;
  * @param  {K} key
  * @returns {obj_is<{key: string}>}
  */
-export function hasStrField<K extends string | number | symbol>(
+export function hasStrField<K extends PropertyKey>(
   obj: unknown,
   key: K,
-): obj is NonNullable<{ [key in K]: string }> {
+): obj is Record<K, string> {
   return hasFieldType(obj, key, isString);
 }
-export function chkStrField<K extends string>(
+export function chkStrField<K extends PropertyKey>(
   key: K,
-): typecheck<NonNullable<{ [key in K]: string }>> {
+): typecheck<Record<K, string>> {
   return chkFieldType(key, isString);
 }
 
@@ -845,7 +882,7 @@ export function isSimpleObject(x: unknown): x is SimpleObject {
     isBoolean(x) ||
     isArrayOf(x, isSimpleObject) ||
     (isObjectNonNull(x) &&
-      isArrayOf(Object.keys(x), chkOneOf(isString, isNumber)) &&
+      isArrayOf(Object.keys(x), chkAnyOf(isString, isNumber)) &&
       isObjectOf(x, isSimpleObject))
   );
 }

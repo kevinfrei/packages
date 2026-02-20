@@ -25,7 +25,7 @@ function bufferToBase64(buffer: Uint8Array): string {
   const output: string[] = [];
 
   for (let i = 0, length = buffer.byteLength; i < length; i++) {
-    const chr = buffer.at(i);
+    const chr = buffer[i];
     if (chr !== undefined) {
       output.push(String.fromCharCode(chr));
     }

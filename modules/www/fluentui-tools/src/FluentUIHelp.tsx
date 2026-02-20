@@ -1,10 +1,10 @@
 import { Spinner, SpinnerProps } from '@fluentui/react-components';
 import { hasField } from '@freik/typechk';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Suspense } from 'react';
 
 export type SpinnerUIProps = SpinnerProps & {
-  children: React.JSX.Element | React.JSX.Element[];
+  children?: ReactNode;
 };
 
 export function SpinSuspense(

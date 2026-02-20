@@ -1,6 +1,6 @@
 {
   "name": "@freik/recoil-tools",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Kevin Frei's Web utilities for Recoil",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -52,12 +52,12 @@
     "@freik/typechk": "workspace:*"
   },
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0",
+    "react": ">=19.2.4",
+    "react-dom": ">=19.2.4",
     "recoil": ">=0.5.0"
   },
   "devDependencies": {
-    "@happy-dom/global-registrator": "^17.4.4",
+    "@happy-dom/global-registrator": "^20.6.3",
     "@types/bun": "^1.2.5",
     "@types/debug": "^4.1.12",
     "@types/react": "^18.3.0",
@@ -65,14 +65,14 @@
     "@types/react-test-renderer": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
-    "eslint": "^9.22.0",
+    "eslint": "^10.0.1",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "happy-dom": "^17.4.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "happy-dom": "^20.6.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
