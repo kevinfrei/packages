@@ -64,8 +64,14 @@ test('Roots', async () => {
         expect(r.indexOf(':')).toBe(1);
       }
       break;
+    case 'linux':
+      for (const r of roots) {
+        expect(r.indexOf('/')).toBe(0);
+      }
+      break;
     default:
-      // Test for linux!
-      expect(false).toBeTruthy();
+      expect(os.platform().toString()).toEqual(
+        'Unknown platform: ' + os.platform(),
+      );
   }
 });

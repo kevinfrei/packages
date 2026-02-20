@@ -3,6 +3,7 @@ import * as child from 'node:child_process';
 import path from 'node:path';
 import { promises as fsp } from 'node:fs';
 import { promisify } from 'node:util';
+import { hasFieldOf, hasStrField, isArray } from '@freik/typechk';
 
 const exec = promisify(child.exec);
 
@@ -75,10 +76,73 @@ export async function GetRoots(): Promise<string[]> {
       const subdirs = await fsp.readdir('/Volumes');
       return subdirs.map((v) => path.join('/Volumes', v));
     }
-    default:
-      // TODO: Linux support
-      return ['linux NYI'];
+    case 'linux': {
+      return getLinuxRoots();
+    }
+    default: {
+      return ['GetRoots is NYI for ' + os.platform()];
+    }
   }
+}
+
+// Linux roots are deeeeelightful
+const REAL_FS_TYPES = [
+  'xfs',
+  'ext4',
+  'ext3',
+  'ext2',
+  'btrfs',
+  'vfat',
+  'ntfs',
+  'fuseblk',
+  'nfs',
+  'cifs',
+  'drvfs',
+  '9p',
+].join(',');
+
+// Paths we want to exclude
+const PSEUDO_PATH_PREFIXES = [
+  '/proc',
+  '/sys',
+  '/dev',
+  '/run',
+  '/tmp',
+  '/mnt/wsl',
+  '/mnt/wslg',
+  '/usr/lib/wsl',
+];
+
+function isPseudoMount(mountPoint: string): boolean {
+  return PSEUDO_PATH_PREFIXES.some(
+    (prefix) => mountPoint === prefix || mountPoint.startsWith(prefix + '/'),
+  );
+}
+
+async function getLinuxRoots(): Promise<string[]> {
+  const raw = await exec(`findmnt --json --types ${REAL_FS_TYPES}`, {
+    encoding: 'utf8',
+  });
+
+  const data = JSON.parse(raw.stdout);
+  const results: string[] = [];
+
+  function walk(nodes: unknown[]) {
+    for (const fs of nodes) {
+      if (hasStrField(fs, 'target')) {
+        if (!isPseudoMount(fs.target)) {
+          results.push(fs.target);
+        }
+        if (hasFieldOf(fs, 'children', isArray)) {
+          walk(fs.children);
+        }
+      }
+    }
+  }
+  if (hasFieldOf(data, 'filesystems', isArray)) {
+    walk(data.filesystems);
+  }
+  return results;
 }
 
 const replacements = [
