@@ -1,7 +1,7 @@
 import {
   chkFieldType,
   chkObjectOf,
-  chkOneOf,
+  chkAnyOf,
   isFunction,
   isRegex,
   typecheck,
@@ -27,7 +27,7 @@ export type GroupedResult = {
 const chkGroupedOptions: typecheck<GroupedOptions> = chkFieldType(
   'groups',
   chkObjectOf<FilterFn | RegExp>(
-    chkOneOf<FilterFn, RegExp>(isFunction as typecheck<FilterFn>, isRegex),
+    chkAnyOf(isFunction as typecheck<FilterFn>, isRegex),
   ),
 );
 export async function files(options: GroupedOptions): Promise<GroupedResult>;

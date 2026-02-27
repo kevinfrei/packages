@@ -65,5 +65,5 @@
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
   },
-  "gitHead": "0ee0130febfb999a66d80374aaa95e136cf8ff13"
+  "sideEffects": false
 }

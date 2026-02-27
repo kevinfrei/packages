@@ -8,7 +8,7 @@ export type SpinnerUIProps = SpinnerProps & {
 };
 
 export function SpinSuspense(
-  props: Partial<SpinnerUIProps>,
+  props: Partial<SpinnerUIProps & { className: string }>,
 ): React.JSX.Element {
   const children = hasField(props, 'children') ? props.children : <></>;
   const theProps: SpinnerProps = {
@@ -17,7 +17,7 @@ export function SpinSuspense(
     ...props,
   };
   const theSpinner = (
-    <div className="mySpinner">
+    <div className={props.className || 'mySpinner'}>
       <Spinner {...theProps} />
     </div>
   );
