@@ -47,36 +47,36 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/logger": "workspace:*",
-    "@freik/react-tools": "workspace:*",
-    "@freik/typechk": "workspace:*"
+    "@freik/logger": "workspace:^",
+    "@freik/react-tools": "workspace:^",
+    "@freik/typechk": "workspace:^"
   },
   "peerDependencies": {
-    "react": ">=19.2.4",
-    "react-dom": ">=19.2.4",
-    "recoil": ">=0.5.0"
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "recoil": "catalog:"
   },
   "devDependencies": {
-    "@happy-dom/global-registrator": "^20.6.3",
-    "@types/bun": "^1.2.5",
-    "@types/debug": "^4.1.12",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
-    "@types/react-test-renderer": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.26.1",
-    "@typescript-eslint/parser": "^8.26.1",
-    "eslint": "^10.0.1",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "happy-dom": "^20.6.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "^5.0.1",
-    "recoil": "^0.7.7",
-    "typescript": "^5.8.2"
+    "@happy-dom/global-registrator": "catalog:dev",
+    "@types/bun": "catalog:dev",
+    "@types/debug": "catalog:dev",
+    "@types/react": "catalog:dev",
+    "@types/react-dom":"catalog:dev",
+    "@types/react-test-renderer": "catalog:dev",
+    "@typescript-eslint/eslint-plugin": "catalog:dev",
+    "@typescript-eslint/parser": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier":"catalog:dev",
+    "eslint-plugin-import": "catalog:dev",
+    "eslint-plugin-jsx-a11y": "catalog:dev",
+    "eslint-plugin-prettier": "catalog:dev",
+    "eslint-plugin-react": "catalog:dev",
+    "eslint-plugin-react-hooks": "catalog:dev",
+    "happy-dom": "catalog:dev",
+    "react": "catalog:",
+    "react-dom": "catalog:dev",
+    "react-scripts": "catalog:dev",
+    "recoil":"catalog:",
+    "typescript": "catalog:dev"
   }
 }
