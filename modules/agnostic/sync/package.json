@@ -45,20 +45,20 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/containers": "workspace:*",
-    "@freik/seqnum": "workspace:*",
-    "@freik/typechk": "workspace:*"
+    "@freik/containers": "workspace:^",
+    "@freik/seqnum": "workspace:^",
+    "@freik/typechk": "workspace:^"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.5",
-    "@typescript-eslint/eslint-plugin": "^8.26.1",
-    "@typescript-eslint/parser": "^8.26.1",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^10.0.1",
-    "eslint-config-prettier": "^10.1.1",
-    "typedoc": "^0.28.0",
-    "typedoc-plugin-markdown": "^4.4.2",
-    "typescript": "^5.8.2"
+    "@types/bun": "catalog:dev",
+    "@typescript-eslint/eslint-plugin": "catalog:dev",
+    "@typescript-eslint/parser": "catalog:dev",
+    "babel-eslint": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "typedoc": "catalog:dev",
+    "typedoc-plugin-markdown": "catalog:dev",
+    "typescript": "catalog:dev"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"

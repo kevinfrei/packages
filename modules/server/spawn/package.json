@@ -48,12 +48,12 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.26.1",
-    "@typescript-eslint/parser": "^8.26.1",
-    "eslint": "^10.0.1",
-    "eslint-config-prettier": "^10.1.1",
-    "typescript": "^5.8.2"
+    "@eslint/eslintrc": "catalog:dev",
+    "@typescript-eslint/eslint-plugin": "catalog:dev",
+    "@typescript-eslint/parser": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "typescript": "catalog:dev"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0",

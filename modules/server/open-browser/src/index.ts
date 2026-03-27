@@ -1,7 +1,4 @@
 import * as child_proc from 'child_process';
-import { MakeLog } from '@freik/logger';
-
-const { log } = MakeLog('@freik/open-browser');
 
 type BufStr = string | Buffer;
 
@@ -15,16 +12,16 @@ export default function (url: string): void {
   } else if (/^linux/.test(plat)) {
     command = 'xdg-open';
   } else {
-    log(`open a brower to ${url} to launch the application`);
+    console.log(`open a brower to ${url} to launch the application`);
     return;
   }
   child_proc.exec(
     command + ' ' + url,
     (err, stdout: BufStr, stderr: BufStr) => {
-      log('stdout: ' + stdout.toString());
-      log('stderr: ' + stderr.toString());
+      console.log('stdout: ' + stdout.toString());
+      console.log('stderr: ' + stderr.toString());
       if (err !== null && err !== undefined) {
-        log(`exec error: ${JSON.stringify(err)}`);
+        console.log(`exec error: ${JSON.stringify(err)}`);
       }
     },
   );
