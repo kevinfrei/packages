@@ -42,21 +42,21 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/files": "0.3.9",
-    "@freik/spawn": "0.3.9",
-    "@freik/media-core": "0.16.9",
-    "@freik/typechk": "0.9.5",
-    "music-metadata": "^11.12.3"
+    "@freik/files": "workspace:*",
+    "@freik/spawn": "workspace:*",
+    "@freik/media-core": "workspace:*",
+    "@freik/typechk": "workspace:*",
+    "music-metadata": "catalog:"
   },
   "devDependencies": {
-    "@freik/sync": "0.4.9",
-    "@types/bun": "^1.3.11",
-    "@types/node": "^25.5.0",
-    "@typescript-eslint/eslint-plugin": "^8.57.2",
-    "@typescript-eslint/parser": "^8.57.2",
-    "eslint": "^10.1.0",
-    "eslint-config-prettier": "^10.1.1",
-    "typescript": "^6.0.2"
+    "@freik/sync": "workspace:*",
+    "@types/bun": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "@typescript-eslint/eslint-plugin": "catalog:dev",
+    "@typescript-eslint/parser": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "typescript": "catalog:dev"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
