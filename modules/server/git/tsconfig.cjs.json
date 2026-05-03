@@ -4,15 +4,17 @@
     "allowJs": true,
     "target": "ES2020",
     "lib": ["ESNext"],
-    "module": "commonjs",
+    "module": "nodenext",
     "outDir": "./lib/cjs/",
-    "downlevelIteration": true,
+    "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+    //"downlevelIteration": true,
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "newLine": "lf"
+    "newLine": "lf",
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/*"]

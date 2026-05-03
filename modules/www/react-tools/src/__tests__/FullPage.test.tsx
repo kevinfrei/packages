@@ -1,7 +1,7 @@
 /// <reference lib="dom" />
 
 // import React from 'react';
-import { FullPage } from '../FullPage';
+import { FullPage } from '../Layout';
 import { afterEach /*, beforeAll*/, describe, expect, test } from 'bun:test';
 import { cleanup /*, render, screen */ } from '@testing-library/react';
 // import * as TestingLib from '@testing-library/react';

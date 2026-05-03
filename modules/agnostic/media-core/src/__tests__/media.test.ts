@@ -1,5 +1,4 @@
 import { Attributes, Metadata } from '../index';
-import { AddPattern } from '../media';
 import { isAlbumKey, isArtistKey, isSongKey } from '../schema';
 import { expect, test } from 'bun:test';
 
@@ -1041,7 +1040,7 @@ test('AddPattern test', () => {
   const filepath = '/artist-2022-album-23-title.flac';
   const mdFail = Metadata.FromPath(filepath);
   expect(mdFail).toBeUndefined();
-  AddPattern(
+  Metadata.AddPattern(
     /^(.*\/)?(?<artist>[^\/]+)-(?<year>\d{4})-(?<album>[^\/]+)-(?<track>\d+)[-\. ]+(?<title>[^\/]+)$/i,
   );
   const mdSuccess = Metadata.FromPath(filepath);

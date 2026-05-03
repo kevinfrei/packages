@@ -1,8 +1,12 @@
-export * as Covers from './cover.js';
-export * as Decode from './decode.js';
-export * as Encode from './encode.js';
-export * as Cue from './cue.js';
-
+import * as _Covers from './cover.js';
+import * as _Decode from './decode.js';
+import * as _Encode from './encode.js';
+import * as _Cue from './cue.js';
+const Covers = _Covers;
+const Decode = _Decode;
+const Encode = _Encode;
+const Cue = _Cue;
+export { Covers, Decode, Encode, Cue };
 import {
   Attributes,
   Metadata as oldMetadata,
@@ -10,7 +14,8 @@ import {
   FullMetadata,
 } from '@freik/media-core';
 import * as newMetadata from './metadata.js';
-import { SimpleObject, typecheck } from '@freik/typechk';
+
+import type { SimpleObject, typecheck } from '@freik/typechk';
 
 // A function type for decoding audio
 export type Decoder = (inputFile: string, outputFile: string) => boolean;

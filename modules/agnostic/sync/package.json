@@ -1,6 +1,6 @@
 {
   "name": "@freik/sync",
-  "version": "0.4.5",
+  "version": "0.4.10",
   "description": "A set of synchronziation tools for dealing with promises and contention",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -40,7 +40,7 @@
     "prepare": "bun run release",
     "lint": "eslint --fix src",
     "preversion": "bun run lint",
-    "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
+    "typechk": "tsc --noEmit --project tsconfig.esm.json",
     "test": "bun run lint && bun run typechk && bun run justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
@@ -50,15 +50,15 @@
     "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.5",
-    "@typescript-eslint/eslint-plugin": "^8.26.1",
-    "@typescript-eslint/parser": "^8.26.1",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^10.0.1",
-    "eslint-config-prettier": "^10.1.1",
-    "typedoc": "^0.28.0",
-    "typedoc-plugin-markdown": "^4.4.2",
-    "typescript": "^5.8.2"
+    "@types/bun": "catalog:dev",
+    "@typescript-eslint/eslint-plugin": "catalog:dev",
+    "@typescript-eslint/parser": "catalog:dev",
+    "babel-eslint": "catalog:dev",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "typedoc": "catalog:dev",
+    "typedoc-plugin-markdown": "catalog:dev",
+    "typescript": "catalog:dev"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"

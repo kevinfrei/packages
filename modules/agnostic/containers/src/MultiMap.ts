@@ -3,7 +3,7 @@ import { SetEqual } from '@freik/helpers';
 import {
   FreikTypeTag,
   RegisterForPickling,
-  chk2TupleOf,
+  chkTupleOf,
   chkArrayOf,
   isArrayOf,
   isCustomType,
@@ -116,7 +116,7 @@ function fromJSON(obj: unknown): MultiMap<unknown, unknown> | undefined {
   if (
     isArrayOf<[unknown, unknown[]]>(
       obj,
-      chk2TupleOf<unknown, unknown[]>(isNonNullable, chkArrayOf(isNonNullable)),
+      chkTupleOf(isNonNullable, chkArrayOf(isNonNullable)),
     )
   ) {
     return MakeMultiMap(obj);

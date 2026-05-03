@@ -1,1 +1,2 @@
-export * as Git from './git.js';
+import * as Git from './git.js';
+export { Git };

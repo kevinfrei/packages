@@ -1,9 +1,9 @@
 /// <reference lib="dom" />
 
 import React from 'react';
-import { Dock } from '../Dock';
-import { Fill } from '../Fill';
-import { FullPage } from '../FullPage';
+import { Dock } from '../Layout';
+import { Fill } from '../Layout';
+import { FullPage } from '../Layout';
 import { afterEach, beforeAll, expect, test } from 'bun:test';
 import { cleanup, render, screen } from '@testing-library/react';
 import * as TestingLib from '@testing-library/react';
