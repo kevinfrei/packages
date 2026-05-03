@@ -1,4 +1,5 @@
-export * as AppConfig from './AppConfig.js';
+import * as AppConfig from './AppConfig.js';
 export * from './FileIndex.js';
 export * from './persist.js';
-export * as Data from './Data.js';
+import * as Data from './Data.js';
+export { AppConfig, Data };

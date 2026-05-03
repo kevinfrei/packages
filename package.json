@@ -14,15 +14,14 @@
       "modules/www/*"
     ],
     "catalog": {
-      "@fluentui/react": ">=8.125.5",
-      "@fluentui/react-components": ">=9.73.5",
-      "@fluentui/react-hooks": ">=8.10.2",
+      "@fluentui/react": "^8.125.5",
+      "@fluentui/react-components": "^9.73.8",
+      "@fluentui/react-hooks": "^8.10.2",
       "@freik/is-hidden-file": "^1.13.2",
       "debug": "^4.4.0",
       "music-metadata": "^11.12.3",
-      "react": ">=19.2.4",
-      "react-dom": ">=19.2.4",
-      "recoil": ">=0.5.0"
+      "react": "^19.2.4",
+      "react-dom": "^19.2.4"
     },
     "catalogs": {
       "dev": {
@@ -54,11 +53,16 @@
         "happy-dom": "^20.8.9",
         "react": "^19.2.4",
         "react-dom": "^19.2.4",
-        "react-scripts": "^5.0.1"
+        "react-scripts": "^5.0.1",
+        "@freik/workspace": "^0.8.1",
+        "esbuild": "^0.28.0",
+        "madge": "^8.0.0",
+        "prettier": "^3.8.3"
       }
     }
   },
   "scripts": {
+    "prepare": "bunx simple-git-hooks",
     "release": "bun runall release",
     "build": "bun runall build",
     "test": "bun runall test",
@@ -72,7 +76,7 @@
     "serial": "tools workspace -s",
     "format": "tools format bun",
     "pub2npm": "bun serial npm publish --access=public",
-    "bun2npm": "bun forall bun publish --access=public",
+    "bun2npm": "bun serial bun publish --access public",
     "prep4npm": "tools workspace -f",
     "done4npm": "tools workspace -c",
     "bumpver": "tools workspace -v",
@@ -80,16 +84,49 @@
     "verminor": "bun run bumpver minor"
   },
   "devDependencies": {
-    "@freik/workspace": "^0.8.0",
-    "@types/bun": "^1.3.13",
+    "@eslint/eslintrc": "^3.3.5",
+    "@types/bun": "^1.3.11",
     "@types/debug": "^4.1.13",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.5.0",
+    "@types/react-test-renderer": "^19.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.1",
+    "typedoc": "^0.28.7",
+    "typedoc-plugin-markdown": "^4.7.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.57.2",
+    "@happy-dom/global-registrator": "^20.8.9",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "happy-dom": "^20.8.9",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-scripts": "^5.0.1",
+    "@freik/workspace": "^0.8.1",
     "esbuild": "^0.28.0",
     "madge": "^8.0.0",
-    "prettier": "^3.8.3",
-    "typedoc": "^0.28.19",
-    "typedoc-plugin-markdown": "^4.11.0",
-    "typescript": "^6.0.3"
+    "prettier": "^3.8.3"
+  },
+  "peerDependencies": {
+    "@fluentui/react": "^8.125.5",
+    "@fluentui/react-components": "^9.73.8",
+    "@fluentui/react-hooks": "^8.10.2",
+    "@freik/is-hidden-file": "^1.13.2",
+    "debug": "^4.4.0",
+    "music-metadata": "^11.12.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "simple-git-hooks": {
     "pre-commit": "bun run format",

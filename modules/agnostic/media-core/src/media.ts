@@ -70,11 +70,11 @@ function getExtension(pathname: string): string {
   return dot >= 0 ? pathname.substring(dot + 1) : '';
 }
 
-function AddPattern(rgx: RegExp, compilation?: 'ost' | 'va'): void {
+export function AddPattern(rgx: RegExp, compilation?: 'ost' | 'va'): void {
   patterns.push(compilation ? { rgx, compilation } : { rgx });
 }
 
-const isSimpleMetadata: typecheck<SimpleMetadata> =
+export const isSimpleMetadata: typecheck<SimpleMetadata> =
   chkObjectOfType<SimpleMetadata>(
     {
       artist: isString,
@@ -90,7 +90,7 @@ const isSimpleMetadata: typecheck<SimpleMetadata> =
     },
   );
 
-function FromPath(pthnm: string): SimpleMetadata | void {
+export function FromPath(pthnm: string): SimpleMetadata | void {
   let pathname = pthnm.replace(/\\/g, '/');
 
   const theExtension: string = getExtension(pathname);
@@ -174,7 +174,7 @@ function pullVariationsFromTitle(title: string): {
   }
 }
 
-function SplitArtistString(artists: string): string[] {
+export function SplitArtistString(artists: string): string[] {
   if (artists.indexOf(' & ') >= 0) {
     return artists
       .split(', ')
@@ -186,7 +186,7 @@ function SplitArtistString(artists: string): string[] {
   }
 }
 
-function FullFromObj(
+export function FullFromObj(
   file: string,
   data: Attributes,
 ): FullMetadata | void {
@@ -261,7 +261,3 @@ function FullFromObj(
   }
   return res;
 }
-
-export const Metadata = Object.freeze({
-  AddPattern, isSimpleMetadata, FromPath, SplitArtistString, FullFromObj
-});

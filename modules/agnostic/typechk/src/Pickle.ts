@@ -153,7 +153,7 @@ const theUnpicklers = new Map<symbol, FromFlat<unknown>>([
 
 declare let global: { [key: string | number | symbol]: unknown };
 declare let window: { [key: string | number | symbol]: unknown };
- 
+
 declare let globalThis: { [key: string | number | symbol]: unknown };
 
 export enum RegistrationResult {
