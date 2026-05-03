@@ -1,6 +1,6 @@
 {
   "name": "@freik/recoil-tools",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Kevin Frei's Web utilities for Recoil",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -61,12 +61,12 @@
     "@types/bun": "catalog:dev",
     "@types/debug": "catalog:dev",
     "@types/react": "catalog:dev",
-    "@types/react-dom":"catalog:dev",
+    "@types/react-dom": "catalog:dev",
     "@types/react-test-renderer": "catalog:dev",
     "@typescript-eslint/eslint-plugin": "catalog:dev",
     "@typescript-eslint/parser": "catalog:dev",
     "eslint": "catalog:dev",
-    "eslint-config-prettier":"catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
     "eslint-plugin-import": "catalog:dev",
     "eslint-plugin-jsx-a11y": "catalog:dev",
     "eslint-plugin-prettier": "catalog:dev",
@@ -76,7 +76,7 @@
     "react": "catalog:",
     "react-dom": "catalog:dev",
     "react-scripts": "catalog:dev",
-    "recoil":"catalog:",
+    "recoil": "catalog:",
     "typescript": "catalog:dev"
   }
 }
