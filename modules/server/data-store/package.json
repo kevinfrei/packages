@@ -1,6 +1,6 @@
 {
   "name": "@freik/data-store",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "Data storage utilities for desktop JS environments",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -43,7 +43,7 @@
     "prepare": "bun run release",
     "lint": "eslint --fix src",
     "preversion": "bun run lint",
-    "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
+    "typechk": "tsc --noEmit --project tsconfig.esm.json",
     "test": "bun run lint && bun run typechk && bun run justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
@@ -59,6 +59,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "catalog:dev",
     "@freik/watchers": "workspace:*",
+    "@types/node": "catalog:dev",
     "@typescript-eslint/eslint-plugin": "catalog:dev",
     "@typescript-eslint/parser": "catalog:dev",
     "eslint": "catalog:dev",

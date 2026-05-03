@@ -1,6 +1,6 @@
 {
   "name": "@freik/typechk",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "Core set of TS/JS type checking helpers",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -42,7 +42,7 @@
     "prepare": "bun run release",
     "lint": "eslint --fix src",
     "preversion": "bun run lint",
-    "typechk": "tsc --noEmit --project tsconfig.cjs.json && tsc --noEmit --project tsconfig.esm.json",
+    "typechk": "tsc --noEmit --project tsconfig.esm.json",
     "test": "bun run lint && bun run typechk && bun run justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },

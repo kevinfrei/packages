@@ -12,7 +12,7 @@ import { promises as fsp } from 'fs';
 import { IAudioMetadata, parseFile } from 'music-metadata';
 import path from 'path';
 
-export * from '@freik/media-core';
+// export * from '@freik/media-core';
 
 export declare type MetadataResult = {
   media: { '@ref': string; track: { [key: string]: string }[] };

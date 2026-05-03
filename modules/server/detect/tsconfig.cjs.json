@@ -6,14 +6,15 @@
     "lib": ["ESNext"],
     "module": "nodenext",
     "outDir": "./lib/cjs/",
-    "rootDir": "./" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+    "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
     //"downlevelIteration": true,
     "strict": true,
     "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "newLine": "lf"
+    "newLine": "lf",
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/*"]
