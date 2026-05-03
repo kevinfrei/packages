@@ -1,6 +1,6 @@
 {
   "name": "@freik/detect",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Detect which Javascript environment you're in",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -48,7 +48,7 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "workspace:^"
+    "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "catalog:dev",

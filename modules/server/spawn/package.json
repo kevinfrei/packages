@@ -1,6 +1,6 @@
 {
   "name": "@freik/spawn",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Process spawning helpers",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",

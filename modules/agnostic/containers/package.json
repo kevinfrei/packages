@@ -1,6 +1,6 @@
 {
   "name": "@freik/containers",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "Core set of TS/JS containers",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -45,8 +45,8 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/helpers": "workspace:^",
-    "@freik/typechk": "workspace:^"
+    "@freik/helpers": "workspace:*",
+    "@freik/typechk": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "catalog:dev",

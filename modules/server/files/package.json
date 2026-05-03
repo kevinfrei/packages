@@ -1,6 +1,6 @@
 {
   "name": "@freik/files",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "File and Path utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -49,11 +49,11 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "workspace:^",
-    "@freik/containers": "workspace:^",
+    "@freik/typechk": "workspace:*",
+    "@freik/containers": "workspace:*",
     "@freik/is-hidden-file": "catalog:",
-    "@freik/logger": "workspace:^",
-    "@freik/spawn": "workspace:^"
+    "@freik/logger": "workspace:*",
+    "@freik/spawn": "workspace:*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "catalog:dev",
