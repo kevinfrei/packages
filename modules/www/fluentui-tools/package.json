@@ -44,38 +44,38 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/logger": "workspace:*",
-    "@freik/react-tools": "workspace:*",
-    "@freik/typechk": "workspace:*"
+    "@freik/logger": "0.4.9",
+    "@freik/react-tools": "0.3.9",
+    "@freik/typechk": "0.9.5"
   },
   "peerDependencies": {
-    "@fluentui/react": "catalog:",
-    "@fluentui/react-components": "catalog:",
-    "@fluentui/react-hooks": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "@fluentui/react": ">=8.125.5",
+    "@fluentui/react-components": ">=9.73.5",
+    "@fluentui/react-hooks": ">=8.10.2",
+    "react": ">=19.2.4",
+    "react-dom": ">=19.2.4"
   },
   "devDependencies": {
-    "@fluentui/react": "catalog:",
-    "@fluentui/react-components": "catalog:",
-    "@fluentui/react-hooks": "catalog:",
-    "@happy-dom/global-registrator": "catalog:dev",
-    "@testing-library/dom": "catalog:dev",
-    "@testing-library/jest-dom": "catalog:dev",
-    "@testing-library/react": "catalog:dev",
-    "@types/react": "catalog:dev",
-    "@types/react-dom": "catalog:dev",
-    "@typescript-eslint/eslint-plugin": "catalog:dev",
-    "@typescript-eslint/parser": "catalog:dev",
-    "eslint": "catalog:dev",
-    "eslint-config-prettier": "catalog:dev",
-    "eslint-plugin-import": "catalog:dev",
-    "eslint-plugin-jsx-a11y": "catalog:dev",
-    "eslint-plugin-prettier": "catalog:dev",
-    "eslint-plugin-react": "catalog:dev",
-    "eslint-plugin-react-hooks": "catalog:dev",
-    "happy-dom": "catalog:dev",
-    "react-scripts": "catalog:dev",
-    "typescript": "catalog:dev"
+    "@fluentui/react": ">=8.125.5",
+    "@fluentui/react-components": ">=9.73.5",
+    "@fluentui/react-hooks": ">=8.10.2",
+    "@happy-dom/global-registrator": "^20.8.9",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "happy-dom": "^20.8.9",
+    "react-scripts": "^5.0.1",
+    "typescript": "^6.0.2"
   }
 }

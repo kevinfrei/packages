@@ -42,15 +42,15 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "dependencies": {
-    "@freik/typechk": "workspace:*"
+    "@freik/typechk": "0.9.5"
   },
   "devDependencies": {
-    "@types/bun": "catalog:dev",
-    "@typescript-eslint/eslint-plugin": "catalog:dev",
-    "@typescript-eslint/parser": "catalog:dev",
-    "eslint": "catalog:dev",
-    "eslint-config-prettier": "catalog:dev",
-    "typescript": "catalog:dev"
+    "@types/bun": "^1.3.11",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.1",
+    "typescript": "^6.0.2"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"

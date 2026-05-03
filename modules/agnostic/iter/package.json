@@ -46,15 +46,15 @@
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
   "devDependencies": {
-    "@types/bun": "catalog:dev",
-    "@typescript-eslint/eslint-plugin": "catalog:dev",
-    "@typescript-eslint/parser": "catalog:dev",
-    "babel-eslint": "catalog:dev",
-    "eslint": "catalog:dev",
-    "eslint-config-prettier": "catalog:dev",
-    "typedoc": "catalog:dev",
-    "typedoc-plugin-markdown": "catalog:dev",
-    "typescript": "catalog:dev"
+    "@types/bun": "^1.3.11",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.1",
+    "typedoc": "^0.28.7",
+    "typedoc-plugin-markdown": "^4.7.0",
+    "typescript": "^6.0.2"
   },
   "engines": {
     "node": "^14.13.1 || >= 16.0.0"
