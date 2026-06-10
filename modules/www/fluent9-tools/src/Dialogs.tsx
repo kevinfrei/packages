@@ -1,16 +1,18 @@
-import {
-  DefaultButton,
-  Dialog,
-  DialogFooter,
-  DialogType,
-  PrimaryButton,
-  Stack,
-  Text,
-  TextField,
-} from '@fluentui/react';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useState } from 'react';
 import { DialogData } from '@freik/react-tools';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogContent,
+  DialogProps,
+  DialogSurface,
+  DialogTitle,
+  DialogTrigger,
+} from '@fluentui/react-components';
+import {isString} from '@freik/typechk';
 
 export type TextInputProps = {
   data: DialogData;
@@ -79,52 +81,54 @@ export function TextInput({
 export type ConfirmationDialogProps = {
   data: DialogData;
   confirmFunc: () => void;
-  title: string;
-  text: string;
-  yesText?: string;
-  noText?: string;
-  minWidth?: number;
-  maxWidth?: number;
-};
+  title: string | ReactElement;
+  text: string | ReactElement;
+  yes?: string | ReactElement;
+  no?: string | ReactElement;
+  open: string | ReactElement;
+} & DialogProps;
 
 export function ConfirmationDialog({
   data: [isHidden, hiderFunc],
   confirmFunc,
   title,
   text,
-  yesText,
-  noText,
-  minWidth,
-  maxWidth,
+  yes,
+  no,
+  open,
+  ...props
 }: ConfirmationDialogProps): React.JSX.Element {
-  const yes = yesText ?? 'Yes';
-  const no = noText ?? 'No';
+  const yesEl = yes ?? 'Yes';
+  const noEl = no ?? 'No';
+  const openEl = isString(open) ? (<Button>{open}</Button>) : open;
   return (
     <Dialog
-      title={title}
-      maxWidth={maxWidth}
-      minWidth={minWidth}
-      hidden={isHidden}
-      onDismiss={hiderFunc}
+      {...props}
     >
-      <Stack>
-        <Text>{text}</Text>
-        <br />
-        <div>
-          <DefaultButton
-            style={{ float: 'left' }}
-            onClick={() => {
-              hiderFunc();
-              confirmFunc();
-            }}
-          >
-            {yes}
-          </DefaultButton>
-          <PrimaryButton style={{ float: 'right' }} onClick={hiderFunc}>
-            {no}
-          </PrimaryButton>
-        </div>
-      </Stack>
+      <DialogTrigger>{openEl}</DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>{title}</DialogTitle>
+          <DialogContent>{text}</DialogContent>
+          <DialogActions>
+            <Button
+              style={{ float: 'left' }}
+              appearance="primary"
+              onClick={() => {
+                hiderFunc();
+                confirmFunc();
+              }}
+            >
+              {yesEl}
+            </Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button style={{ float: 'right' }} onClick={hiderFunc}>
+                {noEl}
+              </Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
     </Dialog>
   );
 }
