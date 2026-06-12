@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { useState } from 'react';
 import { DialogData } from '@freik/react-tools';
 import {
   Button,
@@ -21,7 +20,7 @@ export type ConfirmationDialogProps = {
   text: string | ReactElement;
   yes?: string | ReactElement;
   no?: string | ReactElement;
-  open: string | ReactElement;
+  opener: string | ReactElement;
 } & DialogProps;
 
 export function ConfirmationDialog({
@@ -36,7 +35,7 @@ export function ConfirmationDialog({
 }: ConfirmationDialogProps): React.JSX.Element {
   const yesEl = yes ?? 'Yes';
   const noEl = no ?? 'No';
-  const openEl = isString(open) ? <Button>{open}</Button> : open;
+  const openEl = isString(opener) ? <Button>{opener}</Button> : opener;
   return (
     <Dialog {...props}>
       <DialogTrigger>{openEl}</DialogTrigger>
@@ -46,7 +45,6 @@ export function ConfirmationDialog({
           <DialogContent>{text}</DialogContent>
           <DialogActions>
             <Button
-              style={{ float: 'left' }}
               appearance="primary"
               onClick={() => {
                 hiderFunc();
@@ -56,9 +54,7 @@ export function ConfirmationDialog({
               {yesEl}
             </Button>
             <DialogTrigger disableButtonEnhancement>
-              <Button style={{ float: 'right' }} onClick={hiderFunc}>
-                {noEl}
-              </Button>
+              <Button onClick={hiderFunc}>{noEl}</Button>
             </DialogTrigger>
           </DialogActions>
         </DialogBody>

@@ -1,30 +1,31 @@
+import { Switch } from '@fluentui/react-components';
 import { BoolState } from '@freik/react-tools';
+import { CSSProperties, useCallback } from 'react';
 
 type StateToggleProps = {
   label: string;
   state: BoolState;
   disabled?: boolean;
-  style?: IStyle;
+  style?: CSSProperties;
 };
 // A helper for a toggle that uses a BoolState variable
 export function StateToggle({
   label,
   state,
   disabled,
-  style,
 }: StateToggleProps): React.JSX.Element {
-  const customStyle: Partial<IToggleStyles> = {};
-  if (style) {
-    customStyle.root = style;
-  }
+  const onChange = useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
+      state[ev.currentTarget.checked ? 2 : 1]();
+    },
+    [state],
+  );
   return (
-    <Toggle
-      inlineLabel
+    <Switch
       disabled={disabled}
       label={label}
       checked={state[0]}
-      styles={customStyle}
-      onChange={(_ev, checked?: boolean) => state[checked ? 2 : 1]()}
+      onChange={onChange}
     />
   );
 }

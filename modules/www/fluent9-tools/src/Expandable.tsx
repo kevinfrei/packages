@@ -1,19 +1,6 @@
-import {
-  IconButton,
-  IFontStyles,
-  ISeparatorStyles,
-  IStyle,
-  IToggleStyles,
-  Separator,
-  Spinner as FluentSpinner,
-  SpinnerLabelPosition,
-  SpinnerSize,
-  Stack,
-  Text,
-  Toggle,
-} from '@fluentui/react';
-import React, { Suspense, useState } from 'react';
-import { BoolState } from '@freik/react-tools';
+import { Button, Divider, Text } from '@fluentui/react-components';
+import { ChevronDownRegular, ChevronRightRegular } from '@fluentui/react-icons';
+import { ReactElement, useState } from 'react';
 import { isString } from '@freik/typechk';
 
 // A little control that expands or collapses the children
@@ -23,52 +10,51 @@ export function Expandable({
   label,
   defaultShow,
   separator,
-  variant,
   indent,
+  size,
 }: {
-  children: React.JSX.Element | React.JSX.Element[];
-  label: string | React.JSX.Element;
+  children: ReactElement | ReactElement[];
+  label: string | ReactElement;
   defaultShow?: boolean;
   separator?: boolean;
-  variant?: keyof IFontStyles;
   indent?: number;
-}): React.JSX.Element {
+  size?: 'small' | 'medium' | 'large';
+}): ReactElement {
   const indentSize = indent || 0;
   const [hidden, setHidden] = useState(!defaultShow);
   const button = (
-    <IconButton
-      iconProps={{
-        iconName: hidden ? 'ChevronRight' : 'ChevronDown',
-      }}
+    <Button
+      icon={hidden ? <ChevronRightRegular /> : <ChevronDownRegular />}
       onClick={() => setHidden(!hidden)}
+      appearance="transparent"
+      size={size ?? 'medium'}
     />
   );
-  let theHeader: React.JSX.Element;
+  let theHeader: ReactElement;
+  const sz = size || 'medium';
+  const tsz = sz === 'medium' ? 500 : size === 'small' ? 300 : 700;
   if (separator) {
-    const customStyle: Partial<ISeparatorStyles> = {
-      root: { marginLeft: '-10px' },
-    };
-    const v = variant || 'large';
+    const s = size || 'medium';
     theHeader = (
-      <Separator alignContent="start" styles={customStyle}>
+      <Divider alignContent="start">
         {button}
         {isString(label) ? (
-          <Text variant={v}>
+          <Text size={tsz}>
             &nbsp;
             {label}
           </Text>
         ) : (
           label
         )}
-      </Separator>
+      </Divider>
     );
   } else {
-    const v = variant || 'medium';
+    const s = size || 'medium';
     theHeader = (
-      <Stack horizontal verticalAlign="center" style={{ marginTop: 10 }}>
+      <span style={{ marginTop: 10 }}>
         {button}
-        {isString(label) ? <Text variant={v}>{label}</Text> : label}
-      </Stack>
+        {isString(label) ? <Text size={tsz}>{label}</Text> : label}
+      </span>
     );
   }
   if (indentSize !== 0) {
@@ -76,10 +62,10 @@ export function Expandable({
       <>
         {theHeader}
         <div style={hidden ? { display: 'none' } : {}}>
-          <Stack horizontal>
+          <span>
             <span style={{ width: indentSize }} />
             <div>{children}</div>
-          </Stack>
+          </span>
         </div>
       </>
     );
