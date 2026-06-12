@@ -16,59 +16,6 @@ import React, { Suspense, useState } from 'react';
 import { BoolState } from '@freik/react-tools';
 import { isString } from '@freik/typechk';
 
-export type SpinnerProps = {
-  children: React.JSX.Element | React.JSX.Element[];
-  label?: string;
-  position?: SpinnerLabelPosition;
-  size?: SpinnerSize;
-};
-
-export function Spinner({
-  children,
-  label,
-  position,
-  size,
-}: SpinnerProps): React.JSX.Element {
-  const theLabel = label || 'Please wait...';
-  const pos = position || 'bottom';
-  const sz = size || SpinnerSize.medium;
-  const theSpinner = (
-    <div className="mySpinner">
-      <FluentSpinner label={theLabel} labelPosition={pos} size={sz} />
-    </div>
-  );
-  return <Suspense fallback={theSpinner}>{children}</Suspense>;
-}
-
-type StateToggleProps = {
-  label: string;
-  state: BoolState;
-  disabled?: boolean;
-  style?: IStyle;
-};
-// A helper for a toggle that uses a BoolState variable
-export function StateToggle({
-  label,
-  state,
-  disabled,
-  style,
-}: StateToggleProps): React.JSX.Element {
-  const customStyle: Partial<IToggleStyles> = {};
-  if (style) {
-    customStyle.root = style;
-  }
-  return (
-    <Toggle
-      inlineLabel
-      disabled={disabled}
-      label={label}
-      checked={state[0]}
-      styles={customStyle}
-      onChange={(_ev, checked?: boolean) => state[checked ? 2 : 1]()}
-    />
-  );
-}
-
 // A little control that expands or collapses the children
 // with the header provided
 export function Expandable({
