@@ -29,7 +29,7 @@ export type TextInputProps = {
   maxWidth?: number;
 };
 
-export function TextInput({
+export function TextInputDialog({
   data: [hidden, hide],
   onConfirm,
   title,

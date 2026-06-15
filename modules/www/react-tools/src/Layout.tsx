@@ -1,6 +1,5 @@
 import React from 'react';
-import { isArray } from '@freik/typechk';
-import { hasField, hasStrField } from '@freik/typechk';
+import { isArray, hasField, hasStrField } from '@freik/typechk';
 
 export type CenterDirectionName = {
   direction?:

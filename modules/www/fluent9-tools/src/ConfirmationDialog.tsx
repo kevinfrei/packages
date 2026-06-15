@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react';
-import { DialogData } from '@freik/react-tools';
+import { DialogData, DialogState } from '@freik/react-tools';
 import {
   Button,
   Dialog,
   DialogActions,
   DialogBody,
   DialogContent,
-  DialogProps,
+  DialogModalType,
   DialogSurface,
   DialogTitle,
   DialogTrigger,
@@ -14,31 +14,32 @@ import {
 import { isString } from '@freik/typechk';
 
 export type ConfirmationDialogProps = {
-  data: DialogData;
+  state: DialogState;
   confirmFunc: () => void;
   title: string | ReactElement;
   text: string | ReactElement;
   yes?: string | ReactElement;
   no?: string | ReactElement;
-  opener: string | ReactElement;
-} & DialogProps;
+  open: string | ReactElement;
+  modalType?: DialogModalType;
+};
 
 export function ConfirmationDialog({
-  data: [isHidden, hiderFunc],
+  state,
   confirmFunc,
   title,
   text,
   yes,
   no,
   open,
-  ...props
 }: ConfirmationDialogProps): React.JSX.Element {
+  const [closer, [isHidden, opener]] = state;
   const yesEl = yes ?? 'Yes';
   const noEl = no ?? 'No';
-  const openEl = isString(opener) ? <Button>{opener}</Button> : opener;
+  const openEl = isString(open) ? <Button>{open}</Button> : open;
   return (
-    <Dialog {...props}>
-      <DialogTrigger>{openEl}</DialogTrigger>
+    <Dialog open={isHidden}>
+      <DialogTrigger disableButtonEnhancement>{openEl}</DialogTrigger>
       <DialogSurface>
         <DialogBody>
           <DialogTitle>{title}</DialogTitle>
@@ -47,14 +48,14 @@ export function ConfirmationDialog({
             <Button
               appearance="primary"
               onClick={() => {
-                hiderFunc();
+                closer();
                 confirmFunc();
               }}
             >
               {yesEl}
             </Button>
             <DialogTrigger disableButtonEnhancement>
-              <Button onClick={hiderFunc}>{noEl}</Button>
+              <Button onClick={closer}>{noEl}</Button>
             </DialogTrigger>
           </DialogActions>
         </DialogBody>

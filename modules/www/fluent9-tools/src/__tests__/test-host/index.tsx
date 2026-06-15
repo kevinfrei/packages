@@ -1,8 +1,21 @@
 import { createRoot } from 'react-dom/client';
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { ThumbDislikeRegular } from '@fluentui/react-icons';
 import { Expandable } from '../../Expandable';
+import { StateToggle } from '../../StateToggle';
+import { useBoolState, useDialogState } from '@freik/react-tools';
+import { ConfirmationDialog } from '../../ConfirmationDialog';
+import { TextInputDialog } from '../../TextInputDialog';
+import { ReactElement, useState } from 'react';
+import { isString } from '@freik/typechk';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 
 function App() {
+  const st = useBoolState(true);
+  const [val, setVal] = useState('Unconfirmed');
+  const dlgState = useDialogState();
+  const closer = () => {
+    setVal('CONFIRMED!');
+  };
   return (
     <FluentProvider theme={webLightTheme} targetDocument={window.document}>
       <div style={{ padding: 10 }}>
@@ -10,8 +23,19 @@ function App() {
           <div> A</div>
           <div>b</div>
         </Expandable>
-        And soem other stuff
+        And some other stuff
+        <StateToggle state={st} label="State toggler" />
       </div>
+      <ConfirmationDialog
+        confirmFunc={closer}
+        state={dlgState}
+        yes="Yup"
+        no={<ThumbDislikeRegular />}
+        text={'Hit a button'}
+        title={"Do somthing'"}
+        open={'Show Confirmation'}
+      ></ConfirmationDialog>
+      <p>{val}</p>
     </FluentProvider>
   );
 }
