@@ -4,20 +4,22 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run dev.ts",
-    "start": "bun run dev.ts"
-  },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3"
-  },
-  "peerDependencies": {
-    "typescript": "^6.0.3"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
+    "@fluentui/react-components": "^9.74.1",
+    "@fluentui/react-hooks": "^8.10.2",
+    "@fluentui/react-icons": "^2.0.330",
     "@freik/fluent9-tools": "link:@freik/fluent9-tools",
+    "@types/bun": "latest",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
   }
 }

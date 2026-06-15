@@ -1,7 +1,8 @@
 import { Button, Divider, Text } from '@fluentui/react-components';
 import { ChevronDownRegular, ChevronRightRegular } from '@fluentui/react-icons';
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 import { isString } from '@freik/typechk';
+import type { ReactElement } from 'react';
 
 // A little control that expands or collapses the children
 // with the header provided
@@ -57,23 +58,14 @@ export function Expandable({
       </span>
     );
   }
-  if (indentSize !== 0) {
-    return (
-      <>
-        {theHeader}
-        <div style={hidden ? { display: 'none' } : {}}>
-          <span>
-            <span style={{ width: indentSize }} />
-            <div>{children}</div>
-          </span>
-        </div>
-      </>
-    );
-  }
+  const divStyle = { display: hidden ? 'none' : 'flex', gap: 0 };
   return (
-    <>
+    <div>
       {theHeader}
-      <div style={hidden ? { display: 'none' } : {}}>{children}</div>
-    </>
+      <div style={divStyle}>
+        <span style={{ width: indentSize }} />
+        <span>{children}</span>
+      </div>
+    </div>
   );
 }
