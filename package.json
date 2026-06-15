@@ -69,6 +69,8 @@
     "justtest": "bun runall justtest",
     "typechk": "bun runall typechk",
     "lint": "bun runflat lint",
+    "***": "This let's me use repo's in nested test hosts",
+    "lnk": "bun runall bun link",
     "runall": "bun serial bun run",
     "runflat": "bun serial bun run",
     "forall": "tools workspace",

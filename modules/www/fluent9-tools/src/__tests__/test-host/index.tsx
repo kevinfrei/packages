@@ -12,7 +12,7 @@ import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 function App() {
   const st = useBoolState(true);
   const [val, setVal] = useState('Unconfirmed');
-  const dlgState = useDialogState();
+  const dlgState = useBoolState(false);
   const closer = () => {
     setVal('CONFIRMED!');
   };
@@ -33,8 +33,7 @@ function App() {
         no={<ThumbDislikeRegular />}
         text={'Hit a button'}
         title={"Do somthing'"}
-        open={'Show Confirmation'}
-      ></ConfirmationDialog>
+      >Show Confirmation</ConfirmationDialog>
       <p>{val}</p>
     </FluentProvider>
   );

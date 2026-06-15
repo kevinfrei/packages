@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
-import { DialogData, DialogState } from '@freik/react-tools';
+import { ReactElement, useCallback } from 'react';
+import { BoolState, DialogState } from '@freik/react-tools';
 import {
   Button,
   Dialog,
@@ -14,14 +14,14 @@ import {
 import { isString } from '@freik/typechk';
 
 export type ConfirmationDialogProps = {
-  state: DialogState;
-  confirmFunc: () => void;
+  state: BoolState;
+  confirmFunc: (which: boolean) => void;
   title: string | ReactElement;
   text: string | ReactElement;
   yes?: string | ReactElement;
   no?: string | ReactElement;
-  open: string | ReactElement;
   modalType?: DialogModalType;
+  children: ReactElement | string;
 };
 
 export function ConfirmationDialog({
@@ -31,31 +31,37 @@ export function ConfirmationDialog({
   text,
   yes,
   no,
-  open,
-}: ConfirmationDialogProps): React.JSX.Element {
-  const [closer, [isHidden, opener]] = state;
+  children,
+}: ConfirmationDialogProps): ReactElement {
+  const [isOpened, setOpened, setClosed] = state;
   const yesEl = yes ?? 'Yes';
   const noEl = no ?? 'No';
-  const openEl = isString(open) ? <Button>{open}</Button> : open;
+  const openEl: ReactElement = isString(children) ? (
+    <Button>{children}</Button>
+  ) : (
+    children
+  );
+  const yesFunc = useCallback(() => {
+    setClosed();
+    confirmFunc(true);
+  }, [setClosed, confirmFunc]);
+  const noFunc = useCallback(() => {
+    setClosed();
+    confirmFunc(false);
+  }, [setClosed, confirmFunc]);
   return (
-    <Dialog open={isHidden}>
+    <Dialog open={isOpened}>
       <DialogTrigger disableButtonEnhancement>{openEl}</DialogTrigger>
       <DialogSurface>
         <DialogBody>
           <DialogTitle>{title}</DialogTitle>
           <DialogContent>{text}</DialogContent>
           <DialogActions>
-            <Button
-              appearance="primary"
-              onClick={() => {
-                closer();
-                confirmFunc();
-              }}
-            >
-              {yesEl}
-            </Button>
             <DialogTrigger disableButtonEnhancement>
-              <Button onClick={closer}>{noEl}</Button>
+              <Button onClick={yesFunc}>{yesEl}</Button>
+            </DialogTrigger>{' '}
+            <DialogTrigger disableButtonEnhancement>
+              <Button onClick={noFunc}>{noEl}</Button>
             </DialogTrigger>
           </DialogActions>
         </DialogBody>
