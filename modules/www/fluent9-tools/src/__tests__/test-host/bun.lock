@@ -10,6 +10,7 @@
         "@fluentui/react-icons": "^2.0.330",
         "@freik/fluent9-tools": "link:@freik/fluent9-tools",
         "@freik/react-tools": "link:@freik/react-tools",
+        "@freik/typechk": "link:@freik/typechk",
         "@types/bun": "latest",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
@@ -193,6 +194,8 @@
     "@freik/fluent9-tools": ["@freik/fluent9-tools@link:@freik/fluent9-tools", {}],
 
     "@freik/react-tools": ["@freik/react-tools@link:@freik/react-tools", {}],
+
+    "@freik/typechk": ["@freik/typechk@link:@freik/typechk", {}],
 
     "@griffel/core": ["@griffel/core@1.21.2", "", { "dependencies": { "@emotion/hash": "^0.9.0", "@griffel/style-types": "^1.4.2", "csstype": "^3.2.3", "rtl-css-js": "^1.16.1", "stylis": "^4.4.0", "tslib": "^2.1.0" } }, "sha512-vDvEdbIe7OhU15UkvUHe+Ut2sgCZ5PBj/RYLFwjUtkXS4ewNK9P6b4YRFNI2zgaNYI7GOuZqG7DLyaQbUP3+jg=="],
 

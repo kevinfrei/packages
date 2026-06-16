@@ -1,20 +1,20 @@
+import { ReactElement, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ThumbDislikeRegular } from '@fluentui/react-icons';
 import { Expandable } from '../../Expandable';
 import { StateToggle } from '../../StateToggle';
-import { useBoolState, useDialogState } from '@freik/react-tools';
+import { useBoolState } from '@freik/react-tools';
 import { ConfirmationDialog } from '../../ConfirmationDialog';
 import { TextInputDialog } from '../../TextInputDialog';
-import { ReactElement, useState } from 'react';
 import { isString } from '@freik/typechk';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 
 function App() {
   const st = useBoolState(true);
-  const [val, setVal] = useState('Unconfirmed');
+  const [val, setVal] = useState('no response yet');
   const dlgState = useBoolState(false);
-  const closer = () => {
-    setVal('CONFIRMED!');
+  const closer = (val: boolean) => {
+    setVal(val ? 'CONFIRMED!' : 'DENIED!');
   };
   return (
     <FluentProvider theme={webLightTheme} targetDocument={window.document}>
@@ -33,7 +33,9 @@ function App() {
         no={<ThumbDislikeRegular />}
         text={'Hit a button'}
         title={"Do somthing'"}
-      >Show Confirmation</ConfirmationDialog>
+      >
+        Show Confirmation
+      </ConfirmationDialog>
       <p>{val}</p>
     </FluentProvider>
   );

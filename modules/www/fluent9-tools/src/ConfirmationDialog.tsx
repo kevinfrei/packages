@@ -33,11 +33,11 @@ export function ConfirmationDialog({
   no,
   children,
 }: ConfirmationDialogProps): ReactElement {
-  const [isOpened, setOpened, setClosed] = state;
+  const [isOpened, setClosed, setOpened] = state;
   const yesEl = yes ?? 'Yes';
   const noEl = no ?? 'No';
   const openEl: ReactElement = isString(children) ? (
-    <Button>{children}</Button>
+    <Button onClick={setOpened}>{children}</Button>
   ) : (
     children
   );

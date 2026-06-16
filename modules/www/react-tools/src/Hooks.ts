@@ -19,7 +19,7 @@ export interface KeyEventType {
 /**
  * A short cut for on/off states to make some things (like dialogs) cleaner
  *
- * @returns {BoolState} [state, trueSetter(), falseSetter()]
+ * @returns {BoolState} [state, falseSetter(), trueSetter()]
  */
 export function useBoolState(initial: boolean): BoolState {
   const [state, setState] = useState(initial);
@@ -28,7 +28,7 @@ export function useBoolState(initial: boolean): BoolState {
 
 /**
  * I should go back and see why I made this. This seems more convoluted than just
- * using BoolState :/ So I'm thinking @deprecated 
+ * using BoolState :/ So I'm thinking @deprecated
  * */
 export function useDialogState(): DialogState {
   const [isHidden, setHidden] = useState(true);

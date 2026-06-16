@@ -14,6 +14,7 @@
     "@fluentui/react-icons": "^2.0.330",
     "@freik/fluent9-tools": "link:@freik/fluent9-tools",
     "@freik/react-tools": "link:@freik/react-tools",
+    "@freik/typechk": "link:@freik/typechk",
     "@types/bun": "latest",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
