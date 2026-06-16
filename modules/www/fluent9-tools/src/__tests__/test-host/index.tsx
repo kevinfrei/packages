@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, use, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ThumbDislikeRegular } from '@fluentui/react-icons';
 import { Expandable } from '../../Expandable';
@@ -6,8 +6,32 @@ import { StateToggle } from '../../StateToggle';
 import { useBoolState } from '@freik/react-tools';
 import { ConfirmationDialog } from '../../ConfirmationDialog';
 import { TextInputDialog } from '../../TextInputDialog';
+import { SpinSuspense } from '../../SpinSuspense';
 import { isString } from '@freik/typechk';
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import {
+  FluentProvider,
+  Text,
+  webLightTheme,
+} from '@fluentui/react-components';
+
+// Create a promise that resolves after 2 seconds
+function createDelayedPromise(): Promise<{ message: string }> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ message: '"Data loaded" after 2 seconds!' });
+    }, 2000);
+  });
+}
+
+// IMPORTANT: Create the promise ONCE outside the component
+// to prevent infinite re-renders
+const dataPromise = createDelayedPromise();
+
+function DelayedComponent() {
+  // 2. Unwrap the promise with use()
+  const data = use(dataPromise);
+  return <Text>{data.message}</Text>;
+}
 
 function App() {
   const st = useBoolState(true);
@@ -37,6 +61,11 @@ function App() {
         Show Confirmation
       </ConfirmationDialog>
       <p>{val}</p>
+      <p>
+        <SpinSuspense label="Waiting" size="large">
+          <DelayedComponent />
+        </SpinSuspense>
+      </p>
     </FluentProvider>
   );
 }

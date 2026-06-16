@@ -13,12 +13,12 @@ import {
   Label,
   InputProps,
 } from '@fluentui/react-components';
-import { DialogData } from '@freik/react-tools';
+import { BoolState, DialogData } from '@freik/react-tools';
 import { isString } from '@freik/typechk';
 import { useCallback, useState } from 'react';
 
 export type TextInputProps = {
-  data: DialogData;
+  data: BoolState;
   onConfirm: (value: string) => void;
   title: string;
   text: string;
@@ -30,7 +30,7 @@ export type TextInputProps = {
 };
 
 export function TextInputDialog({
-  data: [hidden, hide],
+  data: [isOpened, setClosed, setOpened],
   onConfirm,
   title,
   text,
