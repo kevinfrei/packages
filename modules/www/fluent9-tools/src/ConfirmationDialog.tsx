@@ -1,5 +1,6 @@
 import { ReactElement, useCallback } from 'react';
-import { BoolState, DialogState } from '@freik/react-tools';
+import type { DialogApi } from './Types';
+import { BoolState } from '@freik/react-tools';
 import {
   Button,
   Dialog,
@@ -14,8 +15,7 @@ import {
 import { isString } from '@freik/typechk';
 
 export type ConfirmationDialogProps = {
-  state: BoolState;
-  confirmFunc: (which: boolean) => void;
+  api: DialogApi<boolean>;
   title: string | ReactElement;
   text: string | ReactElement;
   yes?: string | ReactElement;
@@ -25,32 +25,24 @@ export type ConfirmationDialogProps = {
 };
 
 export function ConfirmationDialog({
-  state,
-  confirmFunc,
+  api,
   title,
   text,
   yes,
   no,
   children,
 }: ConfirmationDialogProps): ReactElement {
-  const [isOpened, setClosed, setOpened] = state;
   const yesEl = yes ?? 'Yes';
   const noEl = no ?? 'No';
   const openEl: ReactElement = isString(children) ? (
-    <Button onClick={setOpened}>{children}</Button>
+    <Button onClick={api.openDialog}>{children}</Button>
   ) : (
     children
   );
-  const yesFunc = useCallback(() => {
-    setClosed();
-    confirmFunc(true);
-  }, [setClosed, confirmFunc]);
-  const noFunc = useCallback(() => {
-    setClosed();
-    confirmFunc(false);
-  }, [setClosed, confirmFunc]);
+  const yesFunc = useCallback(() => api.closeDialog(true), [api]);
+  const noFunc = useCallback(() => api.closeDialog(false), [api]);
   return (
-    <Dialog open={isOpened}>
+    <Dialog open={api.isOpen}>
       <DialogTrigger disableButtonEnhancement>{openEl}</DialogTrigger>
       <DialogSurface>
         <DialogBody>
@@ -59,7 +51,7 @@ export function ConfirmationDialog({
           <DialogActions>
             <DialogTrigger disableButtonEnhancement>
               <Button onClick={yesFunc}>{yesEl}</Button>
-            </DialogTrigger>{' '}
+            </DialogTrigger>
             <DialogTrigger disableButtonEnhancement>
               <Button onClick={noFunc}>{noEl}</Button>
             </DialogTrigger>

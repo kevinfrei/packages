@@ -13,79 +13,65 @@ import {
   Label,
   InputProps,
 } from '@fluentui/react-components';
-import { BoolState, DialogData } from '@freik/react-tools';
+import { BoolState } from '@freik/react-tools';
 import { isString } from '@freik/typechk';
-import { useCallback, useState } from 'react';
+import { ReactElement, useCallback, useState } from 'react';
+import { DialogApi } from './Types';
 
 export type TextInputProps = {
-  data: BoolState;
-  onConfirm: (value: string) => void;
+  api: DialogApi<string | undefined>;
   title: string;
   text: string;
-  initialValue: string;
-  yesText?: string;
-  noText?: string;
-  minWidth?: number;
-  maxWidth?: number;
+  initialValue?: string;
+  children: ReactElement | string;
+  confirm?: string | ReactElement;
+  cancel?: string | ReactElement;
 };
 
 export function TextInputDialog({
-  data: [isOpened, setClosed, setOpened],
-  onConfirm,
+  api,
   title,
   text,
   initialValue,
-  yesText,
-  noText,
+  confirm,
+  cancel,
+  children,
 }: TextInputProps): React.JSX.Element {
-  const [input, setInput] = useState(initialValue);
-  const confirmAndClose = () => {
-    hide();
-    onConfirm(input);
-  };
-  const yes = yesText ?? 'Yes';
-  const no = noText ?? 'No';
-  /*
-    const dlgContentProps = {
-    type: DialogType.normal,
-    title,
-    closeButtonAriaLabel: 'Close',
-    subText: text,
-  };
-  */
-  const openEl = isString(opener) ? <Button>{opener}</Button> : opener;
+  const [input, setInput] = useState(initialValue ?? '');
+  const confirmEl = confirm ?? 'OK';
+  const cancelEl = cancel ?? 'Cancel';
+  const openEl: ReactElement = isString(children) ? (
+    <Button onClick={api.openDialog}>{children}</Button>
+  ) : (
+    children
+  );
+  const confirmFunc = useCallback(() => api.closeDialog(input), [api, input]);
+  const cancelFunc = useCallback(() => api.closeDialog(undefined), [api]);
   const id = useId();
   const onChange: InputProps['onChange'] = useCallback(
     (ev, data) => {
-      setInput(data.value ?? initialValue);
+      setInput(data.value ?? initialValue ?? '');
     },
     [initialValue],
   );
   return (
-    <Dialog
-    /*
-      hidden={hidden}
-      onDismiss={hide}
-      minWidth={minWidth}
-      maxWidth={maxWidth}
-      dialogContentProps={dlgContentProps}
-      */
-    >
-      <DialogTrigger>{openEl}</DialogTrigger>
+    <Dialog open={api.isOpen}>
+      <DialogTrigger disableButtonEnhancement>{openEl}</DialogTrigger>
       <DialogSurface>
         <DialogBody>
           <DialogTitle>{title}</DialogTitle>
           <DialogContent>
             <Label htmlFor={id}>{text}</Label>
+            <br />
             <Input value={input} onChange={onChange} />
           </DialogContent>
           <DialogActions>
-            <Button style={{ float: 'left' }} onClick={hide}>
-              {no}
-            </Button>
-            <Button style={{ float: 'right' }} onClick={confirmAndClose}>
-              {yes}
-            </Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button onClick={confirmFunc}>{confirmEl}</Button>
+            </DialogTrigger>
+            <DialogTrigger disableButtonEnhancement>
+              <Button onClick={cancelFunc}>{cancelEl}</Button>
+            </DialogTrigger>
           </DialogActions>
         </DialogBody>
       </DialogSurface>

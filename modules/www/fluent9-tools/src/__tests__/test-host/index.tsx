@@ -1,4 +1,4 @@
-import { ReactElement, use, useState } from 'react';
+import { use, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ThumbDislikeRegular } from '@fluentui/react-icons';
 import { Expandable } from '../../Expandable';
@@ -6,8 +6,8 @@ import { StateToggle } from '../../StateToggle';
 import { useBoolState } from '@freik/react-tools';
 import { ConfirmationDialog } from '../../ConfirmationDialog';
 import { TextInputDialog } from '../../TextInputDialog';
+import { MakeDialogApi } from '../../DialogHelpers';
 import { SpinSuspense } from '../../SpinSuspense';
-import { isString } from '@freik/typechk';
 import {
   FluentProvider,
   Text,
@@ -36,10 +36,15 @@ function DelayedComponent() {
 function App() {
   const st = useBoolState(true);
   const [val, setVal] = useState('no response yet');
+  const [tVal, setTVal] = useState('no response yet');
   const dlgState = useBoolState(false);
-  const closer = (val: boolean) => {
+  const api = MakeDialogApi(dlgState, (val: boolean) => {
     setVal(val ? 'CONFIRMED!' : 'DENIED!');
-  };
+  });
+  const txtState = useBoolState(false);
+  const txtApi = MakeDialogApi(txtState, (val: string | undefined) => {
+    setTVal(val || 'NOT DEFINED!');
+  });
   return (
     <FluentProvider theme={webLightTheme} targetDocument={window.document}>
       <div style={{ padding: 10 }}>
@@ -51,8 +56,7 @@ function App() {
         <StateToggle state={st} label="State toggler" />
       </div>
       <ConfirmationDialog
-        confirmFunc={closer}
-        state={dlgState}
+        api={api}
         yes="Yup"
         no={<ThumbDislikeRegular />}
         text={'Hit a button'}
@@ -66,6 +70,17 @@ function App() {
           <DelayedComponent />
         </SpinSuspense>
       </p>
+      <TextInputDialog
+        api={txtApi}
+        confirm="CONFIRM"
+        cancel={<ThumbDislikeRegular />}
+        text="THis is the text!"
+        title="This is the title"
+        initialValue="init"
+      >
+        Show Text Input
+      </TextInputDialog>
+      <p>Input Value: {tVal}</p>
     </FluentProvider>
   );
 }
