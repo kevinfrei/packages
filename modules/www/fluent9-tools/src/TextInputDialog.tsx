@@ -9,11 +9,9 @@ import {
   DialogTrigger,
   Input,
   useId,
-  Text,
   Label,
   InputProps,
 } from '@fluentui/react-components';
-import { BoolState } from '@freik/react-tools';
 import { isString } from '@freik/typechk';
 import { ReactElement, useCallback, useState } from 'react';
 import { DialogApi } from './Types';
@@ -23,7 +21,7 @@ export type TextInputProps = {
   title: string;
   text: string;
   initialValue?: string;
-  children: ReactElement | string;
+  children?: ReactElement | string;
   confirm?: string | ReactElement;
   cancel?: string | ReactElement;
 };
@@ -40,10 +38,10 @@ export function TextInputDialog({
   const [input, setInput] = useState(initialValue ?? '');
   const confirmEl = confirm ?? 'OK';
   const cancelEl = cancel ?? 'Cancel';
-  const openEl: ReactElement = isString(children) ? (
+  const openEl: ReactElement | false = isString(children) ? (
     <Button onClick={api.openDialog}>{children}</Button>
   ) : (
-    children
+    children || false
   );
   const confirmFunc = useCallback(() => api.closeDialog(input), [api, input]);
   const cancelFunc = useCallback(() => api.closeDialog(undefined), [api]);
@@ -56,7 +54,11 @@ export function TextInputDialog({
   );
   return (
     <Dialog open={api.isOpen}>
-      <DialogTrigger disableButtonEnhancement>{openEl}</DialogTrigger>
+      {openEl ? (
+        <DialogTrigger disableButtonEnhancement>{openEl}</DialogTrigger>
+      ) : (
+        <></>
+      )}
       <DialogSurface>
         <DialogBody>
           <DialogTitle>{title}</DialogTitle>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { afterEach, describe, test, expect, beforeAll } from 'bun:test';
-import { TextInput } from '../Dialogs';
+import { TextInputDialog } from '../TextInputDialog';
 import type { DialogData } from '@freik/react-tools';
 import {
   fireEvent,
@@ -23,7 +23,7 @@ afterEach(cleanup);
 describe('TextInput', () => {
   // My first actual, honest-to-god UI test right here...
   test('Initial value return (disabled)', async () => {
-    expect(TextInput).toBeDefined();
+    expect(TextInputDialog).toBeDefined();
     return; /*
     let response = 'nope';
     let hidden = false;
@@ -55,7 +55,7 @@ describe('TextInput', () => {
     */
   });
   test('Nothing set for no (disabled)', async () => {
-    expect(TextInput).toBeDefined();
+    expect(TextInputDialog).toBeDefined();
     /*
     let response = 'nope';
     let hidden = false;

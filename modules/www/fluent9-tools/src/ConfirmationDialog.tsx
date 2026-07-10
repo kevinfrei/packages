@@ -1,6 +1,5 @@
 import { ReactElement, useCallback } from 'react';
 import type { DialogApi } from './Types';
-import { BoolState } from '@freik/react-tools';
 import {
   Button,
   Dialog,
@@ -21,7 +20,7 @@ export type ConfirmationDialogProps = {
   yes?: string | ReactElement;
   no?: string | ReactElement;
   modalType?: DialogModalType;
-  children: ReactElement | string;
+  children?: ReactElement | string;
 };
 
 export function ConfirmationDialog({
@@ -34,16 +33,20 @@ export function ConfirmationDialog({
 }: ConfirmationDialogProps): ReactElement {
   const yesEl = yes ?? 'Yes';
   const noEl = no ?? 'No';
-  const openEl: ReactElement = isString(children) ? (
+  const openEl: ReactElement | false = isString(children) ? (
     <Button onClick={api.openDialog}>{children}</Button>
   ) : (
-    children
+    children || false
   );
   const yesFunc = useCallback(() => api.closeDialog(true), [api]);
   const noFunc = useCallback(() => api.closeDialog(false), [api]);
   return (
     <Dialog open={api.isOpen}>
-      <DialogTrigger disableButtonEnhancement>{openEl}</DialogTrigger>
+      {openEl ? (
+        <DialogTrigger disableButtonEnhancement>{openEl}</DialogTrigger>
+      ) : (
+        <></>
+      )}
       <DialogSurface>
         <DialogBody>
           <DialogTitle>{title}</DialogTitle>
