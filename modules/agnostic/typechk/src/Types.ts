@@ -28,3 +28,9 @@ export type SimpleObject =
 export type typecheck<T> = (val: unknown) => val is T;
 
 export type boolcheck = (val: unknown) => boolean;
+
+export type ErrorVal = {
+  errors: () => string[];
+  [Symbol.toPrimitive]: (hint: string) => unknown;
+};
+export type ErrorOr<T> = T | ErrorVal;
