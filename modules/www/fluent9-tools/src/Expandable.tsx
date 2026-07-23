@@ -8,6 +8,7 @@ export type ExpandableProps = {
   children: ReactElement | ReactElement[];
   label: string | ReactElement;
   defaultShow?: boolean;
+  separator?: boolean;
   indent?: number;
   size?: 'small' | 'medium' | 'large';
 };
@@ -18,6 +19,7 @@ export function Expandable({
   children,
   label,
   defaultShow,
+  separator,
   indent,
   size,
   ...props
@@ -32,7 +34,13 @@ export function Expandable({
       size={size || 'medium'}
     />
   );
-  const theHeader = (
+  const lbl = isString(label) ? <Text {...props}>&nbsp;{label}</Text> : label;
+  const theHeader = separator ? (
+    <Divider alignContent="start">
+      {button}
+      {lbl}
+    </Divider>
+  ) : (
     <span style={{ marginTop: 10 }}>
       {button}
       {isString(label) ? <Text {...props}>{label}</Text> : label}
