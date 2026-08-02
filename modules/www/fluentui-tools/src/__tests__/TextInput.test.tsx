@@ -1,17 +1,19 @@
 /// <reference lib="dom" />
 
+import { afterEach, beforeAll, describe, expect, test } from 'bun:test';
 import React from 'react';
-import { afterEach, describe, test, expect, beforeAll } from 'bun:test';
-import { TextInput } from '../Dialogs';
-import type { DialogData } from '@freik/react-tools';
+
+import { GlobalRegistrator } from '@happy-dom/global-registrator';
 import {
-  fireEvent,
   cleanup,
+  fireEvent,
   render,
   screen,
   waitFor,
 } from '@testing-library/react';
-import { GlobalRegistrator } from '@happy-dom/global-registrator';
+import type { DialogData } from '@freik/react-tools';
+
+import { TextInput } from '../Dialogs';
 
 beforeAll(() => {
   if (!GlobalRegistrator.isRegistered) GlobalRegistrator.register();

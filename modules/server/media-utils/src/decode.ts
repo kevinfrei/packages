@@ -5,10 +5,12 @@
 
 // import { PathUtil, ProcUtil } from '@freik/node-utils';
 
-import { SpawnRes, SpawnResSync } from '@freik/spawn';
-import type { Decoder, DecoderAsync } from './index.js';
 import * as path from 'path';
+
 import { Path } from '@freik/files';
+import { SpawnRes, SpawnResSync } from '@freik/spawn';
+
+import type { Decoder, DecoderAsync } from './index.js';
 
 const Mp3: Decoder = (inputFile, outputFile) =>
   SpawnResSync('lame', ['--quiet', '--decode', inputFile, outputFile]);

@@ -1,3 +1,5 @@
+import { expect, test } from 'bun:test';
+
 import {
   asArrayOfString,
   asNumber,
@@ -58,7 +60,6 @@ import {
   toString,
 } from '../TypeChk';
 import { FreikTypeTag, SimpleObject } from '../Types';
-import { test, expect } from 'bun:test';
 
 test('isString', () => {
   expect(isString('')).toBe(true);

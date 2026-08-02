@@ -1,11 +1,12 @@
 import { expect, test } from 'bun:test';
+
 import {
-  NormalizeText,
-  StripInitialArticles,
   NoArticlesNormalizedStringCompare,
   NoArticlesStringCompare,
   NormalizedStringCompare,
+  NormalizeText,
   StringCompare,
+  StripInitialArticles,
 } from '../index';
 
 test('Text Helpers', () => {

@@ -1,11 +1,13 @@
 /// <reference lib="dom" />
 
 // import React from 'react';
-import { FullPage } from '../Layout';
 import { afterEach /*, beforeAll*/, describe, expect, test } from 'bun:test';
-import { cleanup /*, render, screen */ } from '@testing-library/react';
+
 // import * as TestingLib from '@testing-library/react';
 import * as matchers from '@testing-library/jest-dom/matchers';
+import { cleanup /*, render, screen */ } from '@testing-library/react';
+
+import { FullPage } from '../Layout';
 
 expect.extend(matchers);
 

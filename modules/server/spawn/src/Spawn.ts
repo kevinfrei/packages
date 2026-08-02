@@ -1,5 +1,6 @@
-import type { SpawnResult } from './public-defs.js';
 import * as cp from 'child_process';
+
+import type { SpawnResult } from './public-defs.js';
 
 export async function Spawn(
   command: string,

@@ -1,5 +1,6 @@
 import { isEmpty } from '@freik/typechk';
-import { Stack, isContainer } from './Types.js';
+
+import { isContainer, Stack } from './Types.js';
 
 export function MakeStack<T>(items?: Iterable<T>): Stack<T> {
   const s: T[] = isEmpty(items) ? [] : [...items];

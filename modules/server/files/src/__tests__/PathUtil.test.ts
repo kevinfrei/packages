@@ -1,4 +1,6 @@
+import { expect, test } from 'bun:test';
 import os from 'os';
+
 import {
   ChangeExt,
   DirName,
@@ -10,7 +12,6 @@ import {
   TrailingSlash,
   Xplat,
 } from '../PathUtil';
-import { test, expect } from 'bun:test';
 
 test('temp file names', () => {
   const tmp = GetTemp('MyTempFile');

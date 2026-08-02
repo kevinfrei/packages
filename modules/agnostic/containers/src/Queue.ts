@@ -1,5 +1,6 @@
 import { isEmpty } from '@freik/typechk';
-import { Queue, isContainer } from './Types.js';
+
+import { isContainer, Queue } from './Types.js';
 
 export function MakeQueue<T>(items?: Iterable<T>): Queue<T> {
   const q: T[] = isEmpty(items) ? [] : [...items];

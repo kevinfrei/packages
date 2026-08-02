@@ -1,8 +1,9 @@
+import { useState } from 'react';
+import type { ReactElement } from 'react';
+
 import { Button, Divider, Text } from '@fluentui/react-components';
 import { ChevronDownRegular, ChevronRightRegular } from '@fluentui/react-icons';
-import { useState } from 'react';
 import { isString } from '@freik/typechk';
-import type { ReactElement } from 'react';
 
 export type ExpandableProps = {
   children: ReactElement | ReactElement[];

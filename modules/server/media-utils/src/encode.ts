@@ -4,14 +4,15 @@
 // Everything is synchronous currently
 
 import { Attributes, SimpleMetadata } from '@freik/media-core';
+import { SpawnRes, SpawnResSync } from '@freik/spawn';
 import {
   hasField,
   hasStrField,
   isNumberOrString,
   isObject,
 } from '@freik/typechk';
+
 import type { Encoder, EncoderAsync } from './index.js';
-import { SpawnRes, SpawnResSync } from '@freik/spawn';
 
 function prefixObj(str: string, obj: { [key: string]: string }): string[] {
   const res: string[] = [];

@@ -1,16 +1,18 @@
-import { promises as fsp } from 'fs';
-import { MakeFileIndex } from '../FileIndex';
-import { MakeSuffixWatcher } from '@freik/watchers';
-import { NormalizedStringCompare } from '@freik/text';
 import {
-  test,
-  expect,
-  beforeEach,
+  afterAll,
   afterEach,
   beforeAll,
-  afterAll,
+  beforeEach,
+  expect,
+  test,
 } from 'bun:test';
+import { promises as fsp } from 'fs';
 import path from 'path';
+
+import { NormalizedStringCompare } from '@freik/text';
+import { MakeSuffixWatcher } from '@freik/watchers';
+
+import { MakeFileIndex } from '../FileIndex';
 
 let prevCwd: string | null = null;
 

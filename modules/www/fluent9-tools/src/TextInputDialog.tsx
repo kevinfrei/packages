@@ -1,3 +1,5 @@
+import { ReactElement, useCallback, useState } from 'react';
+
 import {
   Button,
   Dialog,
@@ -8,12 +10,12 @@ import {
   DialogTitle,
   DialogTrigger,
   Input,
-  useId,
-  Label,
   InputProps,
+  Label,
+  useId,
 } from '@fluentui/react-components';
 import { isString } from '@freik/typechk';
-import { ReactElement, useCallback, useState } from 'react';
+
 import { DialogApi } from './Types';
 
 export type TextInputProps = {

@@ -1,15 +1,16 @@
-import { MultiMap } from './Types.js';
 import { SetEqual } from '@freik/helpers';
 import {
-  FreikTypeTag,
-  RegisterForPickling,
-  chkTupleOf,
   chkArrayOf,
+  chkTupleOf,
+  FreikTypeTag,
   isArrayOf,
   isCustomType,
   isNonNullable,
+  RegisterForPickling,
   typecheck,
 } from '@freik/typechk';
+
+import { MultiMap } from './Types.js';
 
 const MultiMapTypeTag: symbol = Symbol.for('freik.MultiMapTypeTag');
 

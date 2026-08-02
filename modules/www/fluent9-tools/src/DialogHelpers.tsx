@@ -1,4 +1,5 @@
 import { BoolState } from '@freik/react-tools';
+
 import { DialogApi } from './Types';
 
 export function MakeDialogApi<T>(

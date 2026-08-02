@@ -1,5 +1,6 @@
+import { expect, test } from 'bun:test';
+
 import { Data } from '../index';
-import { test, expect } from 'bun:test';
 
 test('Encryption/Decryption', () => {
   const key = Data.MakeKey('This is a sample cypher key, I guess');
@@ -17,7 +18,7 @@ test('Bigger Encryption/Decryption', () => {
   expect(key.key.length).toBe(32);
   const buf = Buffer.alloc(65534);
   for (let i = 0; i < 65534; i++) {
-    buf.writeUInt8(0xff & (i << (i % (i + 1) & 0x7)), i);
+    buf.writeUInt8(0xff & (i << ((i % (i + 1)) & 0x7)), i);
   }
   const encr = Data.Encrypt(key, buf);
   const decr = Data.Decrypt(key, encr);

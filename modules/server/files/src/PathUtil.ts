@@ -1,8 +1,9 @@
-import os from 'node:os';
 import * as child from 'node:child_process';
-import path from 'node:path';
 import { promises as fsp } from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { promisify } from 'node:util';
+
 import { hasFieldOf, hasStrField, isArray } from '@freik/typechk';
 
 const exec = promisify(child.exec);

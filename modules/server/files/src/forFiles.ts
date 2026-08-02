@@ -1,11 +1,13 @@
-import { Container, MakeQueue, MakeStack } from '@freik/containers';
-import { isHiddenFile } from '@freik/is-hidden-file';
-import { isBoolean, isString, isUndefined } from '@freik/typechk';
 import * as fs from 'node:fs';
 import { promises as fsp } from 'node:fs';
 import path from 'node:path';
-import * as PathUtil from './PathUtil.js';
+
+import { Container, MakeQueue, MakeStack } from '@freik/containers';
+import { isHiddenFile } from '@freik/is-hidden-file';
 import { MakeLog } from '@freik/logger';
+import { isBoolean, isString, isUndefined } from '@freik/typechk';
+
+import * as PathUtil from './PathUtil.js';
 
 const { err } = MakeLog('@freil/files:forFiles');
 

@@ -1,8 +1,10 @@
-import { Attributes } from '@freik/media-core';
-import { Metadata } from '../index.js';
-import { hasField } from '@freik/typechk';
-import { beforeAll, afterAll, it, expect } from 'bun:test';
+import { afterAll, beforeAll, expect, it } from 'bun:test';
 import path from 'path';
+
+import { Attributes } from '@freik/media-core';
+import { hasField } from '@freik/typechk';
+
+import { Metadata } from '../index.js';
 
 let prevCwd: string | null = null;
 

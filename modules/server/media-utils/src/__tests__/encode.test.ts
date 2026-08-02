@@ -1,21 +1,22 @@
-import * as ofs from 'fs';
-import { Encode } from '../index.js';
 import {
-  beforeEach,
+  afterAll,
   afterEach,
+  beforeAll,
+  beforeEach,
+  expect,
   setDefaultTimeout,
   test,
-  expect,
-  beforeAll,
-  afterAll,
 } from 'bun:test';
+import * as ofs from 'fs';
+import path from 'path';
+
+import { Encode } from '../index.js';
 
 const fs = {
   statAsync: ofs.promises.stat,
   statSync: ofs.statSync,
   unlinkSync: ofs.unlinkSync,
 };
-import path from 'path';
 
 let prevCwd: string | null = null;
 

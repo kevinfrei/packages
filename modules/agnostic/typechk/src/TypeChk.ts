@@ -1,4 +1,4 @@
-import { FreikTypeTag, SimpleObject, boolcheck, typecheck } from './Types.js';
+import { boolcheck, FreikTypeTag, SimpleObject, typecheck } from './Types.js';
 
 /**
  * Type check for undefined
@@ -990,8 +990,7 @@ export function isObjectOfExactType<T extends NonNullable<object>>(
   obj: unknown,
   requiredFields: Record<RequiredKeysOf<T>, boolcheck>,
   optionalFields:
-    | Record<OptionalKeysOf<T>, boolcheck>
-    | Record<string, never> = {},
+    Record<OptionalKeysOf<T>, boolcheck> | Record<string, never> = {},
 ): obj is T {
   return isObjOfHelper<T>(true, obj, requiredFields, optionalFields);
 }
@@ -1000,8 +999,7 @@ export function isObjectOfType<T extends NonNullable<object>>(
   obj: unknown,
   requiredFields: Record<RequiredKeysOf<T>, boolcheck>,
   optionalFields:
-    | Record<OptionalKeysOf<T>, boolcheck>
-    | Record<string, never> = {},
+    Record<OptionalKeysOf<T>, boolcheck> | Record<string, never> = {},
 ): obj is T {
   return isObjOfHelper<T>(false, obj, requiredFields, optionalFields);
 }
@@ -1009,8 +1007,7 @@ export function isObjectOfType<T extends NonNullable<object>>(
 export function chkObjectOfType<T extends object>(
   requiredFields: Record<RequiredKeysOf<T>, boolcheck>,
   optionalFields:
-    | Record<OptionalKeysOf<T>, boolcheck>
-    | Record<string, never> = {},
+    Record<OptionalKeysOf<T>, boolcheck> | Record<string, never> = {},
 ): typecheck<T> {
   return (obj): obj is T =>
     isObjOfHelper(false, obj, requiredFields, optionalFields);
@@ -1019,8 +1016,7 @@ export function chkObjectOfType<T extends object>(
 export function chkObjectOfExactType<T extends object>(
   requiredFields: Record<RequiredKeysOf<T>, boolcheck>,
   optionalFields:
-    | Record<OptionalKeysOf<T>, boolcheck>
-    | Record<string, never> = {},
+    Record<OptionalKeysOf<T>, boolcheck> | Record<string, never> = {},
 ): typecheck<T> {
   return (obj): obj is T =>
     isObjOfHelper(true, obj, requiredFields, optionalFields);

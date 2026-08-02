@@ -1,6 +1,7 @@
+import { expect, test } from 'bun:test';
+
 import { Attributes, Metadata } from '../index';
 import { isAlbumKey, isArtistKey, isSongKey } from '../schema';
-import { expect, test } from 'bun:test';
 
 const log = false ? console.log : (a: unknown) => {};
 

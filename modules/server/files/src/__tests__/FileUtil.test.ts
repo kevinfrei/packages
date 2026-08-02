@@ -1,17 +1,18 @@
 // import { exec } from 'node:child_process';
+import { $ } from 'bun';
+import { afterAll, beforeAll, expect, test } from 'bun:test';
 import fs, { promises as fsp } from 'fs';
+import path from 'path';
+
 import {
   ArrayToTextFile,
   ArrayToTextFileSync,
-  HideFile,
   FileSize,
   FileSizeSync,
+  HideFile,
   TextFileToArray,
   TextFileToArraySync,
 } from '../FileUtil';
-import { test, expect, beforeAll, afterAll } from 'bun:test';
-import { $ } from 'bun';
-import path from 'path';
 
 let prevCwd: string | null = null;
 

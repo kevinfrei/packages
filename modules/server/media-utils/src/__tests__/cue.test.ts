@@ -1,8 +1,10 @@
-import { Cue } from '../index.js';
+import { afterAll, beforeAll, expect, test } from 'bun:test';
 import { promises as fsp } from 'node:fs';
-import { test, beforeAll, afterAll, expect } from 'bun:test';
 import path from 'path';
+
 import { TextFileToArray } from '@freik/files';
+
+import { Cue } from '../index.js';
 
 let prevCwd: string | null = null;
 

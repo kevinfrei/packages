@@ -1,4 +1,5 @@
 import {
+  chkAnyOf,
   chkMapOf,
   chkObjectOfType,
   chkTupleOf,
@@ -9,6 +10,7 @@ import {
   isArrayOf,
   isBigInt,
   isDate,
+  isDefined,
   isFunction,
   isIterable,
   isMap,
@@ -18,8 +20,6 @@ import {
   isSimpleObject,
   isString,
   isSymbol,
-  isDefined,
-  chkAnyOf,
 } from './TypeChk.js';
 import { FreikTypeTag, SimpleObject, typecheck } from './Types.js';
 import { hasGlobalThis, isBrowser, isNode } from './which.js';
@@ -153,7 +153,7 @@ const theUnpicklers = new Map<symbol, FromFlat<unknown>>([
 
 declare let global: { [key: string | number | symbol]: unknown };
 declare let window: { [key: string | number | symbol]: unknown };
- 
+
 declare let globalThis: { [key: string | number | symbol]: unknown };
 
 export enum RegistrationResult {

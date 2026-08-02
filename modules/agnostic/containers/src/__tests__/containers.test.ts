@@ -1,17 +1,14 @@
-import { expect, test, beforeAll } from 'bun:test';
+import { beforeAll, expect, test } from 'bun:test';
+
 import {
-  Pickle,
-  SafelyUnpickle,
   isNumber,
   isString,
+  Pickle,
   registerPickling,
+  SafelyUnpickle,
 } from '@freik/typechk';
+
 import {
-  MakeMultiMap,
-  MakePriorityQueue,
-  MakeQueue,
-  MakeStack,
-  MultiMap,
   chkMultiMapOf,
   isContainer,
   isContainerOf,
@@ -22,6 +19,11 @@ import {
   isQueueOf,
   isStack,
   isStackOf,
+  MakeMultiMap,
+  MakePriorityQueue,
+  MakeQueue,
+  MakeStack,
+  MultiMap,
 } from '../index';
 
 beforeAll(() => registerPickling());

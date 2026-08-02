@@ -1,5 +1,7 @@
 // TODO: Add a bunch of tests for the synchronization things
 
+import { expect, setDefaultTimeout, test } from 'bun:test';
+
 import {
   DebouncedDelay,
   DebouncedEvery,
@@ -7,7 +9,6 @@ import {
   MaybeWait,
   Sleep,
 } from '../index';
-import { test, expect, setDefaultTimeout } from 'bun:test';
 
 setDefaultTimeout(15000);
 

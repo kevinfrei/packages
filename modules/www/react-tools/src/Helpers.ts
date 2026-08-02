@@ -1,5 +1,5 @@
-import { hasFieldType, isFunction, isString } from '@freik/typechk';
 import { MakeLog } from '@freik/logger';
+import { hasFieldType, isFunction, isString } from '@freik/typechk';
 
 const { err } = MakeLog('react-tools:Helpers');
 

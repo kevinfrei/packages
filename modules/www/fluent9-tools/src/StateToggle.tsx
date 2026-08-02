@@ -1,6 +1,7 @@
+import { CSSProperties, useCallback } from 'react';
+
 import { Switch } from '@fluentui/react-components';
 import { BoolState } from '@freik/react-tools';
-import { CSSProperties, useCallback } from 'react';
 
 type StateToggleProps = {
   label: string;

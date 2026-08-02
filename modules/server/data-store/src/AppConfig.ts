@@ -1,7 +1,8 @@
-import { Pickle, Unpickle } from '@freik/typechk';
 import * as ofs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
+
+import { Pickle, Unpickle } from '@freik/typechk';
 
 const fs = {
   readFileAsync: ofs.promises.readFile,

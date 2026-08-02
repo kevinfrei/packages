@@ -1,7 +1,8 @@
-import type { SimpleMetadata } from '@freik/media-core';
 import * as path from 'node:path';
-import { isString } from '@freik/typechk';
+
 import { Path, TextFileToArray } from '@freik/files';
+import type { SimpleMetadata } from '@freik/media-core';
+import { isString } from '@freik/typechk';
 
 import { FlacAsync } from './encode.js';
 

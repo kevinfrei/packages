@@ -1,5 +1,6 @@
-import { isNumber } from '@freik/typechk';
 import React, { useState } from 'react';
+
+import { isNumber } from '@freik/typechk';
 
 const msgsToUse = ['fetching from sources...', 'loading account...'];
 

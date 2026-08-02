@@ -1,5 +1,6 @@
+import { expect, test } from 'bun:test';
+
 import { MakeStringWatcher, MakeSuffixWatcher } from '../index';
-import { test, expect } from 'bun:test';
 
 test('String File Type Watcher Ignore, then Watch testing', () => {
   const ftw = MakeStringWatcher();

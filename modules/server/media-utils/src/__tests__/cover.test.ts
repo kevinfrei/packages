@@ -1,6 +1,7 @@
-import { Covers } from '../index.js';
-import { test, expect, beforeAll, afterAll } from 'bun:test';
+import { afterAll, beforeAll, expect, test } from 'bun:test';
 import path from 'path';
+
+import { Covers } from '../index.js';
 
 let prevCwd: string | null = null;
 

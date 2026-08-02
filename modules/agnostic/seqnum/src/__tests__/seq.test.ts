@@ -1,4 +1,5 @@
-import { test, expect } from 'bun:test';
+import { expect, test } from 'bun:test';
+
 import SeqNum from '../index';
 
 test('SeqNum Features', () => {

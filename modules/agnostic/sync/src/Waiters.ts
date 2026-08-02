@@ -1,9 +1,10 @@
 // Overall, I think I'd rather pass in a function to be invoked, rather than
 // expect the caller gets the cleanup right
 
-import { Sleep, Waiter } from './Utils.js';
-import SeqNum from '@freik/seqnum';
 import { Container, MakeQueue } from '@freik/containers';
+import SeqNum from '@freik/seqnum';
+
+import { Sleep, Waiter } from './Utils.js';
 
 // This is a non-prioritized "maybe you'll eventually get the token" waiter
 export function MakeWaiter(delay = 10): Waiter {

@@ -1,13 +1,14 @@
+import { exec as execOld } from 'node:child_process';
+import { promisify } from 'node:util';
+
 import {
+  chkAnyOf,
   chkFieldType,
   chkObjectOf,
-  chkAnyOf,
   isFunction,
   isRegex,
   typecheck,
 } from '@freik/typechk';
-import { exec as execOld } from 'node:child_process';
-import { promisify } from 'node:util';
 
 const exec = promisify(execOld);
 type FilterFn = (name: string) => boolean;

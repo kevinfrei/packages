@@ -1,5 +1,6 @@
 import React from 'react';
-import { isArray, hasField, hasStrField } from '@freik/typechk';
+
+import { hasField, hasStrField, isArray } from '@freik/typechk';
 
 export type CenterDirectionName = {
   direction?:
@@ -17,13 +18,10 @@ export type CenterDirectionName = {
 };
 
 export type CenterDirectionHorizontal =
-  | { horizontal: boolean }
-  | { column: boolean }
-  | { col: boolean };
+  { horizontal: boolean } | { column: boolean } | { col: boolean };
 export type CenterDirectionVertical = { vertical: boolean } | { row: boolean };
 export type CenterDirectionBoth =
-  | { both: boolean }
-  | (CenterDirectionHorizontal & CenterDirectionVertical);
+  { both: boolean } | (CenterDirectionHorizontal & CenterDirectionVertical);
 
 export type CenterPropsBasics = {
   style?: React.CSSProperties;
@@ -131,14 +129,7 @@ export function Dock({
 
 export type FillProps = {
   direction?:
-    | 'vertical'
-    | 'horizontal'
-    | 'v'
-    | 'h'
-    | 'row'
-    | 'r'
-    | 'column'
-    | 'c';
+    'vertical' | 'horizontal' | 'v' | 'h' | 'row' | 'r' | 'column' | 'c';
   style?: React.CSSProperties;
   children?: React.JSX.Element | string | (React.JSX.Element | string)[];
 };

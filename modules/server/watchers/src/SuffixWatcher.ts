@@ -1,5 +1,6 @@
-import { isString } from '@freik/typechk';
 import * as path from 'path';
+
+import { isString } from '@freik/typechk';
 
 import type { Watcher } from './public-defs';
 

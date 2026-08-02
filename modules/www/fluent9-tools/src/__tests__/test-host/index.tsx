@@ -1,18 +1,20 @@
 import { use, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ThumbDislikeRegular } from '@fluentui/react-icons';
-import { Expandable } from '../../Expandable';
-import { StateToggle } from '../../StateToggle';
-import { useBoolState } from '@freik/react-tools';
-import { ConfirmationDialog } from '../../ConfirmationDialog';
-import { TextInputDialog } from '../../TextInputDialog';
-import { MakeDialogApi } from '../../DialogHelpers';
-import { SpinSuspense } from '../../SpinSuspense';
+
 import {
   FluentProvider,
   Text,
   webLightTheme,
 } from '@fluentui/react-components';
+import { ThumbDislikeRegular } from '@fluentui/react-icons';
+import { useBoolState } from '@freik/react-tools';
+
+import { ConfirmationDialog } from '../../ConfirmationDialog';
+import { MakeDialogApi } from '../../DialogHelpers';
+import { Expandable } from '../../Expandable';
+import { SpinSuspense } from '../../SpinSuspense';
+import { StateToggle } from '../../StateToggle';
+import { TextInputDialog } from '../../TextInputDialog';
 
 // Create a promise that resolves after 2 seconds
 function createDelayedPromise(): Promise<{ message: string }> {
@@ -60,8 +62,7 @@ function App() {
         yes="Yup"
         no={<ThumbDislikeRegular />}
         text={'Hit a button'}
-        title={"Do somthing'"}
-      >
+        title={"Do somthing'"}>
         Show Confirmation
       </ConfirmationDialog>
       <p>{val}</p>
@@ -76,8 +77,7 @@ function App() {
         cancel={<ThumbDislikeRegular />}
         text="THis is the text!"
         title="This is the title"
-        initialValue="init"
-      >
+        initialValue="init">
         Show Text Input
       </TextInputDialog>
       <p>Input Value: {tVal}</p>

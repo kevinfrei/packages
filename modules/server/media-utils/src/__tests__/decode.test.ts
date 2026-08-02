@@ -1,15 +1,18 @@
-import { Sleep } from '@freik/sync';
-import * as ofs from 'fs';
-import { Decode } from '../index.js';
 import {
-  beforeEach,
+  afterAll,
   afterEach,
+  beforeAll,
+  beforeEach,
+  expect,
   setDefaultTimeout,
   test,
-  expect,
-  beforeAll,
-  afterAll,
 } from 'bun:test';
+import * as ofs from 'fs';
+import path from 'path';
+
+import { Sleep } from '@freik/sync';
+
+import { Decode } from '../index.js';
 
 const fs = {
   statAsync: ofs.promises.stat,
@@ -17,7 +20,6 @@ const fs = {
   statSync: ofs.statSync,
   unlinkSync: ofs.unlinkSync,
 };
-import path from 'path';
 
 let prevCwd: string | null = null;
 

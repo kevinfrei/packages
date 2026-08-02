@@ -1,8 +1,8 @@
-import { isPromise, isString, isDefined, typecheck } from '@freik/typechk';
-import { NormalizedStringCompare } from '@freik/text';
-import { SortedArrayDiff } from '@freik/helpers';
 import { ArrayToTextFile, ForFiles, Path, TextFileToArray } from '@freik/files';
+import { SortedArrayDiff } from '@freik/helpers';
 import { MakeLog } from '@freik/logger';
+import { NormalizedStringCompare } from '@freik/text';
+import { isDefined, isPromise, isString, typecheck } from '@freik/typechk';
 
 const { err } = MakeLog('node-utils:FileIndex');
 

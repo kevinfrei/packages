@@ -1,5 +1,6 @@
 import { isEmpty } from '@freik/typechk';
-import { PriorityQueue, isContainer } from './Types.js';
+
+import { isContainer, PriorityQueue } from './Types.js';
 
 export function MakePriorityQueue<T>(
   getPriority: (obj: T) => number,

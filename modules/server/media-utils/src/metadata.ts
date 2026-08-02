@@ -1,16 +1,17 @@
+import { promises as fsp } from 'fs';
+import path from 'path';
+
+import { IAudioMetadata, parseFile } from 'music-metadata';
 import { SimpleMetadata } from '@freik/media-core';
 import {
-  SimpleObject,
   asSimpleObject,
   hasField,
   hasFieldType,
   hasStrField,
   isNumber,
   isString,
+  SimpleObject,
 } from '@freik/typechk';
-import { promises as fsp } from 'fs';
-import { IAudioMetadata, parseFile } from 'music-metadata';
-import path from 'path';
 
 // export * from '@freik/media-core';
 

@@ -1,7 +1,7 @@
+import React, { ReactNode, Suspense } from 'react';
+
 import { Spinner, SpinnerProps } from '@fluentui/react-components';
 import { hasField } from '@freik/typechk';
-import React, { ReactNode } from 'react';
-import { Suspense } from 'react';
 
 export type SpinnerUIProps = SpinnerProps & {
   children?: ReactNode;

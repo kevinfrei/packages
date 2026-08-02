@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import {
   DefaultButton,
   Dialog,
@@ -8,8 +10,6 @@ import {
   Text,
   TextField,
 } from '@fluentui/react';
-import React from 'react';
-import { useState } from 'react';
 import { DialogData } from '@freik/react-tools';
 
 export type TextInputProps = {
@@ -54,8 +54,7 @@ export function TextInput({
       onDismiss={hide}
       minWidth={minWidth}
       maxWidth={maxWidth}
-      dialogContentProps={dlgContentProps}
-    >
+      dialogContentProps={dlgContentProps}>
       <Stack>
         <Text>{text}</Text>
         <TextField
@@ -105,8 +104,7 @@ export function ConfirmationDialog({
       maxWidth={maxWidth}
       minWidth={minWidth}
       hidden={isHidden}
-      onDismiss={hiderFunc}
-    >
+      onDismiss={hiderFunc}>
       <Stack>
         <Text>{text}</Text>
         <br />
@@ -116,8 +114,7 @@ export function ConfirmationDialog({
             onClick={() => {
               hiderFunc();
               confirmFunc();
-            }}
-          >
+            }}>
             {yes}
           </DefaultButton>
           <PrimaryButton style={{ float: 'right' }} onClick={hiderFunc}>

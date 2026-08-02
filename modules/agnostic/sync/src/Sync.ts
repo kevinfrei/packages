@@ -1,7 +1,8 @@
 import MakeSeqNum from '@freik/seqnum';
+import { isPromise } from '@freik/typechk';
+
 import { MaybeAsyncFunc, ReaderWriter, Sleep, SyncFunc } from './Utils.js';
 import { MakeSingleWaiter, MakeWaiter, MakeWaitingQueue } from './Waiters.js';
-import { isPromise } from '@freik/typechk';
 
 export function MakeReaderWriter(delay = 1): ReaderWriter {
   type RWEntry = { id: string; count: number };

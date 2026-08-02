@@ -1,6 +1,7 @@
-import { ForDirs, ForFiles, ForFilesSync } from '../forFiles';
-import { test, expect, beforeAll, afterAll } from 'bun:test';
+import { afterAll, beforeAll, expect, test } from 'bun:test';
 import path from 'path';
+
+import { ForDirs, ForFiles, ForFilesSync } from '../forFiles';
 
 let prevCwd: string | null = null;
 

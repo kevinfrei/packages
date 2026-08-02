@@ -1,5 +1,5 @@
 import { ReactElement, useCallback } from 'react';
-import type { DialogApi } from './Types';
+
 import {
   Button,
   Dialog,
@@ -12,6 +12,8 @@ import {
   DialogTrigger,
 } from '@fluentui/react-components';
 import { isString } from '@freik/typechk';
+
+import type { DialogApi } from './Types';
 
 export type ConfirmationDialogProps = {
   api: DialogApi<boolean>;

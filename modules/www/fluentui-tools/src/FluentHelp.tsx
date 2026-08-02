@@ -1,18 +1,19 @@
+import React, { Suspense, useState } from 'react';
+
 import {
+  Spinner as FluentSpinner,
   IconButton,
   IFontStyles,
   ISeparatorStyles,
   IStyle,
   IToggleStyles,
   Separator,
-  Spinner as FluentSpinner,
   SpinnerLabelPosition,
   SpinnerSize,
   Stack,
   Text,
   Toggle,
 } from '@fluentui/react';
-import React, { Suspense, useState } from 'react';
 import { BoolState } from '@freik/react-tools';
 import { isString } from '@freik/typechk';
 

@@ -1,4 +1,5 @@
-import { afterEach, describe, test, expect } from 'bun:test';
+import { afterEach, describe, expect, test } from 'bun:test';
+
 import { Fail } from '../Helpers';
 
 test('Fail helper testing', () => {

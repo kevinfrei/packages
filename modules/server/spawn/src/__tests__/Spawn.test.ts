@@ -1,6 +1,7 @@
+import { expect, setDefaultTimeout, test } from 'bun:test';
 import os from 'os';
-import { Spawn, SpawnResSync, SpawnRes } from '../Spawn';
-import { test, expect, setDefaultTimeout } from 'bun:test';
+
+import { Spawn, SpawnRes, SpawnResSync } from '../Spawn';
 
 setDefaultTimeout(15000);
 

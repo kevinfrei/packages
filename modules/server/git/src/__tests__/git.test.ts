@@ -1,3 +1,6 @@
+import { afterAll, beforeAll, expect, test } from 'bun:test';
+import path from 'path';
+
 import {
   isArray,
   isArrayOfString,
@@ -5,9 +8,8 @@ import {
   isString,
   isUndefined,
 } from '@freik/typechk';
+
 import { Git } from '../index';
-import { test, expect, beforeAll, afterAll } from 'bun:test';
-import path from 'path';
 
 let prevCwd: string | null = null;
 

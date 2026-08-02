@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import { Component, ReactElement, ReactNode } from 'react';
 
-type EBProps = { children: React.ReactNode };
+type EBProps = { children: ReactNode; error?: ReactElement | string };
 type EBState = { hasError: boolean };
 export class ErrorBoundary extends Component<EBProps, EBState> {
   constructor(props: EBProps) {
@@ -22,7 +22,7 @@ export class ErrorBoundary extends Component<EBProps, EBState> {
   override render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h4>Something went wrong</h4>;
+      return this.props.error || <h4>Something went wrong</h4>;
     }
 
     return this.props.children;
