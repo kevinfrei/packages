@@ -47,10 +47,15 @@ function App() {
   const txtApi = MakeDialogApi(txtState, (val: string | undefined) => {
     setTVal(val || 'NOT DEFINED!');
   });
+  const [info, setInfo] = useState('init');
   return (
     <FluentProvider theme={webLightTheme} targetDocument={window.document}>
       <div style={{ padding: 10 }}>
-        <Expandable label="Some stuff" indent={35}>
+        <Expandable
+          label={`Some stuff ${info}`}
+          indent={35}
+          onChanged={(v) => setInfo(v ? 'open' : 'closed')}
+        >
           <div> A</div>
           <div>b</div>
         </Expandable>

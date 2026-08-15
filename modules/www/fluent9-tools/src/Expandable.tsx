@@ -36,7 +36,7 @@ export function Expandable({
       onClick={() => {
         setHidden(!hidden);
         if (onChanged) {
-          onChanged(!hidden);
+          onChanged(hidden);
         }
       }}
       size={size || 'medium'}
