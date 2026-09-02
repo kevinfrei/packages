@@ -1,6 +1,6 @@
 {
   "name": "@freik/fluent9-tools",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Kevin Frei's FluentUIv9 Web utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -30,7 +30,7 @@
     "watch": "bun test --watch",
     "clean": "rm -rf lib",
     "release": "bun run build",
-    "buildesm": "NODE_ENV=production && esbuild src/index.ts --bundle --outfile=./lib/index.js --minify '--external:@fluentui/*' '--external:react*'",
+    "buildesm": "NODE_ENV=production && esbuild src/index.ts --bundle --outfile=./lib/index.js --minify '--external:@fluentui/*' '--external:react*' --format=esm",
     "buildtypes": "tsc --project tsconfig.json --emitDeclarationOnly --outdir ./lib",
     "build": "bun run clean && bun run buildesm && bun run buildtypes",
     "dbgbuild": "bun run clean && tools make-module --map --esm src/*.ts src/*.tsx",
