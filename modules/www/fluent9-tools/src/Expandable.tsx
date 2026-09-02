@@ -12,6 +12,7 @@ export type ExpandableProps = {
   separator?: boolean;
   indent?: number;
   size?: 'small' | 'medium' | 'large';
+  onChanged?: (isOpen: boolean) => void;
 };
 
 // A little control that expands or collapses the children
@@ -23,6 +24,7 @@ export function Expandable({
   separator,
   indent,
   size,
+  onChanged,
   ...props
 }: ExpandableProps): ReactElement {
   const indentSize = indent || 0;
@@ -31,7 +33,12 @@ export function Expandable({
     <Button
       appearance="transparent"
       icon={hidden ? <ChevronRightRegular /> : <ChevronDownRegular />}
-      onClick={() => setHidden(!hidden)}
+      onClick={() => {
+        setHidden(!hidden);
+        if (onChanged) {
+          onChanged(!hidden);
+        }
+      }}
       size={size || 'medium'}
     />
   );
