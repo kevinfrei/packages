@@ -52,8 +52,8 @@
     "@fluentui/react": "catalog:",
     "@fluentui/react-components": "catalog:",
     "@fluentui/react-hooks": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "react": "catalog:dev",
+    "react-dom": "catalog:dev"
   },
   "devDependencies": {
     "@fluentui/react": "catalog:",

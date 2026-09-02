@@ -1,6 +1,6 @@
 {
   "name": "@freik/react-tools",
-  "version": "0.4.1",
+  "version": "0.4.3",
   "description": "Kevin Frei's React utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -31,8 +31,8 @@
     "watch": "bun test --watch",
     "clean": "rm -rf lib",
     "release": "bun run build",
-    "buildesm": "bun build --entrypoints src/index.ts --minify --external '@freik/*' --external 'react*' --outdir ./lib --target browser --format esm",
-    "buildtypes": "tsc --project tsconfig.esm.json --emitDeclarationOnly --outdir ./lib",
+    "buildesm": "NODE_ENV=production && esbuild src/index.ts --bundle --outfile=./lib/index.js --minify '--external:@freik/*' '--external:react*'",
+    "buildtypes": "tsc --project tsconfig.json --emitDeclarationOnly --outdir ./lib",
     "build": "bun run clean && bun run buildesm && bun run buildtypes",
     "dbgbuild": "bun run clean && tools make-module --map --tsconfig tsconfig.json --esm src/*.ts src/*.tsx",
     "cleanbuild": "bun run clean && bun run build",
@@ -40,7 +40,7 @@
     "prepare": "bun run release",
     "lint": "eslint --fix src",
     "preversion": "bun run lint",
-    "typechk": "tsc --noEmit --project tsconfig.esm.json",
+    "typechk": "tsc --noEmit --project tsconfig.json",
     "test": "bun run lint && bun run typechk && bun run justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
@@ -49,8 +49,8 @@
     "@freik/typechk": "workspace:*"
   },
   "peerDependencies": {
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "react": "catalog:dev",
+    "react-dom": "catalog:dev"
   },
   "devDependencies": {
     "@happy-dom/global-registrator": "catalog:dev",
@@ -61,6 +61,7 @@
     "@types/react-dom": "catalog:dev",
     "@typescript-eslint/eslint-plugin": "catalog:dev",
     "@typescript-eslint/parser": "catalog:dev",
+    "esbuild": "catalog:dev",
     "eslint": "catalog:dev",
     "eslint-config-prettier": "catalog:dev",
     "eslint-plugin-import": "catalog:dev",

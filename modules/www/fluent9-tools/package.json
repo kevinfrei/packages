@@ -1,6 +1,6 @@
 {
   "name": "@freik/fluent9-tools",
-  "version": "0.1.2",
+  "version": "0.2.1",
   "description": "Kevin Frei's FluentUIv9 Web utilities",
   "author": "Kevin Frei (kevinfrei@hotmail.com)",
   "license": "Unlicense",
@@ -30,8 +30,8 @@
     "watch": "bun test --watch",
     "clean": "rm -rf lib",
     "release": "bun run build",
-    "buildesm": "bun build --entrypoints src/index.ts --minify --external '@fluentui/*' --external 'react*' --outdir ./lib --target browser --format esm",
-    "buildtypes": "tsc --project tsconfig.esm.json --emitDeclarationOnly --outdir ./lib",
+    "buildesm": "NODE_ENV=production && esbuild src/index.ts --bundle --outfile=./lib/index.js --minify '--external:@fluentui/*' '--external:react*'",
+    "buildtypes": "tsc --project tsconfig.json --emitDeclarationOnly --outdir ./lib",
     "build": "bun run clean && bun run buildesm && bun run buildtypes",
     "dbgbuild": "bun run clean && tools make-module --map --esm src/*.ts src/*.tsx",
     "cleanbuild": "bun run clean && bun run build",
@@ -39,7 +39,7 @@
     "prepare": "bun run release",
     "lint": "eslint --fix src",
     "preversion": "bun run lint",
-    "typechk": "tsc --noEmit --project tsconfig.esm.json",
+    "typechk": "tsc --noEmit --project tsconfig.json",
     "test": "bun run lint && bun run typechk && bun run justtest",
     "doc": "typedoc ./src/index.ts --readme none --tsconfig tsconfig.esm.json"
   },
@@ -51,8 +51,8 @@
   "peerDependencies": {
     "@fluentui/react-components": "catalog:",
     "@fluentui/react-hooks": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "react": "catalog:dev",
+    "react-dom": "catalog:dev"
   },
   "devDependencies": {
     "@fluentui/react-components": "catalog:",
@@ -65,6 +65,7 @@
     "@types/react-dom": "catalog:dev",
     "@typescript-eslint/eslint-plugin": "catalog:dev",
     "@typescript-eslint/parser": "catalog:dev",
+    "esbuild": "catalog:dev",
     "eslint": "catalog:dev",
     "eslint-config-prettier": "catalog:dev",
     "eslint-plugin-import": "catalog:dev",
